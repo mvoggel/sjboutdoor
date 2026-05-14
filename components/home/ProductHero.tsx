@@ -7,6 +7,13 @@ import { assetPath } from "@/lib/asset-path";
 
 // ─── AI summary data ─────────────────────────────────────────────────────────
 const SUMMARY_BULLETS: Record<string, string[]> = {
+  "retractable-awnings": [
+    "Motorized retractable awnings for patios, enclosed decks, and any outdoor space — extend or retract with the touch of a wireless remote.",
+    "Built-in dimmable LED lights are standard on every awning, cleverly integrated into the arms for remote-controlled ambiance day or night.",
+    "EZ-Pitch Adjustment lets homeowners easily change the slope of the awning themselves with an included crank — no service call needed.",
+    "Integrated cassette housing protects the fabric when retracted, extending the life of the awning and maintaining a clean, finished appearance.",
+    "Available in a wide range of fabrics and three frame colors — white, bronze, and beige — with either a straight or sea-wave valance to suit your home's exterior.",
+  ],
   "louvered-pergolas": [
     "Six premium louvered roof systems engineered for Florida's climate — from the smart-home–integrated R-BLADE™ motorized pergola to the architectural R-BREEZE™ fixed pergola, the modular K-BANA™, the cantilevered K-NOPY™ awning, the insulated R-SHADE™ patio cover, and the luxury R-CAR™ carport.",
     "Built from high-grade powder-coated aluminum — corrosion- and salt-air-resistant, engineered for hurricane-zone wind loads, and warranted for the conditions Florida actually produces.",

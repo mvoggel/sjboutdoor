@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 
+const PRODUCT_SUBLINKS = [
+  { href: "/products/exterior-shades", label: "Exterior Shades & Shutters" },
+  { href: "/products/retractable-awnings", label: "Retractable Awnings" },
+  { href: "/products/louvered-pergolas", label: "Louvered Pergolas" },
+];
+
 const NAV_LINKS = [
-  { href: "/products", label: "Products" },
   { href: "/about", label: "About" },
   { href: "/service-areas", label: "Service Areas" },
   { href: "/contact", label: "Contact" },
@@ -20,11 +25,17 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { openModal } = useConsultModal();
+  const [productsOpen, setProductsOpen] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
+  // Reset Products dropdown when menu closes
+  useEffect(() => {
+    if (!isOpen) setProductsOpen(false);
   }, [isOpen]);
 
   function handleConsult() {
@@ -98,12 +109,105 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Nav links */}
             <nav className="flex-1 flex flex-col justify-center px-7">
               <ul>
+                {/* Products — expandable */}
+                <motion.li
+                  initial={{ opacity: 0, x: 14 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.08, duration: 0.28 }}
+                  style={{ borderBottom: productsOpen ? "none" : "1px solid rgba(184,146,74,0.11)" }}
+                >
+                  <button
+                    onClick={() => setProductsOpen((o) => !o)}
+                    className="w-full flex items-center justify-between py-4 transition-colors"
+                    style={{
+                      fontFamily: "var(--font-cormorant), Georgia, serif",
+                      fontSize: "1.9rem",
+                      fontWeight: 500,
+                      color: productsOpen ? "var(--rich-warm)" : "rgba(252,251,247,0.82)",
+                      lineHeight: 1.15,
+                      letterSpacing: "0.01em",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                    aria-expanded={productsOpen}
+                  >
+                    Products
+                    <ChevronDown
+                      size={18}
+                      style={{
+                        color: "rgba(184,146,74,0.7)",
+                        transition: "transform 0.25s ease",
+                        transform: productsOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        flexShrink: 0,
+                        marginBottom: "2px",
+                      }}
+                    />
+                  </button>
+
+                  {/* Sub-links */}
+                  <AnimatePresence initial={false}>
+                    {productsOpen && (
+                      <motion.ul
+                        key="products-sub"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                        style={{
+                          overflow: "hidden",
+                          paddingLeft: "0.25rem",
+                          paddingBottom: "0.75rem",
+                          borderBottom: "1px solid rgba(184,146,74,0.11)",
+                        }}
+                      >
+                        {PRODUCT_SUBLINKS.map((sub, j) => (
+                          <li key={sub.href}>
+                            <Link
+                              href={sub.href}
+                              onClick={onClose}
+                              className="flex items-center gap-2 py-2 transition-colors"
+                              style={{
+                                fontFamily: "var(--font-cormorant), Georgia, serif",
+                                fontSize: "1.15rem",
+                                fontWeight: 400,
+                                color: "rgba(252,251,247,0.62)",
+                                textDecoration: "none",
+                                letterSpacing: "0.03em",
+                              }}
+                              onMouseEnter={(e) => {
+                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--rich-warm)";
+                              }}
+                              onMouseLeave={(e) => {
+                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(252,251,247,0.62)";
+                              }}
+                            >
+                              <span
+                                aria-hidden="true"
+                                style={{
+                                  display: "inline-block",
+                                  width: "16px",
+                                  height: "1px",
+                                  background: "rgba(184,146,74,0.45)",
+                                  flexShrink: 0,
+                                }}
+                              />
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </motion.li>
+
                 {NAV_LINKS.map((link, i) => (
                   <motion.li
                     key={link.href}
                     initial={{ opacity: 0, x: 14 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + i * 0.07, duration: 0.28 }}
+                    transition={{ delay: 0.15 + i * 0.07, duration: 0.28 }}
                     style={{ borderBottom: "1px solid rgba(184,146,74,0.11)" }}
                   >
                     <Link
