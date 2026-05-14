@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { assetPath } from "@/lib/asset-path";
 
 // ─── AI summary data ─────────────────────────────────────────────────────────
 const SUMMARY_BULLETS: Record<string, string[]> = {
@@ -182,7 +183,7 @@ export function ProductHero({
                   autoPlay muted loop playsInline
                   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                 >
-                  <source src={videoSrc} type="video/mp4" />
+                  <source src={assetPath(videoSrc)} type="video/mp4" />
                 </video>
               </div>
               <p

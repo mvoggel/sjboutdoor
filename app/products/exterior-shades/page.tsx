@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
+import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { AIAssistantBlock } from "@/components/ui/AIAssistantBlock";
 import {
@@ -433,7 +434,7 @@ export default function ExteriorShadesPage() {
                   objectFit: "cover", opacity: 0.9,
                 }}
               >
-                <source src="/video/whyitmatters.MOV" type="video/mp4" />
+                <source src={assetPath("/video/whyitmatters.MOV")} type="video/mp4" />
               </video>
               {/* Right-edge vertical line separator — desktop only */}
               <div

@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { assetPath } from "@/lib/asset-path";
 
 const HERO_VIDEOS = [
   "/video/homepageloop1.MP4",
   "/video/homepageloop2.mov",
   "/video/homepageloop3.MP4",
   "/video/sjbb-home-test.MP4",
-];
+].map(assetPath);
 
 export function HeroVideo() {
   const { openModal } = useConsultModal();
@@ -76,7 +77,7 @@ export function HeroVideo() {
         autoPlay
         muted
         playsInline
-        poster="/video/hero-poster.jpg"
+        poster={assetPath("/video/hero-poster.jpg")}
         onLoadedData={() => setVideoLoaded(true)}
         onEnded={handleVideoEnded}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
