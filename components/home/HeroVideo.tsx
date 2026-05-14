@@ -20,6 +20,16 @@ export function HeroVideo() {
   const isFirstRender = useRef(true);
   const prefersReducedMotion = useReducedMotion();
 
+  // Fix iOS Safari viewport height — dvh can be slightly off on some versions
+  useEffect(() => {
+    const setVH = () => {
+      document.documentElement.style.setProperty("--hero-h", `${window.innerHeight}px`);
+    };
+    setVH();
+    window.addEventListener("resize", setVH);
+    return () => window.removeEventListener("resize", setVH);
+  }, []);
+
   // Skip autoplay on slow / data-saver connections
   useEffect(() => {
     const video = videoRef.current;
@@ -60,7 +70,7 @@ export function HeroVideo() {
     <section
       aria-label="Hero"
       className="relative w-full overflow-hidden"
-      style={{ height: "100dvh", minHeight: "600px" }}
+      style={{ height: "var(--hero-h, 100dvh)", minHeight: "600px" }}
     >
       {/* Background fallback */}
       <div
