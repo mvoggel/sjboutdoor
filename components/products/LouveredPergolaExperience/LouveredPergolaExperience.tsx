@@ -10,6 +10,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { assetPath } from "@/lib/asset-path";
 import styles from "./LouveredPergolaExperience.module.css";
 
 type Coord = { x: number; y: number };
@@ -212,7 +213,7 @@ export function LouveredPergolaExperience({
           }`}
         >
           <Image
-            src={imageSrc}
+            src={assetPath(imageSrc)}
             alt={imageAlt}
             fill
             className={styles.image}

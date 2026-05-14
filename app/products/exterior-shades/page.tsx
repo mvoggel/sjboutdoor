@@ -244,7 +244,7 @@ function ProductRow({
         style={{ flex: "0 0 42%" }}
       >
         <Image
-          src={p.imageSrc}
+          src={assetPath(p.imageSrc)}
           alt={p.name}
           fill
           className="object-cover"

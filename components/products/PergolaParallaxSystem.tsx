@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { assetPath } from "@/lib/asset-path";
 
 export interface PergolaSystem {
   slug: string;
@@ -79,7 +80,7 @@ export function PergolaParallaxSystem({ system, index, total }: ParallaxSystemPr
             }}
           >
             <Image
-              src={system.image}
+              src={assetPath(system.image)}
               alt={`${system.name} — ${system.category}`}
               fill
               sizes="(max-width: 768px) 100vw, 52vw"

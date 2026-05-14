@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { assetPath } from "@/lib/asset-path";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -132,7 +133,7 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
             playsInline
             style={{ width: "100%", height: "100%", display: "block" }}
           >
-            <source src={src} type="video/mp4" />
+            <source src={assetPath(src)} type="video/mp4" />
           </video>
         </div>
       </motion.div>
@@ -249,7 +250,7 @@ function ProductRow({ product }: { product: (typeof PRODUCTS)[number] }) {
                     >
                       {/* Thumbnail */}
                       <Image
-                        src={img.src}
+                        src={assetPath(img.src)}
                         alt={img.alt}
                         fill
                         sizes="(max-width: 640px) 33vw, 28vw"

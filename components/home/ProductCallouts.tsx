@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { assetPath } from "@/lib/asset-path";
 
 // TODO: replace with licensed product photography before launch
 const PRODUCTS = [
@@ -94,7 +95,7 @@ function ProductCard({
         style={{ aspectRatio: "4/5" }}
       >
         <Image
-          src={product.image}
+          src={assetPath(product.image)}
           alt={product.alt}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
