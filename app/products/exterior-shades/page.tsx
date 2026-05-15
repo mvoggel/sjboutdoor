@@ -74,26 +74,6 @@ const SHADE_CALLOUTS: LouveredPergolaCallout[] = [
   },
 ];
 
-// ─── Benefits ─────────────────────────────────────────────────────────────────
-const BENEFITS = [
-  {
-    title: "UV Protection",
-    body: "Block up to 90% of harmful UV rays. Protect furnishings, flooring, and skin — year-round.",
-  },
-  {
-    title: "Climate Control",
-    body: "Intercept heat before it enters. Measurably lower cooling costs without sacrificing your view.",
-  },
-  {
-    title: "Privacy On Demand",
-    body: "Open your home to the outdoors. Close it to the world. The choice is always yours.",
-  },
-  {
-    title: "Built For Your Home",
-    body: "Custom-fabricated to your exact dimensions and architecture. Nothing off-the-shelf, ever.",
-  },
-];
-
 // ─── Sub-products — horizontal rows with luxury pill specs ────────────────────
 // TODO: Replace imageSrc values with product-specific photography when available.
 const SUB_PRODUCTS = [
@@ -416,104 +396,13 @@ export default function ExteriorShadesPage() {
           callouts={SHADE_CALLOUTS}
         />
 
-        {/* ── 4. BENEFITS + VIDEO ─────────────────────────────────────── */}
-        <section style={{ background: "var(--near-black)", overflow: "hidden" }}>
-          {/*
-            Mobile: video stacks on top (aspect-[3/4] portrait), benefits below.
-            Desktop: side-by-side 45/55 split with min-height.
-          */}
-          <div className="flex flex-col md:grid md:grid-cols-[45fr_55fr] md:min-h-[560px]">
-
-            {/* Video — portrait on mobile, full-height on desktop */}
-            <div className="relative aspect-[3/4] md:aspect-auto overflow-hidden">
-              <video
-                autoPlay muted loop playsInline
-                style={{
-                  position: "absolute", inset: 0,
-                  width: "100%", height: "100%",
-                  objectFit: "cover", opacity: 0.9,
-                }}
-              >
-                <source src={assetPath("/video/whyitmatters.MOV")} type="video/mp4" />
-              </video>
-              {/* Right-edge vertical line separator — desktop only */}
-              <div
-                aria-hidden="true"
-                className="hidden md:block"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  width: "2px",
-                  background: "rgba(184,146,74,0.55)",
-                  pointerEvents: "none",
-                }}
-              />
-            </div>
-
-            {/* Benefits */}
-            <div className="flex flex-col justify-center px-6 py-10 md:px-10 md:py-16">
-              <motion.p
-                {...inView(0)}
-                style={{
-                  fontSize: "0.68rem", letterSpacing: "0.26em",
-                  textTransform: "uppercase", color: "var(--rich-warm)",
-                  marginBottom: "1.75rem", opacity: 0.8,
-                }}
-              >
-                Why It Matters
-              </motion.p>
-
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {BENEFITS.map((b, i) => (
-                  <motion.div
-                    key={b.title}
-                    {...inView(i * 0.1)}
-                    style={{
-                      paddingBottom: "1.75rem",
-                      marginBottom: "1.75rem",
-                      borderBottom:
-                        i < BENEFITS.length - 1
-                          ? "1px solid rgba(252,251,247,0.07)"
-                          : "none",
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-cormorant), Georgia, serif",
-                        fontSize: "clamp(1.1rem, 1.6vw, 1.35rem)",
-                        fontWeight: 500,
-                        color: "rgba(252,251,247,0.95)",
-                        marginBottom: "0.4rem",
-                        lineHeight: 1.2,
-                      }}
-                    >
-                      {b.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: "0.9rem",
-                        lineHeight: 1.7,
-                        color: "rgba(252,251,247,0.5)",
-                      }}
-                    >
-                      {b.body}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── 5. PHANTOM SCREENS CALLOUT ──────────────────────────────── */}
         <section
           className="py-8 md:py-10"
           style={{
-            background: "var(--bg-pure)",
-            borderTop: "1px solid var(--rich-sand)",
-            borderBottom: "1px solid var(--rich-sand)",
+            background: "var(--near-black)",
+            borderTop: "1px solid rgba(184,146,74,0.18)",
+            borderBottom: "1px solid rgba(184,146,74,0.18)",
           }}
         >
           <Container>
@@ -525,8 +414,8 @@ export default function ExteriorShadesPage() {
                 <p
                   style={{
                     fontSize: "0.68rem", letterSpacing: "0.22em",
-                    textTransform: "uppercase", color: "var(--ink-primary)",
-                    opacity: 0.45, marginBottom: "0.75rem",
+                    textTransform: "uppercase", color: "rgba(184,146,74,0.7)",
+                    marginBottom: "0.75rem",
                   }}
                 >
                   Our Systems
@@ -535,7 +424,7 @@ export default function ExteriorShadesPage() {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.35rem, 2.4vw, 2.1rem)",
-                    fontWeight: 500, color: "var(--ink-primary)",
+                    fontWeight: 500, color: "rgba(252,251,247,0.95)",
                     letterSpacing: "0.01em", marginBottom: "0.6rem",
                   }}
                 >
@@ -543,7 +432,7 @@ export default function ExteriorShadesPage() {
                 </h2>
                 <p
                   style={{
-                    fontSize: "0.95rem", color: "var(--ink-muted)",
+                    fontSize: "0.95rem", color: "rgba(252,251,247,0.55)",
                     maxWidth: "54ch", lineHeight: 1.75,
                   }}
                 >
@@ -555,8 +444,8 @@ export default function ExteriorShadesPage() {
                 style={{
                   flexShrink: 0,
                   padding: "0.9rem 2.25rem",
-                  border: "1px solid var(--ink-primary)",
-                  background: "transparent", color: "var(--ink-primary)",
+                  border: "1px solid rgba(184,146,74,0.45)",
+                  background: "transparent", color: "var(--rich-warm)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.875rem", fontWeight: 450,
                   letterSpacing: "0.14em", textTransform: "uppercase",
@@ -564,12 +453,12 @@ export default function ExteriorShadesPage() {
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "var(--ink-primary)";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--bg-pure)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "var(--rich-warm)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "var(--near-black)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-primary)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "var(--rich-warm)";
                 }}
               >
                 Ask About Our Products
