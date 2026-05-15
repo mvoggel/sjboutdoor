@@ -9,7 +9,7 @@ import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { MobileMenu } from "./MobileMenu";
 
 const LEFT_LINKS = [
-  { href: "/about", label: "About" },
+  { href: "/our-process", label: "Our Process" },
   { href: "/contact", label: "Contact" },
 ];
 

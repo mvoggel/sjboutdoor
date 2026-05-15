@@ -13,7 +13,7 @@ const PRODUCT_SUBLINKS = [
 ];
 
 const NAV_LINKS = [
-  { href: "/about", label: "About" },
+  { href: "/our-process", label: "Our Process" },
   { href: "/service-areas", label: "Service Areas" },
   { href: "/contact", label: "Contact" },
 ];
