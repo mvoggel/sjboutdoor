@@ -15,7 +15,10 @@ export function HeroVideo() {
     <section
       aria-label="Hero"
       className="relative w-full overflow-hidden"
-      style={{ height: "100lvh", minHeight: "600px" }}
+      style={{
+        height: "calc(100lvh + env(safe-area-inset-bottom))",
+        minHeight: "600px",
+      }}
     >
       {/* Poster image — always present, prevents any flash before video plays */}
       <div

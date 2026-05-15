@@ -117,8 +117,25 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [pastFold, setPastFold] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // On mobile, hide the FAB until the user scrolls past the hero fold
+  useEffect(() => {
+    const check = () => {
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile) { setPastFold(true); return; }
+      setPastFold(window.scrollY > window.innerHeight * 0.85);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -468,13 +485,16 @@ export function ChatWidget() {
         </div>
       )}
 
-      {/* ── Trigger Button ───────────────────────────────────────────────── */}
+      {/* ── Trigger Button — hidden on mobile until past the hero fold ── */}
       <div
         style={{
           position: "fixed",
           bottom: "1.5rem",
           right: "1.5rem",
           zIndex: 9001,
+          opacity: pastFold ? 1 : 0,
+          pointerEvents: pastFold ? "auto" : "none",
+          transition: "opacity 0.3s ease",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-end",

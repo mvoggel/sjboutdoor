@@ -194,7 +194,7 @@ export function Header() {
             ...LOGO_FONT,
             top: "50dvh",
             zIndex: 5,
-            fontSize: "2.5rem",
+            fontSize: "clamp(1.1rem, 6vw, 2.5rem)",
             color: "var(--bg-pure)",
             textShadow: "0 2px 12px rgba(14,26,31,0.4)",
             opacity: scrolled ? 0 : 1,
