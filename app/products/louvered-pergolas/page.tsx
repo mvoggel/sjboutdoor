@@ -121,15 +121,6 @@ const SYSTEMS: PergolaSystem[] = [
   },
 ];
 
-// ─── Installation Process ────────────────────────────────────────────────
-const PROCESS_STEPS = [
-  { n: "01", title: "Consultation", body: "In-home meeting to understand your goals, site, and lifestyle." },
-  { n: "02", title: "Custom Design", body: "Material selection, finish, and configuration tailored to your architecture." },
-  { n: "03", title: "Site Planning", body: "Structural review, permit strategy, and engineered drawings." },
-  { n: "04", title: "Installation", body: "Certified install by experienced technicians, on your timeline." },
-  { n: "05", title: "Walkthrough", body: "Hands-on demonstration and functionality testing before we leave." },
-];
-
 // ─── Page ────────────────────────────────────────────────────────────────
 export default function LouveredPergolasPage() {
   const prefersReducedMotion = useReducedMotion();
@@ -383,104 +374,6 @@ export default function LouveredPergolasPage() {
                 Talk to a Designer
               </button>
             </motion.div>
-          </Container>
-        </section>
-
-        {/* ── 7. PROCESS STRIP ───────────────────────────────────────── */}
-        <section
-          style={{
-            background: "var(--near-black)",
-            color: "var(--bg-pure)",
-            padding: "5rem 0",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <Container>
-            <motion.div {...inView(0)} style={{ marginBottom: "3rem", maxWidth: "48rem" }}>
-              <p
-                style={{
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.26em",
-                  textTransform: "uppercase",
-                  color: "rgba(184,146,74,0.9)",
-                  marginBottom: "1rem",
-                }}
-              >
-                Tailored Design · Expert Installation
-              </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-                  fontWeight: 500,
-                  color: "rgba(252,251,247,0.96)",
-                  lineHeight: 1.15,
-                  letterSpacing: "0.005em",
-                  marginBottom: "0.9rem",
-                }}
-              >
-                Built once. Built right.
-              </h2>
-              <p
-                style={{
-                  fontSize: "0.98rem",
-                  lineHeight: 1.75,
-                  color: "rgba(252,251,247,0.65)",
-                  maxWidth: "58ch",
-                }}
-              >
-                From the first design consultation to the final functionality test, every louvered roof system we install is engineered to integrate seamlessly with your home and to grow with you in the future.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px"
-              style={{ background: "rgba(184,146,74,0.18)" }}
-            >
-              {PROCESS_STEPS.map((step, i) => (
-                <motion.div
-                  key={step.n}
-                  {...inView(i * 0.08)}
-                  style={{
-                    background: "var(--near-black)",
-                    padding: "1.75rem 1.5rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.5rem",
-                      fontWeight: 500,
-                      color: "rgba(184,146,74,0.95)",
-                      letterSpacing: "0.05em",
-                      marginBottom: "0.85rem",
-                    }}
-                  >
-                    {step.n}
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.1rem",
-                      fontWeight: 500,
-                      color: "rgba(252,251,247,0.95)",
-                      marginBottom: "0.55rem",
-                    }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.88rem",
-                      lineHeight: 1.65,
-                      color: "rgba(252,251,247,0.6)",
-                    }}
-                  >
-                    {step.body}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
           </Container>
         </section>
 

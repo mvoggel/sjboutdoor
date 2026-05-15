@@ -84,15 +84,6 @@ const DESIGN_OPTIONS = [
   },
 ];
 
-// ─── Installation process ─────────────────────────────────────────────────────
-const PROCESS_STEPS = [
-  { n: "01", title: "Consultation", body: "In-home meeting to assess your space, sun angles, and lifestyle goals." },
-  { n: "02", title: "Custom Design", body: "Fabric selection, frame color, pitch, and projection width tailored to your home." },
-  { n: "03", title: "Measurement", body: "Precise on-site measurements and structural review before anything is ordered." },
-  { n: "04", title: "Installation", body: "Certified installation by experienced technicians, typically completed in a single day." },
-  { n: "05", title: "Walkthrough", body: "Full demonstration of motorized controls, pitch adjustment, and care instructions." },
-];
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function RetractableAwningsPage() {
   const prefersReducedMotion = useReducedMotion();
@@ -120,7 +111,7 @@ export default function RetractableAwningsPage() {
           eyebrow="Products / Retractable Awnings"
           headline="Shade on your terms, style on every façade."
           descriptor="Motorized retractable awnings that extend over patios, decks, and outdoor living spaces at the touch of a button. Every awning ships with built-in LED lighting, EZ-Pitch adjustment, and integrated cassette housing — as standard."
-          videoSrc="/video/homepageloop1.MP4"
+          videoSrc="/video/awning-animatino.mp4"
           productSlug="retractable-awnings"
           aiServiceLabel="Retractable Awnings"
           aiContextKey="retractable-awnings"
@@ -509,105 +500,6 @@ export default function RetractableAwningsPage() {
                 Find Out More
               </button>
             </motion.div>
-          </Container>
-        </section>
-
-        {/* ── 7. PROCESS STRIP ────────────────────────────────────────── */}
-        <section
-          style={{
-            background: "var(--near-black)",
-            color: "var(--bg-pure)",
-            padding: "5rem 0",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <Container>
-            <motion.div {...inView(0)} style={{ marginBottom: "3rem", maxWidth: "48rem" }}>
-              <p
-                style={{
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.26em",
-                  textTransform: "uppercase",
-                  color: "rgba(184,146,74,0.9)",
-                  marginBottom: "1rem",
-                }}
-              >
-                Tailored Design · Expert Installation
-              </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-                  fontWeight: 500,
-                  color: "rgba(252,251,247,0.96)",
-                  lineHeight: 1.15,
-                  letterSpacing: "0.005em",
-                  marginBottom: "0.9rem",
-                }}
-              >
-                Built once. Built right.
-              </h2>
-              <p
-                style={{
-                  fontSize: "0.98rem",
-                  lineHeight: 1.75,
-                  color: "rgba(252,251,247,0.65)",
-                  maxWidth: "58ch",
-                }}
-              >
-                From the first design consultation to the final walkthrough, every awning we install is measured, fabricated, and fitted precisely to your home.
-              </p>
-            </motion.div>
-
-            <div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px"
-              style={{ background: "rgba(184,146,74,0.18)" }}
-            >
-              {PROCESS_STEPS.map((step, i) => (
-                <motion.div
-                  key={step.n}
-                  {...inView(i * 0.08)}
-                  style={{
-                    background: "var(--near-black)",
-                    padding: "1.75rem 1.5rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.5rem",
-                      fontWeight: 500,
-                      color: "rgba(184,146,74,0.95)",
-                      letterSpacing: "0.05em",
-                      marginBottom: "0.85rem",
-                    }}
-                  >
-                    {step.n}
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.1rem",
-                      fontWeight: 500,
-                      color: "rgba(252,251,247,0.95)",
-                      marginBottom: "0.55rem",
-                    }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.88rem",
-                      lineHeight: 1.65,
-                      color: "rgba(252,251,247,0.6)",
-                    }}
-                  >
-                    {step.body}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
           </Container>
         </section>
 
