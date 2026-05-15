@@ -14,6 +14,13 @@ const SUMMARY_BULLETS: Record<string, string[]> = {
     "Integrated cassette housing protects the fabric when retracted, extending the life of the awning and maintaining a clean, finished appearance.",
     "Available in a wide range of fabrics and three frame colors — white, bronze, and beige — with either a straight or sea-wave valance to suit your home's exterior.",
   ],
+  "exterior-shades": [
+    "Motorized and manual exterior shade systems precision-fabricated to your home's exact measurements — roller shades, patio screens, Bahama shutters, and storm shutters all under one roof.",
+    "Phantom Screens exclusive partnership: the industry-standard retractable screen system, invisible when not in use, with UV block up to 90% and options for insect, debris, and light filtration.",
+    "Florida-engineered for the conditions that matter — salt air, humidity, storm-cycle wind loads, and year-round sun exposure — backed by product and workmanship warranties.",
+    "Every system retracts completely out of sight when you don't need it, maintaining your home's exterior appearance and protecting the hardware between uses.",
+    "Free in-home consultation, transparent pricing, and certified installation — from Bahama shutters that elevate coastal architecture to full-height motorized garage door screens that transform your space.",
+  ],
   "louvered-pergolas": [
     "Six premium louvered roof systems engineered for Florida's climate — from the smart-home–integrated R-BLADE™ motorized pergola to the architectural R-BREEZE™ fixed pergola, the modular K-BANA™, the cantilevered K-NOPY™ awning, the insulated R-SHADE™ patio cover, and the luxury R-CAR™ carport.",
     "Built from high-grade powder-coated aluminum — corrosion- and salt-air-resistant, engineered for hurricane-zone wind loads, and warranted for the conditions Florida actually produces.",

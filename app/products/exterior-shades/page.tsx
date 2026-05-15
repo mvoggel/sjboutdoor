@@ -10,7 +10,6 @@ import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
 import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
-import { AIAssistantBlock } from "@/components/ui/AIAssistantBlock";
 import {
   LouveredPergolaExperience,
   type LouveredPergolaCallout,
@@ -377,15 +376,9 @@ export default function ExteriorShadesPage() {
           descriptor="From motorized roller shades to storm-rated Bahama shutters — our exterior systems are precision-fabricated to your home's exact measurements. Each is engineered for Florida's humidity, salt air, and wind loads, and retracts completely out of sight when you don't need it."
           videoSrc="/video/extshades.MOV"
           productSlug="exterior-shades"
+          aiServiceLabel="Exterior Shades"
+          aiContextKey="exterior-shades"
         />
-
-        {/* ── 2. AI QUICK-ANSWER BAR ──────────────────────────────────── */}
-        {/* Intentionally off-palette (#1A1D27 dark slate) to signal AI feature */}
-        <section style={{ background: "var(--bg-pure)", padding: "1rem 1rem 2.5rem" }}>
-          <Container>
-            <AIAssistantBlock serviceLabel="Exterior Shades" />
-          </Container>
-        </section>
 
         {/* ── 3. INTERACTIVE INFOGRAPHIC — "THE STANDARD" ──────────── */}
         <LouveredPergolaExperience
