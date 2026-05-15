@@ -1,100 +1,44 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { assetPath } from "@/lib/asset-path";
 
-const HERO_VIDEOS = [
-  "/video/homepageloop1.MP4",
-  "/video/homepageloop2.mov",
-  "/video/homepageloop3.MP4",
-  "/video/sjbb-home-test.MP4",
-].map(assetPath);
+const VIDEO_SRC = assetPath("/video/herofull.mp4");
+const POSTER_SRC = assetPath("/img/products/vidcover.jpeg");
 
 export function HeroVideo() {
   const { openModal } = useConsultModal();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const isFirstRender = useRef(true);
   const prefersReducedMotion = useReducedMotion();
-
-  // Fix iOS Safari viewport height — dvh can be slightly off on some versions
-  useEffect(() => {
-    const setVH = () => {
-      document.documentElement.style.setProperty("--hero-h", `${window.innerHeight}px`);
-    };
-    setVH();
-    window.addEventListener("resize", setVH);
-    return () => window.removeEventListener("resize", setVH);
-  }, []);
-
-  // Skip autoplay on slow / data-saver connections
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const nav = navigator as Navigator & {
-      connection?: { saveData?: boolean; effectiveType?: string };
-    };
-    const conn = nav.connection;
-    const slowConnection =
-      conn?.saveData ||
-      conn?.effectiveType === "2g" ||
-      conn?.effectiveType === "slow-2g";
-
-    if (slowConnection) {
-      video.removeAttribute("autoplay");
-    }
-  }, []);
-
-  // Load and play the next video whenever the index advances
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    const video = videoRef.current;
-    if (!video) return;
-    setVideoLoaded(false);
-    video.load();
-    video.play().catch(() => {});
-  }, [currentIndex]);
-
-  const handleVideoEnded = () => {
-    setCurrentIndex((prev) => (prev + 1) % HERO_VIDEOS.length);
-  };
 
   return (
     <section
       aria-label="Hero"
       className="relative w-full overflow-hidden"
-      style={{ height: "var(--hero-h, 100dvh)", minHeight: "600px" }}
+      style={{ height: "100lvh", minHeight: "600px" }}
     >
-      {/* Background fallback */}
+      {/* Poster image — always present, prevents any flash before video plays */}
       <div
-        className="absolute inset-0"
-        style={{ background: "var(--rich-deep)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${POSTER_SRC})` }}
         aria-hidden="true"
       />
 
-      {/* Hero video */}
-      <video
-        ref={videoRef}
-        src={HERO_VIDEOS[currentIndex]}
-        aria-hidden="true"
-        autoPlay
-        muted
-        playsInline
-        poster={assetPath("/video/hero-poster.jpg")}
-        onLoadedData={() => setVideoLoaded(true)}
-        onEnded={handleVideoEnded}
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-        style={{ opacity: videoLoaded ? 1 : 0 }}
-      />
+      {/* Hero video — single looping file, poster shown by browser until playback starts */}
+      {!prefersReducedMotion && (
+        <video
+          aria-hidden="true"
+          autoPlay
+          muted
+          playsInline
+          loop
+          poster={POSTER_SRC}
+          src={VIDEO_SRC}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
 
-      {/* Minimal overlay */}
+      {/* Overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -105,10 +49,14 @@ export function HeroVideo() {
         aria-hidden="true"
       />
 
-      {/* Scroll indicator — bottom-center */}
+      {/* Scroll indicator — padded above home indicator */}
       <motion.div
         className="absolute bottom-0 left-0 right-0 flex justify-center"
-        style={{ zIndex: 2, paddingBottom: "clamp(1.5rem, 3vh, 2.5rem)" }}
+        style={{
+          zIndex: 2,
+          paddingBottom:
+            "calc(env(safe-area-inset-bottom) + clamp(1.5rem, 3vh, 2.5rem))",
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
@@ -118,7 +66,6 @@ export function HeroVideo() {
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
         >
-          {/* Chevron — two lines meeting at a point, no body */}
           <svg
             width="22"
             height="12"
@@ -137,10 +84,14 @@ export function HeroVideo() {
         </motion.div>
       </motion.div>
 
-      {/* CTA — centered on mobile, bottom-left on desktop */}
+      {/* CTA — padded above home indicator */}
       <div
         className="absolute bottom-0 left-0 right-0 flex justify-center md:justify-start"
-        style={{ zIndex: 2, paddingBottom: "clamp(4rem, 10vh, 6rem)" }}
+        style={{
+          zIndex: 2,
+          paddingBottom:
+            "calc(env(safe-area-inset-bottom) + clamp(4rem, 10vh, 6rem))",
+        }}
       >
         <div className="w-full md:max-w-7xl md:mx-auto px-4 sm:px-6 lg:px-8 flex justify-center md:justify-start">
           <motion.div

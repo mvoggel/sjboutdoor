@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant } from "next/font/google";
 import "./globals.css";
 import { ConsultModalProvider } from "@/components/ui/ConsultModalProvider";
@@ -9,6 +9,12 @@ const cormorant = Cormorant({
   variable: "--font-cormorant",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "SJBB Outdoors | Luxury Outdoor Living — Florida",
