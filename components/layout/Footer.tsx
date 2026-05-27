@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 const NAV_LINKS = [
@@ -12,42 +11,53 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-// TODO: confirm exact addresses before launch
 const SERVICE_AREAS = [
-  {
-    name: "Naples",
-    href: "/service-areas/naples",
-    coords: { x: 37.5, y: 127 },
-  },
-  {
-    name: "Bonita Springs",
-    href: "/service-areas/bonita-springs",
-    coords: { x: 37, y: 117 },
-  },
-  {
-    name: "Fort Myers",
-    href: "/service-areas/fort-myers",
-    coords: { x: 37, y: 107 },
-  },
+  // Southwest Florida
+  { name: "Naples",            href: "/service-areas/naples",             coords: { x: 37.5, y: 127 } },
+  { name: "Bonita Springs",    href: "/service-areas/bonita-springs",     coords: { x: 37,   y: 117 } },
+  { name: "Fort Myers",        href: "/service-areas/fort-myers",         coords: { x: 37,   y: 107 } },
+  // Central West / Nature Coast
+  { name: "Crystal River",     href: "/service-areas/crystal-river",      coords: { x: 34,   y: 78  } },
+  // Central Florida
+  { name: "Ocala",             href: "/service-areas/ocala",              coords: { x: 56,   y: 72  } },
+  { name: "Gainesville",       href: "/service-areas/gainesville",        coords: { x: 54,   y: 60  } },
+  { name: "Newberry",          href: "/service-areas/newberry",           coords: { x: 48,   y: 58  } },
+  // Southeast
+  { name: "Palm Beach",        href: "/service-areas/palm-beach",         coords: { x: 82,   y: 136 } },
+  // East Coast (north)
+  { name: "Daytona",           href: "/service-areas/daytona",            coords: { x: 90,   y: 68  } },
+  { name: "St Augustine Beach",href: "/service-areas/st-augustine-beach", coords: { x: 94,   y: 50  } },
+  { name: "St Augustine",      href: "/service-areas/st-augustine",       coords: { x: 90,   y: 47  } },
+  { name: "Jacksonville Beach",href: "/service-areas/jacksonville-beach", coords: { x: 93,   y: 41  } },
+  { name: "Jacksonville",      href: "/service-areas/jacksonville",       coords: { x: 84,   y: 38  } },
+  // North Florida / Panhandle
+  { name: "Tallahassee",       href: "/service-areas/tallahassee",        coords: { x: 40,   y: 28  } },
+  { name: "Panama City",       href: "/service-areas/panama-city",        coords: { x: 27,   y: 20  } },
+  { name: "Destin",            href: "/service-areas/destin",             coords: { x: 17,   y: 15  } },
+  { name: "Santa Rosa Beach",  href: "/service-areas/santa-rosa-beach",   coords: { x: 13,   y: 13  } },
+  { name: "Navarre Beach",     href: "/service-areas/navarre-beach",      coords: { x: 9,    y: 12  } },
+  { name: "Pensacola",         href: "/service-areas/pensacola",          coords: { x: 4,    y: 12  } },
 ];
 
-// Minimal Florida outline — viewBox "0 0 100 170"
-// Clockwise from NW panhandle corner
+// Split into two columns for the link grid
+const COL_A = SERVICE_AREAS.slice(0, 10);
+const COL_B = SERVICE_AREAS.slice(10);
+
 function FloridaMap() {
   return (
     <svg
       viewBox="0 0 100 172"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Map of Southwest Florida service areas"
+      aria-label="Map of Florida service areas"
       style={{ width: "100%", maxWidth: "120px", display: "block" }}
     >
       {/* State outline */}
       <path
         d={[
-          "M 2,12",          // NW panhandle
+          "M 2,12",
           "L 38,4",
-          "L 100,6",         // NE (Atlantic)
+          "L 100,6",
           "L 98,20",
           "L 96,30",
           "L 95,52",
@@ -58,7 +68,7 @@ function FloridaMap() {
           "L 72,148",
           "L 62,159",
           "L 52,166",
-          "L 47,172",        // SE tip
+          "L 47,172",
           "L 43,166",
           "L 40,156",
           "L 38,143",
@@ -68,7 +78,7 @@ function FloridaMap() {
           "L 35,70",
           "L 36,52",
           "L 38,36",
-          "L 36,28",         // peninsula-panhandle junction
+          "L 36,28",
           "L 22,18",
           "L 6,14",
           "Z",
@@ -85,22 +95,11 @@ function FloridaMap() {
           key={area.name}
           cx={area.coords.x}
           cy={area.coords.y}
-          r="3"
+          r="2"
           fill="var(--rich-warm)"
-          opacity="0.9"
+          opacity="0.85"
         />
       ))}
-
-      {/* Connector lines between dots */}
-      <line
-        x1={SERVICE_AREAS[0].coords.x}
-        y1={SERVICE_AREAS[0].coords.y}
-        x2={SERVICE_AREAS[2].coords.x}
-        y2={SERVICE_AREAS[2].coords.y}
-        stroke="rgba(184,146,74,0.25)"
-        strokeWidth="0.8"
-        strokeDasharray="2 2"
-      />
     </svg>
   );
 }
@@ -178,7 +177,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Locations — map + links — spans 2 cols */}
+          {/* Service Areas — map + 2-column link grid — spans 2 cols */}
           <div className="md:col-span-2">
             <p
               className="text-xs font-medium uppercase tracking-widest mb-4"
@@ -187,46 +186,30 @@ export function Footer() {
               Service Areas
             </p>
 
-            <div className="flex items-start gap-8">
+            <div className="flex items-start gap-5">
               {/* Florida map */}
-              <div style={{ flexShrink: 0, width: "80px" }}>
+              <div style={{ flexShrink: 0, width: "72px" }}>
                 <FloridaMap />
               </div>
 
-              {/* Location links */}
-              <div className="flex flex-col gap-5">
-                {SERVICE_AREAS.map((area) => (
-                  <div key={area.name}>
-                    <Link
-                      href={area.href}
-                      className="text-sm font-medium transition-colors hover:text-[var(--rich-warm)]"
-                      style={{
-                        color: "rgba(252,251,247,0.88)",
-                        fontFamily: "var(--font-cormorant), Georgia, serif",
-                        fontSize: "0.95rem",
-                        letterSpacing: "0.03em",
-                      }}
-                    >
-                      {area.name}, FL
-                    </Link>
-                    <div className="mt-1 flex flex-col gap-1">
-                      <a
-                        href="tel:+12395550100"
-                        className="flex items-center gap-1.5 transition-colors hover:text-[var(--rich-warm)]"
-                        style={{ color: "rgba(252,251,247,0.5)", fontSize: "0.78rem" }}
+              {/* Two-column city link list */}
+              <div style={{ display: "flex", gap: "1.25rem", flex: 1 }}>
+                {[COL_A, COL_B].map((col, ci) => (
+                  <div key={ci} style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                    {col.map((area) => (
+                      <Link
+                        key={area.href}
+                        href={area.href}
+                        className="transition-colors hover:text-[var(--rich-warm)]"
+                        style={{
+                          color: "rgba(252,251,247,0.7)",
+                          fontSize: "0.78rem",
+                          lineHeight: 1.5,
+                        }}
                       >
-                        <Phone size={11} />
-                        (239) 555-0100
-                      </a>
-                      <a
-                        href="mailto:info@sjboutdoors.com"
-                        className="flex items-center gap-1.5 transition-colors hover:text-[var(--rich-warm)]"
-                        style={{ color: "rgba(252,251,247,0.5)", fontSize: "0.78rem" }}
-                      >
-                        <Mail size={11} />
-                        info@sjboutdoors.com
-                      </a>
-                    </div>
+                        {area.name}
+                      </Link>
+                    ))}
                   </div>
                 ))}
               </div>
