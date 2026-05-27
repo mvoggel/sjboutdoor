@@ -5,23 +5,105 @@ import { Container } from "@/components/ui/Container";
 const NAV_LINKS = [
   { href: "/products", label: "Products" },
   { href: "/about", label: "About" },
+  { href: "/our-process", label: "Our Process" },
+  { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/service-areas", label: "Service Areas" },
   { href: "/contact", label: "Contact" },
 ];
 
-// TODO: confirm FL location addresses before launch
-const LOCATIONS = [
+// TODO: confirm exact addresses before launch
+const SERVICE_AREAS = [
   {
     name: "Naples",
-    address: "TBD — Naples, FL",
-    phone: "(239) 555-0100",
+    href: "/service-areas/naples",
+    coords: { x: 37.5, y: 127 },
   },
   {
     name: "Bonita Springs",
-    address: "TBD — Bonita Springs, FL",
-    phone: "(239) 555-0101",
+    href: "/service-areas/bonita-springs",
+    coords: { x: 37, y: 117 },
+  },
+  {
+    name: "Fort Myers",
+    href: "/service-areas/fort-myers",
+    coords: { x: 37, y: 107 },
   },
 ];
+
+// Minimal Florida outline — viewBox "0 0 100 170"
+// Clockwise from NW panhandle corner
+function FloridaMap() {
+  return (
+    <svg
+      viewBox="0 0 100 172"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Map of Southwest Florida service areas"
+      style={{ width: "100%", maxWidth: "120px", display: "block" }}
+    >
+      {/* State outline */}
+      <path
+        d={[
+          "M 2,12",          // NW panhandle
+          "L 38,4",
+          "L 100,6",         // NE (Atlantic)
+          "L 98,20",
+          "L 96,30",
+          "L 95,52",
+          "L 93,76",
+          "L 90,99",
+          "L 86,118",
+          "L 80,134",
+          "L 72,148",
+          "L 62,159",
+          "L 52,166",
+          "L 47,172",        // SE tip
+          "L 43,166",
+          "L 40,156",
+          "L 38,143",
+          "L 36,128",
+          "L 35,110",
+          "L 34,90",
+          "L 35,70",
+          "L 36,52",
+          "L 38,36",
+          "L 36,28",         // peninsula-panhandle junction
+          "L 22,18",
+          "L 6,14",
+          "Z",
+        ].join(" ")}
+        fill="rgba(184,146,74,0.07)"
+        stroke="rgba(184,146,74,0.38)"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+
+      {/* Service area dots */}
+      {SERVICE_AREAS.map((area) => (
+        <circle
+          key={area.name}
+          cx={area.coords.x}
+          cy={area.coords.y}
+          r="3"
+          fill="var(--rich-warm)"
+          opacity="0.9"
+        />
+      ))}
+
+      {/* Connector lines between dots */}
+      <line
+        x1={SERVICE_AREAS[0].coords.x}
+        y1={SERVICE_AREAS[0].coords.y}
+        x2={SERVICE_AREAS[2].coords.x}
+        y2={SERVICE_AREAS[2].coords.y}
+        stroke="rgba(184,146,74,0.25)"
+        strokeWidth="0.8"
+        strokeDasharray="2 2"
+      />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -96,47 +178,61 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Locations */}
-          {LOCATIONS.map((loc) => (
-            <div key={loc.name}>
-              <p
-                className="text-xs font-medium uppercase tracking-widest mb-4"
-                style={{ color: "var(--rich-warm)" }}
-              >
-                {loc.name}
-              </p>
-              <address className="not-italic space-y-2">
-                <p
-                  className="text-sm"
-                  style={{ color: "rgba(252,251,247,0.75)" }}
-                >
-                  {loc.address}
-                </p>
-                <a
-                  href={`tel:${loc.phone.replace(/\D/g, "")}`}
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--rich-warm)]"
-                  style={{ color: "rgba(252,251,247,0.75)" }}
-                >
-                  <Phone size={14} />
-                  {loc.phone}
-                </a>
-                <a
-                  href="mailto:info@sjboutdoors.com"
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--rich-warm)]"
-                  style={{ color: "rgba(252,251,247,0.75)" }}
-                >
-                  <Mail size={14} />
-                  info@sjboutdoors.com
-                </a>
-              </address>
-              <p
-                className="mt-3 text-xs"
-                style={{ color: "rgba(252,251,247,0.45)" }}
-              >
-                Mon–Fri 8am–6pm · Sat 9am–3pm
-              </p>
+          {/* Locations — map + links — spans 2 cols */}
+          <div className="md:col-span-2">
+            <p
+              className="text-xs font-medium uppercase tracking-widest mb-4"
+              style={{ color: "var(--rich-warm)" }}
+            >
+              Service Areas
+            </p>
+
+            <div className="flex items-start gap-8">
+              {/* Florida map */}
+              <div style={{ flexShrink: 0, width: "80px" }}>
+                <FloridaMap />
+              </div>
+
+              {/* Location links */}
+              <div className="flex flex-col gap-5">
+                {SERVICE_AREAS.map((area) => (
+                  <div key={area.name}>
+                    <Link
+                      href={area.href}
+                      className="text-sm font-medium transition-colors hover:text-[var(--rich-warm)]"
+                      style={{
+                        color: "rgba(252,251,247,0.88)",
+                        fontFamily: "var(--font-cormorant), Georgia, serif",
+                        fontSize: "0.95rem",
+                        letterSpacing: "0.03em",
+                      }}
+                    >
+                      {area.name}, FL
+                    </Link>
+                    <div className="mt-1 flex flex-col gap-1">
+                      <a
+                        href="tel:+12395550100"
+                        className="flex items-center gap-1.5 transition-colors hover:text-[var(--rich-warm)]"
+                        style={{ color: "rgba(252,251,247,0.5)", fontSize: "0.78rem" }}
+                      >
+                        <Phone size={11} />
+                        (239) 555-0100
+                      </a>
+                      <a
+                        href="mailto:info@sjboutdoors.com"
+                        className="flex items-center gap-1.5 transition-colors hover:text-[var(--rich-warm)]"
+                        style={{ color: "rgba(252,251,247,0.5)", fontSize: "0.78rem" }}
+                      >
+                        <Mail size={11} />
+                        info@sjboutdoors.com
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
+
         </div>
       </Container>
 

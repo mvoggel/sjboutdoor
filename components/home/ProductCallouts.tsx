@@ -156,8 +156,8 @@ export function ProductCallouts() {
                   </Link>
                 </div>
 
-                {/* 3-image strip */}
-                <div className="grid grid-cols-3 gap-2 md:gap-3">
+                {/* 3-image strip — 1-col on mobile, 3-col on md+ */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
                   {product.media.map((item, j) => (
                     <MediaTile
                       key={j}

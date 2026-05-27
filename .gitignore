@@ -42,3 +42,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# visualizer pipeline — large/licensed assets stay local
+/visualizer-pipeline/*.blend
+/visualizer-pipeline/*.blend1
+/visualizer-pipeline/textures/
+/visualizer-pipeline/hdri/
+/visualizer-pipeline/backplate.*
+
+# blender experiments — keep .blend files and intermediate PNG sequences local
+/blender-experiments/**/*.blend
+/blender-experiments/**/*.blend1
+/blender-experiments/**/renders/
+/public/experiments/shade-reveal/shade-close.webm

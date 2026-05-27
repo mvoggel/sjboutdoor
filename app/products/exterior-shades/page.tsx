@@ -81,9 +81,9 @@ const SUB_PRODUCTS = [
     category: "Retractable Screen System",
     name: "Patio Screens",
     description:
-      "The most architecturally invisible exterior screen on the market. Phantom retractable patio screens vanish completely into a slim housing when not in use — no track, no frame visible from the exterior. Engineered for year-round Florida use.",
+      "The most architecturally invisible exterior screen on the market. Progressive Screens retractable patio screens vanish completely into a slim housing when not in use — no track, no frame visible from the exterior. Engineered for year-round Florida use.",
     specs: [
-      "Phantom Screens System",
+      "Progressive Screens System",
       "UV Block up to 90%",
       "Motorized or Manual",
       "Insect & Debris Barrier",
@@ -369,7 +369,7 @@ export default function ExteriorShadesPage() {
                     marginBottom: "0.75rem",
                   }}
                 >
-                  Our Systems
+                  Our Partners
                 </p>
                 <h2
                   style={{
@@ -379,7 +379,7 @@ export default function ExteriorShadesPage() {
                     letterSpacing: "0.01em", marginBottom: "0.6rem",
                   }}
                 >
-                  Engineered with Phantom Screens
+                  Engineered with Progressive Screens &amp; Sunpro
                 </h2>
                 <p
                   style={{
@@ -387,7 +387,7 @@ export default function ExteriorShadesPage() {
                     maxWidth: "54ch", lineHeight: 1.75,
                   }}
                 >
-                  We partner exclusively with Phantom Screens — the industry standard for retractable screen systems. Every installation is backed by their product warranty and our workmanship guarantee.
+                  We partner with Progressive Screens and Sunpro — two of the industry&rsquo;s leading retractable screen manufacturers. Every installation is backed by their product warranty and our workmanship guarantee.
                 </p>
               </div>
               <button
