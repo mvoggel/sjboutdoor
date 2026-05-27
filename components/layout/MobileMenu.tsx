@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 
 const PRODUCT_SUBLINKS = [
-  { href: "/products/exterior-shades", label: "Exterior Shades & Shutters" },
+  { href: "/products/exterior-shades", label: "Exterior Shades" },
+  { href: "/products/exterior-shutters", label: "Exterior Shutters" },
   { href: "/products/retractable-awnings", label: "Retractable Awnings" },
   { href: "/products/louvered-pergolas", label: "Louvered Pergolas" },
 ];

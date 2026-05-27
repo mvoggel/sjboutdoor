@@ -16,111 +16,110 @@ import {
 } from "@/components/products/LouveredPergolaExperience";
 
 // ─── Interactive infographic callouts ─────────────────────────────────────────
-const SHADE_CALLOUTS: LouveredPergolaCallout[] = [
+const SHUTTER_CALLOUTS: LouveredPergolaCallout[] = [
   {
     number: 1,
-    title: "Custom-Fabricated Fit",
+    title: "Permanent Facade Installation",
     description:
-      "Precision-built to your exact opening for a clean architectural finish.",
-    dot: { x: 24, y: 18 },
-    label: { x: 4, y: 6 },
+      "Mounted directly to the structure for a clean, integrated architectural look.",
+    dot: { x: 22, y: 20 },
+    label: { x: 3, y: 8 },
     align: "right",
   },
   {
     number: 2,
-    title: "Motorized or Manual",
+    title: "Adjustable Louver Angles",
     description:
-      "Choose remote-controlled convenience or a lower-cost manual system.",
-    dot: { x: 62, y: 16 },
-    label: { x: 60, y: 4 },
+      "Tilt the louvers to control light, airflow, and privacy at any angle.",
+    dot: { x: 58, y: 16 },
+    label: { x: 52, y: 4 },
     align: "right",
   },
   {
     number: 3,
-    title: "Florida-Engineered",
+    title: "Hurricane-Season Ready",
     description:
-      "Built for salt air, humidity, sun exposure, and storm-cycle wear.",
-    dot: { x: 84, y: 18 },
-    label: { x: 96, y: 6 },
+      "Fixed, impact-rated construction that meets Florida wind-load and building codes.",
+    dot: { x: 84, y: 22 },
+    label: { x: 96, y: 10 },
     align: "left",
   },
   {
     number: 4,
-    title: "UV Protection",
+    title: "Salt-Air Resistant Finishes",
     description:
-      "Block up to 90% of harmful UV rays while preserving outdoor comfort.",
-    dot: { x: 24, y: 50 },
-    label: { x: 4, y: 50 },
+      "Powder-coat and composite frames engineered for Florida's coastal climate.",
+    dot: { x: 20, y: 55 },
+    label: { x: 3, y: 52 },
     align: "right",
   },
   {
     number: 5,
-    title: "Climate Control",
+    title: "Year-Round Privacy & Shade",
     description:
-      "Intercept heat before it enters and reduce cooling strain.",
-    dot: { x: 46, y: 56 },
-    label: { x: 90, y: 44 },
+      "Natural sun control and visual screening without mechanical systems.",
+    dot: { x: 52, y: 60 },
+    label: { x: 90, y: 48 },
     align: "left",
   },
   {
     number: 6,
-    title: "Privacy On Demand",
+    title: "Low Maintenance",
     description:
-      "Keep the view open when you want it and screened when you need it.",
-    dot: { x: 78, y: 64 },
-    label: { x: 94, y: 86 },
+      "No moving parts, no motors — designed to last decades with minimal upkeep.",
+    dot: { x: 78, y: 68 },
+    label: { x: 93, y: 82 },
     align: "left",
   },
 ];
 
-// ─── Sub-products — horizontal rows with luxury pill specs ────────────────────
-// TODO: Replace imageSrc values with product-specific photography when available.
+// ─── Sub-products ─────────────────────────────────────────────────────────────
 const SUB_PRODUCTS = [
   {
-    href: "/products/patio-screens",
-    category: "Retractable Screen System",
-    name: "Patio Screens",
+    href: "/products/bahama-shutters",
+    category: "Permanent Exterior Shutter",
+    name: "Bahama Shutters",
     description:
-      "The most architecturally invisible exterior screen on the market. Phantom retractable patio screens vanish completely into a slim housing when not in use — no track, no frame visible from the exterior. Engineered for year-round Florida use.",
+      "The defining motif of Florida coastal architecture. Bahama shutters provide permanent, passive sun control with a silhouette that elevates any façade — no mechanical parts, no moving system, and year-round hurricane readiness.",
     specs: [
-      "Phantom Screens System",
-      "UV Block up to 90%",
-      "Motorized or Manual",
-      "Insect & Debris Barrier",
-      "Multiple Mesh Opacities",
-      "Custom Fabricated",
-      "5-Year Warranty",
-      "Invisible When Retracted",
+      "Permanent Facade Installation",
+      "Adjustable Louver Angles",
+      "Hurricane-Season Ready",
+      "Coastal Architecture Silhouette",
+      "Year-Round Shade & Privacy",
+      "Low Maintenance",
+      "Multiple Material Finishes",
+      "No Mechanical Parts",
     ],
-    imageSrc: "/img/products/patioscreen.jpg",
-    bg: "var(--bg-pure)",
-    text: "var(--ink-primary)",
-    imageOverlayBg: "rgba(14,26,31,0.55)",
-  },
-  {
-    href: "/products/garage-door-screens",
-    category: "Full-Height Motorized Screen",
-    name: "Garage Door Screens",
-    description:
-      "Transform your garage bay into a seamlessly ventilated outdoor living room. Full-height retractable screens are custom-fitted to any opening — single, double, or oversized — and disappear into a discreet housing at the header when not in use.",
-    specs: [
-      "Full-Height Coverage",
-      "Motorized Operation",
-      "Wind-Sensor Auto-Retract",
-      "Keychain & Multi-Channel Remote",
-      "Custom-Fit to Any Opening",
-      "10-Year Parts & Labor",
-      "Insect & Light Filtration",
-      "Smart Home Compatible",
-    ],
-    imageSrc: "/img/products/garage-screen.png",
+    imageSrc: "/img/products/bahamashutters.jpg",
     bg: "var(--bg-pure)",
     text: "var(--ink-primary)",
     imageOverlayBg: "rgba(14,26,31,0.5)",
   },
+  {
+    href: "/products/storm-shutters",
+    category: "Hurricane Protection System",
+    name: "Storm Shutters",
+    description:
+      "Florida building-code rated protection that deploys in minutes and disappears when the sky clears. Available in accordion, roll-up, and panel styles — each engineered to the specific wind-load and impact requirements of your property.",
+    specs: [
+      "Florida Building Code Rated",
+      "Hurricane-Force Wind Rated",
+      "Deploys in Under 10 Min",
+      "Accordion · Roll-Up · Panel",
+      "PE-Stamp Available",
+      "Insurance Discount Eligible",
+      "Manual or Motorized",
+      "Disappears Between Storms",
+    ],
+    imageSrc: "/img/products/st-shutter.png",
+    bg: "var(--bg-pure)",
+    text: "var(--ink-primary)",
+    imageOverlayBg: "rgba(14,26,31,0.55)",
+  },
 ];
 
-// ─── Pill component — slightly smaller than paragraph text (0.72rem vs 0.95rem body) ─
+// ─── Pill component ───────────────────────────────────────────────────────────
 function SpecPill({ label }: { label: string }) {
   return (
     <span
@@ -187,7 +186,6 @@ function ProductRow({
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 42vw"
         />
-        {/* Gold border inset overlay */}
         <div
           aria-hidden="true"
           style={{
@@ -197,7 +195,6 @@ function ProductRow({
             zIndex: 1,
           }}
         />
-        {/* Bottom gradient */}
         <div
           style={{
             position: "absolute",
@@ -205,7 +202,6 @@ function ProductRow({
             background: `linear-gradient(to top, ${p.imageOverlayBg} 0%, transparent 55%)`,
           }}
         />
-        {/* Category eyebrow only — no product name */}
         <div
           style={{
             position: "absolute",
@@ -233,7 +229,6 @@ function ProductRow({
         className="flex-1 flex flex-col justify-center px-6 py-8 md:px-14 md:py-10"
         style={{ gap: "1.5rem", background: "var(--bg-pure)" }}
       >
-        {/* Product name — top of content area */}
         <h3
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -246,8 +241,6 @@ function ProductRow({
         >
           {p.name}
         </h3>
-
-        {/* Description */}
         <p
           style={{
             fontSize: "0.95rem",
@@ -258,15 +251,11 @@ function ProductRow({
         >
           {p.description}
         </p>
-
-        {/* Luxury pill specs */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.45rem" }}>
           {p.specs.map((spec) => (
             <SpecPill key={spec} label={spec} />
           ))}
         </div>
-
-        {/* CTA — Explore only */}
         <div>
           <Link
             href={p.href}
@@ -310,7 +299,7 @@ function ProductRow({
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function ExteriorShadesPage() {
+export default function ExteriorShuttersPage() {
   const prefersReducedMotion = useReducedMotion();
   const { openModal } = useConsultModal();
 
@@ -329,25 +318,25 @@ export default function ExteriorShadesPage() {
 
         {/* ── 1. HERO ─────────────────────────────────────────────────── */}
         <ProductHero
-          eyebrow="Products / Exterior Shades"
-          headline="Privacy, climate, and elegance — on demand."
-          descriptor="From motorized roller shades to invisible patio and garage screens — our exterior shade systems are precision-fabricated to your home's exact measurements. Each is engineered for Florida's humidity, salt air, and wind loads, and retracts completely out of sight when you don't need it."
+          eyebrow="Products / Exterior Shutters"
+          headline="Storm-ready. Architecturally timeless."
+          descriptor="From iconic Bahama shutters to hurricane-rated accordion systems — our exterior shutters are precision-built for Florida's façades. Each is engineered to meet local wind-load codes and redefine your home's curb appeal at the same time."
           videoSrc="/video/extshades.MOV"
-          productSlug="exterior-shades"
-          aiServiceLabel="Exterior Shades"
-          aiContextKey="exterior-shades"
+          productSlug="exterior-shutters"
+          aiServiceLabel="Exterior Shutters"
+          aiContextKey="exterior-shutters"
         />
 
-        {/* ── 3. INTERACTIVE INFOGRAPHIC — "THE STANDARD" ──────────── */}
+        {/* ── 2. INTERACTIVE INFOGRAPHIC ───────────────────────────────── */}
         <LouveredPergolaExperience
-          imageSrc="/img/products/ext-shades.png"
-          imageAlt="Three exterior shade panels mounted across a Florida lanai — left panel fully extended over a dark mesh, middle open to the indoor seating area, right panel partially lowered."
+          imageSrc="/img/products/bahamashutters.jpg"
+          imageAlt="Bahama shutters installed on a Florida coastal home — adjustable louvers angled for shade and privacy."
           eyebrow="The Standard"
-          title="Architectural shade, engineered for Florida."
-          callouts={SHADE_CALLOUTS}
+          title="Permanent protection, permanent elegance."
+          callouts={SHUTTER_CALLOUTS}
         />
 
-        {/* ── 5. PHANTOM SCREENS CALLOUT ──────────────────────────────── */}
+        {/* ── 3. FLORIDA STORM CALLOUT ─────────────────────────────────── */}
         <section
           className="py-8 md:py-10"
           style={{
@@ -369,7 +358,7 @@ export default function ExteriorShadesPage() {
                     marginBottom: "0.75rem",
                   }}
                 >
-                  Our Systems
+                  Florida Building Code
                 </p>
                 <h2
                   style={{
@@ -379,7 +368,7 @@ export default function ExteriorShadesPage() {
                     letterSpacing: "0.01em", marginBottom: "0.6rem",
                   }}
                 >
-                  Engineered with Phantom Screens
+                  Hurricane-rated. Permit-ready.
                 </h2>
                 <p
                   style={{
@@ -387,7 +376,7 @@ export default function ExteriorShadesPage() {
                     maxWidth: "54ch", lineHeight: 1.75,
                   }}
                 >
-                  We partner exclusively with Phantom Screens — the industry standard for retractable screen systems. Every installation is backed by their product warranty and our workmanship guarantee.
+                  Every shutter system we install carries the proper Florida product approvals, PE-stamp documentation where required, and can qualify your home for insurance discounts under the state&rsquo;s wind mitigation program.
                 </p>
               </div>
               <button
@@ -412,13 +401,13 @@ export default function ExteriorShadesPage() {
                   (e.currentTarget as HTMLButtonElement).style.color = "var(--rich-warm)";
                 }}
               >
-                Ask About Our Products
+                Ask About Our Shutters
               </button>
             </motion.div>
           </Container>
         </section>
 
-        {/* ── 6. HORIZONTAL PRODUCT ROWS ──────────────────────────────── */}
+        {/* ── 4. HORIZONTAL PRODUCT ROWS ──────────────────────────────── */}
         <section id="products" style={{ background: "var(--bg-pure)" }}>
           <Container className="pt-16 md:pt-20 pb-0">
             <motion.div {...inView(0)} style={{ marginBottom: "2.5rem" }}>
@@ -430,12 +419,11 @@ export default function ExteriorShadesPage() {
                   letterSpacing: "0.01em",
                 }}
               >
-                Two solutions. One standard of quality.
+                Two systems. One standard of protection.
               </h2>
             </motion.div>
           </Container>
 
-          {/* Full-bleed rows */}
           <div>
             {SUB_PRODUCTS.map((p, i) => (
               <ProductRow

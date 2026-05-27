@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { IntroStatement } from "@/components/home/IntroStatement";
 import { ProductCallouts } from "@/components/home/ProductCallouts";
-import { ProductRowsTest } from "@/components/home/ProductRowsTest";
 import { CtaBand } from "@/components/home/CtaBand";
 import { WhyUs } from "@/components/home/WhyUs";
 import { GoogleReviews } from "@/components/home/GoogleReviews";
@@ -24,8 +23,8 @@ export default function HomePage() {
         <IntroStatement />
         
 
-        {/* TEST — expandable product rows */}
-        <ProductRowsTest />
+        {/* Product callouts — always-open, 4 products, 3 images each */}
+        <ProductCallouts />
 
 
         {/* Google Reviews marquee */}

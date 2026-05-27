@@ -18,7 +18,8 @@ const RIGHT_LINKS = [
 ];
 
 const PRODUCT_LINKS = [
-  { href: "/products/exterior-shades", label: "Exterior Shades & Shutters" },
+  { href: "/products/exterior-shades", label: "Exterior Shades" },
+  { href: "/products/exterior-shutters", label: "Exterior Shutters" },
   { href: "/products/retractable-awnings", label: "Retractable Awnings" },
   { href: "/products/louvered-pergolas", label: "Louvered Pergolas" },
 ];
