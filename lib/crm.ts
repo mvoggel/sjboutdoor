@@ -12,7 +12,8 @@ export interface GhlContactPayload {
 }
 
 export function buildGhlPayload(data: ConsultFormData): GhlContactPayload {
-  const productTags = (data.products ?? []).map((p) => `product-${p}`);
+  // productInterest drives the per-product calendar routing in GHL.
+  const productTag = `product-${data.productInterest}`;
 
   return {
     firstName: data.firstName,
@@ -21,8 +22,9 @@ export function buildGhlPayload(data: ConsultFormData): GhlContactPayload {
     phone: data.phone,
     postalCode: data.zip,
     source: "sjbb-outdoors-website",
-    tags: ["sjbb-outdoors", "web-lead", ...productTags],
+    tags: ["sjbb-outdoors", "web-lead", productTag],
     customFields: [
+      { id: "product_interest", value: data.productInterest },
       { id: "preferred_contact", value: data.preferredContact },
       { id: "message", value: data.message ?? "" },
     ],
