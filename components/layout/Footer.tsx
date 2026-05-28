@@ -100,8 +100,8 @@ export function Footer() {
             </p>
 
             <div className="flex items-start gap-5">
-              {/* Real Florida SVG map */}
-              <div style={{ flexShrink: 0, width: "88px" }}>
+              {/* Real Florida SVG map — fixed 132px, dots never rescale */}
+              <div style={{ flexShrink: 0 }}>
                 <FloridaMap />
               </div>
 

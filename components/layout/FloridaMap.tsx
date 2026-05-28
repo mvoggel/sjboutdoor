@@ -41,19 +41,21 @@ export const SERVICE_AREA_DOTS: ServiceArea[] = [
   { name: "Pensacola",          href: "/service-areas/pensacola",           cx: 28,  cy: 74 },
 ];
 
+// Rendered at a fixed pixel size so dots never rescale between viewports.
+// 800 × 680 viewBox → 132 × 112 px output (680/800 * 132 ≈ 112).
+const MAP_W = 132;
+const MAP_H = Math.round((680 / 800) * MAP_W); // 112
+
 export function FloridaMap({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 800 680"
+      width={MAP_W}
+      height={MAP_H}
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Map of Florida showing SJB Outdoors service areas"
       role="img"
-      style={{
-        width: "100%",
-        height: "auto",
-        display: "block",
-        overflow: "visible",
-      }}
+      style={{ display: "block", flexShrink: 0 }}
       className={className}
     >
       <title>SJB Outdoors Florida service areas</title>
