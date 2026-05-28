@@ -43,7 +43,7 @@ export const SERVICE_AREA_DOTS: ServiceArea[] = [
 
 // Rendered at a fixed pixel size so dots never rescale between viewports.
 // 800 × 680 viewBox → 132 × 112 px output (680/800 * 132 ≈ 112).
-const MAP_W = 132;
+const MAP_W = 250;
 const MAP_H = Math.round((680 / 800) * MAP_W); // 112
 
 export function FloridaMap({ className }: { className?: string }) {
