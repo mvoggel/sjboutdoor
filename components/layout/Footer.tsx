@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { FloridaMap, SERVICE_AREA_DOTS } from "@/components/layout/FloridaMap";
 
 const NAV_LINKS = [
   { href: "/products", label: "Products" },
@@ -11,98 +12,10 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-const SERVICE_AREAS = [
-  // Southwest Florida
-  { name: "Naples",            href: "/service-areas/naples",             coords: { x: 37.5, y: 127 } },
-  { name: "Bonita Springs",    href: "/service-areas/bonita-springs",     coords: { x: 37,   y: 117 } },
-  { name: "Fort Myers",        href: "/service-areas/fort-myers",         coords: { x: 37,   y: 107 } },
-  // Central West / Nature Coast
-  { name: "Crystal River",     href: "/service-areas/crystal-river",      coords: { x: 34,   y: 78  } },
-  // Central Florida
-  { name: "Ocala",             href: "/service-areas/ocala",              coords: { x: 56,   y: 72  } },
-  { name: "Gainesville",       href: "/service-areas/gainesville",        coords: { x: 54,   y: 60  } },
-  { name: "Newberry",          href: "/service-areas/newberry",           coords: { x: 48,   y: 58  } },
-  // Southeast
-  { name: "Palm Beach",        href: "/service-areas/palm-beach",         coords: { x: 82,   y: 136 } },
-  // East Coast (north)
-  { name: "Daytona",           href: "/service-areas/daytona",            coords: { x: 90,   y: 68  } },
-  { name: "St Augustine Beach",href: "/service-areas/st-augustine-beach", coords: { x: 94,   y: 50  } },
-  { name: "St Augustine",      href: "/service-areas/st-augustine",       coords: { x: 90,   y: 47  } },
-  { name: "Jacksonville Beach",href: "/service-areas/jacksonville-beach", coords: { x: 93,   y: 41  } },
-  { name: "Jacksonville",      href: "/service-areas/jacksonville",       coords: { x: 84,   y: 38  } },
-  // North Florida / Panhandle
-  { name: "Tallahassee",       href: "/service-areas/tallahassee",        coords: { x: 40,   y: 28  } },
-  { name: "Panama City",       href: "/service-areas/panama-city",        coords: { x: 27,   y: 20  } },
-  { name: "Destin",            href: "/service-areas/destin",             coords: { x: 17,   y: 15  } },
-  { name: "Santa Rosa Beach",  href: "/service-areas/santa-rosa-beach",   coords: { x: 13,   y: 13  } },
-  { name: "Navarre Beach",     href: "/service-areas/navarre-beach",      coords: { x: 9,    y: 12  } },
-  { name: "Pensacola",         href: "/service-areas/pensacola",          coords: { x: 4,    y: 12  } },
-];
-
-// Split into two columns for the link grid
-const COL_A = SERVICE_AREAS.slice(0, 10);
-const COL_B = SERVICE_AREAS.slice(10);
-
-function FloridaMap() {
-  return (
-    <svg
-      viewBox="0 0 100 172"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Map of Florida service areas"
-      style={{ width: "100%", maxWidth: "120px", display: "block" }}
-    >
-      {/* State outline */}
-      <path
-        d={[
-          "M 2,12",
-          "L 38,4",
-          "L 100,6",
-          "L 98,20",
-          "L 96,30",
-          "L 95,52",
-          "L 93,76",
-          "L 90,99",
-          "L 86,118",
-          "L 80,134",
-          "L 72,148",
-          "L 62,159",
-          "L 52,166",
-          "L 47,172",
-          "L 43,166",
-          "L 40,156",
-          "L 38,143",
-          "L 36,128",
-          "L 35,110",
-          "L 34,90",
-          "L 35,70",
-          "L 36,52",
-          "L 38,36",
-          "L 36,28",
-          "L 22,18",
-          "L 6,14",
-          "Z",
-        ].join(" ")}
-        fill="rgba(184,146,74,0.07)"
-        stroke="rgba(184,146,74,0.38)"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-
-      {/* Service area dots */}
-      {SERVICE_AREAS.map((area) => (
-        <circle
-          key={area.name}
-          cx={area.coords.x}
-          cy={area.coords.y}
-          r="2"
-          fill="var(--rich-warm)"
-          opacity="0.85"
-        />
-      ))}
-    </svg>
-  );
-}
+// Split 19 cities into two columns
+const MID = Math.ceil(SERVICE_AREA_DOTS.length / 2);
+const COL_A = SERVICE_AREA_DOTS.slice(0, MID);
+const COL_B = SERVICE_AREA_DOTS.slice(MID);
 
 export function Footer() {
   return (
@@ -177,7 +90,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Service Areas — map + 2-column link grid — spans 2 cols */}
+          {/* Service Areas — map + 2-column link list — spans 2 cols */}
           <div className="md:col-span-2">
             <p
               className="text-xs font-medium uppercase tracking-widest mb-4"
@@ -187,8 +100,8 @@ export function Footer() {
             </p>
 
             <div className="flex items-start gap-5">
-              {/* Florida map */}
-              <div style={{ flexShrink: 0, width: "72px" }}>
+              {/* Real Florida SVG map */}
+              <div style={{ flexShrink: 0, width: "88px" }}>
                 <FloridaMap />
               </div>
 
