@@ -380,7 +380,7 @@ export default function ExteriorShuttersPage() {
                 </p>
               </div>
               <button
-                onClick={() => openModal()}
+                onClick={() => openModal("exterior-shutters")}
                 style={{
                   flexShrink: 0,
                   padding: "0.9rem 2.25rem",

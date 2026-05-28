@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { productSlugFromPath } from "@/lib/product-slug-from-path";
 
 const PRODUCT_SUBLINKS = [
   { href: "/products/exterior-shades", label: "Exterior Shades" },
@@ -27,6 +29,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { openModal } = useConsultModal();
+  const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
 
   useEffect(() => {
@@ -41,8 +44,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }, [isOpen]);
 
   function handleConsult() {
+    const preselect = productSlugFromPath(pathname);
     onClose();
-    setTimeout(openModal, 150);
+    setTimeout(() => openModal(preselect), 150);
   }
 
   return (

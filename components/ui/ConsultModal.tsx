@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { ConsultForm } from "./ConsultForm";
+import type { ProductSlug } from "@/lib/validators";
 
 interface ConsultModalProps {
   isOpen: boolean;
   onClose: () => void;
-  preselectedProduct?: string;
+  preselectedProduct?: ProductSlug;
 }
 
 export function ConsultModal({ isOpen, onClose, preselectedProduct }: ConsultModalProps) {
@@ -130,7 +131,7 @@ export function ConsultModal({ isOpen, onClose, preselectedProduct }: ConsultMod
                 </p>
               </div>
 
-              <ConsultForm onSuccess={onClose} preselectedProducts={preselectedProduct ? [preselectedProduct] : []} />
+              <ConsultForm onSuccess={onClose} preselectedProduct={preselectedProduct} />
             </div>
           </motion.div>
         </>

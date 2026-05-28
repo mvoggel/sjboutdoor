@@ -391,7 +391,7 @@ export default function ExteriorShadesPage() {
                 </p>
               </div>
               <button
-                onClick={() => openModal()}
+                onClick={() => openModal("exterior-shades")}
                 style={{
                   flexShrink: 0,
                   padding: "0.9rem 2.25rem",

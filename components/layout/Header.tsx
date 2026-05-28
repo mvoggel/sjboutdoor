@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { productSlugFromPath } from "@/lib/product-slug-from-path";
 import { MobileMenu } from "./MobileMenu";
 
 const LEFT_LINKS = [
@@ -255,7 +256,7 @@ export function Header() {
               ))}
 
               <button
-                onClick={() => openModal()}
+                onClick={() => openModal(productSlugFromPath(pathname))}
                 onMouseEnter={() => setCtaHovered(true)}
                 onMouseLeave={() => setCtaHovered(false)}
                 className={

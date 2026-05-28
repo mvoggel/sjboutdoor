@@ -1,5 +1,19 @@
 import { z } from "zod";
 
+/**
+ * Single-select product interest. This field routes the lead to a specific
+ * calendar in GHL/Google (each salesperson covers a different product), so
+ * it must be required and one-of-four.
+ */
+export const PRODUCT_SLUGS = [
+  "exterior-shades",
+  "exterior-shutters",
+  "retractable-awnings",
+  "louvered-pergolas",
+] as const;
+
+export type ProductSlug = (typeof PRODUCT_SLUGS)[number];
+
 export const consultSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
   lastName: z.string().min(2, "Last name must be at least 2 characters"),
@@ -11,7 +25,9 @@ export const consultSchema = z.object({
       "Please enter a valid US phone number"
     ),
   zip: z.string().regex(/^\d{5}$/, "Please enter a valid 5-digit ZIP code"),
-  products: z.array(z.string()).optional(),
+  productInterest: z.enum(PRODUCT_SLUGS, {
+    message: "Please choose a product so we can route you to the right specialist",
+  }),
   preferredContact: z.enum(["phone", "email", "text"], {
     message: "Please select a preferred contact method",
   }),

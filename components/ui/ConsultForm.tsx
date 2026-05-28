@@ -3,22 +3,31 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { consultSchema, type ConsultFormData } from "@/lib/validators";
+import {
+  consultSchema,
+  type ConsultFormData,
+  type ProductSlug,
+} from "@/lib/validators";
 import { Button } from "./Button";
 import { CheckCircle } from "lucide-react";
 
-const PRODUCTS = [
-  { value: "exterior-shades", label: "Exterior Shades & Shutters" },
+const PRODUCTS: { value: ProductSlug; label: string }[] = [
+  { value: "exterior-shades",     label: "Exterior Shades" },
+  { value: "exterior-shutters",   label: "Exterior Shutters" },
   { value: "retractable-awnings", label: "Retractable Awnings" },
-  { value: "louvered-pergolas", label: "Louvered Pergolas" },
+  { value: "louvered-pergolas",   label: "Louvered Pergolas" },
 ];
 
 interface ConsultFormProps {
   onSuccess?: () => void;
-  preselectedProducts?: string[];
+  /** Slug of the product to preselect (driven by hero CTA / product-page nav). */
+  preselectedProduct?: ProductSlug;
 }
 
-export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }: ConsultFormProps) {
+export function ConsultForm({
+  onSuccess: _onSuccess,
+  preselectedProduct,
+}: ConsultFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const startTimeRef = useRef(Date.now());
@@ -26,15 +35,18 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<ConsultFormData>({
     resolver: zodResolver(consultSchema),
     defaultValues: {
-      products: preselectedProducts,
+      productInterest: preselectedProduct,
       preferredContact: "phone",
       consent: false,
     },
   });
+
+  const selectedProduct = watch("productInterest");
 
   async function onSubmit(data: ConsultFormData) {
     setServerError(null);
@@ -67,6 +79,8 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
   }
 
   if (submitted) {
+    // TODO: replace with embedded GHL/Google calendar filtered by selectedProduct
+    const productLabel = PRODUCTS.find((p) => p.value === selectedProduct)?.label;
     return (
       <div className="flex flex-col items-center gap-4 py-8 text-center">
         <CheckCircle
@@ -75,11 +89,13 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
           strokeWidth={1.5}
         />
         <h3 className="text-h3" style={{ color: "var(--ink-primary)" }}>
-          We&apos;ll be in touch.
+          You&apos;re in. Pick a time next.
         </h3>
         <p style={{ color: "var(--ink-muted)" }}>
-          Expect a call from our team within one business day to confirm your
-          free in-home consultation.
+          We&apos;ve routed you to our{" "}
+          <strong style={{ color: "var(--ink-primary)" }}>{productLabel}</strong>{" "}
+          specialist. The scheduler will load here in a moment — or check your
+          email for a direct link.
         </p>
       </div>
     );
@@ -100,6 +116,53 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
         style={{ position: "absolute", left: "-9999px", opacity: 0 }}
         autoComplete="off"
       />
+
+      {/* Product interest — first, because it routes the calendar */}
+      <fieldset>
+        <legend
+          className="text-sm font-medium mb-2"
+          style={{ color: "var(--ink-primary)" }}
+        >
+          Product interest{" "}
+          <span style={{ color: "var(--rich-warm)" }} aria-hidden="true">*</span>
+        </legend>
+        <div className="grid grid-cols-2 gap-2">
+          {PRODUCTS.map((p) => {
+            const checked = selectedProduct === p.value;
+            return (
+              <label
+                key={p.value}
+                className="flex items-center gap-2 cursor-pointer text-sm px-3 py-2 border transition-colors"
+                style={{
+                  borderColor: checked ? "var(--rich-warm)" : "var(--rich-sand)",
+                  background: checked ? "rgba(184,146,74,0.08)" : "transparent",
+                  color: checked ? "var(--ink-primary)" : "var(--ink-muted)",
+                  borderRadius: "8px",
+                }}
+              >
+                <input
+                  type="radio"
+                  value={p.value}
+                  {...register("productInterest")}
+                  className="accent-[var(--rich-deep)]"
+                />
+                {p.label}
+              </label>
+            );
+          })}
+        </div>
+        {errors.productInterest && (
+          <p className="mt-1 text-xs text-red-600">
+            {errors.productInterest.message}
+          </p>
+        )}
+        <p
+          className="mt-2 text-xs"
+          style={{ color: "var(--ink-muted)", fontStyle: "italic" }}
+        >
+          Routes you to the specialist who installs this product day-in, day-out.
+        </p>
+      </fieldset>
 
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -153,30 +216,6 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
           className={inputCls(!!errors.zip)}
         />
       </Field>
-
-      {/* Product interest */}
-      <fieldset>
-        <legend className="text-sm font-medium mb-2" style={{ color: "var(--ink-primary)" }}>
-          Product interest <span style={{ color: "var(--ink-muted)" }}>(optional)</span>
-        </legend>
-        <div className="flex flex-wrap gap-2">
-          {PRODUCTS.map((p) => (
-            <label
-              key={p.value}
-              className="flex items-center gap-2 cursor-pointer text-sm px-3 py-1.5 rounded-full border transition-colors"
-              style={{ borderColor: "var(--rich-sand)", color: "var(--ink-muted)" }}
-            >
-              <input
-                type="checkbox"
-                value={p.value}
-                {...register("products")}
-                className="accent-[var(--rich-deep)]"
-              />
-              {p.label}
-            </label>
-          ))}
-        </div>
-      </fieldset>
 
       {/* Preferred contact */}
       <fieldset>
@@ -258,7 +297,7 @@ export function ConsultForm({ onSuccess: _onSuccess, preselectedProducts = [] }:
         className="w-full mt-2"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Sending…" : "Request My Consultation"}
+        {isSubmitting ? "Sending…" : "Schedule a time"}
       </Button>
     </form>
   );

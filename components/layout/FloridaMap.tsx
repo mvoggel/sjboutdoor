@@ -11,34 +11,36 @@ export interface ServiceArea {
   cy: number;
 }
 
-// Dot positions are calibrated to the exported 800×680 viewBox.
-// East coast runs ~x 640–799; west coast ~x 490–545; panhandle top ~y 30–80.
+// Dot positions are calibrated against the actual outline path: each center
+// sits at least 12 viewBox units inside the state (verified with
+// isPointInFill on the rendered SVG), so the rendered circle never bleeds
+// past the coast at either hero or footer size.
 export const SERVICE_AREA_DOTS: ServiceArea[] = [
   // ── Southwest Florida ──────────────────────────────────────────
-  { name: "Naples",             href: "/service-areas/naples",              cx: 530, cy: 460 },
-  { name: "Bonita Springs",     href: "/service-areas/bonita-springs",      cx: 534, cy: 434 },
-  { name: "Fort Myers",         href: "/service-areas/fort-myers",          cx: 536, cy: 408 },
+  { name: "Naples",             href: "/service-areas/naples",              cx: 565, cy: 422 },
+  { name: "Bonita Springs",     href: "/service-areas/bonita-springs",      cx: 561, cy: 417 },
+  { name: "Fort Myers",         href: "/service-areas/fort-myers",          cx: 551, cy: 398 },
   // ── Nature Coast ───────────────────────────────────────────────
-  { name: "Crystal River",      href: "/service-areas/crystal-river",       cx: 500, cy: 298 },
+  { name: "Crystal River",      href: "/service-areas/crystal-river",       cx: 522, cy: 301 },
   // ── Central Florida ────────────────────────────────────────────
   { name: "Gainesville",        href: "/service-areas/gainesville",         cx: 608, cy: 192 },
   { name: "Newberry",           href: "/service-areas/newberry",            cx: 578, cy: 190 },
   { name: "Ocala",              href: "/service-areas/ocala",               cx: 620, cy: 242 },
   // ── Southeast Coast ────────────────────────────────────────────
-  { name: "Palm Beach",         href: "/service-areas/palm-beach",          cx: 792, cy: 445 },
+  { name: "Palm Beach",         href: "/service-areas/palm-beach",          cx: 787, cy: 442 },
   // ── East Coast (north) ─────────────────────────────────────────
-  { name: "Daytona",            href: "/service-areas/daytona",             cx: 752, cy: 268 },
-  { name: "St Augustine Beach", href: "/service-areas/st-augustine-beach",  cx: 752, cy: 202 },
-  { name: "St Augustine",       href: "/service-areas/st-augustine",        cx: 740, cy: 196 },
-  { name: "Jacksonville Beach", href: "/service-areas/jacksonville-beach",  cx: 710, cy: 134 },
-  { name: "Jacksonville",       href: "/service-areas/jacksonville",        cx: 672, cy: 122 },
+  { name: "Daytona",            href: "/service-areas/daytona",             cx: 732, cy: 264 },
+  { name: "St Augustine Beach", href: "/service-areas/st-augustine-beach",  cx: 715, cy: 238 },
+  { name: "St Augustine",       href: "/service-areas/st-augustine",        cx: 709, cy: 230 },
+  { name: "Jacksonville Beach", href: "/service-areas/jacksonville-beach",  cx: 668, cy: 152 },
+  { name: "Jacksonville",       href: "/service-areas/jacksonville",        cx: 659, cy: 131 },
   // ── North Florida / Panhandle ──────────────────────────────────
   { name: "Tallahassee",        href: "/service-areas/tallahassee",         cx: 378, cy: 68 },
   { name: "Panama City",        href: "/service-areas/panama-city",         cx: 218, cy: 56 },
-  { name: "Destin",             href: "/service-areas/destin",              cx: 126, cy: 63 },
-  { name: "Santa Rosa Beach",   href: "/service-areas/santa-rosa-beach",    cx: 150, cy: 66 },
-  { name: "Navarre Beach",      href: "/service-areas/navarre-beach",       cx: 70,  cy: 70 },
-  { name: "Pensacola",          href: "/service-areas/pensacola",           cx: 28,  cy: 74 },
+  { name: "Destin",             href: "/service-areas/destin",              cx: 123, cy: 54 },
+  { name: "Santa Rosa Beach",   href: "/service-areas/santa-rosa-beach",    cx: 149, cy: 58 },
+  { name: "Navarre Beach",      href: "/service-areas/navarre-beach",       cx: 65,  cy: 57 },
+  { name: "Pensacola",          href: "/service-areas/pensacola",           cx: 37,  cy: 56 },
 ];
 
 // Rendered at a fixed pixel size so dots never rescale between viewports.
