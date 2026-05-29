@@ -56,7 +56,7 @@ export default function ContactPage() {
                 >
                   When you&apos;re picking out the thing that will frame your view
                   for the next decade, talking to a human matters. Call, email,
-                  or use the chat to the right — whichever feels easiest.
+                  or start a chat — whichever feels easiest.
                 </p>
 
                 {/* Contact tiles */}

@@ -104,12 +104,12 @@ export function HeroVideo() {
           >
             <button
               onClick={() => openModal()}
-              className="inline-flex items-center justify-center gap-2 rounded-none px-8 py-4 transition-all hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ink-primary)]"
+              className="inline-flex items-center justify-center gap-2 rounded-none px-5 py-3 sm:px-8 sm:py-4 whitespace-nowrap transition-all hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ink-primary)]"
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontWeight: 450,
-                fontSize: "1rem",
-                letterSpacing: "0.15em",
+                fontSize: "clamp(0.82rem, 3.4vw, 1rem)",
+                letterSpacing: "0.12em",
                 background: "var(--ink-primary)",
                 color: "var(--bg-pure)",
                 border: "1px solid rgba(252, 251, 247, 0.65)",

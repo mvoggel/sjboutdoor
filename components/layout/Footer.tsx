@@ -12,11 +12,6 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Split 19 cities into two columns
-const MID = Math.ceil(SERVICE_AREA_DOTS.length / 2);
-const COL_A = SERVICE_AREA_DOTS.slice(0, MID);
-const COL_B = SERVICE_AREA_DOTS.slice(MID);
-
 export function Footer() {
   return (
     <footer
@@ -99,31 +94,37 @@ export function Footer() {
               Service Areas
             </p>
 
-            <div className="flex items-start gap-5">
-              {/* Real Florida SVG map — fixed 132px, dots never rescale */}
-              <div style={{ flexShrink: 0 }}>
+            {/* Map + cities — stacks vertically on mobile, side-by-side from sm+ */}
+            <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-5">
+              {/* Florida SVG map */}
+              <div className="mx-auto sm:mx-0" style={{ flexShrink: 0 }}>
                 <FloridaMap />
               </div>
 
-              {/* Two-column city link list */}
-              <div style={{ display: "flex", gap: "1.25rem", flex: 1 }}>
-                {[COL_A, COL_B].map((col, ci) => (
-                  <div key={ci} style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-                    {col.map((area) => (
-                      <Link
-                        key={area.href}
-                        href={area.href}
-                        className="transition-colors hover:text-[var(--rich-warm)]"
-                        style={{
-                          color: "rgba(252,251,247,0.7)",
-                          fontSize: "0.78rem",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {area.name}
-                      </Link>
-                    ))}
-                  </div>
+              {/* Two-column city link list — uses CSS columns so it always fills
+                  the available width without forcing a horizontal scroll */}
+              <div
+                className="w-full"
+                style={{
+                  columnCount: 2,
+                  columnGap: "1.25rem",
+                }}
+              >
+                {SERVICE_AREA_DOTS.map((area) => (
+                  <Link
+                    key={area.href}
+                    href={area.href}
+                    className="block transition-colors hover:text-[var(--rich-warm)]"
+                    style={{
+                      color: "rgba(252,251,247,0.7)",
+                      fontSize: "0.78rem",
+                      lineHeight: 1.65,
+                      breakInside: "avoid",
+                      paddingBottom: "0.15rem",
+                    }}
+                  >
+                    {area.name}
+                  </Link>
                 ))}
               </div>
             </div>
