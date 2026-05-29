@@ -41,6 +41,10 @@
   html {
     scroll-behavior: smooth;
     font-size: 20px;
+    /* Prevent any element from creating horizontal scroll on mobile.
+       `clip` doesn't establish a new scroll container, so `position: fixed`
+       elements (chat widget, header, modal) continue to work normally. */
+    overflow-x: clip;
   }
 
   body {
@@ -52,6 +56,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   p {
