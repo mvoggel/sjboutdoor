@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant } from "next/font/google";
 import "./globals.css";
 import { ConsultModalProvider } from "@/components/ui/ConsultModalProvider";
-import { ChatWidget } from "@/components/ui/ChatWidget";
+import { ChatWidgetGate } from "@/components/ui/ChatWidgetGate";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -43,7 +43,7 @@ export default function RootLayout({
           Skip to main content
         </a>
 <ConsultModalProvider>{children}</ConsultModalProvider>
-        <ChatWidget />
+        <ChatWidgetGate />
       </body>
     </html>
   );
