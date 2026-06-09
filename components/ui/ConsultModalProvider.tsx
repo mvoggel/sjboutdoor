@@ -7,12 +7,14 @@ import {
   useRef,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 import { ConsultModal } from "./ConsultModal";
 import { PRODUCT_SLUGS, type ProductSlug } from "@/lib/validators";
 
 interface ConsultModalContextValue {
   /** Opens the consult modal. If a product slug is passed, it preselects that
-   *  product so the lead lands on the right specialist's calendar. */
+   *  product. If not, we infer from the current pathname so a CTA on
+   *  /products/louvered-pergolas auto-selects Louvered Pergolas. */
   openModal: (productSlug?: ProductSlug | string) => void;
 }
 
@@ -27,20 +29,36 @@ function asProductSlug(value: string | undefined): ProductSlug | undefined {
     : undefined;
 }
 
+/**
+ * Extract a product slug from a Next.js pathname. Matches /products/<slug>
+ * exactly so blog posts, gallery pages, etc. don't accidentally preselect.
+ */
+function productFromPath(pathname: string | null): ProductSlug | undefined {
+  if (!pathname) return undefined;
+  const match = pathname.match(/^\/products\/([^/]+)/);
+  return asProductSlug(match?.[1]);
+}
+
 export function ConsultModalProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [preselectedProduct, setPreselectedProduct] = useState<ProductSlug | undefined>();
   const triggerRef = useRef<HTMLElement | null>(null);
 
-  const openModal = useCallback((productSlug?: ProductSlug | string) => {
-    triggerRef.current = document.activeElement as HTMLElement;
-    setPreselectedProduct(asProductSlug(productSlug));
-    setIsOpen(true);
-  }, []);
+  const openModal = useCallback(
+    (productSlug?: ProductSlug | string) => {
+      triggerRef.current = document.activeElement as HTMLElement;
+      // Explicit slug wins; otherwise infer from the URL.
+      const explicit = asProductSlug(productSlug);
+      setPreselectedProduct(explicit ?? productFromPath(pathname));
+      setIsOpen(true);
+    },
+    [pathname]
+  );
 
   const closeModal = useCallback(() => {
     setIsOpen(false);

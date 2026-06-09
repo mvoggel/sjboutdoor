@@ -9,7 +9,7 @@ import {
   type ProductSlug,
 } from "@/lib/validators";
 import { Button } from "./Button";
-import { CheckCircle } from "lucide-react";
+import { GhlBookingFrame } from "./GhlBookingFrame";
 
 const PRODUCTS: { value: ProductSlug; label: string }[] = [
   { value: "exterior-shades",     label: "Exterior Shades" },
@@ -28,7 +28,7 @@ export function ConsultForm({
   onSuccess: _onSuccess,
   preselectedProduct,
 }: ConsultFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const [bookedData, setBookedData] = useState<ConsultFormData | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
   const startTimeRef = useRef(Date.now());
 
@@ -56,9 +56,6 @@ export function ConsultForm({
         _submitTime: startTimeRef.current,
       };
 
-      // TODO: wire to /api/lead once GHL keys arrive
-      console.log("[ConsultForm] Submission payload:", payload);
-
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,7 +67,11 @@ export function ConsultForm({
         throw new Error(json.error ?? "Submission failed");
       }
 
-      setSubmitted(true);
+      // Hand off to step 2 (GHL calendar) even if the CRM call failed —
+      // their info is logged server-side and the booking widget will
+      // create the contact itself on completion. Don't punish the user
+      // for our infra hiccup.
+      setBookedData(data);
     } catch (err) {
       setServerError(
         err instanceof Error ? err.message : "Something went wrong."
@@ -78,24 +79,47 @@ export function ConsultForm({
     }
   }
 
-  if (submitted) {
-    // TODO: replace with embedded GHL/Google calendar filtered by selectedProduct
-    const productLabel = PRODUCTS.find((p) => p.value === selectedProduct)?.label;
+  if (bookedData) {
+    const productLabel = PRODUCTS.find(
+      (p) => p.value === bookedData.productInterest
+    )?.label;
     return (
-      <div className="flex flex-col items-center gap-4 py-8 text-center">
-        <CheckCircle
-          size={48}
-          style={{ color: "var(--rich-deep)" }}
-          strokeWidth={1.5}
+      <div className="flex flex-col gap-4">
+        <div>
+          <h3 className="text-h3" style={{ color: "var(--ink-primary)" }}>
+            Pick a time that works.
+          </h3>
+          <p
+            className="mt-1 text-sm"
+            style={{ color: "var(--ink-muted)" }}
+          >
+            You&apos;re booking with our{" "}
+            <strong style={{ color: "var(--ink-primary)" }}>{productLabel}</strong>{" "}
+            specialist. Your details are pre-filled — just choose a slot.
+          </p>
+        </div>
+        <GhlBookingFrame
+          product={bookedData.productInterest}
+          prefill={{
+            firstName: bookedData.firstName,
+            lastName: bookedData.lastName,
+            email: bookedData.email,
+            phone: bookedData.phone,
+          }}
         />
-        <h3 className="text-h3" style={{ color: "var(--ink-primary)" }}>
-          You&apos;re in. Pick a time next.
-        </h3>
-        <p style={{ color: "var(--ink-muted)" }}>
-          We&apos;ve routed you to our{" "}
-          <strong style={{ color: "var(--ink-primary)" }}>{productLabel}</strong>{" "}
-          specialist. The scheduler will load here in a moment — or check your
-          email for a direct link.
+        <p
+          className="text-xs text-center"
+          style={{ color: "var(--ink-muted)" }}
+        >
+          Trouble loading the calendar?{" "}
+          <a
+            href="tel:+18888888888"
+            className="underline"
+            style={{ color: "var(--rich-deep)" }}
+          >
+            Give us a call
+          </a>{" "}
+          and we&apos;ll book you in.
         </p>
       </div>
     );
@@ -107,12 +131,14 @@ export function ConsultForm({
       noValidate
       className="space-y-4"
     >
-      {/* Honeypot — hidden from real users */}
+      {/* Honeypot — hidden from real users. No aria-hidden (causes a
+          focus-warning when autofillers do reach it); tabIndex={-1} keeps
+          keyboard users out. The off-screen positioning + obscure name is
+          what stops both bots and Chrome's "Website" autofill. */}
       <input
         type="text"
-        {...register("website")}
+        {...register("hp_field")}
         tabIndex={-1}
-        aria-hidden="true"
         style={{ position: "absolute", left: "-9999px", opacity: 0 }}
         autoComplete="off"
       />

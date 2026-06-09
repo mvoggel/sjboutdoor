@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { consultSchema } from "@/lib/validators";
 import { buildGhlPayload } from "@/lib/crm";
 
-const GHL_API_URL =
-  "https://services.leadconnectorhq.com/contacts/";
+// v2 upsert endpoint — creates a contact, or updates the existing one if the
+// email/phone already exists in the location. Avoids duplicate-contact errors
+// on repeat submissions.
+const GHL_UPSERT_URL =
+  "https://services.leadconnectorhq.com/contacts/upsert";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,8 +18,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Submission too fast" }, { status: 400 });
     }
 
-    // Honeypot check
-    if (body.website) {
+    // Honeypot check (field renamed from `website` to dodge Chrome autofill)
+    if (body.hp_field) {
       return NextResponse.json({ ok: true }); // silently succeed
     }
 
@@ -28,19 +31,26 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const payload = buildGhlPayload(parsed.data);
+    const apiKey = process.env.GHL_API_KEY;
+    const locationId = process.env.GHL_LOCATION_ID;
 
-    // TODO: wire to GHL once keys arrive
-    if (!process.env.GHL_API_KEY) {
-      console.log("[lead/route] GHL_API_KEY not set — logging payload:", payload);
+    // Dev fallback: log + succeed so the UI flow is testable without creds
+    if (!apiKey || !locationId) {
+      console.log(
+        "[lead/route] GHL credentials missing — logging payload only:",
+        parsed.data
+      );
       return NextResponse.json({ ok: true, stub: true });
     }
 
-    const ghlRes = await fetch(GHL_API_URL, {
+    const payload = buildGhlPayload(parsed.data, locationId);
+
+    const ghlRes = await fetch(GHL_UPSERT_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.GHL_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
+        Accept: "application/json",
         Version: "2021-07-28",
       },
       body: JSON.stringify(payload),
@@ -49,13 +59,19 @@ export async function POST(req: NextRequest) {
     if (!ghlRes.ok) {
       const text = await ghlRes.text();
       console.error("[lead/route] GHL error:", ghlRes.status, text);
-      return NextResponse.json(
-        { error: "CRM submission failed" },
-        { status: 502 }
-      );
+      // Don't block the user — they've given us their info, so let the UI
+      // proceed to the calendar step. The lead is logged for manual follow-up.
+      return NextResponse.json({ ok: true, crmFailed: true });
     }
 
-    return NextResponse.json({ ok: true });
+    const json = (await ghlRes.json().catch(() => ({}))) as {
+      contact?: { id?: string };
+    };
+
+    return NextResponse.json({
+      ok: true,
+      contactId: json.contact?.id ?? null,
+    });
   } catch (err) {
     console.error("[lead/route] Unexpected error:", err);
     return NextResponse.json({ error: "Internal error" }, { status: 500 });

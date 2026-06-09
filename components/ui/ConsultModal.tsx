@@ -3,7 +3,12 @@
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { ConsultForm } from "./ConsultForm";
+import { GhlBookingFrame } from "./GhlBookingFrame";
+// import { ConsultForm } from "./ConsultForm";
+// ConsultForm is dormant — we used to render a custom step 1 here before
+// handing off to the GHL iframe, but the duplicated fields between our form
+// and GHL's in-iframe form created friction. Revive by swapping the iframe
+// below for <ConsultForm onSuccess={onClose} preselectedProduct={...} />.
 import type { ProductSlug } from "@/lib/validators";
 
 interface ConsultModalProps {
@@ -97,7 +102,7 @@ export function ConsultModal({ isOpen, onClose, preselectedProduct }: ConsultMod
             className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none"
           >
             <div
-              className="relative w-full max-w-[560px] p-6 sm:p-8 pointer-events-auto overflow-y-auto max-h-[90dvh]"
+              className="relative w-full max-w-[640px] p-6 sm:p-8 pointer-events-auto overflow-y-auto max-h-[90dvh]"
               style={{
                 background: "var(--bg-pure)",
                 borderTop: "3px solid var(--rich-warm)",
@@ -116,7 +121,7 @@ export function ConsultModal({ isOpen, onClose, preselectedProduct }: ConsultMod
               </button>
 
               {/* Header */}
-              <div className="mb-6 pr-8">
+              <div className="mb-4 pr-8">
                 <p className="text-eyebrow mb-2">Free Consultation</p>
                 <h2
                   id="modal-title"
@@ -126,12 +131,15 @@ export function ConsultModal({ isOpen, onClose, preselectedProduct }: ConsultMod
                   Let&apos;s design your outdoor space.
                 </h2>
                 <p className="mt-2 text-sm" style={{ color: "var(--ink-muted)" }}>
-                  We&apos;ll be in touch within one business day to schedule your
+                  Pick a time and we&apos;ll be in touch to confirm your
                   in-home consultation.
                 </p>
               </div>
 
-              <ConsultForm onSuccess={onClose} preselectedProduct={preselectedProduct} />
+              {/* When opened from a product page, route to that product's
+                  calendar. Otherwise route to the general Web Contact
+                  calendar (general inquiry, round-robin). */}
+              <GhlBookingFrame product={preselectedProduct ?? null} />
             </div>
           </motion.div>
         </>

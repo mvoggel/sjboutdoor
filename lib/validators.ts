@@ -38,8 +38,10 @@ export const consultSchema = z.object({
   consent: z
     .boolean()
     .refine((val) => val === true, "You must consent to continue"),
-  // Honeypot — must be empty (bots fill it)
-  website: z.string().max(0).optional(),
+  // Honeypot — must be empty (bots fill any input). Named `hp_field` rather
+  // than `website` so browser autofill (Chrome's "Website" profile field)
+  // can't accidentally populate it on real users.
+  hp_field: z.string().max(0).optional(),
 });
 
 export type ConsultFormData = z.infer<typeof consultSchema>;
