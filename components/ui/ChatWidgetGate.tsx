@@ -5,7 +5,11 @@ import { ChatWidget } from "./ChatWidget";
 
 // Full-screen tool/embed routes should not show the floating chat widget —
 // it would overlay the builder and bleed into <iframe> embeds.
-const HIDE_ON = ["/embed", "/experiments/pergola-builder"];
+const HIDE_ON = [
+  "/embed",
+  "/experiments/pergola-builder",
+  "/experiments/retractable-awning",
+];
 
 export function ChatWidgetGate() {
   const pathname = usePathname();
