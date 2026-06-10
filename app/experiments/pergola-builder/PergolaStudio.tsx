@@ -7,7 +7,7 @@ import {
   Environment,
   OrbitControls,
 } from "@react-three/drei";
-import { Suspense, useCallback, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { ControlsPanel } from "./ControlsPanel";
 import { PergolaModel } from "./PergolaModel";
 import { DEFAULT_CONFIG } from "./config";
@@ -15,6 +15,15 @@ import type { PergolaConfig } from "./types";
 
 export default function PergolaStudio() {
   const [config, setConfig] = useState<PergolaConfig>(DEFAULT_CONFIG);
+  const [isMobile, setIsMobile] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 860);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const update = useCallback(
     <K extends keyof PergolaConfig>(key: K, value: PergolaConfig[K]) => {
@@ -24,7 +33,7 @@ export default function PergolaStudio() {
   );
 
   return (
-    <div style={wrap}>
+    <div style={{ ...wrap, flexDirection: isMobile ? "column" : "row" }}>
       <div style={stage}>
         <Canvas
           shadows
@@ -88,7 +97,20 @@ export default function PergolaStudio() {
         <div style={hint}>Drag to orbit · scroll to zoom</div>
       </div>
 
-      <ControlsPanel config={config} update={update} />
+      {/* Controls — side panel on desktop, collapsible bottom drawer on mobile */}
+      {isMobile ? (
+        <div style={{ ...drawer, maxHeight: drawerOpen ? "52vh" : 46 }}>
+          <button style={drawerHandle} onClick={() => setDrawerOpen((o) => !o)}>
+            <span style={handleBar} />
+            {drawerOpen ? "Hide options" : "Customize"}
+          </button>
+          {drawerOpen && (
+            <ControlsPanel config={config} update={update} embedded />
+          )}
+        </div>
+      ) : (
+        <ControlsPanel config={config} update={update} />
+      )}
     </div>
   );
 }
@@ -105,6 +127,7 @@ const stage: React.CSSProperties = {
   position: "relative",
   flex: 1,
   minWidth: 0,
+  minHeight: 0,
   // Soft studio backdrop — swap for a photo/gradient or make user-adjustable.
   background:
     "radial-gradient(120% 100% at 50% 0%, #d9dee6 0%, #aeb4bd 45%, #7f8893 100%)",
@@ -121,4 +144,38 @@ const hint: React.CSSProperties = {
   borderRadius: 6,
   fontFamily: "ui-sans-serif, system-ui, sans-serif",
   pointerEvents: "none",
+};
+
+// Mobile bottom drawer (mirrors the awning builder)
+const drawer: React.CSSProperties = {
+  background: "#16181c",
+  overflowY: "auto",
+  transition: "max-height .25s ease",
+  borderTop: "1px solid #ffffff1a",
+};
+
+const drawerHandle: React.CSSProperties = {
+  position: "sticky",
+  top: 0,
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: 4,
+  background: "#16181c",
+  color: "#cfcabf",
+  border: "none",
+  padding: "9px 0 8px",
+  cursor: "pointer",
+  fontSize: 12,
+  fontWeight: 600,
+  fontFamily: "ui-sans-serif, system-ui, sans-serif",
+  zIndex: 2,
+};
+
+const handleBar: React.CSSProperties = {
+  width: 38,
+  height: 4,
+  borderRadius: 2,
+  background: "#ffffff33",
 };

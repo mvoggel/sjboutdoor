@@ -19,19 +19,23 @@ const SCREEN_SIDES: ScreenSide[] = ["front", "back", "left", "right"];
 export function ControlsPanel({
   config,
   update,
+  embedded = false,
 }: {
   config: PergolaConfig;
   update: Update;
+  embedded?: boolean;
 }) {
   const setScreen = (side: ScreenSide, on: boolean) =>
     update("screens", { ...config.screens, [side]: on });
 
   return (
-    <div style={s.panel}>
-      <div style={s.brand}>
-        <span style={s.brandTitle}>Pergola Builder</span>
-        <span style={s.brandSub}>Louvered · R-Blade</span>
-      </div>
+    <div style={{ ...s.panel, ...(embedded ? s.panelEmbedded : null) }}>
+      {!embedded && (
+        <div style={s.brand}>
+          <span style={s.brandTitle}>Pergola Builder</span>
+          <span style={s.brandSub}>Louvered · R-Blade</span>
+        </div>
+      )}
 
       {/* Size */}
       <Section label="Size">
@@ -328,6 +332,12 @@ const s: Record<string, React.CSSProperties> = {
     fontFamily:
       "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
     fontSize: 13,
+  },
+  panelEmbedded: {
+    width: "100%",
+    height: "auto",
+    overflowY: "visible",
+    paddingTop: 4,
   },
   brand: { marginBottom: 18 },
   brandTitle: { display: "block", fontSize: 17, fontWeight: 600, letterSpacing: 0.2 },
