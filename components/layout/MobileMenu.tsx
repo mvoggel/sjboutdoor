@@ -8,9 +8,27 @@ import { usePathname } from "next/navigation";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { productSlugFromPath } from "@/lib/product-slug-from-path";
 
-const PRODUCT_SUBLINKS = [
-  { href: "/products/exterior-shades", label: "Exterior Shades" },
-  { href: "/products/exterior-shutters", label: "Exterior Shutters" },
+const PRODUCT_SUBLINKS: {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}[] = [
+  {
+    href: "/products/exterior-shades",
+    label: "Exterior Shades",
+    children: [
+      { href: "/products/patio-screens", label: "Patio Screens" },
+      { href: "/products/garage-door-screens", label: "Garage Door Screens" },
+    ],
+  },
+  {
+    href: "/products/exterior-shutters",
+    label: "Exterior Shutters",
+    children: [
+      { href: "/products/bahama-shutters", label: "Bahama Shutters" },
+      { href: "/products/storm-shutters", label: "Storm Shutters" },
+    ],
+  },
   { href: "/products/retractable-awnings", label: "Retractable Awnings" },
   { href: "/products/louvered-pergolas", label: "Louvered Pergolas" },
 ];
@@ -168,7 +186,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                           borderBottom: "1px solid rgba(184,146,74,0.11)",
                         }}
                       >
-                        {PRODUCT_SUBLINKS.map((sub, j) => (
+                        {PRODUCT_SUBLINKS.map((sub) => (
                           <li key={sub.href}>
                             <Link
                               href={sub.href}
@@ -178,7 +196,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 fontFamily: "var(--font-cormorant), Georgia, serif",
                                 fontSize: "1.15rem",
                                 fontWeight: 400,
-                                color: "rgba(252,251,247,0.62)",
+                                color: "rgba(252,251,247,0.72)",
                                 textDecoration: "none",
                                 letterSpacing: "0.03em",
                               }}
@@ -186,7 +204,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 (e.currentTarget as HTMLAnchorElement).style.color = "var(--rich-warm)";
                               }}
                               onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(252,251,247,0.62)";
+                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(252,251,247,0.72)";
                               }}
                             >
                               <span
@@ -201,6 +219,47 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                               />
                               {sub.label}
                             </Link>
+
+                            {/* Nested child pages */}
+                            {sub.children && (
+                              <ul style={{ paddingLeft: "1.75rem", paddingBottom: "0.35rem" }}>
+                                {sub.children.map((child) => (
+                                  <li key={child.href}>
+                                    <Link
+                                      href={child.href}
+                                      onClick={onClose}
+                                      className="flex items-center gap-2 py-1.5 transition-colors"
+                                      style={{
+                                        fontFamily: "var(--font-cormorant), Georgia, serif",
+                                        fontSize: "0.95rem",
+                                        fontWeight: 400,
+                                        color: "rgba(252,251,247,0.5)",
+                                        textDecoration: "none",
+                                        letterSpacing: "0.03em",
+                                      }}
+                                      onMouseEnter={(e) => {
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "var(--rich-warm)";
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(252,251,247,0.5)";
+                                      }}
+                                    >
+                                      <span
+                                        aria-hidden="true"
+                                        style={{
+                                          display: "inline-block",
+                                          width: "10px",
+                                          height: "1px",
+                                          background: "rgba(184,146,74,0.35)",
+                                          flexShrink: 0,
+                                        }}
+                                      />
+                                      {child.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </li>
                         ))}
                       </motion.ul>

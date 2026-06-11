@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
@@ -68,6 +69,14 @@ interface ProductHeroProps {
   headline: string;
   descriptor: string;
   videoSrc?: string;
+  /** When provided, renders a still photo in the framed hero slot instead of video. */
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Small caption shown in the bottom-right of the frame. */
+  caption?: string;
+  /** Secondary CTA — anchor target + label (defaults to "Explore Products" → #products). */
+  exploreHref?: string;
+  exploreLabel?: string;
   productSlug?: string;
   /** When provided, swaps "Explore Products" for the AI summary button */
   aiServiceLabel?: string;
@@ -79,6 +88,11 @@ export function ProductHero({
   headline,
   descriptor,
   videoSrc = "/video/homepageloop1.MP4",
+  imageSrc,
+  imageAlt = "",
+  caption = "Custom Installation · Florida",
+  exploreHref = "#products",
+  exploreLabel = "Explore Products",
   productSlug,
   aiServiceLabel,
   aiContextKey,
@@ -193,12 +207,23 @@ export function ProductHero({
               }}
             >
               <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
-                <video
-                  autoPlay muted loop playsInline
-                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                >
-                  <source src={assetPath(videoSrc)} type="video/mp4" />
-                </video>
+                {imageSrc ? (
+                  <Image
+                    src={assetPath(imageSrc)}
+                    alt={imageAlt}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : (
+                  <video
+                    autoPlay muted loop playsInline
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                  >
+                    <source src={assetPath(videoSrc)} type="video/mp4" />
+                  </video>
+                )}
               </div>
               <p
                 style={{
@@ -212,7 +237,7 @@ export function ProductHero({
                   opacity: 0.7,
                 }}
               >
-                Custom Installation · Florida
+                {caption}
               </p>
             </div>
           </motion.div>
@@ -331,7 +356,7 @@ export function ProductHero({
                 </button>
               ) : (
                 <a
-                  href="#products"
+                  href={exploreHref}
                   style={{
                     padding: "0.875rem 1.75rem",
                     background: "transparent",
@@ -356,7 +381,7 @@ export function ProductHero({
                     (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--rich-sand)";
                   }}
                 >
-                  Explore Products
+                  {exploreLabel}
                 </a>
               )}
             </div>

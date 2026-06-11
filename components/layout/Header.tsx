@@ -19,9 +19,29 @@ const RIGHT_LINKS = [
   { href: "/service-areas", label: "Service Areas" },
 ];
 
-const PRODUCT_LINKS = [
-  { href: "/products/exterior-shades", label: "Exterior Shades" },
-  { href: "/products/exterior-shutters", label: "Exterior Shutters" },
+type ProductLink = {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+};
+
+const PRODUCT_LINKS: ProductLink[] = [
+  {
+    href: "/products/exterior-shades",
+    label: "Exterior Shades",
+    children: [
+      { href: "/products/patio-screens", label: "Patio Screens" },
+      { href: "/products/garage-door-screens", label: "Garage Door Screens" },
+    ],
+  },
+  {
+    href: "/products/exterior-shutters",
+    label: "Exterior Shutters",
+    children: [
+      { href: "/products/bahama-shutters", label: "Bahama Shutters" },
+      { href: "/products/storm-shutters", label: "Storm Shutters" },
+    ],
+  },
   { href: "/products/retractable-awnings", label: "Retractable Awnings" },
   { href: "/products/louvered-pergolas", label: "Louvered Pergolas" },
 ];
@@ -146,19 +166,47 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
             }}
           >
             {PRODUCT_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block px-5 py-3 transition-colors hover:bg-[var(--rich-sand)]"
-                style={{
-                  ...LINK_BASE,
-                  fontSize: "0.875rem",
-                  color: "var(--ink-primary)",
-                  borderBottom: "1px solid var(--rich-sand)",
-                }}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} style={{ borderBottom: "1px solid var(--rich-sand)" }}>
+                <Link
+                  href={link.href}
+                  className="block px-5 py-3 transition-colors hover:bg-[var(--rich-sand)]"
+                  style={{
+                    ...LINK_BASE,
+                    fontSize: "0.875rem",
+                    color: "var(--ink-primary)",
+                  }}
+                >
+                  {link.label}
+                </Link>
+                {link.children && (
+                  <div style={{ paddingBottom: "0.4rem" }}>
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="flex items-center gap-2 px-5 py-2 transition-colors hover:bg-[var(--rich-sand)]"
+                        style={{
+                          ...LINK_BASE,
+                          fontSize: "0.78rem",
+                          color: "var(--ink-muted)",
+                        }}
+                      >
+                        <span
+                          aria-hidden="true"
+                          style={{
+                            display: "inline-block",
+                            width: "12px",
+                            height: "1px",
+                            background: "rgba(184,146,74,0.55)",
+                            flexShrink: 0,
+                          }}
+                        />
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </motion.div>
         )}

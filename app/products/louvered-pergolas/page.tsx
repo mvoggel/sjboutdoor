@@ -7,119 +7,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
+import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
-import {
-  PergolaParallaxSystem,
-  type PergolaSystem,
-} from "@/components/products/PergolaParallaxSystem";
 import { LouveredPergolaExperience } from "@/components/products/LouveredPergolaExperience";
-
-// ─── The Six Azenco Systems ──────────────────────────────────────────────
-// TODO: replace `image` per system with system-specific photography when available.
-const SYSTEMS: PergolaSystem[] = [
-  {
-    slug: "r-blade",
-    name: "R-BLADE™",
-    category: "Motorized Louvered Pergola",
-    tagline: "Engineered comfort, at the touch of a button.",
-    body: "Our flagship system. Adjustable, dual-walled aluminum louvers rotate to invite the sun, cast cool shade, or close completely for a fully waterproof roof. Integrated sensors respond automatically to rain and wind; hidden gutters channel water out of sight.",
-    specs: [
-      "Smartphone & Remote Control",
-      "Rain & Wind Auto-Sensors",
-      "Hidden Gutter Drainage",
-      "Lighting · Heating · Privacy Screens",
-      "Attached, Freestanding, or Rooftop",
-      "Custom Powder-Coat Finishes",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "light",
-  },
-  {
-    slug: "r-breeze",
-    name: "R-BREEZE™",
-    category: "Fixed Louvered Pergola",
-    tagline: "Architectural shade. No moving parts.",
-    body: "When you want permanent overhead shade with clean lines and zero maintenance, R-BREEZE™ delivers. Its fixed aluminum louvers are precisely angled to block direct overhead sun while letting cool breezes flow underneath.",
-    specs: [
-      "Fixed Louver Geometry",
-      "Maintenance-Free Aluminum",
-      "Freestanding or Attached",
-      "Corrosion- & Fade-Resistant",
-      "Ideal for Pool Decks & Courtyards",
-      "Minimalist Profile",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "dark",
-  },
-  {
-    slug: "k-bana",
-    name: "K-BANA™",
-    category: "Manual Modular Pergola",
-    tagline: "Plug-and-play outdoor living.",
-    body: "K-BANA™ arrives pre-engineered — no trenching, no concrete, often no permits. Manually adjustable louvers, an optional enclosed base, and customizable wall panels in glass, aluminum, wood, or screen make it the most flexible structure we sell.",
-    specs: [
-      "No-Permit Friendly (in most jurisdictions)",
-      "Pre-Fabricated Modules",
-      "Manually Adjustable Louvers",
-      "Custom Wall Panels",
-      "Enclosed Base Option",
-      "Spas · Bars · Cabanas",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "light",
-  },
-  {
-    slug: "k-nopy",
-    name: "K-NOPY™",
-    category: "Cantilevered Aluminum Awning",
-    tagline: "Suspended elegance for the modern façade.",
-    body: "A premium fixed awning with a cantilevered, hardware-free silhouette. No visible posts or brackets — just a clean horizontal plane that floats over a balcony, entryway, or storefront and delivers weather-rated protection.",
-    specs: [
-      "Cantilevered, Zero-Post Design",
-      "Wind & Rain Rated",
-      "Hidden Mounting Hardware",
-      "Custom Projection Depth",
-      "Powder-Coat Color Selection",
-      "Balconies · Storefronts · Windows",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "dark",
-  },
-  {
-    slug: "r-shade",
-    name: "R-SHADE™",
-    category: "Insulated Patio Cover",
-    tagline: "Full overhead protection. Year-round comfort.",
-    body: "A solid-roof system with insulated sandwich panels that block heat and noise. Built-in gutters, optional skylights, and roof-load capacity for solar arrays — R-SHADE™ is what you choose when you want the look of a pergola with the protection of a roof.",
-    specs: [
-      "Insulated Sandwich Panels",
-      "Thermal & Acoustic Insulation",
-      "Integrated Gutter System",
-      "Solar-Panel Ready",
-      "Optional Skylight Panels",
-      "Year-Round Use",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "light",
-  },
-  {
-    slug: "r-car",
-    name: "R-CAR™",
-    category: "Luxury Insulated Carport",
-    tagline: "Protect what's parked outside — in style.",
-    body: "An architectural carport that complements modern homes while shielding vehicles from sun, hail, and storms. Optional side walls add privacy or storage; custom sizing scales from a single car to an expansive driveway, or adapts as a covered workspace.",
-    specs: [
-      "Insulated Roof Panels",
-      "Optional Side Enclosures",
-      "Custom Size & Layout",
-      "Hail- & Storm-Rated",
-      "Pairs With Modern Architecture",
-      "Adapts to Workspace or Shelter",
-    ],
-    image: "/img/products/pergolas.jpg",
-    theme: "dark",
-  },
-];
+import { PergolaArchShowcase } from "@/components/products/PergolaArchShowcase";
 
 // ─── Page ────────────────────────────────────────────────────────────────
 export default function LouveredPergolasPage() {
@@ -161,66 +52,8 @@ export default function LouveredPergolasPage() {
           title="A smarter outdoor room, engineered into your home."
         />
 
-        {/* ── 4. SYSTEMS COLLECTION — INTRO ──────────────────────────── */}
-        <section
-          id="systems"
-          style={{
-            background: "var(--bg-pure)",
-            borderTop: "1px solid var(--rich-sand)",
-            padding: "5rem 0 3rem",
-          }}
-        >
-          <Container>
-            <motion.div {...inView(0)} className="max-w-3xl">
-              <p
-                style={{
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.26em",
-                  textTransform: "uppercase",
-                  color: "var(--rich-warm)",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                The Collection
-              </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "clamp(1.7rem, 3vw, 2.8rem)",
-                  fontWeight: 500,
-                  color: "var(--ink-primary)",
-                  lineHeight: 1.15,
-                  letterSpacing: "0.005em",
-                  marginBottom: "1rem",
-                }}
-              >
-                Six systems. One standard of craftsmanship.
-              </h2>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  lineHeight: 1.75,
-                  color: "var(--ink-muted)",
-                  maxWidth: "60ch",
-                }}
-              >
-                Scroll through each system below. They share aluminum bones and Azenco engineering — but each is built for a different way of living outdoors.
-              </p>
-            </motion.div>
-          </Container>
-        </section>
-
-        {/* ── 5. PARALLAX SYSTEMS SHOWCASE ───────────────────────────── */}
-        <div>
-          {SYSTEMS.map((system, i) => (
-            <PergolaParallaxSystem
-              key={system.slug}
-              system={system}
-              index={i}
-              total={SYSTEMS.length}
-            />
-          ))}
-        </div>
+        {/* ── 4. SYSTEMS COLLECTION — INTERACTIVE ARCH SHOWCASE ──────── */}
+        <PergolaArchShowcase />
 
         {/* ── 6. PERGOLA VISUALIZER ───────────────────────────────────── */}
         <section
@@ -311,12 +144,12 @@ export default function LouveredPergolasPage() {
               ))}
 
               <iframe
-                src="https://luxury-pergola-visualizer.replit.app"
+                src={assetPath("/embed/pergola-builder")}
                 width="100%"
                 height="700"
                 style={{ border: "none", display: "block" }}
                 allow="fullscreen"
-                title="R-BLADE™ Pergola Visualizer"
+                title="R-BLADE™ Pergola Builder"
                 loading="lazy"
               />
             </motion.div>
