@@ -14,6 +14,7 @@ import {
   LouveredPergolaExperience,
   type LouveredPergolaCallout,
 } from "@/components/products/LouveredPergolaExperience";
+import { ShadeExplodeScroll } from "@/components/products/ShadeExplodeScroll";
 
 // ─── Interactive infographic callouts ─────────────────────────────────────────
 const SHADE_CALLOUTS: LouveredPergolaCallout[] = [
@@ -346,6 +347,9 @@ export default function ExteriorShadesPage() {
           title="Architectural shade, engineered for Florida."
           callouts={SHADE_CALLOUTS}
         />
+
+        {/* ── 4. SCROLL-DRIVEN EXPLODED VIEW ──────────────────────────── */}
+        <ShadeExplodeScroll />
 
         {/* ── 5. PHANTOM SCREENS CALLOUT ──────────────────────────────── */}
         <section
