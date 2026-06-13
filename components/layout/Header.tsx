@@ -56,10 +56,13 @@ const LOGO_FONT: React.CSSProperties = {
 
 const LINK_BASE: React.CSSProperties = {
   fontFamily: "var(--font-cormorant), Georgia, serif",
-  fontSize: "1rem",
+  // Fluid: shrinks between the desktop breakpoint (1120px) and ~1300px so the
+  // row never scrunches/overlaps before snapping to the mobile menu.
+  fontSize: "clamp(0.9rem, 1.44vw - 0.11rem, 1.0625rem)",
   fontWeight: 450,
-  letterSpacing: "0.1em",
+  letterSpacing: "0.08em",
   textDecoration: "none",
+  whiteSpace: "nowrap",
 };
 
 // Nav link that handles hero (not-scrolled) vs scrolled styles, including hover
@@ -271,11 +274,16 @@ export function Header() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-          {/* ── Desktop nav row ── */}
-          <div className="hidden md:flex items-center justify-between py-5 relative">
+          {/* ── Desktop nav row ──
+              3-column grid (1fr · auto · 1fr) keeps the logo IN FLOW so its
+              width is reserved and the left/right nav can never slide under it. */}
+          <div
+            className="hidden min-[1120px]:grid items-center py-5"
+            style={{ gridTemplateColumns: "1fr auto 1fr", columnGap: "1rem" }}
+          >
 
             {/* Left nav */}
-            <nav className="flex items-center gap-0.5 lg:gap-2" aria-label="Main navigation">
+            <nav className="flex items-center gap-1 xl:gap-2 justify-self-start" aria-label="Main navigation">
               <ProductsDropdown scrolled={es} />
               {LEFT_LINKS.map((link) => (
                 <NavLink key={link.href} href={link.href} label={link.label} scrolled={es} />
@@ -285,10 +293,10 @@ export function Header() {
             {/* Compact logo — always visible on non-home, fades in on home when scrolled */}
             <Link
               href="/"
-              className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap transition-opacity duration-300"
+              className="justify-self-center whitespace-nowrap transition-opacity duration-300"
               style={{
                 ...LOGO_FONT,
-                fontSize: "1.05rem",
+                fontSize: "clamp(0.92rem, 0.6rem + 0.5vw, 1.05rem)",
                 color: "var(--ink-primary)",
                 opacity: es ? 1 : 0,
                 pointerEvents: es ? "auto" : "none",
@@ -298,7 +306,7 @@ export function Header() {
             </Link>
 
             {/* Right nav */}
-            <nav className="flex items-center gap-0.5 lg:gap-2" aria-label="Secondary navigation">
+            <nav className="flex items-center gap-1 xl:gap-2 justify-self-end" aria-label="Secondary navigation">
               {RIGHT_LINKS.map((link) => (
                 <NavLink key={link.href} href={link.href} label={link.label} scrolled={es} />
               ))}
@@ -339,7 +347,7 @@ export function Header() {
           </div>
 
           {/* ── Mobile row ── */}
-          <div className="flex md:hidden items-center justify-between py-4">
+          <div className="flex min-[1120px]:hidden items-center justify-between py-4">
             <Link
               href="/"
               className="transition-opacity duration-300"

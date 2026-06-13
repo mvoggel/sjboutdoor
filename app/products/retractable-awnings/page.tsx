@@ -7,7 +7,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
+import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { AwningPremiumFeatures } from "@/components/products/AwningPremiumFeatures";
+import { AwningFabricGallery } from "@/components/products/AwningFabricGallery";
+import { AwningAccessories } from "@/components/products/AwningAccessories";
+import { AwningFaqWhy } from "@/components/products/AwningFaqWhy";
 
 // ─── Benefit icons ────────────────────────────────────────────────────────────
 function SunIcon() {
@@ -48,42 +53,6 @@ function ShadeIcon() {
   );
 }
 
-// ─── Key features ─────────────────────────────────────────────────────────────
-const FEATURES = [
-  {
-    title: "Built-In Dimmable LED Lights",
-    body: "A standard feature on all our awnings — LED lights built cleverly into the arms give you remote-controlled ambiance. Dim them up for evening gatherings or down for a subtle glow.",
-  },
-  {
-    title: "EZ-Pitch Adjustment",
-    body: "Easily adjust the slope of your awning yourself using the included crank to turn the pitch pin on either side. No service call needed — just the right angle for sun or rain.",
-  },
-  {
-    title: "Integrated Cassette Housing",
-    body: "When retracted, the fabric folds away inside a protective cassette housing that shields it from weather, UV, and debris. Extends fabric life and keeps the profile clean when not in use.",
-  },
-  {
-    title: "Motorized with Wireless Remote",
-    body: "Every awning is motorized and operated by wireless remote. Extend it fully, stop it halfway, or retract it completely — on your schedule and at your exact preference.",
-  },
-];
-
-// ─── Design options ───────────────────────────────────────────────────────────
-const DESIGN_OPTIONS = [
-  {
-    title: "Three Frame Colors",
-    body: "Choose from white, bronze, or beige powder-coated frames. Each finish is engineered to resist corrosion and complement the most common Florida home exteriors.",
-  },
-  {
-    title: "Straight or Sea-Wave Valance",
-    body: "Select either a tailored straight valance or a flowing sea-wave profile. Both are high-quality and customer-removable for easy cleaning or seasonal swaps.",
-  },
-  {
-    title: "Multi-Use Front Bar",
-    body: "Every awning includes a premium multi-use front bar as a standard feature, ready to accommodate optional accessories — from wind sensors to decorative lighting rails.",
-  },
-];
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function RetractableAwningsPage() {
   const prefersReducedMotion = useReducedMotion();
@@ -111,7 +80,7 @@ export default function RetractableAwningsPage() {
           eyebrow="Products / Retractable Awnings"
           headline="Shade on your terms, style on every façade."
           descriptor="Motorized retractable awnings that extend over patios, decks, and outdoor living spaces at the touch of a button. Every awning ships with built-in LED lighting, EZ-Pitch adjustment, and integrated cassette housing — as standard."
-          videoSrc="/video/awning-animatino.mp4"
+          videoSrc="/video/awning-main.mp4"
           productSlug="retractable-awnings"
           aiServiceLabel="Retractable Awnings"
           aiContextKey="retractable-awnings"
@@ -158,7 +127,7 @@ export default function RetractableAwningsPage() {
           </Container>
         </section>
 
-        {/* ── 3. DESCRIPTION ──────────────────────────────────────────── */}
+        {/* ── 3. ELEVATE YOUR OUTDOOR LIVING ──────────────────────────── */}
         <section
           style={{
             background: "var(--bg-pure)",
@@ -177,7 +146,7 @@ export default function RetractableAwningsPage() {
                     marginBottom: "1.25rem",
                   }}
                 >
-                  Details
+                  Elevate Your Outdoor Living
                 </p>
                 <h2
                   style={{
@@ -190,7 +159,7 @@ export default function RetractableAwningsPage() {
                     marginBottom: "1.25rem",
                   }}
                 >
-                  Versatile shade for every outdoor space.
+                  Refined comfort, custom built to your space.
                 </h2>
                 <p
                   style={{
@@ -200,7 +169,9 @@ export default function RetractableAwningsPage() {
                     marginBottom: "1rem",
                   }}
                 >
-                  Retractable awnings offer versatile shade solutions for outdoor spaces, effortlessly extending and retracting with the touch of a button or crank. Available in various sizes, colors, and materials, they cater to different architectural styles and personal preferences — providing protection from the sun and light rain alike.
+                  Tailored to your exact dimensions, style, and the way you live outdoors, our
+                  motorized retractable awnings extend and retract at the touch of a button — turning
+                  patios, decks, and entryways into comfortable, shaded rooms whenever you want them.
                 </p>
                 <p
                   style={{
@@ -209,7 +180,10 @@ export default function RetractableAwningsPage() {
                     color: "var(--ink-muted)",
                   }}
                 >
-                  Perfect for creating comfortable outdoor living areas, our awnings can cover patios, decks, and entryways — enhancing both relaxation and entertainment. When not in use, they fold away neatly inside the cassette housing, preserving your views and maintaining an open atmosphere.
+                  We take pride in transforming your vision into reality through superior
+                  craftsmanship — from precise measurements to expert production and a clean,
+                  professional install. When the awning isn&apos;t in use, it folds neatly away inside
+                  its cassette housing, preserving your views and keeping the look of your home intact.
                 </p>
               </motion.div>
 
@@ -248,186 +222,180 @@ export default function RetractableAwningsPage() {
           </Container>
         </section>
 
-        {/* ── 4. FEATURES ─────────────────────────────────────────────── */}
+        {/* ── 4. PREMIUM FEATURES (expandable) + AWNING STYLES ────────── */}
+        <AwningPremiumFeatures />
+
+        {/* ── 5. COLOR & FABRIC OPTIONS (swatch gallery) ──────────────── */}
+        <AwningFabricGallery />
+
+        {/* ── 6. AWNING VISUALIZER ────────────────────────────────────── */}
         <section
+          aria-labelledby="design-tool-heading"
           style={{
             background: "var(--near-black)",
             borderTop: "1px solid rgba(184,146,74,0.18)",
-            padding: "5rem 0",
+            padding: "5rem 0 6rem",
           }}
         >
           <Container>
-            <motion.div {...inView(0)} style={{ marginBottom: "3rem", maxWidth: "48rem" }}>
+            <motion.div {...inView(0)} style={{ marginBottom: "2.5rem" }}>
               <p
                 style={{
-                  fontSize: "0.68rem",
+                  fontSize: "0.7rem",
                   letterSpacing: "0.26em",
                   textTransform: "uppercase",
-                  color: "rgba(184,146,74,0.9)",
+                  color: "rgba(184,146,74,0.85)",
                   marginBottom: "1rem",
                 }}
               >
-                Standard on Every Awning
+                Interactive Configurator
               </p>
               <h2
+                id="design-tool-heading"
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
+                  fontSize: "clamp(1.55rem, 2.6vw, 2.2rem)",
                   fontWeight: 500,
                   color: "rgba(252,251,247,0.96)",
-                  lineHeight: 1.15,
                   letterSpacing: "0.005em",
+                  marginBottom: "0.75rem",
+                  lineHeight: 1.15,
                 }}
               >
-                Premium features. No extra charge.
+                Design your awning in your browser.
               </h2>
+              <p
+                style={{
+                  fontSize: "0.98rem",
+                  lineHeight: 1.7,
+                  color: "rgba(252,251,247,0.55)",
+                  maxWidth: "58ch",
+                }}
+              >
+                Choose your fabric, frame finish, valance, and size — then spin the awning in real-time
+                3D to see exactly how it comes together before you book a consultation.
+              </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px"
-              style={{ background: "rgba(184,146,74,0.18)" }}
+            {/* Visualizer embed */}
+            <motion.div
+              {...inView(0.1)}
+              style={{
+                position: "relative",
+                borderRadius: "2px",
+                overflow: "hidden",
+                boxShadow: "0 0 0 1px rgba(184,146,74,0.25), 0 32px 64px rgba(0,0,0,0.55)",
+                background: "#0e1018",
+              }}
             >
-              {FEATURES.map((feature, i) => (
-                <motion.div
-                  key={feature.title}
-                  {...inView(i * 0.07)}
+              {/* Decorative corner notches */}
+              {(["tl", "tr", "bl", "br"] as const).map((corner) => (
+                <span
+                  key={corner}
+                  aria-hidden="true"
                   style={{
-                    background: "var(--near-black)",
-                    padding: "2rem 1.75rem",
+                    position: "absolute",
+                    zIndex: 2,
+                    width: "14px",
+                    height: "14px",
+                    borderColor: "rgba(184,146,74,0.6)",
+                    borderStyle: "solid",
+                    top: corner.startsWith("t") ? "10px" : "auto",
+                    bottom: corner.startsWith("b") ? "10px" : "auto",
+                    left: corner.endsWith("l") ? "10px" : "auto",
+                    right: corner.endsWith("r") ? "10px" : "auto",
+                    borderWidth:
+                      corner === "tl"
+                        ? "1px 0 0 1px"
+                        : corner === "tr"
+                        ? "1px 1px 0 0"
+                        : corner === "bl"
+                        ? "0 0 1px 1px"
+                        : "0 1px 1px 0",
+                    pointerEvents: "none",
                   }}
-                >
-                  <div
-                    style={{
-                      width: "1.75rem",
-                      height: "1.5px",
-                      background: "rgba(184,146,74,0.7)",
-                      marginBottom: "1.25rem",
-                    }}
-                  />
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.25rem",
-                      fontWeight: 500,
-                      color: "rgba(252,251,247,0.95)",
-                      marginBottom: "0.65rem",
-                      letterSpacing: "0.01em",
-                    }}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.93rem",
-                      lineHeight: 1.7,
-                      color: "rgba(252,251,247,0.58)",
-                    }}
-                  >
-                    {feature.body}
-                  </p>
-                </motion.div>
+                />
               ))}
-            </div>
+
+              <iframe
+                src={assetPath("/embed/retractable-awning")}
+                width="100%"
+                height="700"
+                style={{ border: "none", display: "block" }}
+                allow="fullscreen"
+                title="Retractable Awning Builder"
+                loading="lazy"
+              />
+            </motion.div>
+
+            {/* Sub-CTA below visualizer */}
+            <motion.div
+              {...inView(0.15)}
+              style={{
+                marginTop: "1.75rem",
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "1rem",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "rgba(252,251,247,0.45)",
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                Prefer a guided walkthrough? Our designers bring fabric samples to your home.
+              </p>
+              <button
+                onClick={() => openModal("retractable-awnings")}
+                style={{
+                  padding: "0.75rem 1.75rem",
+                  background: "transparent",
+                  color: "rgba(184,146,74,0.9)",
+                  border: "1px solid rgba(184,146,74,0.4)",
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "0.82rem",
+                  fontWeight: 450,
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "background 0.2s, border-color 0.2s",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.background = "rgba(184,146,74,0.1)";
+                  el.style.borderColor = "rgba(184,146,74,0.7)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.background = "transparent";
+                  el.style.borderColor = "rgba(184,146,74,0.4)";
+                }}
+              >
+                Talk to a Designer
+              </button>
+            </motion.div>
           </Container>
         </section>
 
-        {/* ── 5. DESIGN OPTIONS ───────────────────────────────────────── */}
+        {/* ── 7. OPTIONAL ACCESSORIES ─────────────────────────────────── */}
+        <AwningAccessories />
+
+        {/* ── 8. WHY US + FAQ ─────────────────────────────────────────── */}
+        <AwningFaqWhy />
+
+        {/* ── 9. FINANCING CALLOUT ────────────────────────────────────── */}
         <section
           style={{
             background: "var(--bg-pure)",
             borderTop: "1px solid var(--rich-sand)",
-            padding: "5rem 0",
-          }}
-        >
-          <Container>
-            <motion.div {...inView(0)} style={{ marginBottom: "3rem" }}>
-              <p
-                style={{
-                  fontSize: "0.68rem",
-                  letterSpacing: "0.26em",
-                  textTransform: "uppercase",
-                  color: "var(--rich-warm)",
-                  marginBottom: "1rem",
-                }}
-              >
-                Design Options
-              </p>
-              <h2
-                style={{
-                  fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-                  fontWeight: 500,
-                  color: "var(--ink-primary)",
-                  lineHeight: 1.15,
-                  letterSpacing: "0.005em",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                Beautiful form, beautiful function.
-              </h2>
-              <p
-                style={{
-                  fontSize: "1rem",
-                  lineHeight: 1.75,
-                  color: "var(--ink-muted)",
-                  maxWidth: "58ch",
-                }}
-              >
-                Whether it&apos;s the right color for your façade or the perfect valance profile for your style, every detail is yours to choose.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px"
-              style={{ background: "var(--rich-sand)" }}
-            >
-              {DESIGN_OPTIONS.map((option, i) => (
-                <motion.div
-                  key={option.title}
-                  {...inView(i * 0.07)}
-                  style={{
-                    background: "var(--bg-pure)",
-                    padding: "2rem 1.75rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "1.75rem",
-                      height: "1.5px",
-                      background: "var(--rich-warm)",
-                      marginBottom: "1.25rem",
-                    }}
-                  />
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1.2rem",
-                      fontWeight: 500,
-                      color: "var(--ink-primary)",
-                      marginBottom: "0.65rem",
-                      letterSpacing: "0.01em",
-                    }}
-                  >
-                    {option.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.93rem",
-                      lineHeight: 1.7,
-                      color: "var(--ink-muted)",
-                    }}
-                  >
-                    {option.body}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* ── 6. FINANCING CALLOUT ────────────────────────────────────── */}
-        <section
-          style={{
-            background: "var(--near-black)",
-            borderTop: "1px solid rgba(184,146,74,0.18)",
+            borderBottom: "1px solid var(--rich-sand)",
             padding: "4rem 0",
           }}
         >
@@ -442,7 +410,7 @@ export default function RetractableAwningsPage() {
                     fontSize: "0.68rem",
                     letterSpacing: "0.22em",
                     textTransform: "uppercase",
-                    color: "rgba(184,146,74,0.7)",
+                    color: "var(--rich-warm)",
                     marginBottom: "0.75rem",
                   }}
                 >
@@ -453,7 +421,7 @@ export default function RetractableAwningsPage() {
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.35rem, 2.4vw, 2rem)",
                     fontWeight: 500,
-                    color: "rgba(252,251,247,0.95)",
+                    color: "var(--ink-primary)",
                     letterSpacing: "0.01em",
                     marginBottom: "0.6rem",
                   }}
@@ -463,12 +431,13 @@ export default function RetractableAwningsPage() {
                 <p
                   style={{
                     fontSize: "0.95rem",
-                    color: "rgba(252,251,247,0.5)",
+                    color: "var(--ink-muted)",
                     maxWidth: "52ch",
                     lineHeight: 1.75,
                   }}
                 >
-                  With our partners at Synchrony Bank, we offer multiple financing options — including loans from 1–12 years starting at $0 down.
+                  With our partners at Synchrony Bank, we offer multiple financing options —
+                  including loans from 1–12 years starting at $0 down.
                 </p>
               </div>
               <button
@@ -476,9 +445,9 @@ export default function RetractableAwningsPage() {
                 style={{
                   flexShrink: 0,
                   padding: "0.9rem 2.25rem",
-                  border: "1px solid rgba(184,146,74,0.45)",
+                  border: "1px solid var(--ink-primary)",
                   background: "transparent",
-                  color: "var(--rich-warm)",
+                  color: "var(--ink-primary)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.875rem",
                   fontWeight: 450,
@@ -489,12 +458,12 @@ export default function RetractableAwningsPage() {
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "var(--rich-warm)";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--near-black)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "var(--ink-primary)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "var(--bg-pure)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--rich-warm)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-primary)";
                 }}
               >
                 Find Out More
@@ -503,7 +472,7 @@ export default function RetractableAwningsPage() {
           </Container>
         </section>
 
-        {/* ── 8. CLOSING CTA ──────────────────────────────────────────── */}
+        {/* ── 10. CLOSING CTA ─────────────────────────────────────────── */}
         <section
           style={{
             background: "var(--bg-pure)",
@@ -544,7 +513,8 @@ export default function RetractableAwningsPage() {
                   marginBottom: "2rem",
                 }}
               >
-                We&apos;ll bring samples to your home, measure your space, and put together a personalized quote. Call (609) 445-3593 or book online.
+                We&apos;ll bring samples to your home, measure your space, and put together a
+                personalized quote. Call (609) 445-3593 or book online.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <button
