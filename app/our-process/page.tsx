@@ -13,30 +13,24 @@ import { ProcessTimeline, type ProcessStep } from "@/components/process/ProcessT
 const STEPS: ProcessStep[] = [
   {
     n: "01",
-    title: "Consultation",
-    body: "In-home meeting to assess your space, sun angles, and lifestyle goals.",
+    title: "Consultation & Design",
+    body: "In-home meeting to assess your space and sun angles — then fabric, frame color, pitch, and projection width tailored to your home.",
     videoSrc: "/video/our-process/process-consult.mov",
   },
   {
     n: "02",
-    title: "Custom Design",
-    body: "Fabric selection, frame color, pitch, and projection width tailored to your home.",
-    videoSrc: "/video/homepageloop2.mov",
-  },
-  {
-    n: "03",
     title: "Measurement",
     body: "Precise on-site measurements and structural review before anything is ordered.",
     videoSrc: "/video/homepageloop3.MP4",
   },
   {
-    n: "04",
+    n: "03",
     title: "Installation",
     body: "Certified installation by experienced technicians, typically completed in a single day.",
     videoSrc: "/video/our-process/process-install.mov",
   },
   {
-    n: "05",
+    n: "04",
     title: "Walkthrough",
     body: "Full demonstration of motorized controls, pitch adjustment, and care instructions.",
     videoSrc: "/video/our-process/process-walkthroughpergola.MOV",
@@ -143,7 +137,7 @@ export default function OurProcessPage() {
                   margin: "0 auto",
                 }}
               >
-                For more than three decades, we&apos;ve been making sure custom installs land exactly the way our clients pictured them — down to the last fabric weave, louver pitch, and panel of trim. No matter the product, we run the same proven five-step process to get you there with zero surprises.
+                For more than three decades, we&apos;ve been making sure custom installs land exactly the way our clients pictured them — down to the last fabric weave, louver pitch, and panel of trim. No matter the product, we run the same proven four-step process to get you there with zero surprises.
               </motion.p>
             </div>
           </Container>
