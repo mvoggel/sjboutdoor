@@ -37,6 +37,8 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/our-process", label: "Our Process" },
   { href: "/service-areas", label: "Service Areas" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

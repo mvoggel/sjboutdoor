@@ -17,6 +17,8 @@ const LEFT_LINKS = [
 
 const RIGHT_LINKS = [
   { href: "/service-areas", label: "Service Areas" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/blog", label: "Blog" },
 ];
 
 type ProductLink = {
