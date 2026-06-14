@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { assetPath } from "@/lib/asset-path";
 
-const VIDEO_SRC = assetPath("/video/herofull.mp4");
+const VIDEO_SRC = assetPath("/video/homeheroloop.mp4");
 const POSTER_SRC = assetPath("/img/products/vidcover.jpeg");
 
 export function HeroVideo() {
