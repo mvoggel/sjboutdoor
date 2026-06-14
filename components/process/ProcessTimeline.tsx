@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronLeft, Play, X } from "lucide-react";
+import { ChevronLeft, Play, Volume2, VolumeX, X } from "lucide-react";
 import { assetPath } from "@/lib/asset-path";
 
 export type ProcessStep = {
@@ -223,6 +223,19 @@ function ThoughtBubbleModal({
   step: ProcessStep;
   onClose: () => void;
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [soundOn, setSoundOn] = useState(false);
+
+  // Autoplay must start muted; unmuting from this tap counts as a user gesture.
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = !soundOn;
+    v.muted = !next;
+    setSoundOn(next);
+    if (next) void v.play().catch(() => {});
+  };
+
   // Lock scroll while open
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -330,7 +343,25 @@ function ThoughtBubbleModal({
           </span>
         </div>
 
+        {/* Sound toggle — autoplay starts muted, tap to enable audio */}
+        <button
+          onClick={toggleSound}
+          className="absolute z-10 bottom-3 right-3 p-2 rounded-full"
+          style={{
+            background: "rgba(13,13,13,0.6)",
+            border: "1px solid rgba(184,146,74,0.4)",
+          }}
+          aria-label={soundOn ? "Mute video" : "Unmute video"}
+        >
+          {soundOn ? (
+            <Volume2 size={16} style={{ color: "rgba(252,251,247,0.9)" }} />
+          ) : (
+            <VolumeX size={16} style={{ color: "rgba(252,251,247,0.9)" }} />
+          )}
+        </button>
+
         <video
+          ref={videoRef}
           src={assetPath(step.videoSrc)}
           autoPlay
           muted
@@ -486,6 +517,19 @@ function StepCard({
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [soundOn, setSoundOn] = useState(false);
+
+  // Autoplay must start muted; unmuting from this tap counts as a user gesture.
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const next = !soundOn;
+    v.muted = !next;
+    setSoundOn(next);
+    if (next) void v.play().catch(() => {});
+  };
+
   return (
     <div
       className="flex"
@@ -583,6 +627,7 @@ function StepCard({
                 }}
               >
                 <video
+                  ref={videoRef}
                   src={assetPath(step.videoSrc)}
                   autoPlay
                   muted
@@ -590,6 +635,23 @@ function StepCard({
                   playsInline
                   className="w-full h-full object-cover"
                 />
+
+                {/* Sound toggle — autoplay starts muted, click to enable audio */}
+                <button
+                  onClick={toggleSound}
+                  className="absolute z-10 bottom-3 right-3 p-2 rounded-full"
+                  style={{
+                    background: "rgba(13,13,13,0.6)",
+                    border: "1px solid rgba(184,146,74,0.4)",
+                  }}
+                  aria-label={soundOn ? "Mute video" : "Unmute video"}
+                >
+                  {soundOn ? (
+                    <Volume2 size={16} style={{ color: "rgba(252,251,247,0.9)" }} />
+                  ) : (
+                    <VolumeX size={16} style={{ color: "rgba(252,251,247,0.9)" }} />
+                  )}
+                </button>
               </div>
             </motion.div>
           )}
