@@ -2,8 +2,8 @@
 
 import { EyeOff, Sun, Bug, Settings2 } from "lucide-react";
 import { ProductDetail, type ProductDetailConfig } from "@/components/products/ProductDetail";
+import { SCREEN_COLORS, HOUSING_FINISHES } from "@/components/products/ScreenMaterials";
 
-// NOTE: Placeholder copy — swap in client-provided copy when available.
 const config: ProductDetailConfig = {
   consultSlug: "exterior-shades",
 
@@ -11,10 +11,10 @@ const config: ProductDetailConfig = {
     eyebrow: "Exterior Shades / Patio Screens",
     headline: "The screen that disappears when you don't need it.",
     descriptor:
-      "Retractable patio screens vanish completely into a slim architectural housing — no visible track, no frame, no compromise on your view. Custom-fabricated to your exact opening and engineered for year-round Florida living.",
+      "Motorized retractable patio screens glide down to enclose your lanai at the touch of a button — then vanish into a slim housing when you want the open air back. Custom-fabricated to spans up to 30 feet with no center post, and engineered by Progressive Screens and SunPro for year-round Florida living.",
     imageSrc: "/img/products/patioscreen.jpg",
     imageAlt: "Retractable patio screen lowered across a covered Florida lanai.",
-    caption: "Retractable Screens · Florida",
+    caption: "Retractable Motorized Screens · Florida",
   },
 
   valueProps: {
@@ -24,7 +24,7 @@ const config: ProductDetailConfig = {
       {
         icon: EyeOff,
         title: "Invisible When Open",
-        description: "Retracts fully into a slim housing — nothing to see when the screen is up.",
+        description: "Retracts fully into a slim cassette — nothing to see when the screen is up.",
       },
       {
         icon: Bug,
@@ -33,13 +33,13 @@ const config: ProductDetailConfig = {
       },
       {
         icon: Sun,
-        title: "Up to 90% UV Block",
-        description: "Cuts heat and glare while keeping your view and breeze intact.",
+        title: "Up to 95% UV Block",
+        description: "Solar mesh cuts heat and glare while keeping your view and breeze.",
       },
       {
         icon: Settings2,
-        title: "Motorized or Manual",
-        description: "Remote-controlled convenience or a simple, lower-cost manual system.",
+        title: "Smart-Home Motorized",
+        description: "Somfy motors with remote, wall switch, Alexa, Google, and sun/wind sensors.",
       },
     ],
   },
@@ -53,47 +53,47 @@ const config: ProductDetailConfig = {
       {
         number: 1,
         title: "Invisible Housing",
-        description: "The screen and track retract into a slim header cassette, hidden from view.",
+        description: "The screen and roller retract into a slim header cassette, hidden from view.",
         dot: { x: 24, y: 18 },
         label: { x: 4, y: 6 },
         align: "right",
       },
       {
         number: 2,
-        title: "Motorized Control",
-        description: "Lower and raise at the touch of a remote, wall switch, or smart-home app.",
+        title: "Self-Correcting Track",
+        description: "Progressive's patented MagnaTrack re-centers the screen — no pocketing, no baggy sag.",
         dot: { x: 62, y: 16 },
         label: { x: 60, y: 4 },
         align: "right",
       },
       {
         number: 3,
-        title: "Florida-Engineered",
-        description: "Built for salt air, humidity, sun exposure, and storm-cycle wear.",
+        title: "Spans Up to 30 ft",
+        description: "A single screen covers the whole opening — no center post in your view.",
         dot: { x: 84, y: 18 },
         label: { x: 96, y: 6 },
         align: "left",
       },
       {
         number: 4,
-        title: "UV Protection",
-        description: "Block up to 90% of harmful UV rays while preserving outdoor comfort.",
+        title: "UV & Glare Control",
+        description: "Solar mesh blocks up to 95% of UV rays while you keep the view and airflow.",
         dot: { x: 24, y: 50 },
         label: { x: 4, y: 50 },
         align: "right",
       },
       {
         number: 5,
-        title: "Multiple Mesh Opacities",
-        description: "Choose your balance of view, airflow, shade, and privacy.",
+        title: "Sun & Wind Sensors",
+        description: "Optional sensors deploy and retract the screen automatically to protect it.",
         dot: { x: 46, y: 56 },
         label: { x: 90, y: 44 },
         align: "left",
       },
       {
         number: 6,
-        title: "Custom-Fabricated Fit",
-        description: "Precision-built to your exact opening for a clean architectural finish.",
+        title: "Florida-Engineered",
+        description: "Marine-grade aluminum and anti-corrosion hardware built for salt air and sun.",
         dot: { x: 78, y: 64 },
         label: { x: 94, y: 86 },
         align: "left",
@@ -101,40 +101,69 @@ const config: ProductDetailConfig = {
     ],
   },
 
-  options: {
-    eyebrow: "Configure Yours",
-    heading: "Every opening is a little different.",
+  specs: {
+    eyebrow: "By the Numbers",
+    heading: "Performance you can quote to your neighbor.",
     intro:
-      "Patio screens are built to order. These are the choices we'll walk through during your in-home consultation.",
-    items: [
+      "Every patio screen is custom-built to your exact opening on professional-grade Progressive Screens and SunPro systems.",
+    stats: [
+      { value: "30 ft", label: "Single-screen span — no center post" },
+      { value: "95%", label: "Of UV rays blocked by solar mesh" },
+      { value: "1-Touch", label: "Somfy motor · Alexa & Google ready" },
+      { value: "Lifetime", label: "Hardware warranty · up to 15-yr mesh" },
+    ],
+  },
+
+  materials: {
+    eyebrow: "Mesh & Color",
+    heading: "Choose your balance of view, airflow, and shade.",
+    intro:
+      "Mesh openness sets the tradeoff between an open view and full shade and privacy. Drag your eye across the preview — the right half shows what you'd see through the selected mesh, the left shows the open view.",
+    backdropSrc: "/img/products/patioscreen.jpg",
+    backdropAlt: "Lanai view seen through different retractable screen meshes",
+    meshTypes: [
       {
-        name: "Mesh Opacity",
-        description:
-          "From near-transparent insect mesh to dense solar and privacy weaves — select how much view, light, and airflow you want to keep.",
+        name: "Insect Mesh",
+        fabric: "Phifer 16/14",
+        openness: "Most open weave",
+        uv: "Bugs, pollen & debris out",
+        blurb: "Maximum view and airflow with a clean barrier against insects.",
+        density: 0.16,
       },
       {
-        name: "Operation",
-        description:
-          "Motorized with remote, wall switch, and smart-home integration, or a crank-operated manual system for a lower-cost option.",
+        name: "Solar Mesh",
+        fabric: "SunTex 80–95",
+        openness: "~5% open",
+        uv: "Blocks up to 95% UV",
+        blurb: "Cuts heat, glare, and fade while you keep the breeze and the view out.",
+        density: 0.55,
       },
       {
-        name: "Housing & Frame Color",
-        description:
-          "Powder-coated finishes that blend into your soffit, beam, or column line so the system reads as part of the architecture.",
+        name: "Privacy Mesh",
+        fabric: "Twitchell Nano / Sheerweave",
+        openness: "1–3% open",
+        uv: "Daytime privacy",
+        blurb: "Deep shade and soft, even light — see out without being seen in.",
+        density: 0.78,
       },
       {
-        name: "Wind Sensors & Automation",
-        description:
-          "Optional wind and sun sensors automatically retract or deploy the screen to protect it and keep you comfortable.",
+        name: "Hurricane Screen",
+        fabric: "OmegaTex · Defender",
+        openness: "Miami-Dade / FBC",
+        uv: "75 MPH wind-rated",
+        blurb: "Storm- and debris-rated fabric for year-round protection. Permit required.",
+        density: 0.9,
       },
     ],
+    colors: SCREEN_COLORS,
+    finishes: HOUSING_FINISHES,
   },
 
   vendor: {
     eyebrow: "Our Partners",
-    heading: "Engineered with Progressive Screens & Sunpro",
+    heading: "Engineered with Progressive Screens & SunPro",
     body:
-      "We partner with Progressive Screens and Sunpro — two of the industry's leading retractable-screen manufacturers. Every installation is backed by their product warranty and our workmanship guarantee.",
+      "We build on Progressive Screens' patented MagnaTrack self-correcting system and SunPro's motorized screens — marine-grade aluminum, Somfy motors, and Phifer® and Twitchell® fabrics. Backed by warranties up to a limited lifetime, plus our own workmanship guarantee.",
   },
 
   gallery: {

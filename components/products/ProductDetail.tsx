@@ -13,6 +13,14 @@ import {
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { ValuePropsStrip, type ValueProp } from "./ValuePropsStrip";
 import { ProductGallery } from "./ProductGallery";
+import {
+  ScreenSpecBand,
+  ScreenMeshExplorer,
+  type ScreenStat,
+  type MeshType,
+  type ScreenColor,
+  type ScreenFinish,
+} from "./ScreenMaterials";
 
 export type ProductOption = {
   name: string;
@@ -45,6 +53,26 @@ export type ProductDetailConfig = {
     imageSrc: string;
     imageAlt?: string;
     callouts: LouveredPergolaCallout[];
+  };
+
+  /** Optional "by the numbers" proof strip (dark band). */
+  specs?: {
+    eyebrow?: string;
+    heading?: string;
+    intro?: string;
+    stats: ScreenStat[];
+  };
+
+  /** Optional interactive mesh + color + finish explorer. */
+  materials?: {
+    eyebrow?: string;
+    heading: string;
+    intro?: string;
+    backdropSrc: string;
+    backdropAlt?: string;
+    meshTypes: MeshType[];
+    colors: ScreenColor[];
+    finishes: ScreenFinish[];
   };
 
   options?: {
@@ -118,6 +146,32 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
             callouts={config.features.callouts}
           />
         </div>
+
+        {/* ── 3b. SPEC BAND ───────────────────────────────────────── */}
+        {config.specs && (
+          <ScreenSpecBand
+            eyebrow={config.specs.eyebrow}
+            heading={config.specs.heading}
+            intro={config.specs.intro}
+            stats={config.specs.stats}
+          />
+        )}
+
+        {/* ── 3c. MESH & COLOR EXPLORER ───────────────────────────── */}
+        {config.materials && (
+          <div id="materials" style={{ scrollMarginTop: "90px" }}>
+            <ScreenMeshExplorer
+              eyebrow={config.materials.eyebrow}
+              heading={config.materials.heading}
+              intro={config.materials.intro}
+              backdropSrc={config.materials.backdropSrc}
+              backdropAlt={config.materials.backdropAlt}
+              meshTypes={config.materials.meshTypes}
+              colors={config.materials.colors}
+              finishes={config.materials.finishes}
+            />
+          </div>
+        )}
 
         {/* ── 4. OPTIONS ──────────────────────────────────────────── */}
         {config.options && (
