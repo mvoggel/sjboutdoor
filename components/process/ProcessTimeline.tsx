@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ChevronRight, Play, X } from "lucide-react";
+import { ChevronLeft, Play, X } from "lucide-react";
+import { assetPath } from "@/lib/asset-path";
 
 export type ProcessStep = {
   n: string;
@@ -178,25 +179,14 @@ function MobileStepCard({
             {step.body}
           </p>
 
-          {/* Swipe hint */}
+          {/* Swipe hint — arrow points left (the swipe-to-open direction) */}
           <div
             className="flex items-center justify-between pt-2"
             style={{ borderTop: "1px dashed rgba(184,146,74,0.4)" }}
           >
-            <span
-              style={{
-                fontSize: "0.62rem",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "var(--rich-warm)",
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-              }}
-            >
-              Swipe to watch
-            </span>
             <motion.span
               aria-hidden="true"
-              animate={prefersReducedMotion ? {} : { x: [0, 6, 0] }}
+              animate={prefersReducedMotion ? {} : { x: [0, -6, 0] }}
               transition={{
                 duration: 1.4,
                 repeat: Infinity,
@@ -205,8 +195,20 @@ function MobileStepCard({
               className="flex items-center"
               style={{ color: "var(--rich-warm)" }}
             >
-              <ChevronRight size={16} strokeWidth={1.5} />
+              <ChevronLeft size={16} strokeWidth={1.5} />
             </motion.span>
+            <span
+              style={{
+                fontSize: "0.62rem",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "var(--rich-warm)",
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                textAlign: "right",
+              }}
+            >
+              Swipe to watch
+            </span>
           </div>
         </button>
       </div>
@@ -329,7 +331,7 @@ function ThoughtBubbleModal({
         </div>
 
         <video
-          src={step.videoSrc}
+          src={assetPath(step.videoSrc)}
           autoPlay
           muted
           loop
@@ -581,7 +583,7 @@ function StepCard({
                 }}
               >
                 <video
-                  src={step.videoSrc}
+                  src={assetPath(step.videoSrc)}
                   autoPlay
                   muted
                   loop
