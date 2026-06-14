@@ -4,7 +4,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { assetPath } from "@/lib/asset-path";
 
-const VIDEO_SRC = assetPath("/video/homeheroloop.mp4");
+// 720p H.264 re-encode (~45MB vs the 80MB 1080p source) for faster homepage
+// load. Original kept at /video/homeheroloop.mp4 as a fallback.
+const VIDEO_SRC = assetPath("/video/homeheroloop-720.mp4");
 const POSTER_SRC = assetPath("/img/products/vidcover.jpeg");
 
 export function HeroVideo() {
