@@ -1,40 +1,39 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
+import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/home/CtaBand";
+import { BlogList } from "@/components/blog/BlogList";
+import { getAllPosts, getActiveCategories, categoryLabel } from "@/lib/blog";
 
-const UPCOMING = [
-  {
-    no: "01",
-    cat: "Buying Guides",
-    title: "How to pick a motorized screen that actually survives Florida.",
-    read: "8 min",
+export const metadata: Metadata = {
+  title: "Field Notebook — Outdoor Living Guides & Notes | SJB Outdoors",
+  description:
+    "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoors crew — outdoor living for Florida homes.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "SJB Outdoors — Field Notebook",
+    description:
+      "Buying guides, install field notes, and company news — written by the people doing the work.",
+    url: "/blog",
+    type: "website",
   },
-  {
-    no: "02",
-    cat: "Field Notes",
-    title: "What we learned installing 40 louvered pergolas in Naples.",
-    read: "6 min",
-  },
-  {
-    no: "03",
-    cat: "Maintenance",
-    title: "Salt, sun, and shutters: a no-fluff care guide.",
-    read: "5 min",
-  },
-  {
-    no: "04",
-    cat: "Design",
-    title: "Lighting your lanai for sunset (without ruining the view).",
-    read: "7 min",
-  },
-];
+};
 
 export default function BlogPage() {
-  const prefersReducedMotion = useReducedMotion();
+  const posts = getAllPosts();
+  const categories = getActiveCategories();
+
+  const cards = posts.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    category: p.category,
+    categoryLabel: categoryLabel(p.category),
+    author: p.author,
+    date: p.date,
+    readTime: p.readTime,
+  }));
 
   return (
     <>
@@ -68,7 +67,7 @@ export default function BlogPage() {
                 </p>
               </div>
 
-              {/* Live counter — signature touch */}
+              {/* Count — signature touch */}
               <div className="hidden lg:flex items-end justify-end">
                 <div className="text-right">
                   <p
@@ -81,7 +80,7 @@ export default function BlogPage() {
                       marginBottom: "0.5rem",
                     }}
                   >
-                    First issue
+                    In the notebook
                   </p>
                   <p
                     style={{
@@ -92,7 +91,11 @@ export default function BlogPage() {
                       letterSpacing: "0.02em",
                     }}
                   >
-                    Spring &rsquo;26
+                    {String(posts.length).padStart(2, "0")}
+                    <span style={{ fontSize: "0.4em", color: "var(--ink-muted)" }}>
+                      {" "}
+                      {posts.length === 1 ? "post" : "posts"}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -100,108 +103,10 @@ export default function BlogPage() {
           </Container>
         </section>
 
-        {/* ── In the works ───────────────────────────────── */}
+        {/* ── Posts ───────────────────────────────────────── */}
         <section className="pb-24 md:pb-32 pt-4">
           <Container>
-            <div className="flex items-baseline justify-between gap-4 pb-4 mb-8" style={{ borderBottom: "1px solid var(--rich-sand)" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.22em",
-                  textTransform: "uppercase",
-                  color: "var(--rich-warm)",
-                }}
-              >
-                In the works
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "var(--ink-muted)",
-                }}
-              >
-                Coming Soon
-              </p>
-            </div>
-
-            <ul>
-              {UPCOMING.map((p, i) => (
-                <motion.li
-                  key={p.no}
-                  initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  className="group grid grid-cols-[3rem_1fr] md:grid-cols-[4rem_8rem_1fr_4rem] gap-4 md:gap-8 items-baseline py-6 md:py-7 cursor-default"
-                  style={{ borderBottom: "1px solid var(--rich-sand)" }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-cormorant), serif",
-                      fontSize: "1.5rem",
-                      color: "var(--rich-warm)",
-                      letterSpacing: "0.05em",
-                      opacity: 0.85,
-                    }}
-                  >
-                    {p.no}
-                  </span>
-                  <span
-                    className="hidden md:block"
-                    style={{
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: "var(--ink-muted)",
-                      fontFamily: "var(--font-cormorant), serif",
-                    }}
-                  >
-                    {p.cat}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-cormorant), serif",
-                      fontSize: "clamp(1.15rem, 2vw, 1.6rem)",
-                      color: "var(--ink-primary)",
-                      letterSpacing: "0.01em",
-                      lineHeight: 1.25,
-                      transition: "color 0.2s",
-                    }}
-                    className="group-hover:text-[var(--rich-warm)]"
-                  >
-                    {p.title}
-                  </span>
-                  <span
-                    className="hidden md:block text-right"
-                    style={{
-                      fontSize: "0.72rem",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      color: "var(--ink-muted)",
-                    }}
-                  >
-                    {p.read}
-                  </span>
-                </motion.li>
-              ))}
-            </ul>
-
-            <div className="mt-10 text-center">
-              <p
-                className="text-sm"
-                style={{
-                  color: "var(--ink-muted)",
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontStyle: "italic",
-                }}
-              >
-                We&apos;d rather publish something useful late than something filler on time.
-              </p>
-            </div>
+            <BlogList posts={cards} categories={categories} />
           </Container>
         </section>
 

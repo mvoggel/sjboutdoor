@@ -1,11 +1,20 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
 const BASE = "https://sjbboutdoors.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+    url: `${BASE}/blog/${p.slug}`,
+    lastModified: p.date ? new Date(p.date) : new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   return [
+    ...blogPosts,
     { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/our-process`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
