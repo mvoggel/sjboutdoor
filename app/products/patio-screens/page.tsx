@@ -141,13 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Patio screens in the wild.",
     intro: "Recent retractable patio-screen installations across Southwest Florida.",
-    images: [
-      { src: "/img/products/patioscreen.jpg", alt: "Patio screen lowered over a lanai.", caption: "Naples · Lanai" },
-      { src: "/img/products/ext-shades.png", alt: "Exterior shade panels on a covered patio.", caption: "Bonita Springs" },
-      { src: "/img/products/shades2.png", alt: "Motorized shade over an outdoor seating area.", caption: "Marco Island" },
-      { src: "/img/products/family.jpg", alt: "Family enjoying a screened outdoor space.", caption: "Fort Myers" },
-      { src: "/img/products/vidcover.jpeg", alt: "Screened patio at dusk.", caption: "Estero" },
-    ],
+    category: "patio-shades",
   },
 };
 

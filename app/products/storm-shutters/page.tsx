@@ -141,13 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Storm shutters, installed.",
     intro: "Recent hurricane-protection installations across Southwest Florida.",
-    images: [
-      { src: "/img/products/stormshutters.jpg", alt: "Storm shutters across home windows.", caption: "Naples" },
-      { src: "/img/products/st-shutter.png", alt: "Accordion storm shutter detail.", caption: "Bonita Springs" },
-      { src: "/img/products/bahamashutters.jpg", alt: "Exterior shutters on a façade.", caption: "Marco Island" },
-      { src: "/img/products/family.jpg", alt: "Protected home exterior.", caption: "Fort Myers" },
-      { src: "/img/products/vidcover.jpeg", alt: "Home at dusk with shutters closed.", caption: "Estero" },
-    ],
+    category: "storm-shutters",
   },
 };
 

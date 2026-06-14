@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
 import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { ProductGallery } from "@/components/products/ProductGallery";
 import {
   LouveredPergolaExperience,
   type LouveredPergolaCallout,
@@ -435,6 +436,12 @@ export default function ExteriorShuttersPage() {
             ))}
           </div>
         </section>
+
+        <ProductGallery
+          category="exterior-shutters"
+          heading="Exterior shutters in place."
+          intro="Recent exterior-shutter installations across Southwest Florida."
+        />
 
       </main>
 

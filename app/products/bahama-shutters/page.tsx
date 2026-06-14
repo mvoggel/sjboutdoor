@@ -141,13 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Bahama shutters in place.",
     intro: "Recent Bahama-shutter installations across Southwest Florida.",
-    images: [
-      { src: "/img/products/bahamashutters.jpg", alt: "Bahama shutters on a coastal home.", caption: "Naples" },
-      { src: "/img/products/st-shutter.png", alt: "Exterior shutters on a Florida façade.", caption: "Bonita Springs" },
-      { src: "/img/products/stormshutters.jpg", alt: "Shutters installed over windows.", caption: "Marco Island" },
-      { src: "/img/products/family.jpg", alt: "Home exterior with shutters.", caption: "Fort Myers" },
-      { src: "/img/products/vidcover.jpeg", alt: "Coastal home at dusk with shutters.", caption: "Estero" },
-    ],
+    category: "bahama-shutters",
   },
 };
 

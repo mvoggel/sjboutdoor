@@ -1,0 +1,115 @@
+{
+  "louvered-pergolas": [
+    {
+      "src": "/img/gallery/louvered-pergolas/0.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/12.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/15.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/42.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/77.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/80.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/81.jpg"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/Fort-Myers__louvered.png",
+      "caption": "Fort Myers"
+    },
+    {
+      "src": "/img/gallery/louvered-pergolas/Naples__pergola.jpg",
+      "caption": "Naples"
+    }
+  ],
+  "retractable-awnings": [
+    {
+      "src": "/img/gallery/retractable-awnings/Awning-Crossarm-BronzeHousing-PuttyRegimentalFabric-DSC05979.jpg"
+    },
+    {
+      "src": "/img/gallery/retractable-awnings/awningpic.jpg"
+    },
+    {
+      "src": "/img/gallery/retractable-awnings/awningwscreen.jpg"
+    },
+    {
+      "src": "/img/gallery/retractable-awnings/Bonita-Springs__awning.png",
+      "caption": "Bonita Springs"
+    },
+    {
+      "src": "/img/gallery/retractable-awnings/Estero__awnings.png",
+      "caption": "Estero"
+    }
+  ],
+  "exterior-shutters": [
+    {
+      "src": "/img/gallery/exterior-shutters/Naples__shutter.png",
+      "caption": "Naples"
+    }
+  ],
+  "bahama-shutters": [
+    {
+      "src": "/img/gallery/bahama-shutters/IMG-4077.jpg"
+    },
+    {
+      "src": "/img/gallery/bahama-shutters/Marco-Island__bahama.jpg",
+      "caption": "Marco Island"
+    },
+    {
+      "src": "/img/gallery/bahama-shutters/Naples__bahama-2.jpg",
+      "caption": "Naples"
+    }
+  ],
+  "storm-shutters": [
+    {
+      "src": "/img/gallery/storm-shutters/Fort-Myers__storm.jpg",
+      "caption": "Fort Myers"
+    }
+  ],
+  "exterior-shades": [
+    {
+      "src": "/img/gallery/exterior-shades/Estero__shade.png",
+      "caption": "Estero"
+    },
+    {
+      "src": "/img/gallery/exterior-shades/Naples__exterior-shade.png",
+      "caption": "Naples"
+    },
+    {
+      "src": "/img/gallery/exterior-shades/screens3.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades/screensimage.jpg"
+    }
+  ],
+  "patio-shades": [
+    {
+      "src": "/img/gallery/patio-shades/Bonita-Springs__patio-screen.jpg",
+      "caption": "Bonita Springs"
+    },
+    {
+      "src": "/img/gallery/patio-shades/screens3.jpg"
+    },
+    {
+      "src": "/img/gallery/patio-shades/shades.jpg"
+    }
+  ],
+  "garage-door-screens": [
+    {
+      "src": "/img/gallery/garage-door-screens/Bonita-Springs__garage.jpg",
+      "caption": "Bonita Springs"
+    },
+    {
+      "src": "/img/gallery/garage-door-screens/Naples__garage-screen.png",
+      "caption": "Naples"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ import { AwningPremiumFeatures } from "@/components/products/AwningPremiumFeatur
 import { AwningFabricGallery } from "@/components/products/AwningFabricGallery";
 import { AwningAccessories } from "@/components/products/AwningAccessories";
 import { AwningFaqWhy } from "@/components/products/AwningFaqWhy";
+import { ProductGallery } from "@/components/products/ProductGallery";
 
 // ─── Benefit icons ────────────────────────────────────────────────────────────
 function SunIcon() {
@@ -575,6 +576,12 @@ export default function RetractableAwningsPage() {
             </motion.div>
           </Container>
         </section>
+
+        <ProductGallery
+          category="retractable-awnings"
+          heading="Retractable awnings, installed."
+          intro="Recent retractable-awning installations across Southwest Florida."
+        />
 
       </main>
 

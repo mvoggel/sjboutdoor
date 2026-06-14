@@ -141,13 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Garage screens, installed.",
     intro: "Recent full-height garage-screen projects across Southwest Florida.",
-    images: [
-      { src: "/img/products/garage-screen.png", alt: "Motorized garage screen lowered.", caption: "Naples" },
-      { src: "/img/products/garagescreen.jpg", alt: "Garage bay screened for ventilation.", caption: "Bonita Springs" },
-      { src: "/img/products/ext-shades.png", alt: "Exterior screen system on a home.", caption: "Estero" },
-      { src: "/img/products/family.jpg", alt: "Family in a screened garage living space.", caption: "Fort Myers" },
-      { src: "/img/products/vidcover.jpeg", alt: "Screened opening at dusk.", caption: "Marco Island" },
-    ],
+    category: "garage-door-screens",
   },
 };
 

@@ -12,7 +12,7 @@ import {
 } from "@/components/products/LouveredPergolaExperience";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { ValuePropsStrip, type ValueProp } from "./ValuePropsStrip";
-import { FilmstripGallery, type GalleryImage } from "./FilmstripGallery";
+import { ProductGallery } from "./ProductGallery";
 
 export type ProductOption = {
   name: string;
@@ -65,7 +65,8 @@ export type ProductDetailConfig = {
     eyebrow?: string;
     heading?: string;
     intro?: string;
-    images: GalleryImage[];
+    /** Gallery category slug — photos are pulled from lib/gallery. */
+    category: string;
   };
 };
 
@@ -303,11 +304,11 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
         )}
 
         {/* ── 6. GALLERY ──────────────────────────────────────────── */}
-        <FilmstripGallery
+        <ProductGallery
+          category={config.gallery.category}
           eyebrow={config.gallery.eyebrow}
           heading={config.gallery.heading}
           intro={config.gallery.intro}
-          images={config.gallery.images}
         />
 
         {/* ── 7. CLOSING CTA ──────────────────────────────────────── */}

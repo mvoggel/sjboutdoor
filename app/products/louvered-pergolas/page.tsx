@@ -11,6 +11,7 @@ import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { LouveredPergolaExperience } from "@/components/products/LouveredPergolaExperience";
 import { PergolaArchShowcase } from "@/components/products/PergolaArchShowcase";
+import { ProductGallery } from "@/components/products/ProductGallery";
 
 // ─── Page ────────────────────────────────────────────────────────────────
 export default function LouveredPergolasPage() {
@@ -394,6 +395,12 @@ export default function LouveredPergolasPage() {
             </motion.div>
           </Container>
         </section>
+
+        <ProductGallery
+          category="louvered-pergolas"
+          heading="Louvered pergolas, built."
+          intro="Recent louvered-pergola installations across Southwest Florida."
+        />
 
       </main>
 

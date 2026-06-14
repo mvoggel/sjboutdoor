@@ -13,6 +13,7 @@ import {
 } from "@/components/products/LouveredPergolaExperience";
 // import { ShadeExplodeScroll } from "@/components/products/ShadeExplodeScroll"; // hidden for now — revisiting content separately
 import { ScreenShowcase } from "@/components/products/ScreenShowcase";
+import { ProductGallery } from "@/components/products/ProductGallery";
 
 // ─── Interactive infographic callouts ─────────────────────────────────────────
 const SHADE_CALLOUTS: LouveredPergolaCallout[] = [
@@ -191,6 +192,13 @@ export default function ExteriorShadesPage() {
 
         {/* ── 6. INTERACTIVE SCREEN SHOWCASE ──────────────────────────── */}
         <ScreenShowcase />
+
+        {/* ── 7. THE GALLERY ──────────────────────────────────────────── */}
+        <ProductGallery
+          category="exterior-shades"
+          heading="Exterior shades, installed."
+          intro="Recent exterior-shade installations across Southwest Florida."
+        />
 
       </main>
 

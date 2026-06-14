@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "gallery": "node scripts/gen-gallery.mjs",
+    "predev": "node scripts/gen-gallery.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/gen-gallery.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
