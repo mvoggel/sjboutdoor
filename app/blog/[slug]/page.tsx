@@ -6,6 +6,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/home/CtaBand";
 import { getAllPosts, getPost, categoryLabel } from "@/lib/blog";
+import { JsonLd, breadcrumbList } from "@/components/seo/JsonLd";
+import { SITE_URL, BRAND_NAME, absUrl, LOGO_PATH } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -22,7 +24,7 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
-  const title = `${post.title} | SJB Outdoors`;
+  const title = post.title;
   return {
     title,
     description: post.excerpt,
@@ -60,28 +62,39 @@ export default async function BlogPostPage({
     .filter((p) => p.slug !== post.slug)
     .slice(0, 2);
 
+  const postUrl = absUrl(`/blog/${post.slug}`);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    dateModified: post.date,
     author: { "@type": "Person", name: post.author },
     publisher: {
       "@type": "Organization",
-      name: "SJB Outdoors",
+      name: BRAND_NAME,
+      "@id": `${SITE_URL}/#business`,
+      logo: { "@type": "ImageObject", url: absUrl(LOGO_PATH) },
     },
-    ...(post.cover ? { image: post.cover } : {}),
-    mainEntityOfPage: `https://sjbboutdoors.com/blog/${post.slug}`,
+    ...(post.cover ? { image: absUrl(post.cover) } : {}),
+    mainEntityOfPage: postUrl,
+    url: postUrl,
   };
 
   return (
     <>
       <Header />
       <main id="main-content" style={{ background: "var(--bg-pure)" }}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        <JsonLd
+          data={[
+            jsonLd,
+            breadcrumbList([
+              { name: "Home", url: `${SITE_URL}/` },
+              { name: "Field Notebook", url: absUrl("/blog") },
+              { name: post.title, url: postUrl },
+            ]),
+          ]}
         />
 
         {/* ── Header ──────────────────────────────────────── */}

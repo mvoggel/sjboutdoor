@@ -9,7 +9,7 @@ import { SERVICE_AREA_DOTS } from "@/components/layout/FloridaMap";
 import { ServiceAreasMap } from "@/components/service-areas/ServiceAreasMap";
 
 export const metadata: Metadata = {
-  title: "Service Areas | SJB Outdoors",
+  title: "Service Areas",
   description:
     "SJB Outdoors installs custom outdoor living systems across 19 Florida cities — from Pensacola and Tallahassee to Naples, Fort Myers, and Palm Beach.",
 };

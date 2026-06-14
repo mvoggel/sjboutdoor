@@ -7,7 +7,7 @@ import { BlogList } from "@/components/blog/BlogList";
 import { getAllPosts, getActiveCategories, categoryLabel } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Field Notebook — Outdoor Living Guides & Notes | SJB Outdoors",
+  title: "Field Notebook — Outdoor Living Guides & Notes",
   description:
     "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoors crew — outdoor living for Florida homes.",
   alternates: { canonical: "/blog" },

@@ -3,6 +3,23 @@ import { Cormorant } from "next/font/google";
 import "./globals.css";
 import { ConsultModalProvider } from "@/components/ui/ConsultModalProvider";
 import { ChatWidgetGate } from "@/components/ui/ChatWidgetGate";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  SITE_URL,
+  IS_STAGING,
+  BRAND_NAME,
+  PHONE_E164,
+  EMAIL,
+  OPENING_HOURS,
+  PRICE_RANGE,
+  SAME_AS,
+  DEFAULT_OG_IMAGE,
+  LOGO_PATH,
+  absUrl,
+  getPostalAddress,
+  getGeo,
+} from "@/lib/site";
+import { SERVICE_CITIES } from "@/lib/service-areas";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -10,22 +27,72 @@ const cormorant = Cormorant({
   display: "swap",
 });
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
 };
 
+const TITLE_DEFAULT = `${BRAND_NAME} | Luxury Outdoor Living — Florida`;
+const DESCRIPTION =
+  "Custom exterior shades, retractable awnings, louvered pergolas, and exterior shutters for Florida homeowners. Free in-home consultations across 19 Florida cities.";
+
 export const metadata: Metadata = {
-  title: "SJBB Outdoors | Luxury Outdoor Living — Florida",
-  description:
-    "Custom exterior shades, retractable awnings, and louvered pergolas for discerning Florida homeowners. Free in-home consultations across Naples, Bonita Springs, and Marco Island.",
-  openGraph: {
-    title: "SJBB Outdoors | Luxury Outdoor Living — Florida",
-    description:
-      "Custom exterior shades, retractable awnings, and louvered pergolas for discerning Florida homeowners.",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE_DEFAULT,
+    template: `%s | ${BRAND_NAME}`,
   },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  // Keep staging (GitHub Pages) out of the index so it doesn't compete with the
+  // apex domain as duplicate content. Flips automatically at cutover.
+  ...(IS_STAGING ? { robots: { index: false, follow: false } } : {}),
+  ...(GSC_VERIFICATION ? { verification: { google: GSC_VERIFICATION } } : {}),
+  openGraph: {
+    title: TITLE_DEFAULT,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: BRAND_NAME,
+    type: "website",
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: BRAND_NAME }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE_DEFAULT,
+    description: DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
+
+// ── Sitewide entity schema — the canonical record Google's Knowledge Graph and
+// AI answer engines anchor to. NAP values come from lib/site.ts (must match GBP).
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "HomeAndConstructionBusiness", "LocalBusiness"],
+  "@id": `${SITE_URL}/#business`,
+  name: BRAND_NAME,
+  url: SITE_URL,
+  logo: absUrl(LOGO_PATH),
+  image: absUrl(DEFAULT_OG_IMAGE),
+  description: DESCRIPTION,
+  telephone: PHONE_E164,
+  email: EMAIL,
+  priceRange: PRICE_RANGE,
+  // Address/geo emit only the fields that are real (non-placeholder), so the
+  // schema stays valid now and the street/ZIP/coords light up automatically
+  // once filled in lib/site.ts. See getPostalAddress/getGeo.
+  address: getPostalAddress(),
+  ...(getGeo() ? { geo: getGeo() } : {}),
+  openingHoursSpecification: OPENING_HOURS,
+  areaServed: SERVICE_CITIES.map((c) => ({
+    "@type": "City",
+    name: `${c.name}, FL`,
+  })),
+  ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
 };
 
 export default function RootLayout({
@@ -39,6 +106,20 @@ export default function RootLayout({
       className={cormorant.variable}
     >
       <body>
+        <JsonLd data={orgJsonLd} />
+        {GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`,
+              }}
+            />
+          </>
+        )}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

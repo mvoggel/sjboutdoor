@@ -24,6 +24,25 @@ export function HeroVideo() {
         minHeight: "600px",
       }}
     >
+      {/* Accessible, indexable page H1. Visually hidden so the cinematic video
+          hero stays clean, but present for screen readers and search/AI crawlers. */}
+      <h1
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: "hidden",
+          clip: "rect(0,0,0,0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
+      >
+        Luxury Outdoor Living in Florida — Louvered Pergolas, Retractable Awnings,
+        Exterior Shades &amp; Shutters
+      </h1>
+
       {/* Poster image — always present, prevents any flash before video plays */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

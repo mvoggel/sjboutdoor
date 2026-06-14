@@ -1,34 +1,20 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { productMetadata, productJsonLd, type ProductSeo } from "@/lib/product-seo";
 
-const title =
-  "Retractable Patio Screens in Southwest Florida | SJB Outdoors";
-const description =
-  "Motorized retractable patio & lanai screens custom-built to spans up to 30 ft with no center post. Insect, solar, privacy & hurricane mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across Naples, Bonita Springs & Marco Island.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/products/patio-screens" },
-  openGraph: {
-    title,
-    description,
-    url: "/products/patio-screens",
-    type: "website",
-    images: [{ url: "/img/products/patioscreen.jpg" }],
-  },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Product",
+const seo: ProductSeo = {
+  slug: "patio-screens",
+  title: "Retractable Patio Screens in Southwest Florida",
   name: "Retractable Motorized Patio Screens",
-  description,
+  description:
+    "Motorized retractable patio & lanai screens custom-built to spans up to 30 ft with no center post. Insect, solar, privacy & hurricane mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across Naples, Bonita Springs & Marco Island.",
+  image: "/img/products/patioscreen.jpg",
   category: "Retractable Exterior Screens",
-  brand: { "@type": "Brand", name: "Progressive Screens · SunPro" },
-  image: "https://sjboutdoors.com/img/products/patioscreen.jpg",
-  areaServed: "Southwest Florida",
-  manufacturer: { "@type": "Organization", name: "SJB Outdoors" },
+  brand: "Progressive Screens · SunPro",
+  breadcrumbName: "Patio Screens",
 };
+
+export const metadata: Metadata = productMetadata(seo);
 
 export default function PatioScreensLayout({
   children,
@@ -37,10 +23,7 @@ export default function PatioScreensLayout({
 }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={productJsonLd(seo)} />
       {children}
     </>
   );

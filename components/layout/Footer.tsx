@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FloridaMap, SERVICE_AREA_DOTS } from "@/components/layout/FloridaMap";
+import { BRAND_NAME, LEGAL_NAME, PHONE_DISPLAY, PHONE_E164, EMAIL } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/products", label: "Products" },
@@ -27,15 +28,31 @@ export function Footer() {
               className="text-lg font-medium mb-3"
               style={{ fontFamily: "var(--font-cormorant)" }}
             >
-              SJB Outdoors
+              {BRAND_NAME}
             </p>
             <p
               className="text-sm leading-relaxed"
               style={{ color: "rgba(252,251,247,0.65)" }}
             >
-              South Jersey Blinds — bringing refined outdoor living
-              to Southwest Florida.
+              Refined outdoor living for Florida homes — custom shades, awnings,
+              pergolas, and shutters.
             </p>
+            <div className="mt-4 flex flex-col gap-1.5 text-sm">
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="transition-colors hover:text-[var(--rich-warm)]"
+                style={{ color: "rgba(252,251,247,0.75)" }}
+              >
+                {PHONE_DISPLAY}
+              </a>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="transition-colors hover:text-[var(--rich-warm)]"
+                style={{ color: "rgba(252,251,247,0.75)", wordBreak: "break-word" }}
+              >
+                {EMAIL}
+              </a>
+            </div>
             <div className="flex gap-3 mt-5">
               {/* Instagram */}
               <a
@@ -137,7 +154,7 @@ export function Footer() {
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", background: "var(--stone-dark)" }}>
         <Container className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs" style={{ color: "rgba(252,251,247,0.45)" }}>
-            © {new Date().getFullYear()} South Jersey Blinds. All rights reserved.
+            © {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.
           </p>
           <div className="flex gap-4 text-xs" style={{ color: "rgba(252,251,247,0.45)" }}>
             <Link href="/privacy" className="hover:text-[var(--rich-warm)] transition-colors">

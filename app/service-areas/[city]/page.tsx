@@ -10,6 +10,8 @@ import { CityHeroMap } from "@/components/service-areas/CityHeroMap";
 import { ConsultButton } from "@/components/service-areas/ConsultButton";
 import { SERVICE_CITIES, getServiceCity } from "@/lib/service-areas";
 import { buildCityContent } from "@/lib/service-area-content";
+import { JsonLd, breadcrumbList } from "@/components/seo/JsonLd";
+import { SITE_URL, BRAND_NAME, absUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return SERVICE_CITIES.map((c) => ({ city: c.slug }));
@@ -26,7 +28,7 @@ export async function generateMetadata({
   const city = getServiceCity(slug);
   if (!city) return {};
 
-  const title = `Louvered Pergolas, Shades, Shutters & Awnings in ${city.name}, FL | SJB Outdoors`;
+  const title = `Louvered Pergolas, Shades, Shutters & Awnings in ${city.name}, FL`;
   const description = `Custom louvered pergolas, exterior shades, exterior shutters, and retractable awnings for ${city.name}, FL homes. Free in-home consultations across ${city.county} County. Built for ${city.region}.`;
 
   return {
@@ -53,28 +55,37 @@ export default async function CityServiceAreaPage({
 
   const content = buildCityContent(city);
 
-  const jsonLd = {
+  const cityUrl = absUrl(`/service-areas/${city.slug}`);
+  const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Outdoor living systems — louvered pergolas, exterior shades, exterior shutters, retractable awnings",
     provider: {
       "@type": "HomeAndConstructionBusiness",
-      name: "SJB Outdoors",
+      name: BRAND_NAME,
+      "@id": `${SITE_URL}/#business`,
     },
     areaServed: {
       "@type": "City",
       name: `${city.name}, FL`,
     },
     description: content.intro[0],
+    url: cityUrl,
   };
 
   return (
     <>
       <Header />
       <main id="main-content" style={{ background: "var(--bg-pure)" }}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        <JsonLd
+          data={[
+            serviceJsonLd,
+            breadcrumbList([
+              { name: "Home", url: `${SITE_URL}/` },
+              { name: "Service Areas", url: absUrl("/service-areas") },
+              { name: city.name, url: cityUrl },
+            ]),
+          ]}
         />
 
         {/* ── Hero: title left, zoomed map right ───────────────────── */}

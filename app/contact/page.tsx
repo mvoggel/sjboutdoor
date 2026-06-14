@@ -6,7 +6,7 @@ import { ContactChatPanel } from "@/components/contact/ContactChatPanel";
 import { Mail, Phone, Clock, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact | SJB Outdoors",
+  title: "Contact",
   description:
     "Talk to a real person about your outdoor living project — phone, email, or live chat. SJB Outdoors serves homeowners across Florida.",
 };

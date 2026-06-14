@@ -31,6 +31,11 @@ jobs:
         env:
           NODE_ENV: production
           NEXT_PUBLIC_BASE_PATH: /sjboutdoor
+          # Staging host — makes IS_STAGING true so the GitHub Pages site emits
+          # noindex + robots disallow and doesn't compete with the apex domain.
+          # At cutover: change this to https://sjboutdoors.com (or remove it to
+          # use the fallback in lib/site.ts) and the site becomes indexable.
+          NEXT_PUBLIC_SITE_URL: https://mvoggel.github.io/sjboutdoor
 
       - uses: actions/upload-pages-artifact@v3
         with:
