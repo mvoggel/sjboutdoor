@@ -15,7 +15,7 @@ const STEPS: ProcessStep[] = [
     n: "01",
     title: "Consultation",
     body: "In-home meeting to assess your space, sun angles, and lifestyle goals.",
-    videoSrc: "/video/homepageloop1.MP4",
+    videoSrc: "/video/our-process/process-consult.mov",
   },
   {
     n: "02",
@@ -33,13 +33,13 @@ const STEPS: ProcessStep[] = [
     n: "04",
     title: "Installation",
     body: "Certified installation by experienced technicians, typically completed in a single day.",
-    videoSrc: "/video/extshades.MOV",
+    videoSrc: "/video/our-process/process-install.mov",
   },
   {
     n: "05",
     title: "Walkthrough",
     body: "Full demonstration of motorized controls, pitch adjustment, and care instructions.",
-    videoSrc: "/video/whyitmatters.MOV",
+    videoSrc: "/video/our-process/process-walkthroughpergola.MOV",
   },
 ];
 

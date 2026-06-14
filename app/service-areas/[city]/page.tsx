@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -218,9 +219,13 @@ export default async function CityServiceAreaPage({
                         }}
                       >
                         <span>Explore {product.eyebrow}</span>
-                        <span aria-hidden className="transition-transform group-hover:translate-x-0.5" style={{ color: "var(--rich-warm)" }}>
-                          ↗
-                        </span>
+                        <ArrowUpRight
+                          aria-hidden
+                          size={15}
+                          strokeWidth={1.75}
+                          className="flex-shrink-0 transition-transform group-hover:translate-x-0.5"
+                          style={{ color: "var(--rich-warm)" }}
+                        />
                       </Link>
                       <ConsultButton
                         productSlug={product.slug}

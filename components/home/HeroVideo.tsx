@@ -16,7 +16,9 @@ export function HeroVideo() {
       aria-label="Hero"
       className="relative w-full overflow-hidden"
       style={{
-        height: "calc(100lvh + env(safe-area-inset-bottom))",
+        // Use the *small* viewport height so the hero stops at the address bar
+        // instead of extending behind it (100svh = viewport with toolbars shown).
+        height: "100svh",
         minHeight: "600px",
       }}
     >

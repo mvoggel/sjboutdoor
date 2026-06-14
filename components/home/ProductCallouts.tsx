@@ -130,6 +130,26 @@ function ProductGalleryCard({ product }: { product: Product }) {
     }
   };
 
+  // Mobile: native scroll-snap dead-ends at the first/last slide. Detect a
+  // swipe past either edge on touchend and wrap around to the other end.
+  const touchStartX = useRef<number | null>(null);
+  const SWIPE_WRAP_THRESHOLD = 40;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || count < 2) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(dx) < SWIPE_WRAP_THRESHOLD) return;
+    // Swipe left (dx < 0) = "next"; at the last slide, wrap to the first.
+    if (dx < 0 && activeRef.current >= count - 1) goTo(0);
+    // Swipe right (dx > 0) = "prev"; at the first slide, wrap to the last.
+    else if (dx > 0 && activeRef.current <= 0) goTo(count - 1);
+  };
+
   // Desktop: cycle through the gallery while hovered — the "mini gallery" peek.
   useEffect(() => {
     if (!hovered || reduced || count < 2) return;
@@ -151,6 +171,8 @@ function ProductGalleryCard({ product }: { product: Product }) {
         <div
           ref={trackRef}
           onScroll={onScroll}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
           className="pc-track flex h-full w-full overflow-x-auto"
           style={{ scrollSnapType: "x mandatory" }}
         >
@@ -291,7 +313,8 @@ function ProductGalleryCard({ product }: { product: Product }) {
           el.style.borderColor = "transparent";
         }}
       >
-        Explore {product.name}
+        <span className="hidden sm:inline">Explore {product.name}</span>
+        <span className="sm:hidden">Explore</span>
         <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
       </Link>
     </article>

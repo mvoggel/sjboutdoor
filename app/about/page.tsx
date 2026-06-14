@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/home/CtaBand";
 import { assetPath } from "@/lib/asset-path";
+import { AboutBoard } from "@/components/about/AboutBoard";
 import { Hammer, Compass, HandHeart, Sparkles } from "lucide-react";
 
 const BELIEFS = [
@@ -304,6 +305,24 @@ export default function AboutPage() {
                 <PhotoTile src="/img/products/vidcover.jpeg" alt="Outdoor space" span="col-span-2" />
               </div>
             </div>
+          </Container>
+        </section>
+
+        {/* ── Behind-the-scenes board ─────────────────────── */}
+        <section className="py-20 md:py-28">
+          <Container>
+            <div className="max-w-2xl mb-10 md:mb-14">
+              <p className="text-eyebrow mb-3">Behind the scenes</p>
+              <h2 className="text-h2" style={{ color: "var(--ink-primary)" }}>
+                The people, the trucks, the half-inch.
+              </h2>
+              <p className="mt-4 text-base" style={{ color: "var(--ink-muted)" }}>
+                Less a corporate &ldquo;About Us,&rdquo; more a peek at our week —
+                clips and snapshots of the crew doing what they do best.
+              </p>
+            </div>
+
+            <AboutBoard />
           </Container>
         </section>
 

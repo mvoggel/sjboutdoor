@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -141,17 +142,13 @@ export default function ServiceAreasPage() {
                           }}
                         >
                           <span>{name}</span>
-                          <span
+                          <ArrowUpRight
                             aria-hidden="true"
-                            className="transition-transform group-hover:translate-x-0.5"
-                            style={{
-                              color: "var(--rich-warm)",
-                              fontSize: "0.8em",
-                              lineHeight: 1,
-                            }}
-                          >
-                            ↗
-                          </span>
+                            size={14}
+                            strokeWidth={1.75}
+                            className="flex-shrink-0 transition-transform group-hover:translate-x-0.5"
+                            style={{ color: "var(--rich-warm)" }}
+                          />
                         </Link>
                       );
                     })}
