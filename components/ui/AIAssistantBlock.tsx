@@ -136,7 +136,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
           fontSize: "0.72rem", letterSpacing: "0.2em",
           textTransform: "uppercase", color: "rgba(184,146,74,0.85)", fontWeight: 500,
         }}>
-          Ask SJBB AI
+          Ask SJB AI
         </span>
         <span style={{ color: "rgba(252,251,247,0.15)", fontSize: "0.8rem" }}>·</span>
         <span style={{

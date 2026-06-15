@@ -24,36 +24,33 @@ export const SITE_URL = (
  */
 export const IS_STAGING = /github\.io/i.test(SITE_URL);
 
-/** Public-facing brand name — use this everywhere (not "SJBB", not "South Jersey Blinds"). */
-export const BRAND_NAME = "SJB Outdoors";
+/** Public-facing brand name — matches the Google Business Profile + logo. Use
+ * everywhere (not "SJBB", "SJB Outdoors", or "South Jersey Blinds"). */
+export const BRAND_NAME = "SJB Outdoor Living";
 
-/** Legal entity name for copyright / legal pages. */
-export const LEGAL_NAME = "South Jersey Blinds & Beyond";
+/** Legal entity name for copyright / legal pages (as registered with the EIN). */
+export const LEGAL_NAME = "South Jersey Blinds and Beyond LLC";
 
 export const PHONE_DISPLAY = "(352) 642-5839";
 export const PHONE_E164 = "+13526425839";
 export const EMAIL = "contact@sjboutdoors.com";
 
 /**
- * Business address + geo.
- *
- * TODO(NAP): confirm the exact public address, hours, and lat/lng with the
- * marketing team and make these match the Google Business Profile verbatim. If
- * the business publishes no street address (service-area only), drop `streetAddress`
- * and rely on `areaServed` — but keep city/region/phone consistent with GBP.
+ * Business address + geo. Matches the Google Business Profile physical address.
+ * Keep these verbatim-consistent with GBP (same street/city/ZIP formatting).
  */
 export const ADDRESS = {
-  streetAddress: "TODO: street address",
-  addressLocality: "Naples",
+  streetAddress: "5079 SR-121",
+  addressLocality: "Lake Butler",
   addressRegion: "FL",
-  postalCode: "TODO: ZIP",
+  postalCode: "32054",
   addressCountry: "US",
 } as const;
 
-/** TODO(NAP): real coordinates of the storefront / service hub. */
+/** Coordinates of 5079 SR-121, Lake Butler, FL 32054 (from the Google Maps pin). */
 export const GEO = {
-  latitude: "TODO: lat",
-  longitude: "TODO: lng",
+  latitude: "29.952014",
+  longitude: "-82.425649",
 } as const;
 
 /** Schema.org openingHoursSpecification. Matches the contact page ("Weekdays, 9 AM – 6 PM ET"). */

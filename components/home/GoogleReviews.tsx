@@ -36,7 +36,7 @@ const REVIEWS = [
   },
   {
     id: 6,
-    text: "SJBB was referred by our interior designer and now I know why. The awning fabric is stunning and the motorized operation is whisper-quiet. Our porch has become our favorite spot in the house.",
+    text: "SJB Outdoor Living was referred by our interior designer and now I know why. The awning fabric is stunning and the motorized operation is whisper-quiet. Our porch has become our favorite spot in the house.",
     author: "Michael & Lori T.",
     category: "Retractable Awning",
   },

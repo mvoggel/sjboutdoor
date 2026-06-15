@@ -106,7 +106,7 @@ export function AISummaryBar({
               fontWeight: 500,
             }}
           >
-            Ask SJBB AI
+            Ask SJB AI
           </span>
         </div>
 

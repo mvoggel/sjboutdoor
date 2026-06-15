@@ -7,11 +7,11 @@ import { useState, useRef, useEffect, useCallback } from "react";
 // Endpoint: POST /api/chat — body: { message: string } — response: { reply: string }
 const QA_PAIRS: Record<string, string> = {
   "What services do you offer?":
-    "SJBB Outdoors specializes in custom exterior shades, motorized retractable awnings, louvered pergolas, and Phantom Screen systems — all custom-fabricated for Florida architecture. Every product is designed to disappear when you don't need it, and perform flawlessly when you do.",
+    "SJB Outdoor Living specializes in custom exterior shades, motorized retractable awnings, louvered pergolas, and Phantom Screen systems — all custom-fabricated for Florida architecture. Every product is designed to disappear when you don't need it, and perform flawlessly when you do.",
   "How do I book?":
     "Booking starts with a complimentary in-home consultation. One of our design specialists will visit your property, assess your space, and provide a detailed proposal — no pressure, no obligation. You can schedule directly through our website or call us at (239) 555-0182.",
   "What's included?":
-    "Every SJBB installation includes a full site assessment, custom fabrication to your exact dimensions, professional installation by certified technicians, and our five-year workmanship guarantee. We also provide a walkthrough of your new system and ongoing maintenance support.",
+    "Every SJB Outdoor Living installation includes a full site assessment, custom fabrication to your exact dimensions, professional installation by certified technicians, and our five-year workmanship guarantee. We also provide a walkthrough of your new system and ongoing maintenance support.",
   "Book a consult":
     "We'd love to meet you. Our consultations are complimentary and typically take 45–60 minutes at your home. We serve Naples, Bonita Springs, Marco Island, and surrounding communities. Click 'Schedule Your Consultation' on any page, or reach us at (239) 555-0182.",
 };
@@ -178,7 +178,7 @@ export function ChatWidget() {
       {open && (
         <div
           role="dialog"
-          aria-label="SJBB AI Assistant"
+          aria-label="SJB AI Assistant"
           aria-modal="true"
           style={{
             position: "fixed",
@@ -236,7 +236,7 @@ export function ChatWidget() {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  Ask SJBB AI
+                  Ask SJB AI
                 </p>
                 <p
                   style={{
@@ -311,7 +311,7 @@ export function ChatWidget() {
                   maxWidth: "86%",
                 }}
               >
-                Hello — I&apos;m the SJBB Outdoors assistant. Ask me anything
+                Hello — I&apos;m the SJB Outdoor Living assistant. Ask me anything
                 about our products, pricing, or how to get started.
               </p>
             </div>

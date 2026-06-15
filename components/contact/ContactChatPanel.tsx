@@ -84,7 +84,7 @@ export function ContactChatPanel({ onTalkToRep, onStartChat }: Props) {
               letterSpacing: "0.02em",
             }}
           >
-            SJB Outdoors Concierge
+            SJB Outdoor Living Concierge
           </p>
           <p
             style={{
@@ -113,7 +113,7 @@ export function ContactChatPanel({ onTalkToRep, onStartChat }: Props) {
       {/* ── Message stream ───────────────────────────────────── */}
       <div className="px-5 py-7 space-y-4" style={{ minHeight: 320 }}>
         <Bubble delay={0.15}>
-          Hey there <span aria-hidden="true">👋</span> — this is the SJB Outdoors team.
+          Hey there <span aria-hidden="true">👋</span> — this is the SJB Outdoor Living team.
         </Bubble>
         <Bubble delay={0.4}>
           You&apos;ve got two ways to talk to us. Pick whatever feels right —

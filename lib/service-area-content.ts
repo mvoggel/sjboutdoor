@@ -12,7 +12,7 @@
 import { SERVICE_CITIES, type ServiceCity } from "@/lib/service-areas";
 import type { ProductSlug } from "@/lib/validators";
 
-const BRAND = "SJB Outdoors";
+const BRAND = "SJB Outdoor Living";
 
 /** Stable index for a city so variant selection is deterministic per page. */
 function cityIndex(city: ServiceCity): number {

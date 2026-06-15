@@ -121,7 +121,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   textDecoration: "none",
                 }}
               >
-                SJB Outdoors
+                SJB Outdoor Living
               </Link>
               <button
                 onClick={onClose}

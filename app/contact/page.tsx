@@ -9,7 +9,7 @@ import { PHONE_DISPLAY, PHONE_E164, EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to a real person about your outdoor living project — phone, email, or live chat. SJB Outdoors serves homeowners across Florida.",
+    "Talk to a real person about your outdoor living project — phone, email, or live chat. SJB Outdoor Living serves homeowners across Florida.",
 };
 
 export default function ContactPage() {

@@ -57,7 +57,7 @@ export function Footer() {
               {/* Instagram */}
               <a
                 href="#"
-                aria-label="SJB Outdoors on Instagram"
+                aria-label="SJB Outdoor Living on Instagram"
                 className="p-2 rounded-full border border-[rgba(255,255,255,0.15)] hover:border-[rgba(255,255,255,0.4)] transition-colors"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -69,7 +69,7 @@ export function Footer() {
               {/* Facebook */}
               <a
                 href="#"
-                aria-label="SJB Outdoors on Facebook"
+                aria-label="SJB Outdoor Living on Facebook"
                 className="p-2 rounded-full border border-[rgba(255,255,255,0.15)] hover:border-[rgba(255,255,255,0.4)] transition-colors"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

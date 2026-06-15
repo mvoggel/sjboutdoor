@@ -244,7 +244,7 @@ export function Header() {
       {isHome && (
         <Link
           href="/"
-          aria-label="SJB Outdoors — home"
+          aria-label="SJB Outdoor Living — home"
           className="fixed left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap transition-opacity duration-300"
           style={{
             ...LOGO_FONT,
@@ -257,7 +257,7 @@ export function Header() {
             pointerEvents: scrolled ? "none" : "auto",
           }}
         >
-          SJB Outdoors
+          SJB Outdoor Living
         </Link>
       )}
 
@@ -304,7 +304,7 @@ export function Header() {
                 pointerEvents: es ? "auto" : "none",
               }}
             >
-              SJB Outdoors
+              SJB Outdoor Living
             </Link>
 
             {/* Right nav */}
@@ -361,7 +361,7 @@ export function Header() {
                 pointerEvents: es ? "auto" : "none",
               }}
             >
-              SJB Outdoors
+              SJB Outdoor Living
             </Link>
             <button
               className="p-2 transition-colors"

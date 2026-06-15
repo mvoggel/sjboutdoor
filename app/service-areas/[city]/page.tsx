@@ -266,7 +266,7 @@ export default async function CityServiceAreaPage({
                     color: "var(--rich-warm)",
                   }}
                 >
-                  Why SJB Outdoors
+                  Why SJB Outdoor Living
                 </p>
                 <h2 className="text-h2" style={{ color: "var(--bg-pure)" }}>
                   Local craft, handled start to finish.

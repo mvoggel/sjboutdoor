@@ -9,10 +9,10 @@ import { getAllPosts, getActiveCategories, categoryLabel } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Field Notebook — Outdoor Living Guides & Notes",
   description:
-    "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoors crew — outdoor living for Florida homes.",
+    "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoor Living crew — outdoor living for Florida homes.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "SJB Outdoors — Field Notebook",
+    title: "SJB Outdoor Living — Field Notebook",
     description:
       "Buying guides, install field notes, and company news — written by the people doing the work.",
     url: "/blog",

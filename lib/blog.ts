@@ -86,7 +86,7 @@ function parseFile(file: string): BlogPost {
     title: data.title ?? slug,
     excerpt: data.excerpt ?? "",
     category: category as BlogCategorySlug,
-    author: data.author ?? "SJB Outdoors",
+    author: data.author ?? "SJB Outdoor Living",
     date: data.date ? new Date(data.date).toISOString().slice(0, 10) : "",
     readTime: data.readTime ?? estimateReadTime(content),
     cover: data.cover ?? undefined,

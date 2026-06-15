@@ -55,12 +55,12 @@ export function FloridaMap({ className }: { className?: string }) {
       width={MAP_W}
       height={MAP_H}
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Map of Florida showing SJB Outdoors service areas"
+      aria-label="Map of Florida showing SJB Outdoor Living service areas"
       role="img"
       style={{ display: "block", flexShrink: 0 }}
       className={className}
     >
-      <title>SJB Outdoors Florida service areas</title>
+      <title>SJB Outdoor Living Florida service areas</title>
 
       {/* ── State outline — exact exported path ── */}
       <g id="florida">

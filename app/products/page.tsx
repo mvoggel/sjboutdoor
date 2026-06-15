@@ -11,10 +11,10 @@ import { SITE_URL, absUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Products — Outdoor Living Systems",
   description:
-    "Explore SJB Outdoors product lines: louvered pergolas, retractable awnings, exterior shades, exterior shutters, Bahama shutters, storm shutters, and motorized patio & garage screens — custom-built for Florida homes.",
+    "Explore SJB Outdoor Living product lines: louvered pergolas, retractable awnings, exterior shades, exterior shutters, Bahama shutters, storm shutters, and motorized patio & garage screens — custom-built for Florida homes.",
   alternates: { canonical: "/products" },
   openGraph: {
-    title: "Products — SJB Outdoors",
+    title: "Products — SJB Outdoor Living",
     description:
       "Louvered pergolas, retractable awnings, exterior shades, shutters, and motorized screens for Florida homes.",
     url: "/products",
@@ -68,7 +68,7 @@ const PRODUCTS = [
 const itemList = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "SJB Outdoors Products",
+  name: "SJB Outdoor Living Products",
   itemListElement: PRODUCTS.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,

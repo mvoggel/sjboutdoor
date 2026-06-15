@@ -292,7 +292,7 @@ export function ConsultForm({
           />
           <span className="text-xs leading-relaxed" style={{ color: "var(--ink-muted)" }}>
             By checking this box, you consent to receive SMS messages and calls
-            from SJBB Outdoors at the phone number provided. Message and data
+            from SJB Outdoor Living at the phone number provided. Message and data
             rates may apply. Reply STOP to opt out.
           </span>
         </label>

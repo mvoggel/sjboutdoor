@@ -30,7 +30,7 @@ export default function HomePage() {
         {/* Google Reviews marquee */}
         <GoogleReviews />
 
-        {/* 5.4 Why SJBB */}
+        {/* 5.4 Why SJB Outdoor Living */}
         <WhyUs />
 
         {/* 5.6 CTA Band #2 — inverted (warm white bg) */}

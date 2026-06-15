@@ -17,14 +17,14 @@ export function ServiceAreasMap() {
     <motion.svg
       viewBox="0 0 800 700"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Map of Florida — SJB Outdoors service areas"
+      aria-label="Map of Florida — SJB Outdoor Living service areas"
       role="img"
       initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}
     >
-      <title>SJB Outdoors Florida service areas</title>
+      <title>SJB Outdoor Living Florida service areas</title>
 
       {/* State outline */}
       <motion.path

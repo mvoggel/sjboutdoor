@@ -1,6 +1,6 @@
 # SEO & AI-Search (GEO) — Site Reference & Coordination Brief
 
-This is the one-stop reference for how SJB Outdoors' website is set up for Google/traditional
+This is the one-stop reference for how SJB Outdoor Living's website is set up for Google/traditional
 SEO **and** AI search (ChatGPT, Google AI Overviews, Perplexity, Claude). It doubles as prep
 for coordinating with the GEO consultant the marketing team brought on.
 
@@ -20,7 +20,7 @@ and every structured-data block.
 The recent technical pass added: sitewide Organization/LocalBusiness schema, an AI-crawler-friendly
 `robots.txt`, full per-page metadata + canonicals + Open Graph/Twitter cards, FAQ/Breadcrumb/Product
 structured data, a real `/products` hub, and analytics/verification hooks. **Two values still need
-real data before launch** (address + geo) — see "Action items."
+real value before launch** (geo coordinates) — see "Action items."
 
 ---
 
@@ -28,17 +28,18 @@ real data before launch** (address + geo) — see "Action items."
 
 | Field | Value |
 |---|---|
-| Public brand name | **SJB Outdoors** (not "SJBB", not "South Jersey Blinds") |
-| Legal entity | South Jersey Blinds & Beyond |
-| Production domain | `https://sjboutdoors.com` (single-b, no www) |
+| Public brand name | **SJB Outdoor Living** (matches GBP + logo; not "SJBB", "SJB Outdoors", or "South Jersey Blinds") |
+| Legal entity | South Jersey Blinds and Beyond LLC |
+| Production domain | `https://sjboutdoors.com` (single-b, no www — GBP website field should drop the `www.`) |
 | Phone | (352) 642-5839 |
 | Email | contact@sjboutdoors.com |
+| Address | 5079 SR-121, Lake Butler, FL 32054 |
 | Hours | Mon–Fri 9 AM – 6 PM ET |
 | Service area | 19 Florida cities (see [`lib/service-areas.ts`](../lib/service-areas.ts)) |
 
 > **Why this matters for AI search:** answer engines build a single "entity" for the business by
 > reconciling the name/address/phone across the website, Google Business Profile, and directories.
-> Any mismatch (e.g. "SJBB" on the site but "South Jersey Blinds" in GBP) weakens that entity and
+> Any mismatch (e.g. "SJB Outdoors" on the site but "SJB Outdoor Living" in GBP) weakens that entity and
 > makes the business less likely to be cited. **NAP consistency is the #1 coordination point.**
 
 ---
@@ -52,7 +53,7 @@ real data before launch** (address + geo) — see "Action items."
 | Staging kept out of index | ✅ | github.io host auto-`noindex` so it doesn't compete with the apex domain |
 | `metadataBase` + canonicals | ✅ | Set sitewide; every page has a self-referencing canonical |
 | Per-page metadata | ✅ | All marketing pages (was missing on about, gallery, our-process, products, 6 product pages) |
-| Title template | ✅ | `%s \| SJB Outdoors` applied once; per-page titles are brand-free |
+| Title template | ✅ | `%s \| SJB Outdoor Living` applied once; per-page titles are brand-free |
 | Open Graph + Twitter cards | ✅ | Default share image sitewide + per-page overrides |
 | Organization + LocalBusiness schema | ✅ | Sitewide, in [`app/layout.tsx`](../app/layout.tsx); the canonical entity record |
 | Product schema | ✅ | All 8 product pages |
@@ -63,7 +64,7 @@ real data before launch** (address + geo) — see "Action items."
 | `/products` hub | ✅ | Was a "Coming Soon" placeholder; now links all 8 products + ItemList schema |
 | Web manifest + theme color | ✅ | [`app/manifest.ts`](../app/manifest.ts) |
 | GA4 + Search Console hooks | ✅ (env-gated) | Wired in layout; supply `NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_GSC_VERIFICATION` to activate |
-| Business address + geo in schema | ⚠️ TODO | Placeholders in [`lib/site.ts`](../lib/site.ts) — must match GBP exactly |
+| Business address + geo in schema | ✅ | 5079 SR-121, Lake Butler, FL 32054 (29.952014, -82.425649) — matches GBP |
 | Real apple-touch / hi-res icons + 1200×630 OG image | ⚠️ Nice-to-have | Manifest currently points at favicon.ico; a branded OG image would improve share previews |
 | `/privacy` and `/terms` pages | ⚠️ Broken links | Linked in the footer but the pages don't exist (404). Add them or remove the links. |
 
@@ -85,9 +86,9 @@ real data before launch** (address + geo) — see "Action items."
 
 ### 1) Google Business Profile
 They own GBP optimization. The **only hard requirement** from the website side: GBP must match the
-canonical facts in section 1 **exactly** — same name spelling ("SJB Outdoors"), same phone format,
-same address once we finalize it. Once the real address/hours are set in `lib/site.ts`, the
-`LocalBusiness` JSON-LD and GBP should be identical. Recommend they also link the GBP/Maps URL so we
+canonical facts in section 1 **exactly** — same name spelling ("SJB Outdoor Living"), same phone
+format, same address. The `LocalBusiness` JSON-LD now carries the real NAP, so GBP and the site
+schema should already be identical (just confirm GBP's website field drops the `www.`). Recommend they also link the GBP/Maps URL so we
 can add it to the schema `sameAs` list (strengthens the entity).
 
 ### 2) Kadence WordPress landing pages
@@ -126,9 +127,8 @@ or page-level changes are quick to add through the helpers in `components/seo/` 
 
 ## 5. Action items before / around launch
 
-1. **Fill real NAP** in [`lib/site.ts`](../lib/site.ts): `ADDRESS.streetAddress`, `postalCode`, and
-   `GEO` lat/lng — and confirm hours. Must match GBP. (If service-area only with no public address,
-   drop `streetAddress` and rely on `areaServed`.)
+1. ~~Fill NAP + geo~~ ✅ **Done** — name, address, phone, email, hours, and geo coordinates are all
+   set in [`lib/site.ts`](../lib/site.ts) and match GBP. No placeholders remain.
 2. **Confirm the apex domain spelling** one more time at DNS cutover: `sjboutdoors.com` (single-b).
    It's already the default; just verify the env/deploy uses it.
 3. **Set analytics envs** if desired: `NEXT_PUBLIC_GA_ID` (GA4) and `NEXT_PUBLIC_GSC_VERIFICATION`.
