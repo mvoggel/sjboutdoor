@@ -31,8 +31,8 @@ real data before launch** (address + geo) — see "Action items."
 | Public brand name | **SJB Outdoors** (not "SJBB", not "South Jersey Blinds") |
 | Legal entity | South Jersey Blinds & Beyond |
 | Production domain | `https://sjboutdoors.com` (single-b, no www) |
-| Phone | (609) 445-3593 |
-| Email | info@southjerseyblindsandbeyond.com |
+| Phone | (352) 642-5839 |
+| Email | contact@sjboutdoors.com |
 | Hours | Mon–Fri 9 AM – 6 PM ET |
 | Service area | 19 Florida cities (see [`lib/service-areas.ts`](../lib/service-areas.ts)) |
 

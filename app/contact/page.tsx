@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
-import { ContactChatPanel } from "@/components/contact/ContactChatPanel";
-import { Mail, Phone, Clock, MapPin } from "lucide-react";
+import { GhlInlineChat } from "@/components/contact/GhlInlineChat";
+import { Mail, Phone } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_E164, EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -64,45 +65,24 @@ export default function ContactPage() {
                   <ContactTile
                     icon={<Phone size={18} strokeWidth={1.6} />}
                     label="Call us"
-                    primary={
-                      <a href="tel:+16094453593" className="hover:text-[var(--rich-warm)] transition-colors">
-                        (609) 445-3593
-                      </a>
-                    }
+                    primary={PHONE_DISPLAY}
                     sub="Weekdays, 9 AM – 6 PM ET"
+                    href={`tel:${PHONE_E164}`}
                   />
                   <ContactTile
                     icon={<Mail size={18} strokeWidth={1.6} />}
                     label="Email us"
-                    primary={
-                      <a
-                        href="mailto:info@southjerseyblindsandbeyond.com"
-                        className="hover:text-[var(--rich-warm)] transition-colors"
-                        style={{ wordBreak: "break-word" }}
-                      >
-                        info@southjerseyblindsandbeyond.com
-                      </a>
-                    }
+                    primary={EMAIL}
                     sub="We reply within one business day"
-                  />
-                  <ContactTile
-                    icon={<Clock size={18} strokeWidth={1.6} />}
-                    label="Same-day quotes"
-                    primary="60-second ballpark"
-                    sub="Try the chat for an instant range"
-                  />
-                  <ContactTile
-                    icon={<MapPin size={18} strokeWidth={1.6} />}
-                    label="Where we work"
-                    primary="19 Florida cities"
-                    sub="Coast-to-coast install crews"
+                    href={`mailto:${EMAIL}`}
+                    breakWord
                   />
                 </ul>
               </div>
 
               {/* Right: chat panel */}
-              <div className="lg:pt-2">
-                <ContactChatPanel />
+              <div className="lg:pt-2 min-w-0">
+                <GhlInlineChat />
                 <p
                   className="mt-4 text-center"
                   style={{
@@ -205,21 +185,19 @@ function ContactTile({
   label,
   primary,
   sub,
+  href,
+  breakWord,
 }: {
   icon: React.ReactNode;
   label: string;
   primary: React.ReactNode;
   sub: string;
+  /** When set, the entire tile becomes a clickable link (e.g. tel: / mailto:). */
+  href?: string;
+  breakWord?: boolean;
 }) {
-  return (
-    <li
-      className="p-4"
-      style={{
-        border: "1px solid var(--rich-sand)",
-        borderRadius: "10px",
-        background: "rgba(255,255,255,0.5)",
-      }}
-    >
+  const inner = (
+    <>
       <div className="flex items-center gap-2.5 mb-2">
         <span
           className="flex items-center justify-center"
@@ -246,12 +224,13 @@ function ContactTile({
         </span>
       </div>
       <p
+        className="text-[color:var(--ink-primary)] transition-colors group-hover:text-[var(--rich-warm)]"
         style={{
           fontFamily: "var(--font-cormorant), serif",
           fontSize: "1.05rem",
           fontWeight: 500,
-          color: "var(--ink-primary)",
           lineHeight: 1.35,
+          ...(breakWord ? { wordBreak: "break-word" } : null),
         }}
       >
         {primary}
@@ -259,6 +238,26 @@ function ContactTile({
       <p className="mt-1 text-xs" style={{ color: "var(--ink-muted)" }}>
         {sub}
       </p>
+    </>
+  );
+
+  // Border/background live in classes (not inline styles) so the hover
+  // variants can actually override them.
+  const tileClass =
+    "block h-full p-4 rounded-[10px] border border-[var(--rich-sand)] bg-white/50";
+
+  return (
+    <li>
+      {href ? (
+        <a
+          href={href}
+          className={`group ${tileClass} transition-colors hover:border-[var(--rich-warm)] hover:bg-[rgba(184,146,74,0.06)]`}
+        >
+          {inner}
+        </a>
+      ) : (
+        <div className={tileClass}>{inner}</div>
+      )}
     </li>
   );
 }

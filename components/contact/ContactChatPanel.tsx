@@ -133,7 +133,7 @@ export function ContactChatPanel({ onTalkToRep, onStartChat }: Props) {
             label="Talk to a rep"
             sub="Live human · weekdays 9–6"
             onClick={onTalkToRep}
-            href="tel:+16094453593"
+            href="tel:+13526425839"
           />
           <ChoiceCard
             icon={<MessageSquare size={18} strokeWidth={1.6} />}

@@ -30,9 +30,9 @@ export const BRAND_NAME = "SJB Outdoors";
 /** Legal entity name for copyright / legal pages. */
 export const LEGAL_NAME = "South Jersey Blinds & Beyond";
 
-export const PHONE_DISPLAY = "(609) 445-3593";
-export const PHONE_E164 = "+16094453593";
-export const EMAIL = "info@southjerseyblindsandbeyond.com";
+export const PHONE_DISPLAY = "(352) 642-5839";
+export const PHONE_E164 = "+13526425839";
+export const EMAIL = "contact@sjboutdoors.com";
 
 /**
  * Business address + geo.

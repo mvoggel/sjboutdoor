@@ -334,7 +334,7 @@ export default function LouveredPergolasPage() {
                   marginBottom: "2rem",
                 }}
               >
-                We&apos;ll bring samples to your home, walk your space, and put together a personalized quote. Call (609) 445-3593 or book online.
+                We&apos;ll bring samples to your home, walk your space, and put together a personalized quote. Call (352) 642-5839 or book online.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <button

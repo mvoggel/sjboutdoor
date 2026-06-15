@@ -10,6 +10,7 @@ import {
 } from "@/lib/validators";
 import { Button } from "./Button";
 import { GhlBookingFrame } from "./GhlBookingFrame";
+import { EMAIL } from "@/lib/site";
 
 const PRODUCTS: { value: ProductSlug; label: string }[] = [
   { value: "exterior-shades",     label: "Exterior Shades" },
@@ -307,7 +308,7 @@ export function ConsultForm({
         <div className="rounded-lg p-3 bg-red-50 text-sm text-red-700">
           {serverError}{" "}
           <a
-            href="mailto:info@sjbboutdoors.com"
+            href={`mailto:${EMAIL}`}
             className="underline font-medium"
           >
             Email us directly
