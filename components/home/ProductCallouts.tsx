@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -29,9 +29,9 @@ const PRODUCTS: Product[] = [
       "Shade on demand — extend your living space into the Florida outdoors.",
     href: "/products/retractable-awnings",
     media: [
-      { src: "/img/products/awning.png", alt: "Elegant outdoor terrace with retractable awning" },
       { src: "/img/products/awnings.png", alt: "Retractable awning on a Florida home" },
-      { src: "/img/products/ext-shades.png", alt: "Luxury outdoor living space" },
+      { src: "/img/gallery/retractable-awnings/Awning-Crossarm-BronzeHousing-PuttyRegimentalFabric-DSC05979.jpg", alt: "Retractable awning with bronze housing and putty regimental fabric" },
+      { src: "/img/gallery/retractable-awnings/awningwscreen.jpg", alt: "Retractable awning paired with an exterior screen" },
     ],
   },
   {
@@ -41,9 +41,9 @@ const PRODUCTS: Product[] = [
       "Motorized, custom-fabricated retractable screens for patios, lanais, and garage openings.",
     href: "/products/exterior-shades",
     media: [
-      { src: "/img/products/shades2.png", alt: "Exterior roller shade on a Florida home" },
       { src: "/img/products/ext-shades.png", alt: "Three exterior shade panels on a Florida lanai" },
-      { src: "/img/products/patioscreen.jpg", alt: "Retractable patio screen lowered across a lanai" },
+      { src: "/img/gallery/exterior-shades/screensimage.jpg", alt: "Motorized exterior screen on a Florida patio" },
+      { src: "/img/gallery/patio-shades/screens3.jpg", alt: "Retractable patio screens lowered across a lanai" },
     ],
   },
   {
@@ -55,7 +55,7 @@ const PRODUCTS: Product[] = [
     media: [
       { src: "/img/products/pergolas.jpg", alt: "Modern louvered pergola in Florida" },
       { src: "/img/products/louvered-callout.png", alt: "Louvered pergola detail" },
-      { src: "/img/products/vidcover.jpeg", alt: "Luxury outdoor living with louvered pergola" },
+      { src: "/img/products/pergola-carousel.jpg", alt: "Luxury outdoor living with louvered pergola" },
     ],
   },
   {
@@ -150,14 +150,6 @@ function ProductGalleryCard({ product }: { product: Product }) {
     else if (dx > 0 && activeRef.current <= 0) goTo(count - 1);
   };
 
-  // Desktop: cycle through the gallery while hovered — the "mini gallery" peek.
-  useEffect(() => {
-    if (!hovered || reduced || count < 2) return;
-    const id = setInterval(() => goTo(activeRef.current + 1), 1600);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hovered, reduced, count]);
-
   return (
     <article className="flex flex-col">
       {/* ── Gallery ─────────────────────────────────────────────── */}
@@ -173,8 +165,8 @@ function ProductGalleryCard({ product }: { product: Product }) {
           onScroll={onScroll}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
-          className="pc-track flex h-full w-full overflow-x-auto"
-          style={{ scrollSnapType: "x mandatory" }}
+          className="pc-track flex h-full w-full overflow-x-auto overflow-y-hidden"
+          style={{ scrollSnapType: "x mandatory", touchAction: "pan-x" }}
         >
           {product.media.map((item, j) => (
             <div
