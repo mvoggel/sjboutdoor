@@ -76,7 +76,7 @@ export function ProductCallouts() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="products" className="py-14 md:py-20" style={{ background: "var(--bg-pure)" }}>
+    <section id="products" className="pt-7 md:pt-10 pb-14 md:pb-20" style={{ background: "var(--bg-pure)" }}>
       {/* Hide the horizontal scrollbar on the gallery tracks */}
       <style>{`.pc-track{scrollbar-width:none;-webkit-overflow-scrolling:touch;}.pc-track::-webkit-scrollbar{display:none;}`}</style>
       <Container>

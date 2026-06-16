@@ -16,7 +16,7 @@ export function IntroStatement() {
 
   return (
     <section
-      className="py-14 md:py-20 overflow-hidden"
+      className="pt-14 md:pt-20 pb-7 md:pb-10 overflow-hidden"
       style={{ background: "var(--bg-pure)" }}
     >
       <Container>
