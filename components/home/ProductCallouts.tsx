@@ -169,9 +169,11 @@ function ProductGalleryCard({ product }: { product: Product }) {
           style={{ scrollSnapType: "x mandatory", touchAction: "pan-x" }}
         >
           {product.media.map((item, j) => (
-            <div
+            <Link
               key={j}
-              className="relative h-full flex-none"
+              href={product.href}
+              aria-label={`Explore ${product.name}`}
+              className="relative h-full flex-none block"
               style={{ flexBasis: "100%", width: "100%", scrollSnapAlign: "start" }}
             >
               <Image
@@ -185,7 +187,7 @@ function ProductGalleryCard({ product }: { product: Product }) {
                   transition: "transform 0.9s cubic-bezier(0.16,1,0.3,1)",
                 }}
               />
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -271,12 +273,13 @@ function ProductGalleryCard({ product }: { product: Product }) {
       </div>
 
       {/* ── Below: descriptor + prominent CTA ───────────────────── */}
-      <p
-        className="mt-5 mb-5"
-        style={{ fontSize: "0.98rem", lineHeight: 1.6, color: "var(--ink-muted)", maxWidth: "46ch" }}
+      <Link
+        href={product.href}
+        className="mt-5 mb-5 block"
+        style={{ fontSize: "0.98rem", lineHeight: 1.6, color: "var(--ink-muted)", maxWidth: "46ch", textDecoration: "none" }}
       >
         {product.descriptor}
-      </p>
+      </Link>
 
       <Link
         href={product.href}
