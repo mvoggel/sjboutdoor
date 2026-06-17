@@ -2,35 +2,11 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Headset, Truck, ShieldCheck, Gem, Plus } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { AWNING_FAQS } from "@/components/products/awning-faqs";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-const WHY: { Icon: LucideIcon; title: string; body: string }[] = [
-  {
-    Icon: Headset,
-    title: "Unmatched Support",
-    body: "Local design, install, and service — one team that owns your project start to finish.",
-  },
-  {
-    Icon: Truck,
-    title: "Industry-Leading Speed",
-    body: "Factory turnaround and delivery that's among the fastest in the awning industry.",
-  },
-  {
-    Icon: Gem,
-    title: "Exclusive Components",
-    body: "Premium motors, hardware, and Sunbrella® fabric built to last in Florida's climate.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "10-Year Warranty",
-    body: "Backed by a 10-year limited warranty on the awning, with manufacturer fabric coverage.",
-  },
-];
 
 const FAQS = AWNING_FAQS;
 
@@ -47,65 +23,12 @@ export function AwningFaqWhy() {
       }}
     >
       <Container>
-        {/* Why us strip */}
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: EASE }}
-          style={{ marginBottom: "1.75rem" }}
-        >
-          <p
-            style={{
-              fontSize: "0.68rem",
-              letterSpacing: "0.26em",
-              textTransform: "uppercase",
-              color: "rgba(184,146,74,0.9)",
-              marginBottom: "0.9rem",
-            }}
-          >
-            Why Choose Us
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-              fontWeight: 500,
-              color: "rgba(252,251,247,0.96)",
-              lineHeight: 1.15,
-              letterSpacing: "0.005em",
-            }}
-          >
-            Engineered well. Backed even better.
-          </h2>
-        </motion.div>
-
-        <div className="whyGrid">
-          {WHY.map((w, i) => (
-            <motion.div
-              key={w.title}
-              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
-              className="whyCard"
-            >
-              <span aria-hidden="true" className="whyIcon">
-                <w.Icon size={22} strokeWidth={1.4} />
-              </span>
-              <h3 className="whyTitle">{w.title}</h3>
-              <p className="whyBody">{w.body}</p>
-            </motion.div>
-          ))}
-        </div>
-
         {/* FAQ accordion */}
         <motion.div
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, ease: EASE }}
-          style={{ marginTop: "3.5rem" }}
         >
           <p
             style={{
@@ -195,52 +118,6 @@ export function AwningFaqWhy() {
         </motion.div>
       </Container>
 
-      <style jsx>{`
-        .whyGrid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1px;
-          background: rgba(184, 146, 74, 0.18);
-          border: 1px solid rgba(184, 146, 74, 0.18);
-        }
-        @media (min-width: 768px) {
-          .whyGrid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-        .whyCard {
-          background: var(--near-black);
-          padding: 1.75rem 1.4rem;
-          transition: background 0.25s ease;
-        }
-        .whyCard:hover {
-          background: rgba(184, 146, 74, 0.05);
-        }
-        .whyIcon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 2.75rem;
-          height: 2.75rem;
-          border-radius: 50%;
-          border: 1px solid rgba(184, 146, 74, 0.35);
-          color: rgba(184, 146, 74, 0.95);
-          margin-bottom: 1rem;
-        }
-        .whyTitle {
-          font-family: var(--font-cormorant), Georgia, serif;
-          font-size: 1.15rem;
-          font-weight: 500;
-          color: rgba(252, 251, 247, 0.95);
-          margin-bottom: 0.5rem;
-          line-height: 1.2;
-        }
-        .whyBody {
-          font-size: 0.86rem;
-          line-height: 1.65;
-          color: rgba(252, 251, 247, 0.55);
-        }
-      `}</style>
     </section>
   );
 }

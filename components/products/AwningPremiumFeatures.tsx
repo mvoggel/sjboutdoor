@@ -74,7 +74,7 @@ const STYLES: { name: string; note: string; body: string }[] = [
 
 export function AwningPremiumFeatures() {
   const prefersReducedMotion = useReducedMotion();
-  const [open, setOpen] = useState<string | null>("led");
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
     <section

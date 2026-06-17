@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -54,7 +53,6 @@ export default function AboutPage() {
           <Container>
             <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-end">
               <div>
-                <p className="text-eyebrow mb-4">About SJB</p>
                 <h1
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -241,73 +239,6 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* ── Image collage / personality strip ──────────── */}
-        <section
-          className="py-20 md:py-28"
-          style={{ background: "var(--near-black)", color: "var(--bg-pure)" }}
-        >
-          <Container>
-            <div className="grid lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-5">
-                <p
-                  className="text-eyebrow mb-3"
-                  style={{ color: "var(--rich-warm)" }}
-                >
-                  On the job
-                </p>
-                <h2
-                  style={{
-                    fontFamily: "var(--font-cormorant), serif",
-                    fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                    fontWeight: 500,
-                    color: "var(--bg-pure)",
-                    letterSpacing: "0.01em",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  Not a showroom. A workshop.
-                </h2>
-                <p
-                  className="mt-5"
-                  style={{
-                    color: "rgba(252,251,247,0.7)",
-                    fontSize: "1rem",
-                    lineHeight: 1.75,
-                  }}
-                >
-                  We&apos;d rather be measuring a tricky bay window than standing
-                  around behind a counter. Here&apos;s a small slice of what an
-                  average week looks like — hands on fabric, eyes on the corners,
-                  trucks pointed at the next install.
-                </p>
-                <Link
-                  href="/gallery"
-                  className="inline-flex items-center gap-2 mt-7 text-sm transition-colors hover:text-[var(--rich-warm)]"
-                  style={{
-                    color: "var(--bg-pure)",
-                    fontFamily: "var(--font-cormorant), serif",
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    borderBottom: "1px solid var(--rich-warm)",
-                    paddingBottom: "0.25rem",
-                  }}
-                >
-                  See the full gallery →
-                </Link>
-              </div>
-
-              {/* Photo grid */}
-              <div className="lg:col-span-7 grid grid-cols-3 gap-3 md:gap-4">
-                <PhotoTile src="/img/products/family.jpg" alt="Family at work" span="row-span-2" />
-                <PhotoTile src="/img/products/vidcover.jpeg" alt="Outdoor space" />
-                <PhotoTile src="/img/products/vidcover.jpeg" alt="Outdoor space" />
-                <PhotoTile src="/img/products/family.jpg" alt="Install detail" />
-                <PhotoTile src="/img/products/vidcover.jpeg" alt="Outdoor space" span="col-span-2" />
-              </div>
-            </div>
-          </Container>
-        </section>
-
         {/* ── Behind-the-scenes board ─────────────────────── */}
         <section className="py-20 md:py-28">
           <Container>
@@ -408,35 +339,6 @@ function YearMarquee() {
           background: "rgba(184,146,74,0.35)",
           zIndex: 1,
         }}
-      />
-    </div>
-  );
-}
-
-function PhotoTile({
-  src,
-  alt,
-  span = "",
-}: {
-  src: string;
-  alt: string;
-  span?: string;
-}) {
-  return (
-    <div
-      className={`relative overflow-hidden ${span}`}
-      style={{
-        aspectRatio: span.includes("row-span-2") ? "1 / 2" : "1 / 1",
-        borderRadius: "6px",
-        border: "1px solid rgba(184,146,74,0.18)",
-      }}
-    >
-      <Image
-        src={assetPath(src)}
-        alt={alt}
-        fill
-        className="object-cover transition-transform duration-700 hover:scale-105"
-        sizes="(max-width: 1024px) 50vw, 25vw"
       />
     </div>
   );
