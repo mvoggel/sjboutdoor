@@ -135,9 +135,9 @@ export default function GalleryPage() {
                     onClick={() => setActive(f.slug)}
                     className="flex-shrink-0 px-4 py-1.5 text-xs uppercase tracking-widest transition-colors"
                     style={{
-                      border: "1px solid var(--rich-warm)",
-                      color: isActive ? "var(--bg-pure)" : "var(--rich-warm)",
-                      background: isActive ? "var(--rich-warm)" : "transparent",
+                      border: "1px solid var(--rich-warm-deep)",
+                      color: isActive ? "var(--bg-pure)" : "var(--rich-warm-deep)",
+                      background: isActive ? "var(--rich-warm-deep)" : "transparent",
                       fontFamily: "var(--font-cormorant), serif",
                       whiteSpace: "nowrap",
                       opacity: f.count === 0 ? 0.45 : 1,

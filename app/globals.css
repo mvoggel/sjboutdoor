@@ -8,6 +8,10 @@
   --ink-muted:      #4A5760;
   --rich-deep:      #0B3D2E;
   --rich-warm:      #B8924A;
+  /* Darker gold for small/uppercase accents (eyebrows, gallery filters) that
+     need AA contrast on the cream background — the lighter --rich-warm is kept
+     for accents on dark backgrounds and for borders/dividers. */
+  --rich-warm-deep: #7C5C22;
   --rich-sand:      #E8DFCF;
   --near-black:     #0D0D0D;
   --stone-dark:     #1C1E22;
@@ -23,6 +27,7 @@
   --color-ink-muted:   var(--ink-muted);
   --color-rich-deep:   var(--rich-deep);
   --color-rich-warm:   var(--rich-warm);
+  --color-rich-warm-deep: var(--rich-warm-deep);
   --color-rich-sand:   var(--rich-sand);
   --color-near-black:  var(--near-black);
   --color-stone-dark:  var(--stone-dark);
@@ -115,7 +120,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--rich-warm);
+  color: var(--rich-warm-deep);
 }
 
 /* ─── Blog post body (rendered Markdown) ────────────────────────────── */
