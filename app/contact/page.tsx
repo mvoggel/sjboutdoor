@@ -92,7 +92,7 @@ export default function ContactPage() {
                     color: "var(--ink-muted)",
                   }}
                 >
-                  Two-way chat · routed to our team in Naples
+                  Two-way chat · routed to our team in Florida
                 </p>
               </div>
             </div>

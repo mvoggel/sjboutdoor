@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { assetPath } from "@/lib/asset-path";
+import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/site";
 
 // 720p H.264 re-encode (~45MB vs the 80MB 1080p source) for faster homepage
 // load. Original kept at /video/homeheroloop.mp4 as a fallback.
@@ -124,6 +125,7 @@ export function HeroVideo() {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center md:items-start gap-3"
           >
             <button
               onClick={() => openModal()}
@@ -140,6 +142,32 @@ export function HeroVideo() {
             >
               Schedule a Consultation
             </button>
+
+            {/* Subtle "or call us" line — gives form-averse visitors a direct path */}
+            <p
+              className="text-center md:text-left"
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "clamp(0.82rem, 3vw, 0.95rem)",
+                letterSpacing: "0.04em",
+                color: "rgba(252, 251, 247, 0.92)",
+                textShadow: "0 1px 8px rgba(14,26,31,0.45)",
+              }}
+            >
+              Prefer to talk?{" "}
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="whitespace-nowrap transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                style={{
+                  color: "var(--bg-pure)",
+                  fontWeight: 500,
+                  borderBottom: "1px solid rgba(252,251,247,0.55)",
+                  paddingBottom: "1px",
+                }}
+              >
+                Call {PHONE_DISPLAY}
+              </a>
+            </p>
           </motion.div>
         </div>
       </div>

@@ -280,7 +280,7 @@ export function Header() {
               3-column grid (1fr · auto · 1fr) keeps the logo IN FLOW so its
               width is reserved and the left/right nav can never slide under it. */}
           <div
-            className="hidden min-[1120px]:grid items-center py-5"
+            className="hidden items-center py-5"
             style={{ gridTemplateColumns: "1fr auto 1fr", columnGap: "1rem" }}
           >
 
@@ -348,8 +348,8 @@ export function Header() {
             </nav>
           </div>
 
-          {/* ── Mobile row ── */}
-          <div className="flex min-[1120px]:hidden items-center justify-between py-4">
+          {/* ── Nav row — hamburger menu at every width ── */}
+          <div className="flex items-center justify-between py-4">
             <Link
               href="/"
               className="transition-opacity duration-300"

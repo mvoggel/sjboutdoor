@@ -31,6 +31,9 @@ jobs:
         env:
           NODE_ENV: production
           NEXT_PUBLIC_BASE_PATH: /sjboutdoor
+          # Google Analytics 4 measurement ID. Public by design (it's exposed in
+          # the page source), so it's safe to keep here rather than in a secret.
+          NEXT_PUBLIC_GA_ID: G-SST4SGWHN8
           # Staging host — makes IS_STAGING true so the GitHub Pages site emits
           # noindex + robots disallow and doesn't compete with the apex domain.
           # At cutover: change this to https://sjboutdoors.com (or remove it to

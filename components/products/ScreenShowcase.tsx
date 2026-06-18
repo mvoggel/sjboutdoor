@@ -29,7 +29,7 @@ const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 // ─── Vendor-accurate proof points ────────────────────────────────────────────
 const STATS: { value: string; label: string }[] = [
   { value: "98%", label: "Fewer service calls vs. zipper-track systems" },
-  { value: "75 MPH", label: "Wind-rated tension · Cat-5 Defender option" },
+  { value: "175 MPH", label: "Up to · wind-rated tension · Cat-5 Defender option" },
   { value: "95%", label: "Of UV blocked by solar mesh" },
   { value: "15 yr", label: "Fabric warranty · limited-lifetime hardware" },
 ];
