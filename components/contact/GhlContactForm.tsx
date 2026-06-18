@@ -54,7 +54,9 @@ export function GhlContactForm() {
         border: "none",
         borderRadius: 8,
         overflow: "hidden",
-        background: "var(--bg-pure)",
+        // Matches the form's green Custom CSS surface so there's no cream
+        // flash before the embedded form paints.
+        background: "var(--rich-deep)",
       }}
     />
   );
