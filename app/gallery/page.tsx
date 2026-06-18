@@ -253,19 +253,6 @@ export default function GalleryPage() {
                 </AnimatePresence>
               </div>
             )}
-
-            <p
-              className="mt-10 text-center text-sm"
-              style={{
-                color: "var(--ink-muted)",
-                fontFamily: "var(--font-cormorant), serif",
-                fontStyle: "italic",
-              }}
-            >
-              New installs added regularly. Drop fresh photos into{" "}
-              <code style={{ fontStyle: "normal" }}>public/img/gallery/</code> and they appear here
-              automatically.
-            </p>
           </Container>
         </section>
 
