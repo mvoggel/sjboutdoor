@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
-import { GhlInlineChat } from "@/components/contact/GhlInlineChat";
+import { GhlContactForm } from "@/components/contact/GhlContactForm";
 import { Mail, Phone } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_E164, EMAIL } from "@/lib/site";
 
@@ -82,7 +82,7 @@ export default function ContactPage() {
 
               {/* Right: chat panel */}
               <div className="lg:pt-2 min-w-0">
-                <GhlInlineChat />
+                <GhlContactForm />
                 <p
                   className="mt-4 text-center"
                   style={{
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     color: "var(--ink-muted)",
                   }}
                 >
-                  Two-way chat · routed to our team in Florida
+                  Sent straight to our team in Florida
                 </p>
               </div>
             </div>
