@@ -10,7 +10,7 @@ import { assetPath } from "@/lib/asset-path";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { AwningPremiumFeatures } from "@/components/products/AwningPremiumFeatures";
 import { AwningFabricGallery } from "@/components/products/AwningFabricGallery";
-import { AwningAccessories } from "@/components/products/AwningAccessories";
+// import { AwningAccessories } from "@/components/products/AwningAccessories"; // hidden per content audit
 import { AwningFaqWhy } from "@/components/products/AwningFaqWhy";
 import { ProductGallery } from "@/components/products/ProductGallery";
 
@@ -290,12 +290,10 @@ export default function RetractableAwningsPage() {
         </section>
 
         {/* ── 7. OPTIONAL ACCESSORIES ─────────────────────────────────── */}
-        <AwningAccessories />
+        {/* Temporarily hidden per content audit — restore by uncommenting */}
+        {/* <AwningAccessories /> */}
 
-        {/* ── 8. WHY US + FAQ ─────────────────────────────────────────── */}
-        <AwningFaqWhy />
-
-        {/* ── 9. FINANCING CALLOUT ────────────────────────────────────── */}
+        {/* ── 8. FINANCING CALLOUT ────────────────────────────────────── */}
         <section
           style={{
             background: "var(--bg-pure)",
@@ -376,6 +374,9 @@ export default function RetractableAwningsPage() {
             </motion.div>
           </Container>
         </section>
+
+        {/* ── 9. WHY US + FAQ ─────────────────────────────────────────── */}
+        <AwningFaqWhy />
 
         <ProductGallery
           category="retractable-awnings"
