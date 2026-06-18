@@ -57,7 +57,9 @@ export function Footer() {
             <div className="flex gap-3 mt-5">
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/sjboutdoorliving/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="SJB Outdoor Living on Instagram"
                 className="p-2 rounded-full border border-[rgba(255,255,255,0.15)] hover:border-[rgba(255,255,255,0.4)] transition-colors"
               >
@@ -69,7 +71,9 @@ export function Footer() {
               </a>
               {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/sjboutdoorliving"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="SJB Outdoor Living on Facebook"
                 className="p-2 rounded-full border border-[rgba(255,255,255,0.15)] hover:border-[rgba(255,255,255,0.4)] transition-colors"
               >

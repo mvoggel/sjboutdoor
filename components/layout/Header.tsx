@@ -371,6 +371,7 @@ export function Header() {
             >
               <Menu
                 size={20}
+                className="w-[20px] h-[20px] min-[1120px]:w-[26px] min-[1120px]:h-[26px]"
                 style={{ color: es ? "var(--ink-primary)" : "var(--bg-pure)" }}
               />
             </button>

@@ -24,10 +24,10 @@ const BOARD: BoardItem[] = [
     tag: "Behind the scenes",
   },
   {
-    kind: "image",
-    src: "/img/gallery/retractable-awnings/awningpic.jpg",
-    alt: "An awning install in progress",
-    caption: "Dialing in the projection on a coastal awning.",
+    kind: "video",
+    src: "/video/about/family-about-babyontheway.mov",
+    alt: "Baby announcement",
+    caption: "A fourth generation on the way.",
     tag: "On site",
   },
   {
@@ -36,27 +36,6 @@ const BOARD: BoardItem[] = [
     alt: "The Rosso family",
     caption: "Three decades, same handshake.",
     tag: "Our crew",
-  },
-  {
-    kind: "image",
-    src: "/img/gallery/louvered-pergolas/12.jpg",
-    alt: "A finished louvered pergola",
-    caption: "The reveal — louvers open, shade on demand.",
-    tag: "Finished work",
-  },
-  {
-    kind: "image",
-    src: "/img/gallery/exterior-shades-and-screens/motorizedscreens-gallery.jpg",
-    alt: "Exterior shades on a lanai",
-    caption: "Measuring twice before anything is ordered.",
-    tag: "On site",
-  },
-  {
-    kind: "image",
-    src: "/img/gallery/exterior-shutters/Naples__bahama-2.jpg",
-    alt: "Bahama shutters in Naples",
-    caption: "Bahama shutters, hung level to the half-inch.",
-    tag: "Finished work",
   },
 ];
 

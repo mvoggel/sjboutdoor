@@ -118,7 +118,7 @@ const config: ProductDetailConfig = {
     eyebrow: "Mesh & Color",
     heading: "Choose your balance of view, airflow, and shade.",
     intro:
-      "Mesh openness sets the tradeoff between an open view and full shade and privacy. Drag your eye across the preview — the right half shows what you'd see through the selected mesh, the left shows the open view.",
+      "Mesh openness sets the tradeoff between an open view and full shade and privacy. Hover or click to explore the mesh options below and see how it could look in your home.",
     backdropSrc: "/img/products/patioscreen.jpg",
     backdropAlt: "Lanai view seen through different retractable screen meshes",
     meshTypes: [

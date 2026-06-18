@@ -105,7 +105,7 @@ export default function AboutPage() {
                   style={{ borderRadius: "8px", boxShadow: "0 24px 60px rgba(14,26,31,0.18)" }}
                 >
                   <Image
-                    src={assetPath("/img/products/family.jpg")}
+                    src={assetPath("/img/products/threeowners-about.jpg")}
                     alt="The Rosso family — three decades of custom window treatments"
                     fill
                     className="object-cover"

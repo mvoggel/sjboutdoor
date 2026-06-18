@@ -118,7 +118,7 @@ const config: ProductDetailConfig = {
     eyebrow: "Mesh & Color",
     heading: "Pick the mesh that fits how you use the bay.",
     intro:
-      "More open mesh keeps the breeze and the view; tighter mesh adds shade and daytime privacy. The right half of the preview shows what you'd see through the selected mesh.",
+      "More open mesh keeps the breeze and the view; tighter mesh adds shade and daytime privacy. Hover or click to explore the mesh options below and see how it could look in your home.",
     backdropSrc: "/img/products/garagescreen.jpg",
     backdropAlt: "Garage-bay view seen through different screen meshes",
     meshTypes: [

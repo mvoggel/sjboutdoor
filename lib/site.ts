@@ -75,8 +75,8 @@ export const DESCRIPTION_SHORT =
  * TODO(NAP): replace with the real profile URLs the marketing team maintains.
  */
 export const SAME_AS: string[] = [
-  // "https://www.instagram.com/...",
-  // "https://www.facebook.com/...",
+  "https://www.instagram.com/sjboutdoorliving/",
+  "https://www.facebook.com/sjboutdoorliving",
   // "https://www.google.com/maps/place/...",  // GBP / Google Maps listing
 ];
 
