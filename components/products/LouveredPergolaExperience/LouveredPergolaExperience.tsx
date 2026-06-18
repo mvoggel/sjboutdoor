@@ -115,8 +115,85 @@ export function LouveredPergolaExperience({
   const headerRef = useRef<HTMLDivElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const labelRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const activeIdRef = useRef<number | null>(null);
 
   const PAIR_STAGGER_MS = 220;
+
+  // Keep an active-id mirror so the ResizeObserver callback (created once) can
+  // read the latest active label without re-subscribing.
+  useEffect(() => {
+    activeIdRef.current = activeId;
+  }, [activeId]);
+
+  // Pull the currently-expanded label fully inside the stage. Incremental: it
+  // reads the box's current on-screen rect (transforms included) and adds just
+  // enough offset to clear each edge, so repeated calls (as the box animates
+  // open) converge. Collapsed/inactive labels keep --nudge-* at 0.
+  const clampLabel = useCallback((el: HTMLDivElement) => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 && r.height === 0) return; // hidden (mobile)
+    const s = stage.getBoundingClientRect();
+    const pad = 10;
+    const curX = parseFloat(el.style.getPropertyValue("--nudge-x")) || 0;
+    const curY = parseFloat(el.style.getPropertyValue("--nudge-y")) || 0;
+
+    let dx = 0;
+    const overLeft = s.left + pad - r.left;
+    const overRight = r.right - (s.right - pad);
+    if (overLeft > 0) dx = overLeft;
+    else if (overRight > 0) dx = -overRight;
+
+    let dy = 0;
+    const overTop = s.top + pad - r.top;
+    const overBottom = r.bottom - (s.bottom - pad);
+    if (overTop > 0) dy = overTop; // prefer keeping the top (title) visible
+    else if (overBottom > 0) dy = -overBottom;
+
+    if (dx === 0 && dy === 0) return;
+    el.style.setProperty("--nudge-x", `${curX + dx}px`);
+    el.style.setProperty("--nudge-y", `${curY + dy}px`);
+  }, []);
+
+  // On activation: reset every other label to its tuned position and clamp the
+  // active one. A ResizeObserver then re-clamps it on each animation frame as
+  // its description expands, and on viewport resize.
+  useEffect(() => {
+    for (const [num, el] of labelRefs.current) {
+      if (num !== activeId) {
+        el.style.setProperty("--nudge-x", "0px");
+        el.style.setProperty("--nudge-y", "0px");
+      }
+    }
+    if (activeId != null) {
+      const el = labelRefs.current.get(activeId);
+      if (el) requestAnimationFrame(() => clampLabel(el));
+    }
+  }, [activeId, clampLabel]);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(() => {
+      const id = activeIdRef.current;
+      if (id == null) return;
+      const el = labelRefs.current.get(id);
+      if (el) clampLabel(el);
+    });
+    for (const el of labelRefs.current.values()) ro.observe(el);
+
+    const onResize = () => {
+      const id = activeIdRef.current;
+      if (id == null) return;
+      const el = labelRefs.current.get(id);
+      if (el) clampLabel(el);
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", onResize);
+    };
+  }, [callouts, clampLabel]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -293,6 +370,10 @@ export function LouveredPergolaExperience({
 
                   <div
                     id={tooltipId}
+                    ref={(node) => {
+                      if (node) labelRefs.current.set(c.number, node);
+                      else labelRefs.current.delete(c.number);
+                    }}
                     role="button"
                     tabIndex={-1}
                     aria-label={`${c.title}: ${c.description}`}

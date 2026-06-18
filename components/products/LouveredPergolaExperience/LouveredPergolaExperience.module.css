@@ -272,13 +272,22 @@
   opacity: 1;
 }
 
+/* The --nudge-* vars are set by JS to pull an expanded box back inside the
+   stage so it's never clipped by the stage's overflow:hidden. They default to
+   0, so untouched/collapsed boxes keep their hand-tuned positions. */
 .labelAlignLeft {
-  transform: translate(-100%, -50%);
+  transform: translate(
+    calc(-100% + var(--nudge-x, 0px)),
+    calc(-50% + var(--nudge-y, 0px))
+  );
   text-align: right;
 }
 
 .labelAlignRight {
-  transform: translate(0%, -50%);
+  transform: translate(
+    calc(0px + var(--nudge-x, 0px)),
+    calc(-50% + var(--nudge-y, 0px))
+  );
   text-align: left;
 }
 
