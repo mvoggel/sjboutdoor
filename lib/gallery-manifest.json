@@ -30,12 +30,75 @@
       "caption": "Naples"
     }
   ],
+  "exterior-shades-and-screens": [
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/Bonita-Springs__patio-screen.jpg",
+      "caption": "Bonita Springs"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/exteriorshades-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/motorizedscreens-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/screens-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/screens3.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/shades-gallery.PNG"
+    }
+  ],
+  "exterior-shutters": [
+    {
+      "src": "/img/gallery/exterior-shutters/bahamashutters-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/bahamashuttersblue2-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/bahamashuttersblue3-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/bluebahamashutters-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/Fort-Myers__storm.jpg",
+      "caption": "Fort Myers"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/IMG-4077.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/Marco-Island__bahama.jpg",
+      "caption": "Marco Island"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/Naples__bahama-2.jpg",
+      "caption": "Naples"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/Naples__shutter.png",
+      "caption": "Naples"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/stormshutter2-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shutters/stormshutters-gallery.jpg"
+    }
+  ],
   "retractable-awnings": [
     {
       "src": "/img/gallery/retractable-awnings/Awning-Crossarm-BronzeHousing-PuttyRegimentalFabric-DSC05979.jpg"
     },
     {
       "src": "/img/gallery/retractable-awnings/awningpic.jpg"
+    },
+    {
+      "src": "/img/gallery/retractable-awnings/awnings6-gallery.jpg"
     },
     {
       "src": "/img/gallery/retractable-awnings/awningwscreen.jpg"
@@ -47,69 +110,6 @@
     {
       "src": "/img/gallery/retractable-awnings/Estero__awnings.png",
       "caption": "Estero"
-    }
-  ],
-  "exterior-shutters": [
-    {
-      "src": "/img/gallery/exterior-shutters/Naples__shutter.png",
-      "caption": "Naples"
-    }
-  ],
-  "bahama-shutters": [
-    {
-      "src": "/img/gallery/bahama-shutters/IMG-4077.jpg"
-    },
-    {
-      "src": "/img/gallery/bahama-shutters/Marco-Island__bahama.jpg",
-      "caption": "Marco Island"
-    },
-    {
-      "src": "/img/gallery/bahama-shutters/Naples__bahama-2.jpg",
-      "caption": "Naples"
-    }
-  ],
-  "storm-shutters": [
-    {
-      "src": "/img/gallery/storm-shutters/Fort-Myers__storm.jpg",
-      "caption": "Fort Myers"
-    }
-  ],
-  "exterior-shades": [
-    {
-      "src": "/img/gallery/exterior-shades/Estero__shade.png",
-      "caption": "Estero"
-    },
-    {
-      "src": "/img/gallery/exterior-shades/Naples__exterior-shade.png",
-      "caption": "Naples"
-    },
-    {
-      "src": "/img/gallery/exterior-shades/screens3.jpg"
-    },
-    {
-      "src": "/img/gallery/exterior-shades/screensimage.jpg"
-    }
-  ],
-  "patio-shades": [
-    {
-      "src": "/img/gallery/patio-shades/Bonita-Springs__patio-screen.jpg",
-      "caption": "Bonita Springs"
-    },
-    {
-      "src": "/img/gallery/patio-shades/screens3.jpg"
-    },
-    {
-      "src": "/img/gallery/patio-shades/shades.jpg"
-    }
-  ],
-  "garage-door-screens": [
-    {
-      "src": "/img/gallery/garage-door-screens/Bonita-Springs__garage.jpg",
-      "caption": "Bonita Springs"
-    },
-    {
-      "src": "/img/gallery/garage-door-screens/Naples__garage-screen.png",
-      "caption": "Naples"
     }
   ]
 }

@@ -17,13 +17,9 @@ export type GalleryCategory = {
 
 export const GALLERY_CATEGORIES: GalleryCategory[] = [
   { slug: "louvered-pergolas", label: "Louvered Pergolas", route: "/products/louvered-pergolas" },
-  { slug: "retractable-awnings", label: "Retractable Awnings", route: "/products/retractable-awnings" },
+  { slug: "exterior-shades-and-screens", label: "Exterior Shades & Screens", route: "/products/exterior-shades" },
   { slug: "exterior-shutters", label: "Exterior Shutters", route: "/products/exterior-shutters" },
-  { slug: "bahama-shutters", label: "Bahama Shutters", route: "/products/bahama-shutters" },
-  { slug: "storm-shutters", label: "Storm Shutters", route: "/products/storm-shutters" },
-  { slug: "exterior-shades", label: "Exterior Shades", route: "/products/exterior-shades" },
-  { slug: "patio-shades", label: "Patio Shades", route: "/products/patio-screens" },
-  { slug: "garage-door-screens", label: "Garage Door Screens", route: "/products/garage-door-screens" },
+  { slug: "retractable-awnings", label: "Retractable Awnings", route: "/products/retractable-awnings" },
 ];
 
 /** The virtual "everything" filter shown first on the /gallery page. */

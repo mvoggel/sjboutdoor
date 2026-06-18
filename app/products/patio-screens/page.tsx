@@ -170,7 +170,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Patio screens in the wild.",
     intro: "Recent retractable patio-screen installations across Southwest Florida.",
-    category: "patio-shades",
+    category: "exterior-shades-and-screens",
   },
 };
 

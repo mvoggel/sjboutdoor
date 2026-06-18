@@ -21,7 +21,7 @@ const STEPS: ProcessStep[] = [
     n: "02",
     title: "Measurement",
     body: "Precise on-site measurements and structural review before anything is ordered.",
-    videoSrc: "/video/homepageloop3.MP4",
+    videoSrc: "/video/our-process/ronmeasuring-process.MOV",
   },
   {
     n: "03",

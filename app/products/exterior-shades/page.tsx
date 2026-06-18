@@ -96,7 +96,7 @@ export default function ExteriorShadesPage() {
           eyebrow="Products / Exterior Shades"
           headline="Privacy, climate, and elegance — on demand."
           descriptor="From motorized roller shades to invisible patio and garage screens — our exterior shade systems are precision-fabricated to your home's exact measurements. Each is engineered for Florida's humidity, salt air, and wind loads, and retracts completely out of sight when you don't need it."
-          videoSrc="/video/extshades.MOV"
+          videoSrc="/video/screens-hero.mp4"
           productSlug="exterior-shades"
           aiServiceLabel="Exterior Shades"
           aiContextKey="exterior-shades"
@@ -195,7 +195,7 @@ export default function ExteriorShadesPage() {
 
         {/* ── 7. THE GALLERY ──────────────────────────────────────────── */}
         <ProductGallery
-          category="exterior-shades"
+          category="exterior-shades-and-screens"
           heading="Exterior shades, installed."
           intro="Recent exterior-shade installations across Southwest Florida."
         />

@@ -42,8 +42,8 @@ const PRODUCTS: Product[] = [
     href: "/products/exterior-shades",
     media: [
       { src: "/img/products/ext-shades.png", alt: "Three exterior shade panels on a Florida lanai" },
-      { src: "/img/gallery/exterior-shades/screensimage.jpg", alt: "Motorized exterior screen on a Florida patio" },
-      { src: "/img/gallery/patio-shades/screens3.jpg", alt: "Retractable patio screens lowered across a lanai" },
+      { src: "/img/gallery/exterior-shades-and-screens/motorizedscreens-gallery.jpg", alt: "Motorized exterior screen on a Florida patio" },
+      { src: "/img/gallery/exterior-shades-and-screens/screens3.jpg", alt: "Retractable patio screens lowered across a lanai" },
     ],
   },
   {

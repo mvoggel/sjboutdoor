@@ -162,7 +162,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Garage screens, installed.",
     intro: "Recent full-height garage-screen projects across Southwest Florida.",
-    category: "garage-door-screens",
+    category: "exterior-shades-and-screens",
   },
 };
 

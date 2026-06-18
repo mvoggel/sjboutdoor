@@ -46,14 +46,14 @@ const BOARD: BoardItem[] = [
   },
   {
     kind: "image",
-    src: "/img/gallery/exterior-shades/screensimage.jpg",
+    src: "/img/gallery/exterior-shades-and-screens/motorizedscreens-gallery.jpg",
     alt: "Exterior shades on a lanai",
     caption: "Measuring twice before anything is ordered.",
     tag: "On site",
   },
   {
     kind: "image",
-    src: "/img/gallery/bahama-shutters/Naples__bahama-2.jpg",
+    src: "/img/gallery/exterior-shutters/Naples__bahama-2.jpg",
     alt: "Bahama shutters in Naples",
     caption: "Bahama shutters, hung level to the half-inch.",
     tag: "Finished work",

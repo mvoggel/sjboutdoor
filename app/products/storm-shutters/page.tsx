@@ -141,7 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Storm shutters, installed.",
     intro: "Recent hurricane-protection installations across Southwest Florida.",
-    category: "storm-shutters",
+    category: "exterior-shutters",
   },
 };
 

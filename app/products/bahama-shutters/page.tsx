@@ -141,7 +141,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Gallery",
     heading: "Bahama shutters in place.",
     intro: "Recent Bahama-shutter installations across Southwest Florida.",
-    category: "bahama-shutters",
+    category: "exterior-shutters",
   },
 };
 
