@@ -6,6 +6,7 @@ import type { ComponentProps } from "react";
 import { useRef } from "react";
 import { Header } from "@/components/layout/Header";
 import { DownloadDesignButton } from "@/components/products/DownloadDesignButton";
+import { QuoteDesignButton } from "@/components/products/QuoteDesignButton";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
@@ -159,7 +160,7 @@ export default function LouveredPergolasPage() {
               />
             </motion.div>
 
-            {/* Sub-CTA below visualizer — download the current design as a PDF */}
+            {/* Sub-CTA below visualizer — download a PDF or ballpark the design */}
             <motion.div
               {...inView(0.15)}
               style={{
@@ -167,21 +168,22 @@ export default function LouveredPergolasPage() {
                 display: "flex",
                 flexWrap: "wrap",
                 alignItems: "center",
-                justifyContent: "space-between",
                 gap: "1rem",
               }}
             >
               <p
                 style={{
+                  flex: "1 1 220px",
                   fontSize: "0.9rem",
                   color: "rgba(252,251,247,0.45)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   letterSpacing: "0.04em",
                 }}
               >
-                Love your design? Take it with you — download a PDF of your selections.
+                Love your design? Take it with you, or get a ballpark estimate.
               </p>
               <DownloadDesignButton iframeRef={builderRef} product="louvered-pergolas" />
+              <QuoteDesignButton iframeRef={builderRef} product="louvered-pergolas" />
             </motion.div>
           </Container>
         </section>

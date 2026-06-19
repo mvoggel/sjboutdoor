@@ -1,12 +1,7 @@
 "use client";
 
 import { useState, type RefObject } from "react";
-import {
-  DESIGN_REQUEST,
-  DESIGN_RESPONSE,
-  type DesignProduct,
-  type DesignResponseMessage,
-} from "@/lib/design-bridge";
+import { requestDesign, type DesignProduct } from "@/lib/design-bridge";
 import { buildDesignPdf } from "@/lib/design-pdf";
 
 interface DownloadDesignButtonProps {
@@ -14,12 +9,6 @@ interface DownloadDesignButtonProps {
   iframeRef: RefObject<HTMLIFrameElement | null>;
   product: DesignProduct;
 }
-
-// The visualizer is a lazily-loaded 3D iframe, so on a cold click its bridge
-// may not be listening yet. We re-post the request on an interval until it
-// answers, giving up only after a generous overall window.
-const RESPONSE_TIMEOUT_MS = 12000;
-const RETRY_INTERVAL_MS = 500;
 
 /**
  * Replaces the old "Talk to a Designer" sub-CTA. Asks the embedded visualizer
@@ -81,38 +70,6 @@ export function DownloadDesignButton({ iframeRef, product }: DownloadDesignButto
       {busy ? "Preparing PDF…" : "Download this design"}
     </button>
   );
-}
-
-/** Round-trips the design request into the iframe and resolves with its reply. */
-function requestDesign(
-  target: Window,
-  product: DesignProduct,
-): Promise<DesignResponseMessage> {
-  return new Promise((resolve, reject) => {
-    const post = () => target.postMessage({ type: DESIGN_REQUEST, product }, "*");
-
-    const retry = window.setInterval(post, RETRY_INTERVAL_MS);
-    const timer = window.setTimeout(() => {
-      cleanup();
-      reject(new Error("Visualizer did not respond in time"));
-    }, RESPONSE_TIMEOUT_MS);
-
-    function cleanup() {
-      window.clearInterval(retry);
-      window.clearTimeout(timer);
-      window.removeEventListener("message", onMessage);
-    }
-
-    function onMessage(e: MessageEvent) {
-      const data = e.data as DesignResponseMessage | undefined;
-      if (!data || data.type !== DESIGN_RESPONSE || data.product !== product) return;
-      cleanup();
-      resolve(data);
-    }
-
-    window.addEventListener("message", onMessage);
-    post();
-  });
 }
 
 function triggerDownload(bytes: Uint8Array, filename: string) {

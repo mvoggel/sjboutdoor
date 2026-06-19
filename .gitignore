@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# internal pricing source tables — reference material for the client-side
+# estimator. NEVER commit: repo is public and these hold raw/internal pricing.
+/pricing-source/
+
 # dependencies
 /node_modules
 /.pnp

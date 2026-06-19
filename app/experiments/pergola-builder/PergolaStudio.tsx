@@ -132,6 +132,7 @@ export default function PergolaStudio() {
               product="louvered-pergolas"
               title="Louvered Pergola"
               getSummary={() => buildPergolaSummary(config)}
+              getConfig={() => config}
             />
           </Suspense>
         </Canvas>

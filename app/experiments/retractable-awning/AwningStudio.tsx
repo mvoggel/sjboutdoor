@@ -113,6 +113,7 @@ export default function AwningStudio() {
               product="retractable-awnings"
               title="Retractable Awning"
               getSummary={() => buildAwningSummary(config)}
+              getConfig={() => config}
             />
           </Suspense>
         </Canvas>

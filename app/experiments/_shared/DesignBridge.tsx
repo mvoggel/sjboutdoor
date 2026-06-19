@@ -5,6 +5,7 @@ import { useThree } from "@react-three/fiber";
 import {
   DESIGN_REQUEST,
   DESIGN_RESPONSE,
+  type DesignConfig,
   type DesignProduct,
   type DesignSummaryRow,
 } from "@/lib/design-bridge";
@@ -16,6 +17,8 @@ interface DesignBridgeProps {
   /** Reads the *current* selections into spec rows. Kept in a ref so the
    *  listener (registered once) always sees the latest config. */
   getSummary: () => DesignSummaryRow[];
+  /** Reads the *current* raw config (for client-side ballpark pricing). */
+  getConfig: () => DesignConfig;
 }
 
 /**
@@ -28,16 +31,18 @@ interface DesignBridgeProps {
  * frame. We also force one synchronous render right before capture so the image
  * matches what the user currently sees.
  */
-export function DesignBridge({ product, title, getSummary }: DesignBridgeProps) {
+export function DesignBridge({ product, title, getSummary, getConfig }: DesignBridgeProps) {
   const gl = useThree((s) => s.gl);
   const scene = useThree((s) => s.scene);
   const camera = useThree((s) => s.camera);
 
-  // Keep the latest summary getter in a ref so the message listener (registered
-  // once) always reads the current config without re-subscribing each change.
+  // Keep the latest getters in refs so the message listener (registered once)
+  // always reads the current config without re-subscribing each change.
   const getSummaryRef = useRef(getSummary);
+  const getConfigRef = useRef(getConfig);
   useEffect(() => {
     getSummaryRef.current = getSummary;
+    getConfigRef.current = getConfig;
   });
 
   useEffect(() => {
@@ -61,6 +66,7 @@ export function DesignBridge({ product, title, getSummary }: DesignBridgeProps) 
           product,
           title,
           summary: getSummaryRef.current(),
+          config: getConfigRef.current(),
           snapshot,
         },
         "*",
