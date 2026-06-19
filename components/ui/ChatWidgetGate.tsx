@@ -75,7 +75,7 @@ export function ChatWidgetGate() {
       id="ghl-chat-widget"
       src="https://widgets.leadconnectorhq.com/loader.js"
       data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-      data-widget-id="6a2f08a1b48bf7b6a3d81923"
+      data-widget-id="6a349dd97214fce3458208b8"
       strategy="lazyOnload"
     />
   );
