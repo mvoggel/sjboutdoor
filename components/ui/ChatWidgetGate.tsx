@@ -18,9 +18,11 @@ const HIDE_ON = [
 ];
 
 // The widget renders into an OPEN shadow root on a <chat-widget> element
-// (not a cross-origin iframe), so we can inject our own stylesheet to bump
-// the text size. Note: this site's root font-size is 20px, so 1rem = 20px.
-const FONT_SIZE = "1rem";
+// (not a cross-origin iframe), so we can inject our own stylesheet to control
+// the text size. NOTE: rem is resolved against the *document* root (20px on
+// this site) even inside the shadow root, so we use an explicit px value to get
+// the size we actually want rather than a doubled-up rem.
+const FONT_SIZE = "16px";
 
 function injectFontOverride() {
   const widget = document.querySelector("chat-widget");
@@ -35,16 +37,12 @@ function injectFontOverride() {
   }
   // Scope to text-bearing nodes; the rule also applies to elements GHL adds
   // later (conversation messages, form fields) since it lives in the shadow root.
+  // Catch-all under the widget root so the rule also covers the expanded
+  // conversation view (message bubbles, inputs, buttons) whose class names
+  // differ from the collapsed prompt.
   style.textContent = `
     .lc_text-widget,
-    .lc_text-widget_prompt--prompt-text,
-    .lc_text-widget_prompt--msg-bubble,
-    .lc_text-widget input,
-    .lc_text-widget textarea,
-    .lc_text-widget button,
-    .lc_text-widget p,
-    .lc_text-widget span,
-    .lc_text-widget label { font-size: ${FONT_SIZE} !important; line-height: 1.5 !important; }
+    .lc_text-widget * { font-size: ${FONT_SIZE} !important; line-height: 1.5 !important; }
   `;
   return true;
 }
