@@ -10,8 +10,44 @@ import {
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { ControlsPanel } from "./ControlsPanel";
 import { PergolaModel } from "./PergolaModel";
-import { DEFAULT_CONFIG } from "./config";
-import type { PergolaConfig } from "./types";
+import {
+  DEFAULT_CONFIG,
+  frameColorById,
+  screenColorById,
+  lightColorById,
+} from "./config";
+import type { PergolaConfig, ScreenSide } from "./types";
+import { DesignBridge } from "../_shared/DesignBridge";
+import type { DesignSummaryRow } from "@/lib/design-bridge";
+
+const SCREEN_SIDES: ScreenSide[] = ["front", "back", "left", "right"];
+
+/** Resolve the current config into human-readable spec rows for the PDF. */
+function buildPergolaSummary(config: PergolaConfig): DesignSummaryRow[] {
+  const frame = frameColorById(config.frameColorId);
+  const enabledSides = SCREEN_SIDES.filter((s) => config.screens[s]);
+  const screensValue = enabledSides.length
+    ? `${enabledSides.map((s) => s[0].toUpperCase() + s.slice(1)).join(", ")} — ${screenColorById(config.screenColorId).name}`
+    : "None";
+  const span =
+    config.bays > 1
+      ? `${config.widthFt} ft × ${config.depthFt} ft (${config.bays} bays, ${config.widthFt * config.bays} ft total span)`
+      : `${config.widthFt} ft × ${config.depthFt} ft`;
+  return [
+    { label: "Size", value: span },
+    { label: "Post height", value: `${config.postHeightFt} ft` },
+    { label: "Mount", value: config.mount === "wall" ? "Wall-attached" : "Freestanding" },
+    { label: "Frame color", value: frame.name },
+    { label: "Blade angle", value: `${config.bladeAngleDeg}°` },
+    { label: "Screens", value: screensValue },
+    {
+      label: "Lights",
+      value: config.lightsOn
+        ? `Integrated — ${lightColorById(config.lightColorId).name}`
+        : "Not included",
+    },
+  ];
+}
 
 export default function PergolaStudio() {
   const [config, setConfig] = useState<PergolaConfig>(DEFAULT_CONFIG);
@@ -38,7 +74,7 @@ export default function PergolaStudio() {
         <Canvas
           shadows
           dpr={[1, 2]}
-          gl={{ alpha: true, antialias: true }}
+          gl={{ alpha: true, antialias: true, preserveDrawingBuffer: true }}
           camera={{ position: [20, 14, 24], fov: 42 }}
         >
           <Suspense fallback={null}>
@@ -91,6 +127,11 @@ export default function PergolaStudio() {
               minDistance={6}
               maxDistance={80}
               maxPolarAngle={Math.PI / 2.05}
+            />
+            <DesignBridge
+              product="louvered-pergolas"
+              title="Louvered Pergola"
+              getSummary={() => buildPergolaSummary(config)}
             />
           </Suspense>
         </Canvas>

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ComponentProps } from "react";
+import { useRef } from "react";
 import { Header } from "@/components/layout/Header";
+import { DownloadDesignButton } from "@/components/products/DownloadDesignButton";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { ProductHero } from "@/components/home/ProductHero";
@@ -17,6 +19,7 @@ import { ProductGallery } from "@/components/products/ProductGallery";
 export default function LouveredPergolasPage() {
   const prefersReducedMotion = useReducedMotion();
   const { openModal } = useConsultModal();
+  const builderRef = useRef<HTMLIFrameElement>(null);
 
   const inView = (delay = 0): ComponentProps<typeof motion.div> => ({
     initial: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 24 },
@@ -145,6 +148,7 @@ export default function LouveredPergolasPage() {
               ))}
 
               <iframe
+                ref={builderRef}
                 src={assetPath("/embed/pergola-builder")}
                 width="100%"
                 height="700"
@@ -155,7 +159,7 @@ export default function LouveredPergolasPage() {
               />
             </motion.div>
 
-            {/* Sub-CTA below visualizer */}
+            {/* Sub-CTA below visualizer — download the current design as a PDF */}
             <motion.div
               {...inView(0.15)}
               style={{
@@ -175,38 +179,9 @@ export default function LouveredPergolasPage() {
                   letterSpacing: "0.04em",
                 }}
               >
-                Prefer a guided walkthrough? Our designers bring samples to your home.
+                Love your design? Take it with you — download a PDF of your selections.
               </p>
-              <button
-                onClick={() => openModal("louvered-pergolas")}
-                style={{
-                  padding: "0.75rem 1.75rem",
-                  background: "transparent",
-                  color: "rgba(184,146,74,0.9)",
-                  border: "1px solid rgba(184,146,74,0.4)",
-                  fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "0.82rem",
-                  fontWeight: 450,
-                  letterSpacing: "0.16em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                  transition: "background 0.2s, border-color 0.2s",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLButtonElement;
-                  el.style.background = "rgba(184,146,74,0.1)";
-                  el.style.borderColor = "rgba(184,146,74,0.7)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLButtonElement;
-                  el.style.background = "transparent";
-                  el.style.borderColor = "rgba(184,146,74,0.4)";
-                }}
-              >
-                Talk to a Designer
-              </button>
+              <DownloadDesignButton iframeRef={builderRef} product="louvered-pergolas" />
             </motion.div>
           </Container>
         </section>

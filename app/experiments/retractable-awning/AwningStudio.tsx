@@ -16,8 +16,25 @@ import {
 import * as THREE from "three";
 import { ControlsPanel } from "./ControlsPanel";
 import { AwningModel } from "./AwningModel";
-import { DEFAULT_CONFIG, HW } from "./config";
+import { DEFAULT_CONFIG, HW, fabricById, finishById, VALANCES } from "./config";
 import type { AwningConfig, AwningView } from "./types";
+import { DesignBridge } from "../_shared/DesignBridge";
+import type { DesignSummaryRow } from "@/lib/design-bridge";
+
+/** Resolve the current config into human-readable spec rows for the PDF. */
+function buildAwningSummary(config: AwningConfig): DesignSummaryRow[] {
+  const fabric = fabricById(config.fabricId);
+  const finish = finishById(config.frameFinishId);
+  const valance = VALANCES.find((v) => v.id === config.valance)?.name ?? config.valance;
+  return [
+    { label: "Fabric", value: `${fabric.name} (${fabric.sku})` },
+    { label: "Frame finish", value: finish.name },
+    { label: "Width", value: `${config.widthFt} ft` },
+    { label: "Projection", value: `${config.projectionFt} ft` },
+    { label: "Valance", value: valance },
+    { label: "Arm lights", value: config.lightsOn ? "Integrated LED — included" : "Not included" },
+  ];
+}
 
 export default function AwningStudio() {
   const [config, setConfig] = useState<AwningConfig>(DEFAULT_CONFIG);
@@ -92,6 +109,11 @@ export default function AwningStudio() {
               target={[0, 4.5, 2]}
             />
             <CameraRig config={config} />
+            <DesignBridge
+              product="retractable-awnings"
+              title="Retractable Awning"
+              getSummary={() => buildAwningSummary(config)}
+            />
           </Suspense>
         </Canvas>
 
