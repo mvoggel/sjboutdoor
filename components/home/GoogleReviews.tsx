@@ -6,45 +6,63 @@ import { Container } from "@/components/ui/Container";
 const REVIEWS = [
   {
     id: 1,
-    text: "From the initial walk-through with Zach to the installation with Ian and Nick — the attention to detail was outstanding. We now have climate control year-round, and shade with the press of a button.",
-    author: "Wayne",
-    category: "Outdoor Pavilion",
+    text: "I installed a motorized outdoor awning and patio motorized screens. The staff is amazing and professional — sales, electrician, and installer. Ian made it look like the product was crafted into my pillars with Azek, cutting stone to get the right fit. Beautiful job. I can't say enough.",
+    author: "Noreen McTamney",
+    category: "Awning & Motorized Screens",
   },
   {
     id: 2,
-    text: "Installer Ian was amazing. I've dealt with many contractors and would hire him for anything. He made it look like the product was crafted right into the pillars — had to cut stone to get the right fit. Beautiful job.",
-    author: "Noreen McTamney",
-    category: "Motorized Outdoor Installation",
-  },
-  {
-    id: 3,
-    text: "The professionalism of the crew was beyond my expectations. On time, efficient, made sure we knew how to work the system, and didn't leave a speck of dirt behind. So friendly and helpful.",
-    author: "Erin Wetzel",
-    category: "Install Experience",
-  },
-  {
-    id: 4,
-    text: "Our louvered pergola transformed our lanai into a space we use every single day. The motorization is seamless and the quality is evident — this is a product built to last in the Florida heat.",
-    author: "David & Pamela H.",
-    category: "Louvered Pergola",
-  },
-  {
-    id: 5,
-    text: "We had exterior shades installed on three sides of our outdoor kitchen. The difference is night and day — keeps the space cool, bug-free, and private. Couldn't be happier with how it turned out.",
-    author: "Karen S.",
-    category: "Exterior Shades",
-  },
-  {
-    id: 6,
-    text: "SJB Outdoor Living was referred by our interior designer and now I know why. The awning fabric is stunning and the motorized operation is whisper-quiet. Our porch has become our favorite spot in the house.",
-    author: "Michael & Lori T.",
+    text: "Just had a new awning installed. Our estimator Jared was professional and courteous, and installers Anthony and Brendon were meticulous with the install and cleanup, taking care not to damage our home. Can't say enough good things about this company.",
+    author: "Greg L.",
     category: "Retractable Awning",
   },
   {
+    id: 3,
+    text: "We had retractable shades installed on our outdoor pavilion. Too much sun in summer, too cold in fall and winter — they had the solution for both. From Zach's detailed quote to the install by Ian and Nick, the attention to detail was outstanding. Climate control year-round at the press of a button.",
+    author: "Wayne",
+    category: "Pavilion Retractable Shades",
+  },
+  {
+    id: 4,
+    text: "The quote was very fair and we appreciated how knowledgeable Rob was about the different options. Extremely patient, thorough, and never pushy — he took the time to understand what we wanted and made thoughtful recommendations. Highly recommend for quality, honest pricing, and great service.",
+    author: "Christian Sanchez",
+    category: "Blinds & Shades",
+  },
+  {
+    id: 5,
+    text: "We had outdoor motorized zipper shades installed on our back deck for protection from sun, wind, and insects — the perfect solution. Robbie and Ian were incredibly easy to deal with and made it a smooth experience. Highly recommended!",
+    author: "Robert Cruise",
+    category: "Motorized Zipper Shades",
+  },
+  {
+    id: 6,
+    text: "Just installed a 33-foot awning at my restaurant and it's absolutely stunning! The guys did a great job — super quick and efficient. This is my third awning with this company and I highly recommend.",
+    author: "Peter",
+    category: "Commercial Awning",
+  },
+  {
     id: 7,
-    text: "Zach came out to measure and was incredibly knowledgeable — no pressure whatsoever, just honest advice. The installation was flawless and the team cleaned up perfectly. Already recommended to three neighbors.",
-    author: "Christine B.",
-    category: "Shade & Privacy Screens",
+    text: "Rob and his team are by far the best for your window treatment needs. Plenty of options and designs to work within your budget, and their prices and install work surpass any others in the area. We've used them for our clients for years and couldn't be more grateful for the service they provide.",
+    author: "Kristine Grasso",
+    category: "Window Treatments",
+  },
+  {
+    id: 8,
+    text: "All I can say is WOW! We just had outside shades installed on our deck — a huge job over two days. Ian was the consummate professional, doing additional woodworking to conceal items we didn't want to see and keeping the aesthetics beautiful. A wealth of knowledge and responsive throughout. Highly recommend!",
+    author: "Mindy Gottenberg",
+    category: "Exterior Deck Shades",
+  },
+  {
+    id: 9,
+    text: "I'm beyond happy with my new shades. Very professional from start to finish, with an incredible selection of product and good insight on meeting my household needs. The team and installers were proficient, clean, and knowledgeable. My home finally feels complete with a beautiful environment of brightness and privacy.",
+    author: "Dan Mercadante",
+    category: "Interior Shades",
+  },
+  {
+    id: 10,
+    text: "From start to finish this company was very easy to work with. My salesman Jay was professional, not pushy, and informative. Installation was quick once ordered, and the installers were courteous, quick, and tidy. I love my blinds — and their prices were the best as well.",
+    author: "Donna Rogers",
+    category: "Blinds & Shades",
   },
 ];
 
@@ -195,9 +213,7 @@ export function GoogleReviews() {
               letterSpacing: "0.04em",
             }}
           >
-
-
-            528 verified 5-starGoogle reviews for South Jersey Blinds, our parent company
+528 verified 5-star Google reviews for South Jersey Blinds, our parent company
           </p>
         </div>
       </Container>
