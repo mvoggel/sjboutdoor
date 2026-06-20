@@ -143,15 +143,22 @@ export function HeroVideo() {
               Schedule a Consultation
             </button>
 
-            {/* Subtle "or call us" line — gives form-averse visitors a direct path */}
+            {/* Subtle "or call us" line — gives form-averse visitors a direct path.
+                Sits in a semi-opaque chip so it stays legible over the video and
+                reads as a clear secondary path without becoming a second solid button. */}
             <p
-              className="text-center md:text-left"
+              className="self-center text-center"
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(0.82rem, 3vw, 0.95rem)",
                 letterSpacing: "0.04em",
-                color: "rgba(252, 251, 247, 0.92)",
+                color: "rgba(252, 251, 247, 0.95)",
                 textShadow: "0 1px 8px rgba(14,26,31,0.45)",
+                background: "rgba(14, 26, 31, 0.34)",
+                border: "1px solid rgba(252, 251, 247, 0.28)",
+                backdropFilter: "blur(3px)",
+                WebkitBackdropFilter: "blur(3px)",
+                padding: "0.5rem 1.1rem",
               }}
             >
               Prefer to talk?{" "}
@@ -160,7 +167,7 @@ export function HeroVideo() {
                 className="whitespace-nowrap transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 style={{
                   color: "var(--bg-pure)",
-                  fontWeight: 500,
+                  fontWeight: 600,
                   borderBottom: "1px solid rgba(252,251,247,0.55)",
                   paddingBottom: "1px",
                 }}
