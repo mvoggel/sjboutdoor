@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // basePath-aware (matches next.config.ts) so the live iframe works in dev & prod.
-const BASE = process.env.NODE_ENV === "production" ? "/sjboutdoor" : "";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EMBED_PATH = `${BASE}/embed/pergola-builder`;
 
 const SNIPPET = `<iframe

@@ -16,8 +16,9 @@ import { getWoodTexture } from "./textures";
 import type { FrameColor, PergolaConfig, ScreenSide } from "./types";
 
 // Blender-authored detail props (geometry only — R3F applies the live frame
-// material so color still swaps). Respect basePath for the static export.
-const BASE = process.env.NODE_ENV === "production" ? "/sjboutdoor" : "";
+// material so color still swaps). Respect basePath for the static export
+// (NEXT_PUBLIC_BASE_PATH is set only on the GitHub Pages sub-path deploy).
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const PROPS_URL = `${BASE}/experiments/pergola-builder/props/props.glb`;
 useGLTF.preload(PROPS_URL);
 

@@ -24,8 +24,10 @@
 import type { Fabric, FabricGroup, FrameFinish, AwningConfig } from "./types";
 
 // ── Asset base path ─────────────────────────────────────────────────────────
-// next.config.ts sets basePath "/sjboutdoor" in prod for the static export.
-const BASE = process.env.NODE_ENV === "production" ? "/sjboutdoor" : "";
+// Mirror next.config.ts / assetPath: the base path is only set when the site is
+// served from a sub-path (GitHub Pages staging sets NEXT_PUBLIC_BASE_PATH=
+// /sjboutdoor). On the apex domain via Cloudflare it's unset → served from root.
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const fabricTextureUrl = (id: string) =>
   `${BASE}/experiments/retractable-awning/fabrics/${id}.png`;
 
