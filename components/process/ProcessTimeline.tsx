@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, Play, Volume2, VolumeX, X } from "lucide-react";
 import { assetPath } from "@/lib/asset-path";
+import { mediaSrc } from "@/lib/media-src";
 
 export type ProcessStep = {
   n: string;
@@ -362,7 +363,7 @@ function ThoughtBubbleModal({
 
         <video
           ref={videoRef}
-          src={assetPath(step.videoSrc)}
+          src={mediaSrc(step.videoSrc)}
           autoPlay
           muted
           loop
@@ -628,7 +629,7 @@ function StepCard({
               >
                 <video
                   ref={videoRef}
-                  src={assetPath(step.videoSrc)}
+                  src={mediaSrc(step.videoSrc)}
                   autoPlay
                   muted
                   loop

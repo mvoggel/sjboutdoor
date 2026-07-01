@@ -60,9 +60,10 @@ next-env.d.ts
 /blender-experiments/**/renders/
 /public/experiments/shade-reveal/shade-close.webm
 
-# raw/working video sources — kept local (not referenced by the site; optimized
-# versions are what's served). Two exceed GitHub's 100MB limit.
-/public/video/part1loop.MP4
-/public/video/part2loop.MOV
-/public/video/shadesvid.mov
-/public/video/shadesvid2.MOV
+# All site videos are served from Cloudflare R2 (object storage), not bundled
+# into the deploy — Cloudflare Pages rejects any file over 25 MiB and the
+# background videos far exceed that. The files stay here on disk for local dev
+# (mediaSrc() in lib/media-src.ts falls back to serving them from /video when
+# NEXT_PUBLIC_MEDIA_BASE is unset); in production mediaSrc points at the R2 URL.
+# Upload the contents of this folder to the R2 bucket under a `video/` prefix.
+/public/video/

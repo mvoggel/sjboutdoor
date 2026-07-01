@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { assetPath } from "@/lib/asset-path";
+import { mediaSrc } from "@/lib/media-src";
 
 type BoardItem = {
   kind: "video" | "image";
@@ -65,7 +66,7 @@ export function AboutBoard() {
         >
           {item.kind === "video" ? (
             <video
-              src={assetPath(item.src)}
+              src={mediaSrc(item.src)}
               autoPlay
               muted
               loop

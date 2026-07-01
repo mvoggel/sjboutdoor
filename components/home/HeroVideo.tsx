@@ -3,11 +3,12 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
 import { assetPath } from "@/lib/asset-path";
+import { mediaSrc } from "@/lib/media-src";
 import { PHONE_DISPLAY, PHONE_E164 } from "@/lib/site";
 
 // 720p H.264 re-encode (~45MB vs the 80MB 1080p source) for faster homepage
 // load. Original kept at /video/homeheroloop.mp4 as a fallback.
-const VIDEO_SRC = assetPath("/video/homeheroloop-720.mp4");
+const VIDEO_SRC = mediaSrc("/video/homeheroloop-720.mp4");
 const POSTER_SRC = assetPath("/img/products/vidcover.jpeg");
 
 export function HeroVideo() {

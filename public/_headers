@@ -1,0 +1,27 @@
+# Cloudflare Pages security headers.
+# https://developers.cloudflare.com/pages/configuration/headers/
+# This file is copied verbatim into the build output (out/) and applied by
+# Cloudflare's edge. It has NO effect on GitHub Pages — it's Cloudflare-only.
+#
+# Most specific path wins. The Content-Security-Policy is shipped in
+# Report-Only mode first so it can't break the GoHighLevel chat widget, hosted
+# forms, or GA before it's been validated against real traffic. Once the
+# browser console / CSP report endpoint shows no violations, rename the header
+# from `Content-Security-Policy-Report-Only` to `Content-Security-Policy` to
+# enforce it.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.leadconnectorhq.com; style-src 'self' 'unsafe-inline' https://*.leadconnectorhq.com; img-src 'self' data: blob: https://images.unsplash.com https://*.leadconnectorhq.com https://www.googletagmanager.com https://*.google-analytics.com; font-src 'self' data:; connect-src 'self' https://*.leadconnectorhq.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://*.leadconnectorhq.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://*.leadconnectorhq.com; object-src 'none'; upgrade-insecure-requests
+
+# The builder embeds (/embed/*) are designed to be dropped into an iframe — both
+# on our own product pages (same-origin) and potentially on partner sites. Allow
+# them to be framed anywhere; the clickjacking protection above still guards
+# every real page on the site.
+/embed/*
+  X-Frame-Options: ALLOWALL
+  Content-Security-Policy-Report-Only: frame-ancestors *
