@@ -60,6 +60,10 @@ next-env.d.ts
 /blender-experiments/**/renders/
 /public/experiments/shade-reveal/shade-close.webm
 
+# Internal infrastructure/deployment reference — may hold credentials
+# (dashboard logins, API keys, DNS/registrar notes). Keep local only.
+/DEPLOYMENT.md
+
 # All site videos are served from Cloudflare R2 (object storage), not bundled
 # into the deploy — Cloudflare Pages rejects any file over 25 MiB and the
 # background videos far exceed that. The files stay here on disk for local dev
