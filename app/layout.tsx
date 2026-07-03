@@ -28,6 +28,7 @@ const cormorant = Cormorant({
 });
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
 export const viewport: Viewport = {
@@ -106,6 +107,31 @@ export default function RootLayout({
       className={cormorant.variable}
     >
       <body>
+        {/* Google Tag Manager — runs ALONGSIDE the direct GA4 gtag below. GTM is
+            the container for Google Ads conversions + future marketing tags.
+            IMPORTANT: do NOT add a GA4 config tag inside this GTM container —
+            GA4 already fires directly (GA_ID block) and duplicating it here
+            would double-count every pageview. Placed as high in <body> as the
+            App Router allows, with the <noscript> fallback first, per Google's
+            install guide. Env-gated so it stays dormant until NEXT_PUBLIC_GTM_ID
+            is set (locally + in Cloudflare Pages env). */}
+        {GTM_ID && (
+          <>
+            <noscript>
+              <iframe
+                src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+                height="0"
+                width="0"
+                style={{ display: "none", visibility: "hidden" }}
+              />
+            </noscript>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+              }}
+            />
+          </>
+        )}
         <JsonLd data={orgJsonLd} />
         {GA_ID && (
           <>
