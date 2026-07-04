@@ -24,6 +24,15 @@ export default function GalleryPage() {
 
   const counts = useMemo(() => getCategoryCounts(), []);
 
+  // Product-page gallery links ("See all … in the gallery") land here via
+  // client-side navigation. On the exported build the App Router's scroll reset
+  // doesn't reliably fire (html/body use `overflow-x: clip`), so visitors kept
+  // the product page's scroll offset and arrived at the footer. Force the top on
+  // mount — instant so it doesn't smooth-scroll down from the preserved offset.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
   // Deep-link: /gallery?filter=<category-slug> (used from product pages).
   // Read once on mount — a useState initializer can't see the query string
   // during static prerender, so syncing here avoids a hydration mismatch.

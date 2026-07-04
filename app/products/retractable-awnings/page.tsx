@@ -102,23 +102,24 @@ export default function RetractableAwningsPage() {
           <Container>
             <motion.div
               {...inView(0)}
-              className="grid grid-cols-3 gap-6 md:gap-10 max-w-2xl mx-auto text-center"
+              className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 max-w-2xl mx-auto text-center"
             >
               {[
                 { Icon: SunIcon, label: "Sun Protection" },
                 { Icon: RainIcon, label: "Rain Protection" },
                 { Icon: ShadeIcon, label: "Flexible Shade" },
               ].map(({ Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-3">
+                <div key={label} className="flex flex-col items-center gap-2 sm:gap-3">
                   <span style={{ color: "var(--rich-warm)" }}>
                     <Icon />
                   </span>
                   <p
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "0.95rem",
+                      fontSize: "clamp(0.7rem, 2.6vw, 0.95rem)",
                       fontWeight: 500,
-                      letterSpacing: "0.06em",
+                      letterSpacing: "0.04em",
+                      lineHeight: 1.25,
                       color: "var(--ink-primary)",
                       textTransform: "uppercase",
                     }}

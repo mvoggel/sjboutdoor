@@ -132,9 +132,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
 
-            {/* Nav links */}
-            <nav className="flex-1 flex flex-col justify-center px-7">
-              <ul>
+            {/* Nav links — scrolls within the panel when the list (e.g. with
+                Products expanded) is taller than the available height. my-auto
+                centers it when there's room and collapses to a normal scroll
+                when there isn't, so every item stays reachable. */}
+            <nav className="flex-1 flex flex-col overflow-y-auto overscroll-contain px-7">
+              <ul className="my-auto w-full py-6">
                 {/* Products — expandable */}
                 <motion.li
                   initial={{ opacity: 0, x: 14 }}

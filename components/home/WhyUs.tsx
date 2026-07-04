@@ -26,7 +26,7 @@ const VALUE_PROPS = [
   {
     icon: Heart,
     title: "Family Owned",
-    body: "South Jersey Blinds has been a family business for over 20 years. Florida is our newest chapter.",
+    body: "South Jersey Blinds has been a family business for over three decades. Florida is our newest chapter.",
   },
 ];
 
@@ -163,7 +163,7 @@ export function WhyUs() {
                   marginBottom: "1.5rem",
                 }}
               >
-                &ldquo;Twenty years later, every job still feels personal &mdash; because it is.&rdquo;
+                &ldquo;Three decades later, every job still feels personal &mdash; because it is.&rdquo;
               </blockquote>
               <p
                 style={{

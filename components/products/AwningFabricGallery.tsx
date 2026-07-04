@@ -20,6 +20,25 @@ const swatchUrl = (id: string) =>
 export function AwningFabricGallery() {
   const prefersReducedMotion = useReducedMotion();
   const [active, setActive] = useState<string | null>(null);
+  // Horizontal nudge (px) applied to the active tooltip so edge-column swatches
+  // don't push their label off-screen. Measured from the swatch's own tooltip.
+  const [shift, setShift] = useState(0);
+
+  const showTip = (el: HTMLElement, id: string) => {
+    setActive(id);
+    const tip = el.querySelector<HTMLElement>(".swatchTip");
+    if (!tip) {
+      setShift(0);
+      return;
+    }
+    const rect = tip.getBoundingClientRect();
+    const margin = 10;
+    let s = 0;
+    if (rect.left < margin) s = margin - rect.left;
+    else if (rect.right > window.innerWidth - margin)
+      s = window.innerWidth - margin - rect.right;
+    setShift(Math.round(s));
+  };
 
   return (
     <section
@@ -107,9 +126,9 @@ export function AwningFabricGallery() {
                         key={f.id}
                         type="button"
                         className="swatchChip"
-                        onMouseEnter={() => setActive(f.id)}
+                        onMouseEnter={(e) => showTip(e.currentTarget, f.id)}
                         onMouseLeave={() => setActive((a) => (a === f.id ? null : a))}
-                        onFocus={() => setActive(f.id)}
+                        onFocus={(e) => showTip(e.currentTarget, f.id)}
                         onBlur={() => setActive((a) => (a === f.id ? null : a))}
                         aria-label={`${f.name} — Sunbrella ${f.sku}`}
                       >
@@ -127,7 +146,10 @@ export function AwningFabricGallery() {
                           aria-hidden="true"
                           style={{
                             opacity: isActive ? 1 : 0,
-                            transform: isActive ? "translate(-50%, 0)" : "translate(-50%, 4px)",
+                            transform: isActive
+                              ? `translate(calc(-50% + ${shift}px), 0)`
+                              : "translate(-50%, 4px)",
+                            ["--tip-shift" as string]: isActive ? `${shift}px` : "0px",
                           }}
                         >
                           <span className="swatchTipName">{f.name}</span>
@@ -286,7 +308,8 @@ export function AwningFabricGallery() {
           content: "";
           position: absolute;
           top: 100%;
-          left: 50%;
+          /* Counter the tooltip's edge-nudge so the arrow stays on the swatch. */
+          left: calc(50% - var(--tip-shift, 0px));
           transform: translateX(-50%);
           border: 5px solid transparent;
           border-top-color: var(--ink-primary);

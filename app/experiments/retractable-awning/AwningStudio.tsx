@@ -19,6 +19,7 @@ import { AwningModel } from "./AwningModel";
 import { DEFAULT_CONFIG, HW, fabricById, finishById, VALANCES } from "./config";
 import type { AwningConfig, AwningView } from "./types";
 import { DesignBridge } from "../_shared/DesignBridge";
+import { useDrawerScrollBridge } from "../_shared/useDrawerScrollBridge";
 import type { DesignSummaryRow } from "@/lib/design-bridge";
 
 /** Resolve the current config into human-readable spec rows for the PDF. */
@@ -40,6 +41,7 @@ export default function AwningStudio() {
   const [config, setConfig] = useState<AwningConfig>(DEFAULT_CONFIG);
   const [isMobile, setIsMobile] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true);
+  const drawerBridge = useDrawerScrollBridge();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 860);
@@ -140,7 +142,13 @@ export default function AwningStudio() {
 
       {/* Controls — side panel on desktop, bottom drawer on mobile */}
       {isMobile ? (
-        <div style={{ ...drawer, maxHeight: drawerOpen ? "52vh" : 46 }}>
+        <div
+          ref={drawerBridge.ref}
+          onTouchStart={drawerBridge.onTouchStart}
+          onTouchMove={drawerBridge.onTouchMove}
+          onTouchEnd={drawerBridge.onTouchEnd}
+          style={{ ...drawer, maxHeight: drawerOpen ? "52vh" : 46 }}
+        >
           <button style={drawerHandle} onClick={() => setDrawerOpen((o) => !o)}>
             <span style={handleBar} />
             {drawerOpen ? "Hide options" : "Customize"}
@@ -263,6 +271,7 @@ const hint: React.CSSProperties = {
 const drawer: React.CSSProperties = {
   background: "#16181c",
   overflowY: "auto",
+  overscrollBehavior: "contain",
   transition: "max-height .25s ease",
   borderTop: "1px solid #ffffff1a",
 };

@@ -18,6 +18,7 @@ import {
 } from "./config";
 import type { PergolaConfig, ScreenSide } from "./types";
 import { DesignBridge } from "../_shared/DesignBridge";
+import { useDrawerScrollBridge } from "../_shared/useDrawerScrollBridge";
 import type { DesignSummaryRow } from "@/lib/design-bridge";
 
 const SCREEN_SIDES: ScreenSide[] = ["front", "back", "left", "right"];
@@ -53,6 +54,7 @@ export default function PergolaStudio() {
   const [config, setConfig] = useState<PergolaConfig>(DEFAULT_CONFIG);
   const [isMobile, setIsMobile] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(true);
+  const drawerBridge = useDrawerScrollBridge();
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 860);
@@ -141,7 +143,13 @@ export default function PergolaStudio() {
 
       {/* Controls — side panel on desktop, collapsible bottom drawer on mobile */}
       {isMobile ? (
-        <div style={{ ...drawer, maxHeight: drawerOpen ? "52vh" : 46 }}>
+        <div
+          ref={drawerBridge.ref}
+          onTouchStart={drawerBridge.onTouchStart}
+          onTouchMove={drawerBridge.onTouchMove}
+          onTouchEnd={drawerBridge.onTouchEnd}
+          style={{ ...drawer, maxHeight: drawerOpen ? "52vh" : 46 }}
+        >
           <button style={drawerHandle} onClick={() => setDrawerOpen((o) => !o)}>
             <span style={handleBar} />
             {drawerOpen ? "Hide options" : "Customize"}
@@ -192,6 +200,7 @@ const hint: React.CSSProperties = {
 const drawer: React.CSSProperties = {
   background: "#16181c",
   overflowY: "auto",
+  overscrollBehavior: "contain",
   transition: "max-height .25s ease",
   borderTop: "1px solid #ffffff1a",
 };
