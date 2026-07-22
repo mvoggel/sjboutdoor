@@ -2,7 +2,7 @@
 title:    "How to pick a motorized screen that actually survives Florida"
 excerpt:  "Wind ratings, motor brands, mesh choices, and the small details that decide whether a motorized screen lasts five years or fifteen."
 category: buying-guides
-author:   "Matt Voggel"
+author:   "Ron Rosso"
 date:     2026-05-28
 readTime: "8 min"
 draft:    false

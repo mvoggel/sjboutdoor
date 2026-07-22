@@ -2,7 +2,7 @@
 title:    "Your headline goes here"
 excerpt:  "One or two sentences that tease the post on the blog index."
 category: field-notes
-author:   "Your Name"
+author:   "Ron Rosso"
 date:     2026-01-01
 readTime: ""
 cover:    ""

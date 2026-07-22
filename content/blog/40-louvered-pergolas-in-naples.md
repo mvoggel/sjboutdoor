@@ -2,7 +2,7 @@
 title:    "What we learned installing 40 louvered pergolas in Naples"
 excerpt:  "Hard-won lessons from a year of installs: drainage, color choices that age well, and the one measurement everyone gets wrong."
 category: field-notes
-author:   "The SJB Install Crew"
+author:   "Ron Rosso"
 date:     2026-04-15
 readTime: "6 min"
 draft:    false

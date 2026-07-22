@@ -38,6 +38,11 @@ export const EMAIL = "contact@sjboutdoors.com";
 /**
  * Business address + geo. Matches the Google Business Profile physical address.
  * Keep these verbatim-consistent with GBP (same street/city/ZIP formatting).
+ *
+ * NOTE: intentionally NOT emitted in JSON-LD. Per the Mader Marketing AEO
+ * package (July 2026), SJB Outdoor Living is marked up as a Service Area
+ * Business — `areaServed` defines the territory and no street address goes in
+ * the schema. Kept here as the canonical GBP record only.
  */
 export const ADDRESS = {
   streetAddress: "5079 SR-121",
@@ -89,30 +94,73 @@ export function absUrl(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-/** A value is a real value (not a yet-to-be-filled placeholder) if it isn't a TODO. */
-const isReal = (v: string) => Boolean(v) && !v.startsWith("TODO");
+// ── AEO / entity-graph identity (Mader Marketing schema package, July 2026) ──
 
 /**
- * PostalAddress for schema, omitting any field still set to a TODO placeholder.
- * A service-area business with only locality/region/country is valid and useful,
- * so we emit what we have now and the street/ZIP fill in automatically later.
+ * Parent company — links SJB Outdoor Living to South Jersey Blinds & Beyond in
+ * the knowledge graph so AI engines understand the relationship (same family
+ * ownership, 35+ years, 528 five-star reviews earned under the parent brand).
  */
-export function getPostalAddress(): Record<string, string> {
-  const out: Record<string, string> = { "@type": "PostalAddress" };
-  if (isReal(ADDRESS.streetAddress)) out.streetAddress = ADDRESS.streetAddress;
-  if (isReal(ADDRESS.addressLocality)) out.addressLocality = ADDRESS.addressLocality;
-  if (isReal(ADDRESS.addressRegion)) out.addressRegion = ADDRESS.addressRegion;
-  if (isReal(ADDRESS.postalCode)) out.postalCode = ADDRESS.postalCode;
-  if (isReal(ADDRESS.addressCountry)) out.addressCountry = ADDRESS.addressCountry;
-  return out;
-}
+export const PARENT_ORG = {
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://southjerseyblindsandbeyond.com/#business",
+  name: "South Jersey Blinds & Beyond LLC",
+} as const;
 
-/** GeoCoordinates for schema, or null while the coordinates are still placeholders. */
-export function getGeo(): Record<string, string> | null {
-  if (!isReal(GEO.latitude) || !isReal(GEO.longitude)) return null;
-  return {
-    "@type": "GeoCoordinates",
-    latitude: GEO.latitude,
-    longitude: GEO.longitude,
-  };
-}
+/** Owner identity — used as founder/employee on the business schema and as the
+ * author Person block on every blog post. */
+export const OWNER = {
+  name: "Ron Rosso",
+  jobTitle: "Owner",
+  description:
+    "Ron Rosso is the owner of SJB Outdoor Living and South Jersey Blinds & Beyond LLC. With over 35 years in the outdoor living and window treatment industry, Ron brings the same craftsmanship and attention to detail that earned his family business 528 five-star reviews to Florida homeowners.",
+} as const;
+
+/** Topics the business is authoritative on — schema `knowsAbout`. */
+export const KNOWS_ABOUT = [
+  "Motorized Pergolas",
+  "Louvered Pergolas",
+  "Retractable Awnings",
+  "Motorized Exterior Shades",
+  "Bahama Shutters",
+  "Storm Shutters",
+  "Azenco Pergolas",
+  "Hurricane Protection",
+  "Outdoor Living",
+] as const;
+
+/** Credentials line — schema `hasCredential`. */
+export const CREDENTIALS =
+  "Florida Licensed Contractors, Azenco Authorized Dealer";
+
+/**
+ * Aggregate rating. The 528 five-star Google reviews were earned by the parent
+ * company (South Jersey Blinds & Beyond) — the description states that
+ * explicitly so the markup stays honest for AI engines and validators.
+ */
+export const AGGREGATE_RATING = {
+  "@type": "AggregateRating",
+  ratingValue: "5",
+  reviewCount: "528",
+  bestRating: "5",
+  worstRating: "1",
+  description:
+    "528 verified 5-star Google reviews for South Jersey Blinds & Beyond, the parent company of SJB Outdoor Living.",
+} as const;
+
+/** Ron Rosso Person entity (Schema 7) — emitted on every blog post page. */
+export const OWNER_PERSON_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/#ron-rosso`,
+  name: OWNER.name,
+  jobTitle: OWNER.jobTitle,
+  worksFor: {
+    "@type": "HomeAndConstructionBusiness",
+    "@id": `${SITE_URL}/#business`,
+    name: BRAND_NAME,
+  },
+  description: OWNER.description,
+  url: `${SITE_URL}/about`,
+  sameAs: ["https://www.facebook.com/sjboutdoorliving", SITE_URL],
+} satisfies Record<string, unknown>;

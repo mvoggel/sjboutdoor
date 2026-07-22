@@ -7,7 +7,14 @@ import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/home/CtaBand";
 import { getAllPosts, getPost, categoryLabel } from "@/lib/blog";
 import { JsonLd, breadcrumbList } from "@/components/seo/JsonLd";
-import { SITE_URL, BRAND_NAME, absUrl, LOGO_PATH } from "@/lib/site";
+import {
+  SITE_URL,
+  BRAND_NAME,
+  absUrl,
+  LOGO_PATH,
+  OWNER_PERSON_JSONLD,
+  OWNER,
+} from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -70,7 +77,12 @@ export default async function BlogPostPage({
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Person", name: post.author },
+    // Links to the Ron Rosso Person entity emitted alongside (Schema 7).
+    author: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#ron-rosso`,
+      name: post.author,
+    },
     publisher: {
       "@type": "Organization",
       name: BRAND_NAME,
@@ -89,6 +101,7 @@ export default async function BlogPostPage({
         <JsonLd
           data={[
             jsonLd,
+            OWNER_PERSON_JSONLD,
             breadcrumbList([
               { name: "Home", url: `${SITE_URL}/` },
               { name: "Field Notebook", url: absUrl("/blog") },
@@ -144,11 +157,31 @@ export default async function BlogPostPage({
                 {post.title}
               </h1>
 
+              {/* Visible author byline — wording specified by the AEO package;
+                  matches the Person JSON-LD entity on this page. The author
+                  name links to /about (the Person schema's `url`). */}
               <p
                 className="mt-6"
+                style={{ fontSize: "0.8rem", color: "var(--ink-muted)", letterSpacing: "0.04em", lineHeight: 1.6 }}
+              >
+                By{" "}
+                <Link
+                  href="/about"
+                  style={{
+                    color: "var(--ink-primary)",
+                    borderBottom: "1px solid rgba(184,146,74,0.5)",
+                  }}
+                >
+                  {OWNER.name}, {OWNER.jobTitle}
+                </Link>{" "}
+                — SJB Outdoor Living &amp; South Jersey Blinds &amp; Beyond LLC.
+                35+ years in the outdoor living industry.
+              </p>
+              <p
+                className="mt-2"
                 style={{ fontSize: "0.8rem", color: "var(--ink-muted)", letterSpacing: "0.04em" }}
               >
-                {post.author} · {formatDate(post.date)} · {post.readTime} read
+                {formatDate(post.date)} · {post.readTime} read
               </p>
             </div>
           </Container>

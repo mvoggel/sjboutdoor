@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { OWNER } from "@/lib/site";
 
 /**
  * Blog data layer.
@@ -86,7 +87,9 @@ function parseFile(file: string): BlogPost {
     title: data.title ?? slug,
     excerpt: data.excerpt ?? "",
     category: category as BlogCategorySlug,
-    author: data.author ?? "SJB Outdoor Living",
+    // Posts are attributed to the owner by default (AEO package: author entity
+    // is the Ron Rosso Person block emitted on every post page).
+    author: data.author ?? OWNER.name,
     date: data.date ? new Date(data.date).toISOString().slice(0, 10) : "",
     readTime: data.readTime ?? estimateReadTime(content),
     cover: data.cover ?? undefined,

@@ -11,6 +11,21 @@ const seo: ProductSeo = {
   image: "/img/products/st-shutter.png",
   category: "Exterior Shutters",
   breadcrumbName: "Exterior Shutters",
+  service: {
+    name: "Bahama Shutters and Storm Shutter Installation Florida",
+    serviceType: "Exterior Shutter Installation",
+    description:
+      "SJB Outdoor Living installs Bahama shutters and storm shutters for Florida homes. Bahama shutters provide coastal shade, airflow, and curb appeal. Storm shutters offer hurricane protection rated for Florida conditions. FL-licensed installers. Free in-home consultation.",
+    cities: [
+      "Gainesville, FL",
+      "Jacksonville, FL",
+      "Pensacola, FL",
+      "Destin, FL",
+      "Panama City, FL",
+      "Naples, FL",
+      "Fort Myers, FL",
+    ],
+  },
 };
 
 export const metadata: Metadata = productMetadata(seo);

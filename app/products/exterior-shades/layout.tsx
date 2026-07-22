@@ -11,6 +11,19 @@ const seo: ProductSeo = {
   image: "/img/products/ext-shades.png",
   category: "Exterior Solar Shades",
   breadcrumbName: "Exterior Shades",
+  service: {
+    name: "Motorized Exterior Screen Installation Florida",
+    serviceType: "Motorized Exterior Screen Installation",
+    description:
+      "SJB Outdoor Living installs custom motorized retractable exterior screens for Florida patios, lanais, and garage openings. Screens provide shade, insect protection, privacy, and sun blocking. Disappear completely when not needed. Custom-fabricated for any outdoor space. FL-licensed installers. Free in-home consultation.",
+    cities: [
+      "Gainesville, FL",
+      "Jacksonville, FL",
+      "Pensacola, FL",
+      "Naples, FL",
+      "Fort Myers, FL",
+    ],
+  },
 };
 
 export const metadata: Metadata = productMetadata(seo);

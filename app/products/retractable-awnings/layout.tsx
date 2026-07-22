@@ -12,6 +12,21 @@ const seo: ProductSeo = {
   image: "/img/products/awnings.png",
   category: "Retractable Awnings",
   breadcrumbName: "Retractable Awnings",
+  service: {
+    name: "Retractable Awning Installation Florida",
+    serviceType: "Retractable Awning Installation",
+    description:
+      "SJB Outdoor Living installs custom retractable awnings for Florida homes and outdoor spaces. Motorized and manual options available. Custom-fabricated for your deck, patio, or outdoor living area. Built for Florida heat, humidity, and sun. FL-licensed installers. Free in-home consultation.",
+    cities: [
+      "Gainesville, FL",
+      "Jacksonville, FL",
+      "Pensacola, FL",
+      "Destin, FL",
+      "Tallahassee, FL",
+      "Ocala, FL",
+      "Naples, FL",
+    ],
+  },
 };
 
 export const metadata: Metadata = productMetadata(seo);

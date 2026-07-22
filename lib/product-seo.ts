@@ -23,6 +23,27 @@ export interface ProductSeo {
   brand?: string;
   /** Short label shown in the breadcrumb trail */
   breadcrumbName: string;
+  /**
+   * Optional Service JSON-LD block (Mader Marketing AEO package, July 2026).
+   * Emitted alongside the Product schema — the Service entity is what AI
+   * answer engines match to "who installs X in Florida" queries. `provider`
+   * links back to the sitewide business entity via its `@id`.
+   */
+  service?: ProductService;
+}
+
+export interface ProductService {
+  /** Service name, e.g. "Motorized Louvered Pergola Installation Florida" */
+  name: string;
+  /** schema.org serviceType, e.g. "Louvered Pergola Installation" */
+  serviceType: string;
+  description: string;
+  /** Product brand installed (e.g. "Azenco") — omitted when not brand-specific */
+  brand?: string;
+  /** Featured cities for this service's areaServed ("Florida" is always appended) */
+  cities: string[];
+  /** Offer line (defaults to the free-consultation offer) */
+  offer?: string;
 }
 
 export function productMetadata(p: ProductSeo): Metadata {
@@ -56,10 +77,41 @@ export function productJsonLd(p: ProductSeo): Record<string, unknown>[] {
       manufacturer: { "@type": "Organization", name: BRAND_NAME },
       url,
     },
+    ...(p.service ? [serviceJsonLd(p.slug, p.service)] : []),
     breadcrumbList([
       { name: "Home", url: `${SITE_URL}/` },
       { name: "Products", url: absUrl("/products") },
       { name: p.breadcrumbName, url },
     ]),
   ];
+}
+
+function serviceJsonLd(
+  slug: string,
+  s: ProductService
+): Record<string, unknown> {
+  const url = absUrl(`/products/${slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}/#service`,
+    name: s.name,
+    serviceType: s.serviceType,
+    description: s.description,
+    ...(s.brand ? { brand: { "@type": "Brand", name: s.brand } } : {}),
+    provider: {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": `${SITE_URL}/#business`,
+      name: BRAND_NAME,
+    },
+    areaServed: [
+      ...s.cities.map((name) => ({ "@type": "City", name })),
+      { "@type": "AdministrativeArea", name: "Florida" },
+    ],
+    url,
+    offers: {
+      "@type": "Offer",
+      description: s.offer ?? "Free in-home consultation.",
+    },
+  };
 }

@@ -16,8 +16,11 @@ import {
   DEFAULT_OG_IMAGE,
   LOGO_PATH,
   absUrl,
-  getPostalAddress,
-  getGeo,
+  PARENT_ORG,
+  OWNER,
+  KNOWS_ABOUT,
+  CREDENTIALS,
+  AGGREGATE_RATING,
 } from "@/lib/site";
 import { SERVICE_CITIES } from "@/lib/service-areas";
 
@@ -71,6 +74,9 @@ export const metadata: Metadata = {
 
 // ── Sitewide entity schema — the canonical record Google's Knowledge Graph and
 // AI answer engines anchor to. NAP values come from lib/site.ts (must match GBP).
+// Service Area Business configuration (Mader Marketing AEO package, July 2026):
+// no street address in the markup — `areaServed` defines the territory, and
+// `parentOrganization` ties the entity to South Jersey Blinds & Beyond.
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "HomeAndConstructionBusiness", "LocalBusiness"],
@@ -83,16 +89,17 @@ const orgJsonLd = {
   telephone: PHONE_E164,
   email: EMAIL,
   priceRange: PRICE_RANGE,
-  // Address/geo emit only the fields that are real (non-placeholder), so the
-  // schema stays valid now and the street/ZIP/coords light up automatically
-  // once filled in lib/site.ts. See getPostalAddress/getGeo.
-  address: getPostalAddress(),
-  ...(getGeo() ? { geo: getGeo() } : {}),
+  parentOrganization: PARENT_ORG,
   openingHoursSpecification: OPENING_HOURS,
   areaServed: SERVICE_CITIES.map((c) => ({
     "@type": "City",
     name: `${c.name}, FL`,
   })),
+  founder: { "@type": "Person", name: OWNER.name },
+  employee: { "@type": "Person", name: OWNER.name, jobTitle: OWNER.jobTitle },
+  knowsAbout: KNOWS_ABOUT,
+  hasCredential: CREDENTIALS,
+  aggregateRating: AGGREGATE_RATING,
   ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
 };
 

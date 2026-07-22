@@ -2,7 +2,7 @@
 title:    "We're now building louvered pergolas across Florida"
 excerpt:  "Our newest product line brings adjustable-louver roofs to lanais and patios statewide — here's what they do and why we added them."
 category: company-news
-author:   "Matt Voggel"
+author:   "Ron Rosso"
 date:     2026-06-02
 readTime: "4 min"
 draft:    false

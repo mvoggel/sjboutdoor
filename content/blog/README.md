@@ -23,7 +23,7 @@ update on their own. No code changes needed.
 title:    "How to pick a motorized screen that survives Florida"
 excerpt:  "A short one- or two-sentence teaser shown on the blog index."
 category: buying-guides        # see the list below — must match exactly
-author:   "Matt Voggel"
+author:   "Ron Rosso"
 date:     2026-05-12           # YYYY-MM-DD — controls sort order (newest first)
 readTime: "8 min"             # optional — auto-estimated if you leave it out
 cover:    "/img/blog/screen.jpg"  # optional — leave out if no image yet

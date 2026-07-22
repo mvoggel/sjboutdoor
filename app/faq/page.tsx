@@ -18,11 +18,30 @@ export const metadata: Metadata = {
   },
 };
 
-// Generic starter set — edit/extend as real questions come in from customers.
+// The FAQPage JSON-LD below auto-derives from this list, so the schema text and
+// the visible page text always match (a hard requirement for FAQ rich results).
+// AEO-focused Q&As (areas, Azenco, hurricane, licensing, SJBB relationship) come
+// from the Mader Marketing schema package, July 2026.
 const FAQS: { q: string; a: string }[] = [
   {
-    q: "What areas do you serve?",
-    a: "We provide free in-home consultations and installation to homeowners across Florida. If you're not sure whether you're in our service area, just reach out and we'll let you know.",
+    q: "What areas of Florida does SJB Outdoor Living serve?",
+    a: "SJB Outdoor Living serves 19 Florida cities including Gainesville, Jacksonville, Tallahassee, Pensacola, Destin, Panama City, Santa Rosa Beach, Ocala, Palm Beach, Daytona, St. Augustine, Fort Myers, Naples, Bonita Springs, Crystal River, and surrounding areas.",
+  },
+  {
+    q: "What outdoor living products do you install in Florida?",
+    a: "SJB Outdoor Living installs motorized louvered pergolas (Azenco), retractable awnings, motorized exterior shades and screens, Bahama shutters, and storm shutters, along with garage-door screens. All products are custom-fabricated for your space and professionally installed by FL-licensed crews.",
+  },
+  {
+    q: "What is an Azenco louvered pergola?",
+    a: "Azenco is a French manufacturer of premium louvered pergola systems made from aerospace-grade aluminum. Azenco pergolas feature adjustable motorized louvers for full sun and shade control, are rated to withstand 190 mph winds, carry a 25-year structural warranty, and come with PE-stamped engineering drawings. SJB Outdoor Living is an authorized Azenco dealer and installer in Florida.",
+  },
+  {
+    q: "Do you offer hurricane protection products in Florida?",
+    a: "Yes. SJB Outdoor Living installs hurricane screens, Bahama shutters, and storm shutters designed for Florida weather conditions. Our Azenco pergolas are also rated to 190 mph wind speeds.",
+  },
+  {
+    q: "Are your Florida installers licensed?",
+    a: "Yes. All SJB Outdoor Living installation crews are fully FL-licensed, insured, and trained on Florida building codes.",
   },
   {
     q: "How does the consultation process work?",
@@ -31,10 +50,6 @@ const FAQS: { q: string; a: string }[] = [
   {
     q: "Is the consultation really free?",
     a: "Yes. The in-home consultation, measurement, and quote are completely free, with no obligation to purchase.",
-  },
-  {
-    q: "What products do you offer?",
-    a: "Exterior shades and patio screens, retractable awnings, louvered pergolas, and exterior shutters (including Bahama and storm shutters), along with garage-door screens. Everything is built to your exact opening.",
   },
   {
     q: "Are your products custom-made?",
@@ -53,8 +68,12 @@ const FAQS: { q: string; a: string }[] = [
     a: "Many of our products offer motorization and smart-home integration. We'll recommend it when it fits your setup — never just for the sake of it.",
   },
   {
-    q: "How do I get started?",
-    a: `The easiest way is to schedule a consultation through our site, or call us at ${PHONE_DISPLAY}. You can also email ${EMAIL} and a real person will get back to you.`,
+    q: "What is SJB Outdoor Living's relationship to South Jersey Blinds & Beyond?",
+    a: "SJB Outdoor Living is the Florida division of South Jersey Blinds & Beyond LLC, a family-owned company serving homeowners for over 35 years. The same family ownership, craftsmanship standards, and attention to detail that earned 528 five-star Google reviews in New Jersey is now available to Florida homeowners.",
+  },
+  {
+    q: "How do I get a quote for outdoor living work in Florida?",
+    a: `Call us at ${PHONE_DISPLAY} or schedule a free in-home consultation through our site. You can also email ${EMAIL} and a real person will get back to you. We serve 19 Florida cities and can typically schedule consultations within 1–2 weeks.`,
   },
 ];
 
