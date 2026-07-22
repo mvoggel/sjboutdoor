@@ -181,6 +181,31 @@
   padding: 0.1em 0.4em;
   border-radius: 3px;
 }
+/* Markdown (GFM) tables — real markup so they stay machine-readable for
+   AI/schema crawlers. display:block lets wide tables scroll on mobile
+   instead of breaking the page layout. */
+.blog-prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.blog-prose th,
+.blog-prose td {
+  border: 1px solid var(--rich-sand);
+  padding: 0.65em 0.9em;
+  text-align: left;
+  vertical-align: top;
+  min-width: 8em;
+}
+.blog-prose th {
+  color: var(--ink-primary);
+  font-weight: 600;
+  background: rgba(184, 146, 74, 0.07);
+  white-space: nowrap;
+}
 
 /* ─── Legal / FAQ prose (Privacy, Terms, FAQ) ───────────────────────── */
 .legal-prose {

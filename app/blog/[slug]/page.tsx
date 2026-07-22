@@ -6,14 +6,13 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { CtaBand } from "@/components/home/CtaBand";
 import { getAllPosts, getPost, categoryLabel } from "@/lib/blog";
-import { JsonLd, breadcrumbList } from "@/components/seo/JsonLd";
+import { JsonLd, breadcrumbList, faqPage } from "@/components/seo/JsonLd";
 import {
   SITE_URL,
   BRAND_NAME,
   absUrl,
   LOGO_PATH,
   OWNER_PERSON_JSONLD,
-  OWNER,
 } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -31,7 +30,9 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
 
-  const title = post.title;
+  // metaTitle lets a post target keyword phrasing that differs from the
+  // visible headline; the root template appends the brand suffix either way.
+  const title = post.metaTitle ?? post.title;
   return {
     title,
     description: post.excerpt,
@@ -77,12 +78,18 @@ export default async function BlogPostPage({
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    // Links to the Ron Rosso Person entity emitted alongside (Schema 7).
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_URL}/#ron-rosso`,
-      name: post.author,
-    },
+    // Author = the business entity (per the content-series publishing notes),
+    // tied to the sitewide LocalBusiness @id. If a post sets a personal
+    // `author:` in frontmatter, fall back to a plain Person node.
+    author:
+      post.author === BRAND_NAME
+        ? {
+            "@type": "Organization",
+            "@id": `${SITE_URL}/#business`,
+            name: BRAND_NAME,
+            url: absUrl("/about"),
+          }
+        : { "@type": "Person", name: post.author },
     publisher: {
       "@type": "Organization",
       name: BRAND_NAME,
@@ -102,6 +109,9 @@ export default async function BlogPostPage({
           data={[
             jsonLd,
             OWNER_PERSON_JSONLD,
+            // Per-post FAQ schema (frontmatter `faqs`) — the highest-value
+            // block for AI answer-engine citation. Q&As must match the body.
+            ...(post.faqs?.length ? [faqPage(post.faqs)] : []),
             breadcrumbList([
               { name: "Home", url: `${SITE_URL}/` },
               { name: "Field Notebook", url: absUrl("/blog") },
@@ -157,9 +167,8 @@ export default async function BlogPostPage({
                 {post.title}
               </h1>
 
-              {/* Visible author byline — wording specified by the AEO package;
-                  matches the Person JSON-LD entity on this page. The author
-                  name links to /about (the Person schema's `url`). */}
+              {/* Visible author byline — matches the BlogPosting author schema
+                  and links to the About page (the entity's `url`). */}
               <p
                 className="mt-6"
                 style={{ fontSize: "0.8rem", color: "var(--ink-muted)", letterSpacing: "0.04em", lineHeight: 1.6 }}
@@ -172,10 +181,8 @@ export default async function BlogPostPage({
                     borderBottom: "1px solid rgba(184,146,74,0.5)",
                   }}
                 >
-                  {OWNER.name}, {OWNER.jobTitle}
-                </Link>{" "}
-                — SJB Outdoor Living &amp; South Jersey Blinds &amp; Beyond LLC.
-                35+ years in the outdoor living industry.
+                  {post.author}
+                </Link>
               </p>
               <p
                 className="mt-2"
@@ -195,7 +202,7 @@ export default async function BlogPostPage({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={post.cover}
-                  alt={post.title}
+                  alt={post.coverAlt ?? post.title}
                   style={{ width: "100%", height: "auto", borderRadius: "2px" }}
                 />
               </div>

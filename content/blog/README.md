@@ -23,11 +23,16 @@ update on their own. No code changes needed.
 title:    "How to pick a motorized screen that survives Florida"
 excerpt:  "A short one- or two-sentence teaser shown on the blog index."
 category: buying-guides        # see the list below — must match exactly
-author:   "Ron Rosso"
+author:   "SJB Outdoor Living"
 date:     2026-05-12           # YYYY-MM-DD — controls sort order (newest first)
 readTime: "8 min"             # optional — auto-estimated if you leave it out
 cover:    "/img/blog/screen.jpg"  # optional — leave out if no image yet
+coverAlt: "Motorized screen on a lanai"  # optional — alt text for the cover (defaults to title)
+metaTitle: "Motorized Screens Florida"   # optional — SEO <title> override (brand suffix auto-appended)
 draft:    false                # true = visible locally but hidden on the live site
+faqs:                          # optional — emits FAQPage schema; repeat the Q&As in the body verbatim
+  - q: "A common question?"
+    a: "The answer, exactly as it appears in the post body."
 ---
 ```
 

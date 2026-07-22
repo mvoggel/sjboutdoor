@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
-import { OWNER } from "@/lib/site";
+import { BRAND_NAME } from "@/lib/site";
 
 /**
  * Blog data layer.
@@ -46,6 +46,15 @@ export interface BlogPostMeta {
   readTime: string;
   /** Optional path under /public, e.g. "/img/blog/my-cover.jpg" */
   cover?: string;
+  /** Optional SEO <title> override (brand suffix is appended by the root
+   * template). Falls back to `title` — use when the target keyword phrasing
+   * differs from the visible headline. */
+  metaTitle?: string;
+  /** Optional alt text for the cover image (falls back to `title`). */
+  coverAlt?: string;
+  /** Optional FAQ pairs — when present the post page emits FAQPage JSON-LD.
+   * The same Q&As must appear verbatim in the post body. */
+  faqs?: { q: string; a: string }[];
   draft: boolean;
 }
 
@@ -87,12 +96,19 @@ function parseFile(file: string): BlogPost {
     title: data.title ?? slug,
     excerpt: data.excerpt ?? "",
     category: category as BlogCategorySlug,
-    // Posts are attributed to the owner by default (AEO package: author entity
-    // is the Ron Rosso Person block emitted on every post page).
-    author: data.author ?? OWNER.name,
+    // Posts are attributed to the business by default (per the content-series
+    // publishing notes: BlogPosting author/publisher = SJB Outdoor Living,
+    // tied to the sitewide LocalBusiness entity). Pending long-term ownership
+    // decision from the vendor — an explicit `author:` in frontmatter wins.
+    author: data.author ?? BRAND_NAME,
     date: data.date ? new Date(data.date).toISOString().slice(0, 10) : "",
     readTime: data.readTime ?? estimateReadTime(content),
     cover: data.cover ?? undefined,
+    metaTitle: data.metaTitle ?? undefined,
+    coverAlt: data.coverAlt ?? undefined,
+    faqs: Array.isArray(data.faqs)
+      ? (data.faqs as { q: string; a: string }[]).filter((f) => f?.q && f?.a)
+      : undefined,
     draft: data.draft === true,
     html: marked.parse(content, { async: false }) as string,
   };
