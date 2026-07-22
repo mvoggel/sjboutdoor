@@ -68,6 +68,26 @@ export function ConsultForm({
         throw new Error(json.error ?? "Submission failed");
       }
 
+      // Fire the lead conversion once the submission is accepted. Pushed to the
+      // GTM dataLayer (`generate_lead`) so a GTM Custom Event trigger can fire
+      // the Google Ads Conversion tag, and sent to GA4 directly via gtag (GA4
+      // stays out of GTM — see app/layout.tsx). Guarded for SSR / no-GTM.
+      if (typeof window !== "undefined") {
+        const w = window as unknown as {
+          dataLayer?: Record<string, unknown>[];
+          gtag?: (...args: unknown[]) => void;
+        };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "generate_lead",
+          product_interest: data.productInterest,
+          preferred_contact: data.preferredContact,
+        });
+        w.gtag?.("event", "generate_lead", {
+          product_interest: data.productInterest,
+        });
+      }
+
       // Hand off to step 2 (GHL calendar) even if the CRM call failed —
       // their info is logged server-side and the booking widget will
       // create the contact itself on completion. Don't punish the user
