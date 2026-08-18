@@ -116,7 +116,7 @@ export default function GalleryPage() {
               {/* Stat block — signature touch */}
               <div className="grid grid-cols-3 gap-4 md:gap-6">
                 <Stat n="2,400+" l="Installs" />
-                <Stat n="19" l="Cities" />
+                <Stat n="15" l="Cities" />
                 <Stat n="30 yrs" l="On the job" />
               </div>
             </div>

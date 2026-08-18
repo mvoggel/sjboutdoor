@@ -11,15 +11,13 @@ import { ServiceAreasMap } from "@/components/service-areas/ServiceAreasMap";
 export const metadata: Metadata = {
   title: "Service Areas",
   description:
-    "SJB Outdoor Living installs custom outdoor living systems across 19 Florida cities — from Pensacola and Tallahassee to Naples, Fort Myers, and Palm Beach.",
+    "SJB Outdoor Living installs custom outdoor living systems across 15 Florida cities — from Pensacola and Tallahassee to Jacksonville, Ocala, and Daytona.",
 };
 
 const REGIONS = [
   { label: "Panhandle", cityNames: ["Pensacola", "Navarre Beach", "Destin", "Santa Rosa Beach", "Panama City", "Tallahassee"] },
   { label: "North Florida & First Coast", cityNames: ["Jacksonville", "Jacksonville Beach", "St Augustine", "St Augustine Beach", "Daytona"] },
   { label: "Central & Nature Coast", cityNames: ["Gainesville", "Newberry", "Ocala", "Crystal River"] },
-  { label: "Southwest Florida", cityNames: ["Fort Myers", "Bonita Springs", "Naples"] },
-  { label: "Southeast Coast", cityNames: ["Palm Beach"] },
 ];
 
 export default function ServiceAreasPage() {
@@ -47,14 +45,14 @@ export default function ServiceAreasPage() {
                     maxWidth: "16ch",
                   }}
                 >
-                  Nineteen Florida towns. One standard of craft.
+                  Fifteen Florida towns. One standard of craft.
                 </h1>
                 <p
                   className="mt-5 text-base"
                   style={{ color: "var(--ink-muted)", maxWidth: "54ch", lineHeight: 1.7 }}
                 >
-                  From the Panhandle&apos;s sugar-white beaches to the cypress canals of
-                  Naples, our installation crews bring the same hand-fit detail to
+                  From the Panhandle&apos;s sugar-white beaches to the spring-fed
+                  Nature Coast, our installation crews bring the same hand-fit detail to
                   every coastline. Pick a city below to see local install photos,
                   product fit notes, and what we&apos;ve learned about the weather there.
                 </p>
@@ -68,7 +66,7 @@ export default function ServiceAreasPage() {
                       color: "var(--rich-warm)",
                     }}
                   >
-                    19 Cities · 5 Regions · One Family
+                    15 Cities · 3 Regions · One Family
                   </p>
                 </div>
               </div>

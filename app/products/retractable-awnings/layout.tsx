@@ -24,7 +24,7 @@ const seo: ProductSeo = {
       "Destin, FL",
       "Tallahassee, FL",
       "Ocala, FL",
-      "Naples, FL",
+      "Daytona, FL",
     ],
   },
 };

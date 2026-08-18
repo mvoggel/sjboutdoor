@@ -6,15 +6,15 @@
  * cx/cy from here to drive the zoomed-in hero map.
  *
  * The editorial fields (county, setting, climate, locales) exist to give each
- * SEO page genuinely distinct copy rather than 19 find-and-replace clones.
+ * SEO page genuinely distinct copy rather than 15 find-and-replace clones.
  */
 
 export interface ServiceCity {
-  /** Display name, e.g. "Fort Myers" */
+  /** Display name, e.g. "Crystal River" */
   name: string;
-  /** URL slug under /service-areas, e.g. "fort-myers" */
+  /** URL slug under /service-areas, e.g. "crystal-river" */
   slug: string;
-  /** County name without the word "County", e.g. "Lee" */
+  /** County name without the word "County", e.g. "Citrus" */
   county: string;
   /** Broad region label used in the hero + metadata */
   region: string;
@@ -32,43 +32,6 @@ export interface ServiceCity {
 }
 
 export const SERVICE_CITIES: ServiceCity[] = [
-  // ── Southwest Florida ─────────────────────────────────────────────
-  {
-    name: "Naples",
-    slug: "naples",
-    county: "Collier",
-    region: "Southwest Florida",
-    coastal: true,
-    cx: 565,
-    cy: 422,
-    setting: "a Gulf-front city known for its refined coastal architecture and year-round sunshine",
-    locales: "Old Naples, Port Royal, Aqualane Shores, and Pelican Bay",
-    climate: "relentless Gulf sun, salt-laden air, and hurricane-season wind loads",
-  },
-  {
-    name: "Bonita Springs",
-    slug: "bonita-springs",
-    county: "Lee",
-    region: "Southwest Florida",
-    coastal: true,
-    cx: 561,
-    cy: 417,
-    setting: "a waterfront community tucked between Naples and Fort Myers along Estero Bay",
-    locales: "Bonita Beach, Pelican Landing, Spanish Wells, and Bonita Bay",
-    climate: "high humidity, salt air, and the intense afternoon sun of the Gulf coast",
-  },
-  {
-    name: "Fort Myers",
-    slug: "fort-myers",
-    county: "Lee",
-    region: "Southwest Florida",
-    coastal: true,
-    cx: 551,
-    cy: 398,
-    setting: "the historic River District city set along the Caloosahatchee River",
-    locales: "McGregor Boulevard, the River District, Fort Myers Beach, and Gateway",
-    climate: "strong riverfront sun, summer thunderstorms, and coastal wind exposure",
-  },
   // ── Central & Nature Coast ────────────────────────────────────────
   {
     name: "Crystal River",
@@ -117,19 +80,6 @@ export const SERVICE_CITIES: ServiceCity[] = [
     setting: "the Horse Capital of the World, set among rolling pastures and live oaks",
     locales: "Golden Hills, the Historic District, On Top of the World, and the World Equestrian Center",
     climate: "intense inland sun, sandy soil, and humid summer heat",
-  },
-  // ── Southeast Coast ───────────────────────────────────────────────
-  {
-    name: "Palm Beach",
-    slug: "palm-beach",
-    county: "Palm Beach",
-    region: "Florida's Atlantic Coast",
-    coastal: true,
-    cx: 787,
-    cy: 442,
-    setting: "an affluent Atlantic barrier island defined by its estate homes and Worth Avenue",
-    locales: "Worth Avenue, the Estate Section, El Cid, and the oceanfront condominiums",
-    climate: "salt-heavy ocean air, hurricane exposure, and powerful coastal sun",
   },
   // ── East Coast (north) ────────────────────────────────────────────
   {

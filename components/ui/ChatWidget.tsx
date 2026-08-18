@@ -13,7 +13,7 @@ const QA_PAIRS: Record<string, string> = {
   "What's included?":
     "Every SJB Outdoor Living installation includes a full site assessment, custom fabrication to your exact dimensions, professional installation by certified technicians, and our five-year workmanship guarantee. We also provide a walkthrough of your new system and ongoing maintenance support.",
   "Book a consult":
-    "We'd love to meet you. Our consultations are complimentary and typically take 45–60 minutes at your home. We serve Naples, Bonita Springs, Marco Island, and surrounding communities. Click 'Schedule Your Consultation' on any page, or reach us at (239) 555-0182.",
+    "We'd love to meet you. Our consultations are complimentary and typically take 45–60 minutes at your home. We serve Gainesville, Ocala, Jacksonville, St. Augustine, Tallahassee, the Panhandle, and surrounding communities. Click 'Schedule Your Consultation' on any page, or reach us at (239) 555-0182.",
 };
 
 const FALLBACK_RESPONSE =

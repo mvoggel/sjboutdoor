@@ -42,7 +42,7 @@ export const viewport: Viewport = {
 
 const TITLE_DEFAULT = `${BRAND_NAME} | Luxury Outdoor Living — Florida`;
 const DESCRIPTION =
-  "Custom exterior shades, retractable awnings, louvered pergolas, and exterior shutters for Florida homeowners. Free in-home consultations across 19 Florida cities.";
+  "Custom exterior shades, retractable awnings, louvered pergolas, and exterior shutters for Florida homeowners. Free in-home consultations across 15 Florida cities.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -22,8 +22,8 @@ const seo: ProductSeo = {
       "Pensacola, FL",
       "Destin, FL",
       "Panama City, FL",
-      "Naples, FL",
-      "Fort Myers, FL",
+      "Santa Rosa Beach, FL",
+      "St Augustine, FL",
     ],
   },
 };

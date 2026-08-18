@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const FAQS: { q: string; a: string }[] = [
   {
     q: "What areas of Florida does SJB Outdoor Living serve?",
-    a: "SJB Outdoor Living serves 19 Florida cities including Gainesville, Jacksonville, Tallahassee, Pensacola, Destin, Panama City, Santa Rosa Beach, Ocala, Palm Beach, Daytona, St. Augustine, Fort Myers, Naples, Bonita Springs, Crystal River, and surrounding areas.",
+    a: "SJB Outdoor Living serves 15 Florida cities including Gainesville, Newberry, Jacksonville, Jacksonville Beach, Tallahassee, Pensacola, Navarre Beach, Destin, Santa Rosa Beach, Panama City, Ocala, Daytona, St. Augustine, Crystal River, and surrounding areas.",
   },
   {
     q: "What outdoor living products do you install in Florida?",
@@ -73,7 +73,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I get a quote for outdoor living work in Florida?",
-    a: `Call us at ${PHONE_DISPLAY} or schedule a free in-home consultation through our site. You can also email ${EMAIL} and a real person will get back to you. We serve 19 Florida cities and can typically schedule consultations within 1–2 weeks.`,
+    a: `Call us at ${PHONE_DISPLAY} or schedule a free in-home consultation through our site. You can also email ${EMAIL} and a real person will get back to you. We serve 15 Florida cities and can typically schedule consultations within 1–2 weeks.`,
   },
 ];
 

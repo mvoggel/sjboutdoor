@@ -20,8 +20,8 @@ const seo: ProductSeo = {
       "Gainesville, FL",
       "Jacksonville, FL",
       "Pensacola, FL",
-      "Naples, FL",
-      "Fort Myers, FL",
+      "Ocala, FL",
+      "Daytona, FL",
     ],
   },
 };

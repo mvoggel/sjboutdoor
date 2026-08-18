@@ -7,7 +7,7 @@ const seo: ProductSeo = {
   title: "Retractable Patio Screens in Southwest Florida",
   name: "Retractable Motorized Patio Screens",
   description:
-    "Motorized retractable patio & lanai screens custom-built to spans up to 30 ft with no center post. Insect, solar, privacy & hurricane mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across Naples, Bonita Springs & Marco Island.",
+    "Motorized retractable patio & lanai screens custom-built to spans up to 30 ft with no center post. Insect, solar, privacy & hurricane mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across North Florida, the Nature Coast & the Panhandle.",
   image: "/img/products/patioscreen.jpg",
   category: "Retractable Exterior Screens",
   brand: "Progressive Screens · SunPro",

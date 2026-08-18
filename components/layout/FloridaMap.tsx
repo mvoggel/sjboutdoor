@@ -16,18 +16,12 @@ export interface ServiceArea {
 // isPointInFill on the rendered SVG), so the rendered circle never bleeds
 // past the coast at either hero or footer size.
 export const SERVICE_AREA_DOTS: ServiceArea[] = [
-  // ── Southwest Florida ──────────────────────────────────────────
-  { name: "Naples",             href: "/service-areas/naples",              cx: 565, cy: 422 },
-  { name: "Bonita Springs",     href: "/service-areas/bonita-springs",      cx: 561, cy: 417 },
-  { name: "Fort Myers",         href: "/service-areas/fort-myers",          cx: 551, cy: 398 },
   // ── Nature Coast ───────────────────────────────────────────────
   { name: "Crystal River",      href: "/service-areas/crystal-river",       cx: 522, cy: 301 },
   // ── Central Florida ────────────────────────────────────────────
   { name: "Gainesville",        href: "/service-areas/gainesville",         cx: 608, cy: 192 },
   { name: "Newberry",           href: "/service-areas/newberry",            cx: 578, cy: 190 },
   { name: "Ocala",              href: "/service-areas/ocala",               cx: 620, cy: 242 },
-  // ── Southeast Coast ────────────────────────────────────────────
-  { name: "Palm Beach",         href: "/service-areas/palm-beach",          cx: 787, cy: 442 },
   // ── East Coast (north) ─────────────────────────────────────────
   { name: "Daytona",            href: "/service-areas/daytona",             cx: 732, cy: 264 },
   { name: "St Augustine Beach", href: "/service-areas/st-augustine-beach",  cx: 715, cy: 238 },

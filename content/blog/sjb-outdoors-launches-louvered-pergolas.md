@@ -10,7 +10,7 @@ draft:    false
 
 We're excited to share that SJB Outdoors is now designing and installing
 **louvered pergolas** across Florida. It's the product our customers have been
-asking about most, and after a year of installs in Naples and Fort Myers we're
+asking about most, and after a year of installs across the state we're
 ready to make it a core part of what we do.
 
 ## What a louvered pergola actually is

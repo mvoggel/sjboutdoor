@@ -22,24 +22,21 @@
       "src": "/img/gallery/louvered-pergolas/81.jpg"
     },
     {
-      "src": "/img/gallery/louvered-pergolas/Fort-Myers__louvered.png",
-      "caption": "Fort Myers"
+      "src": "/img/gallery/louvered-pergolas/louvered.png"
     },
     {
-      "src": "/img/gallery/louvered-pergolas/Naples__pergola.jpg",
-      "caption": "Naples"
+      "src": "/img/gallery/louvered-pergolas/pergola.jpg"
     }
   ],
   "exterior-shades-and-screens": [
-    {
-      "src": "/img/gallery/exterior-shades-and-screens/Bonita-Springs__patio-screen.jpg",
-      "caption": "Bonita Springs"
-    },
     {
       "src": "/img/gallery/exterior-shades-and-screens/exteriorshades-gallery.jpg"
     },
     {
       "src": "/img/gallery/exterior-shades-and-screens/motorizedscreens-gallery.jpg"
+    },
+    {
+      "src": "/img/gallery/exterior-shades-and-screens/patio-screen.jpg"
     },
     {
       "src": "/img/gallery/exterior-shades-and-screens/screens-gallery.jpg"
@@ -53,6 +50,9 @@
   ],
   "exterior-shutters": [
     {
+      "src": "/img/gallery/exterior-shutters/bahama-2.jpg"
+    },
+    {
       "src": "/img/gallery/exterior-shutters/bahamashutters-gallery.jpg"
     },
     {
@@ -65,10 +65,6 @@
       "src": "/img/gallery/exterior-shutters/bluebahamashutters-gallery.jpg"
     },
     {
-      "src": "/img/gallery/exterior-shutters/Fort-Myers__storm.jpg",
-      "caption": "Fort Myers"
-    },
-    {
       "src": "/img/gallery/exterior-shutters/IMG-4077.jpg"
     },
     {
@@ -76,12 +72,10 @@
       "caption": "Marco Island"
     },
     {
-      "src": "/img/gallery/exterior-shutters/Naples__bahama-2.jpg",
-      "caption": "Naples"
+      "src": "/img/gallery/exterior-shutters/shutter.png"
     },
     {
-      "src": "/img/gallery/exterior-shutters/Naples__shutter.png",
-      "caption": "Naples"
+      "src": "/img/gallery/exterior-shutters/storm.jpg"
     },
     {
       "src": "/img/gallery/exterior-shutters/stormshutter2-gallery.jpg"
@@ -95,6 +89,9 @@
       "src": "/img/gallery/retractable-awnings/Awning-Crossarm-BronzeHousing-PuttyRegimentalFabric-DSC05979.jpg"
     },
     {
+      "src": "/img/gallery/retractable-awnings/awning.png"
+    },
+    {
       "src": "/img/gallery/retractable-awnings/awningpic.jpg"
     },
     {
@@ -102,10 +99,6 @@
     },
     {
       "src": "/img/gallery/retractable-awnings/awningwscreen.jpg"
-    },
-    {
-      "src": "/img/gallery/retractable-awnings/Bonita-Springs__awning.png",
-      "caption": "Bonita Springs"
     },
     {
       "src": "/img/gallery/retractable-awnings/Estero__awnings.png",

@@ -7,7 +7,7 @@ const seo: ProductSeo = {
   title: "Motorized Garage Door Screens in Southwest Florida",
   name: "Motorized Garage Door Screens",
   description:
-    "Full-height motorized garage screens custom-fit to single, double & oversized bays — roll up into a discreet header housing. Insect, solar & privacy mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across Naples, Bonita Springs & Marco Island.",
+    "Full-height motorized garage screens custom-fit to single, double & oversized bays — roll up into a discreet header housing. Insect, solar & privacy mesh on Progressive MagnaTrack and SunPro systems. Free in-home consultations across North Florida, the Nature Coast & the Panhandle.",
   image: "/img/products/garage-screen.png",
   category: "Retractable Exterior Screens",
   brand: "Progressive Screens · SunPro",

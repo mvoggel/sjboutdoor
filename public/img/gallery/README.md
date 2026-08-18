@@ -29,14 +29,18 @@ Patio Screens and Garage Door Screens pages both pull from
 
    | Filename                         | Caption shown |
    | -------------------------------- | ------------- |
-   | `Naples__back-patio.jpg`         | Naples        |
-   | `Fort-Myers__evening-3.jpg`      | Fort Myers    |
-   | `Marco-Island__install.png`      | Marco Island  |
+   | `Gainesville__back-patio.jpg`    | Gainesville   |
+   | `Santa-Rosa-Beach__evening-3.jpg`| Santa Rosa Beach |
+   | `St-Augustine__install.png`      | St Augustine  |
    | `random-photo.jpg`               | _(no caption)_ |
+
+   Only caption a photo with a city we actually serve — see
+   `SERVICE_CITIES` in `lib/service-areas.ts`. Leave the city off (no `__`)
+   for installs outside the current service area.
 
 3. The manifest regenerates automatically when you run `npm run dev` or
    `npm run build`. If you added photos while the dev server is already
    running, restart it (or run `node scripts/gen-gallery.mjs`) to pick them up.
 
 The order photos appear in is alphabetical by filename, so prefix with a number
-(`01-`, `02-`) if you want to control it — e.g. `01-Naples__hero.jpg`.
+(`01-`, `02-`) if you want to control it — e.g. `01-Gainesville__hero.jpg`.

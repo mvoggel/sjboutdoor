@@ -41,7 +41,7 @@ export function CtaBand({ inverted = false }: CtaBandProps) {
             <p className="mt-3 text-lg" style={{ color: bodyColor }}>
               {inverted
                 ? "Our team is ready to design a custom solution for your home."
-                : "Free in-home consultations across Naples, Bonita Springs, and Marco Island."}
+                : "Free in-home consultations across North Florida, the Nature Coast, and the Panhandle."}
             </p>
           </div>
 

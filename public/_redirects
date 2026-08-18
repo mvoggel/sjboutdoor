@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects. Copied verbatim into out/ by the static export.
+#
+# Retired service areas (Aug 2026) — these city pages were indexed, so they get
+# 301s to the service-areas index rather than 404s, which preserves the link
+# equity and tells Google the URLs are permanently gone.
+/service-areas/naples          /service-areas  301
+/service-areas/bonita-springs  /service-areas  301
+/service-areas/fort-myers      /service-areas  301
+/service-areas/palm-beach      /service-areas  301
+
+# Retired blog article tied to a service area we no longer cover (Aug 2026).
+/blog/40-louvered-pergolas-in-naples  /blog  301
