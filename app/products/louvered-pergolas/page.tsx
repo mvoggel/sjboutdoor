@@ -203,18 +203,6 @@ export default function LouveredPergolasPage() {
               className="flex flex-col md:flex-row md:items-center md:justify-between gap-8"
             >
               <div>
-                <p
-                  style={{
-                    fontSize: "0.68rem",
-                    letterSpacing: "0.22em",
-                    textTransform: "uppercase",
-                    color: "var(--ink-primary)",
-                    opacity: 0.45,
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  Our Systems
-                </p>
                 <h2
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -225,7 +213,7 @@ export default function LouveredPergolasPage() {
                     marginBottom: "0.6rem",
                   }}
                 >
-                  Engineered with Azenco.
+                  Engineered with Azenco. Backed by Breslow.
                 </h2>
                 <p
                   style={{
@@ -235,11 +223,13 @@ export default function LouveredPergolasPage() {
                     lineHeight: 1.75,
                   }}
                 >
-                  We partner with Azenco — a leading European manufacturer of louvered roof systems — to bring the world&apos;s most advanced outdoor structures to Southwest Florida. Every installation is backed by the manufacturer&apos;s product warranty and our 10-year parts and labor guarantee.
+                  We partner with Azenco — a leading louvered roof systems manufacturer — and with certified Azenco dealer Breslow Home Design to bring the world&apos;s most advanced outdoor structures to Southwest Florida. Every installation carries the manufacturer&apos;s warranty plus our 10-year parts and labor guarantee.
                 </p>
               </div>
-              <button
-                onClick={() => openModal("louvered-pergolas")}
+              <a
+                href="https://breslow.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   flexShrink: 0,
                   padding: "0.9rem 2.25rem",
@@ -251,21 +241,22 @@ export default function LouveredPergolasPage() {
                   fontWeight: 450,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
+                  textDecoration: "none",
                   cursor: "pointer",
                   transition: "background 0.2s, color 0.2s",
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "var(--ink-primary)";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--bg-pure)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "var(--ink-primary)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--bg-pure)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-                  (e.currentTarget as HTMLButtonElement).style.color = "var(--ink-primary)";
+                  (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--ink-primary)";
                 }}
               >
-                Book a Consultation
-              </button>
+                Explore Breslow Home Design
+              </a>
             </motion.div>
           </Container>
         </section>
