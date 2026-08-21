@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Talk to a real person about your outdoor living project — phone, email, or live chat. SJB Outdoor Living serves homeowners across Florida.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

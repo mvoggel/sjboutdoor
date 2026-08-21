@@ -3,19 +3,19 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { productMetadata, productJsonLd, type ProductSeo } from "@/lib/product-seo";
 
 const seo: ProductSeo = {
-  slug: "storm-shutters",
-  title: "Hurricane & Storm Shutters in Florida",
-  name: "Storm Shutters",
+  slug: "hurricane-shutters",
+  title: "Hurricane Shutters in Florida",
+  name: "Hurricane Shutters",
   description:
-    "Florida building-code-rated storm shutters — accordion, roll-up, and panel styles — that deploy in minutes and may qualify for insurance discounts. Manual or motorized. Free in-home consultations.",
+    "Florida building-code-rated hurricane shutters — accordion, roll-up, and panel styles — that deploy in minutes and may qualify for insurance discounts. Manual or motorized. Free in-home consultations.",
   image: "/img/products/stormshutters.jpg",
-  category: "Hurricane Storm Shutters",
-  breadcrumbName: "Storm Shutters",
+  category: "Hurricane Shutters",
+  breadcrumbName: "Hurricane Shutters",
 };
 
 export const metadata: Metadata = productMetadata(seo);
 
-export default function StormShuttersLayout({
+export default function HurricaneShuttersLayout({
   children,
 }: {
   children: React.ReactNode;

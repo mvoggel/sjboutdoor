@@ -34,6 +34,8 @@ const PRODUCT_LINKS: ProductLink[] = [
     children: [
       { href: "/products/patio-screens", label: "Patio Screens" },
       { href: "/products/garage-door-screens", label: "Garage Door Screens" },
+      { href: "/products/hurricane-screens", label: "Hurricane Screens" },
+      { href: "/products/retractable-screen-system", label: "Retractable Screen Systems" },
     ],
   },
   {
@@ -41,7 +43,7 @@ const PRODUCT_LINKS: ProductLink[] = [
     label: "Exterior Shutters",
     children: [
       { href: "/products/bahama-shutters", label: "Bahama Shutters" },
-      { href: "/products/storm-shutters", label: "Storm Shutters" },
+      { href: "/products/hurricane-shutters", label: "Hurricane Shutters" },
     ],
   },
   { href: "/products/retractable-awnings", label: "Retractable Awnings" },

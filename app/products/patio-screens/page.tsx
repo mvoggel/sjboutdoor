@@ -8,18 +8,18 @@ const config: ProductDetailConfig = {
   consultSlug: "exterior-shades",
 
   hero: {
-    eyebrow: "Exterior Shades / Patio Screens",
+    eyebrow: "Exterior Shades / Lanai & Patio Screens",
     headline: "The screen that disappears when you don't need it.",
     descriptor:
-      "Motorized retractable patio screens glide down to enclose your lanai at the touch of a button — then vanish into a slim housing when you want the open air back. Custom-fabricated to spans up to 30 feet with no center post, and engineered by Progressive Screens and SunPro for year-round Florida living.",
+      "Motorized retractable lanai screens glide down to enclose your lanai, porch, or patio at the touch of a button — then vanish into a slim housing when you want the open air back. Custom-fabricated to spans up to 30 feet with no center post, and engineered by Progressive Screens and SunPro for year-round Florida living.",
     imageSrc: "/img/products/patioscreen.jpg",
-    imageAlt: "Retractable patio screen lowered across a covered Florida lanai.",
+    imageAlt: "Retractable lanai screen lowered across a covered Florida patio.",
     caption: "Retractable Motorized Screens · Florida",
   },
 
   valueProps: {
-    eyebrow: "Why Patio Screens",
-    heading: "Open-air living, on your terms.",
+    eyebrow: "Why Lanai Screens",
+    heading: "Open-air lanai living, on your terms.",
     items: [
       {
         icon: EyeOff,
@@ -105,7 +105,7 @@ const config: ProductDetailConfig = {
     eyebrow: "By the Numbers",
     heading: "Performance you can quote to your neighbor.",
     intro:
-      "Every patio screen is custom-built to your exact opening on professional-grade Progressive Screens and SunPro systems.",
+      "Every lanai screen is custom-built to your exact opening on professional-grade Progressive Screens and SunPro systems — whether that opening is a screened lanai, a covered porch, or an open patio bay.",
     stats: [
       { value: "30 ft", label: "Single-screen span — no center post" },
       { value: "95%", label: "Of UV rays blocked by solar mesh" },
@@ -159,6 +159,35 @@ const config: ProductDetailConfig = {
     finishes: HOUSING_FINISHES,
   },
 
+  options: {
+    eyebrow: "Where They Go",
+    heading: "Built for the way Florida homes open up.",
+    intro:
+      "Most Florida houses have at least one opening that is almost an outdoor room — it just needs a screen to finish it. These are the ones we screen most often.",
+    items: [
+      {
+        name: "Lanai Enclosures",
+        description:
+          "The most common install we do. A motorized screen drops across the lanai opening to close it off from bugs, sun, and blowing rain, then rolls away so the lanai reads as open again. Spans to 30 ft with no center post, so nothing interrupts the view out.",
+      },
+      {
+        name: "Screened Porches & Covered Patios",
+        description:
+          "Retrofit an existing covered porch or patio without framing in a permanent screen wall. The housing mounts up under the beam and the side tracks follow your existing posts.",
+      },
+      {
+        name: "Pool Cages & Pool Decks",
+        description:
+          "Add privacy and shade to one side of a pool cage, or screen an open pool deck so the space is usable in the evening when the bugs come out.",
+      },
+      {
+        name: "Outdoor Kitchens & Bars",
+        description:
+          "Keep insects off the food and cut the afternoon glare on the grill side, then retract the screen when you want the airflow back.",
+      },
+    ],
+  },
+
   vendor: {
     eyebrow: "Our Partners",
     heading: "Engineered with Progressive Screens & SunPro",
@@ -168,8 +197,9 @@ const config: ProductDetailConfig = {
 
   gallery: {
     eyebrow: "The Gallery",
-    heading: "Patio screens in the wild.",
-    intro: "Recent retractable patio-screen installations across Southwest Florida.",
+    heading: "Lanai screens in the wild.",
+    intro:
+      "Recent retractable lanai and patio screen installations across North Florida, the Nature Coast, and the Panhandle.",
     category: "exterior-shades-and-screens",
   },
 };

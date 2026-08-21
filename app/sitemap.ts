@@ -48,7 +48,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/products/louvered-pergolas`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/products/patio-screens`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/products/garage-door-screens`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/products/hurricane-screens`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/products/retractable-screen-system`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/products/bahama-shutters`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/products/storm-shutters`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/products/hurricane-shutters`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ];
 }

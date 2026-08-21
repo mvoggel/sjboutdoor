@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Service Areas",
   description:
     "SJB Outdoor Living installs custom outdoor living systems across 15 Florida cities — from Pensacola and Tallahassee to Jacksonville, Ocala, and Daytona.",
+  alternates: { canonical: "/service-areas" },
 };
 
 const REGIONS = [

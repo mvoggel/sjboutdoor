@@ -4,14 +4,16 @@
  * ScreenShowcase — replaces the old image-left / image-right product rows on
  * the Exterior Shades page with a more animated, shape-cropped presentation.
  *
- * Desktop: two arch-cropped cards. Hovering a card zooms the image, draws a
+ * Desktop: arch-cropped cards, two per row. Hovering a card zooms the image, draws a
  * gold arch frame, and reveals an "Explore" hint.
  * Mobile: feature chips become a swipeable, scroll-snap carousel under each
  * cropped image.
  *
- * Specs/value props are sourced from our two manufacturers:
- *   • Progressive Screens (patented MagnaTrack self-correcting system)
+ * Specs/value props are sourced from our manufacturers:
+ *   • Progressive Screens (patented MagnaTrack self-correcting system,
+ *     plus the code-rated Defender hurricane series)
  *   • SunPro motorized screens
+ *   • Mirage Screen Systems (retractable screen doors)
  *
  * Layout uses Tailwind utilities for responsive behavior + inline styles for
  * visuals; styled-jsx is avoided because its class scoping does not reliably
@@ -80,6 +82,40 @@ const SCREENS: Screen[] = [
       { label: "Insect & Solar Mesh", detail: "Phifer & Textilene fabrics" },
       { label: "Voice & Remote Control", detail: "Smart-home compatible" },
       { label: "10-Year Parts & Labor", detail: "On the full system" },
+    ],
+  },
+  {
+    href: "/products/hurricane-screens",
+    vendor: "Progressive Screens · Defender",
+    name: "Hurricane Screens",
+    category: "Roll-Down Hurricane Screen",
+    valueProp:
+      "Code-rated storm protection on the same track that handles bugs, sun, and glare the rest of the year.",
+    image: "/img/products/shades2.png",
+    alt: "Defender hurricane screens deployed across a poolside lanai",
+    features: [
+      { label: "Miami-Dade & FBC Rated", detail: "Florida Product Approval FL30798" },
+      { label: "Design Pressure ±200 PSF", detail: "Cat-5 winds exceeding 156 mph" },
+      { label: "Spans up to 30 ft", detail: "Up to 20 ft tall · limitations apply" },
+      { label: "Magnetic MagnaTrack", detail: "No zippers to jam or re-wrap" },
+      { label: "Gaposa Motors", detail: "App control · Lutron, Control4, Crestron" },
+    ],
+  },
+  {
+    href: "/products/retractable-screen-system",
+    vendor: "Mirage Screen Systems",
+    name: "Retractable Screen Systems",
+    category: "Retractable Screen Doors",
+    valueProp:
+      "Screen doors that vanish into a slim housing beside the frame — for entry doors, sliders, and openings to 28 ft.",
+    image: "/img/products/ext-shades.png",
+    alt: "Retractable screen drawn across a wide patio door opening",
+    features: [
+      { label: "Three Systems", detail: "1750 · 1750R retained mesh · 3500 wide" },
+      { label: "Spans to 28 ft", detail: "Double configuration on the 3500" },
+      { label: "Pet & Kid Safe", detail: "Retained mesh locks into the track" },
+      { label: "26 Frame Colors", detail: "8 standard + 18 Diamond Series" },
+      { label: "Limited Lifetime Warranty", detail: "All components except mesh" },
     ],
   },
 ];
@@ -360,10 +396,10 @@ export function ScreenShowcase() {
               marginBottom: "1rem",
             }}
           >
-            Two systems. One standard of quality.
+            Four systems. One standard of quality.
           </h2>
           <p style={{ fontSize: "1rem", lineHeight: 1.7, color: "var(--ink-muted)", maxWidth: "60ch" }}>
-            Both are custom-fabricated to your exact opening and built for salt
+            Each is custom-fabricated to your exact opening and built for salt
             air, sun, and storm-cycle wind. Hover to explore — or swipe the
             feature highlights on mobile.
           </p>

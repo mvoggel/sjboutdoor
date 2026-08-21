@@ -83,4 +83,4 @@ Pricing depends on size, structural attachment (freestanding vs. attached to the
 
 If your outdoor space sits unused half the year — too hot in July, too wet in August — a motorized louvered pergola is built to solve exactly that problem. It's an investment in a room you'll actually use, not just a structure you look at from the kitchen window.
 
-SJB Outdoor Living designs and installs motorized louvered pergolas across North and Northwest Florida, alongside [retractable awnings](/products/retractable-awnings), [motorized screens](/products/exterior-shades), and [storm shutters](/products/storm-shutters) — all built to hold up against Florida sun, rain, and wind. [Contact SJB Outdoor Living for an in-home assessment](/contact).
+SJB Outdoor Living designs and installs motorized louvered pergolas across North and Northwest Florida, alongside [retractable awnings](/products/retractable-awnings), [motorized screens](/products/exterior-shades), and [hurricane shutters](/products/hurricane-shutters) — all built to hold up against Florida sun, rain, and wind. [Contact SJB Outdoor Living for an in-home assessment](/contact).

@@ -8,17 +8,17 @@ const config: ProductDetailConfig = {
   consultSlug: "exterior-shutters",
 
   hero: {
-    eyebrow: "Exterior Shutters / Storm Shutters",
+    eyebrow: "Exterior Shutters / Hurricane Shutters",
     headline: "Code-rated protection that disappears between storms.",
     descriptor:
       "Florida building-code protection that deploys in minutes and tucks away when the sky clears. Available in accordion, roll-up, and panel styles — each engineered to your property's specific wind-load and impact requirements.",
     imageSrc: "/img/products/st-shutter.png",
-    imageAlt: "Accordion storm shutters partially closed across a window opening.",
+    imageAlt: "Accordion hurricane shutters partially closed across a window opening.",
     caption: "Hurricane Protection · Florida",
   },
 
   valueProps: {
-    eyebrow: "Why Storm Shutters",
+    eyebrow: "Why Hurricane Shutters",
     heading: "Peace of mind, ready when you need it.",
     items: [
       {
@@ -48,7 +48,7 @@ const config: ProductDetailConfig = {
     eyebrow: "The Standard",
     title: "Storm-ready in minutes, invisible the rest of the year.",
     imageSrc: "/img/products/stormshutters.jpg",
-    imageAlt: "Storm shutters installed across the windows of a Florida home.",
+    imageAlt: "Hurricane shutters installed across the windows of a Florida home.",
     callouts: [
       {
         number: 1,
@@ -134,17 +134,17 @@ const config: ProductDetailConfig = {
     eyebrow: "Built to Code",
     heading: "Engineered, permitted, and insurance-ready.",
     body:
-      "Every storm-shutter installation is engineered to local code, eligible for windstorm-mitigation insurance discounts, and backed by our workmanship guarantee. PE-stamped documentation is available on request.",
+      "Every hurricane-shutter installation is engineered to local code, eligible for windstorm-mitigation insurance discounts, and backed by our workmanship guarantee. PE-stamped documentation is available on request.",
   },
 
   gallery: {
     eyebrow: "The Gallery",
-    heading: "Storm shutters, installed.",
+    heading: "Hurricane shutters, installed.",
     intro: "Recent hurricane-protection installations across Southwest Florida.",
     category: "exterior-shutters",
   },
 };
 
-export default function StormShuttersPage() {
+export default function HurricaneShuttersPage() {
   return <ProductDetail config={config} />;
 }

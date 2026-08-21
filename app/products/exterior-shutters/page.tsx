@@ -98,9 +98,9 @@ const SUB_PRODUCTS = [
     imageOverlayBg: "rgba(14,26,31,0.5)",
   },
   {
-    href: "/products/storm-shutters",
+    href: "/products/hurricane-shutters",
     category: "Hurricane Protection System",
-    name: "Storm Shutters",
+    name: "Hurricane Shutters",
     description:
       "Florida building-code rated protection that deploys in minutes and disappears when the sky clears. Available in accordion, roll-up, and panel styles — each engineered to the specific wind-load and impact requirements of your property.",
     specs: [

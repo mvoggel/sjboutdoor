@@ -7,12 +7,12 @@ page and as the "The Gallery" strip at the bottom of the matching product page.
 public/img/gallery/
   louvered-pergolas/
   exterior-shades-and-screens/   → also feeds the Patio Screens & Garage Door Screens pages
-  exterior-shutters/             → also feeds the Bahama Shutters & Storm Shutters pages
+  exterior-shutters/             → also feeds the Bahama Shutters & Hurricane Shutters pages
   retractable-awnings/
 ```
 
 There are four categories. Sub-products share their parent's folder: the Bahama
-Shutters and Storm Shutters pages both pull from `exterior-shutters/`, and the
+Shutters and Hurricane Shutters pages both pull from `exterior-shutters/`, and the
 Patio Screens and Garage Door Screens pages both pull from
 `exterior-shades-and-screens/`. The list of categories lives in
 `lib/gallery-categories.ts` — edit there if you ever add or rename one.

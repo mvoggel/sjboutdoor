@@ -10,3 +10,7 @@
 
 # Retired blog article tied to a service area we no longer cover (Aug 2026).
 /blog/40-louvered-pergolas-in-naples  /blog  301
+
+# Product page renamed (Aug 2026): storm shutters -> hurricane shutters.
+# The old URL was indexed, so it 301s to the new slug.
+/products/storm-shutters       /products/hurricane-shutters  301

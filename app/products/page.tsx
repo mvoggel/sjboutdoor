@@ -11,7 +11,7 @@ import { SITE_URL, absUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Products — Outdoor Living Systems",
   description:
-    "Explore SJB Outdoor Living product lines: louvered pergolas, retractable awnings, exterior shades, exterior shutters, Bahama shutters, storm shutters, and motorized patio & garage screens — custom-built for Florida homes.",
+    "Explore SJB Outdoor Living product lines: louvered pergolas, retractable awnings, exterior shades, exterior shutters, Bahama shutters, hurricane shutters, hurricane screens, retractable screen doors, and motorized patio & garage screens — custom-built for Florida homes.",
   alternates: { canonical: "/products" },
   openGraph: {
     title: "Products — SJB Outdoor Living",
@@ -49,8 +49,8 @@ const PRODUCTS = [
     blurb: "Top-hinged shutters for passive sun control and storm-season readiness.",
   },
   {
-    href: "/products/storm-shutters",
-    name: "Storm Shutters",
+    href: "/products/hurricane-shutters",
+    name: "Hurricane Shutters",
     blurb: "Code-rated accordion, roll-up, and panel shutters that deploy in minutes.",
   },
   {
@@ -62,6 +62,16 @@ const PRODUCTS = [
     href: "/products/garage-door-screens",
     name: "Garage Door Screens",
     blurb: "Full-height motorized garage screens that roll into a discreet header.",
+  },
+  {
+    href: "/products/hurricane-screens",
+    name: "Hurricane Screens",
+    blurb: "Miami-Dade rated roll-down storm screens that work all year, not just in season.",
+  },
+  {
+    href: "/products/retractable-screen-system",
+    name: "Retractable Screen Systems",
+    blurb: "Screen doors that vanish into the frame — entry, sliding, French, and wide openings.",
   },
 ];
 
