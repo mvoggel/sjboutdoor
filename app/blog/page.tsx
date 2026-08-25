@@ -7,14 +7,14 @@ import { BlogList } from "@/components/blog/BlogList";
 import { getAllPosts, getActiveCategories, categoryLabel } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Field Notebook — Outdoor Living Guides & Notes",
+  title: "Field Notebook: Outdoor Living Guides & Notes",
   description:
-    "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoor Living crew — outdoor living for Florida homes.",
+    "Buying guides, install field notes, maintenance tips, and company news from the SJB Outdoor Living crew. Outdoor living for Florida homes.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "SJB Outdoor Living — Field Notebook",
+    title: "SJB Outdoor Living Field Notebook",
     description:
-      "Buying guides, install field notes, and company news — written by the people doing the work.",
+      "Buying guides, install field notes, and company news, written by the people doing the work.",
     url: "/blog",
     type: "website",
   },
@@ -40,11 +40,16 @@ export default function BlogPage() {
       <Header />
       <main id="main-content" style={{ background: "var(--bg-pure)", minHeight: "80vh" }}>
         {/* ── Hero ────────────────────────────────────────── */}
-        <section className="pt-32 md:pt-40 pb-12 md:pb-16 relative overflow-hidden">
+        <section className="pt-32 pb-12 md:pb-16 relative overflow-hidden">
           <Container>
-            <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-end">
+            <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
               <div>
-                <p className="text-eyebrow mb-4">Field Notebook</p>
+                <p
+                  className="text-eyebrow mb-3"
+                  style={{ color: "var(--rich-deep)", fontWeight: 700 }}
+                >
+                  Field Notebook
+                </p>
                 <h1
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -63,41 +68,26 @@ export default function BlogPage() {
                   style={{ color: "var(--ink-muted)", maxWidth: "52ch", lineHeight: 1.7 }}
                 >
                   Buying guides, install field notes, and small lessons we&apos;ve
-                  learned the hard way — written by the people doing the work.
+                  learned the hard way, written by the people doing the work.
                 </p>
               </div>
 
-              {/* Count — signature touch */}
-              <div className="hidden lg:flex items-end justify-end">
-                <div className="text-right">
-                  <p
-                    style={{
-                      fontFamily: "var(--font-cormorant), serif",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.22em",
-                      textTransform: "uppercase",
-                      color: "var(--rich-warm)",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    In the notebook
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-cormorant), serif",
-                      fontSize: "clamp(2.5rem, 4vw, 4rem)",
-                      color: "var(--ink-primary)",
-                      lineHeight: 1,
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {String(posts.length).padStart(2, "0")}
-                    <span style={{ fontSize: "0.4em", color: "var(--ink-muted)" }}>
-                      {" "}
-                      {posts.length === 1 ? "post" : "posts"}
-                    </span>
-                  </p>
-                </div>
+              {/* Hero image */}
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/img/products/blog-hero.png"
+                  alt="Open field notebook and pen on a table overlooking a covered Florida lanai at sunset."
+                  style={{
+                    width: "100%",
+                    aspectRatio: "3 / 2",
+                    objectFit: "cover",
+                    display: "block",
+                    borderRadius: "8px",
+                    border: "1px solid var(--rich-sand)",
+                    boxShadow: "0 18px 40px -24px rgba(14, 26, 31, 0.45)",
+                  }}
+                />
               </div>
             </div>
           </Container>

@@ -84,22 +84,30 @@ export function BlogList({ posts, categories }: Props) {
           >
             <Link
               href={`/blog/${p.slug}`}
-              className="group grid grid-cols-1 md:grid-cols-[10rem_1fr_5rem] gap-2 md:gap-8 items-baseline py-7 md:py-8"
+              className="group grid grid-cols-1 md:grid-cols-[1fr_5rem] gap-2 md:gap-8 items-baseline py-7 md:py-8"
             >
-              <span
-                style={{
-                  fontFamily: "var(--font-cormorant), serif",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "var(--rich-warm)",
-                }}
-              >
-                {p.categoryLabel}
-              </span>
               <span>
+                {/* Category tag: sits with the title rather than in its own column */}
                 <span
-                  className="block group-hover:text-[var(--rich-warm)]"
+                  className="inline-block mb-2.5"
+                  style={{
+                    fontFamily: "var(--font-cormorant), serif",
+                    fontSize: "0.66rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--rich-deep)",
+                    background: "rgba(11, 61, 46, 0.07)",
+                    border: "1px solid rgba(11, 61, 46, 0.14)",
+                    borderRadius: "999px",
+                    padding: "0.28rem 0.7rem",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {p.categoryLabel}
+                </span>
+                <span
+                  className="block group-hover:text-[var(--rich-warm)] group-hover:underline underline-offset-[6px] decoration-1"
                   style={{
                     fontFamily: "var(--font-cormorant), serif",
                     fontSize: "clamp(1.2rem, 2vw, 1.65rem)",
@@ -149,7 +157,7 @@ export function BlogList({ posts, categories }: Props) {
             fontStyle: "italic",
           }}
         >
-          No posts in this category yet — check back soon.
+          No posts in this category yet. Check back soon.
         </p>
       )}
     </>
