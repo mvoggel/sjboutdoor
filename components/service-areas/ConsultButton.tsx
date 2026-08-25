@@ -22,7 +22,7 @@ export function ConsultButton({
     padding: variant === "solid" ? "0.95rem 2.25rem" : "0.75rem 1.75rem",
     fontFamily: "var(--font-cormorant), Georgia, serif",
     fontSize: variant === "solid" ? "0.85rem" : "0.82rem",
-    fontWeight: 450,
+    fontWeight: 500,
     letterSpacing: "0.16em",
     textTransform: "uppercase",
     cursor: "pointer",

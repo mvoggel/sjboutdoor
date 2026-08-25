@@ -121,7 +121,7 @@ export function ScreenSpecBand({
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.5rem, 2.6vw, 2.3rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "rgba(252,251,247,0.96)",
                   lineHeight: 1.12,
                 }}
@@ -171,7 +171,7 @@ export function ScreenSpecBand({
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.9rem, 3.4vw, 2.8rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   lineHeight: 1,
                   color: "var(--rich-warm)",
                 }}
@@ -253,7 +253,7 @@ export function ScreenMeshExplorer({
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "var(--ink-primary)",
               lineHeight: 1.15,
               marginBottom: intro ? "0.85rem" : 0,

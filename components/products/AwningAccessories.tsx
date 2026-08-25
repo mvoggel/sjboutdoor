@@ -99,7 +99,7 @@ export function AwningAccessories() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "var(--ink-primary)",
               lineHeight: 1.15,
               letterSpacing: "0.005em",

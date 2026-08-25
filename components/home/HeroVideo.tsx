@@ -133,7 +133,7 @@ export function HeroVideo() {
               className="inline-flex items-center justify-center gap-2 rounded-none px-5 py-3 sm:px-8 sm:py-4 whitespace-nowrap transition-all hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ink-primary)]"
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontWeight: 450,
+                fontWeight: 500,
                 fontSize: "clamp(0.82rem, 3.4vw, 1rem)",
                 letterSpacing: "0.12em",
                 background: "var(--ink-primary)",
@@ -168,7 +168,7 @@ export function HeroVideo() {
                 className="whitespace-nowrap transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 style={{
                   color: "var(--bg-pure)",
-                  fontWeight: 600,
+                  fontWeight: 650,
                   borderBottom: "1px solid rgba(252,251,247,0.55)",
                   paddingBottom: "1px",
                 }}

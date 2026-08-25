@@ -230,7 +230,7 @@ function ProductGalleryCard({ product }: { product: Product }) {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.5rem, 2.4vw, 2.1rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               lineHeight: 1.05,
               color: "var(--bg-pure)",
               letterSpacing: "0.01em",

@@ -98,7 +98,7 @@ export function PergolaArchShowcase({
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3vw, 2.8rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "var(--ink-primary)",
               lineHeight: 1.15,
               letterSpacing: "0.005em",
@@ -328,7 +328,7 @@ function GutterLabel({
         style={{
           fontFamily: "var(--font-cormorant), Georgia, serif",
           fontSize: "clamp(1.3rem, 1.9vw, 1.9rem)",
-          fontWeight: 600,
+          fontWeight: 650,
           letterSpacing: "0.01em",
           lineHeight: 1.05,
           color: "var(--ink-primary)",
@@ -550,7 +550,7 @@ function MobileCard({
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "1.5rem",
-            fontWeight: 600,
+            fontWeight: 650,
             color: "var(--ink-primary)",
             lineHeight: 1.05,
           }}
@@ -609,7 +609,7 @@ function DetailContent({
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
-            fontWeight: 600,
+            fontWeight: 650,
             color: "var(--ink-primary)",
             lineHeight: 1.05,
           }}
@@ -620,7 +620,7 @@ function DetailContent({
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
             fontSize: "1.05rem",
-            fontWeight: 500,
+            fontWeight: 550,
             color: "var(--rich-warm)",
             marginTop: "0.25rem",
           }}

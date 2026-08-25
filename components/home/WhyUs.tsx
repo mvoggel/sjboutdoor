@@ -156,7 +156,7 @@ export function WhyUs() {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.25rem, 2.1vw, 1.7rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "rgba(252,251,247,0.93)",
                   lineHeight: 1.45,
                   letterSpacing: "0.01em",

@@ -93,7 +93,7 @@ export function BlogList({ posts, categories }: Props) {
                   style={{
                     fontFamily: "var(--font-cormorant), serif",
                     fontSize: "0.66rem",
-                    fontWeight: 600,
+                    fontWeight: 650,
                     letterSpacing: "0.14em",
                     textTransform: "uppercase",
                     color: "var(--rich-deep)",

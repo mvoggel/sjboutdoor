@@ -102,7 +102,7 @@ export default function ServiceAreasPage() {
                       style={{
                         fontFamily: "var(--font-cormorant), Georgia, serif",
                         fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         color: "var(--ink-primary)",
                         letterSpacing: "0.01em",
                       }}

@@ -62,7 +62,7 @@ export function QuoteDesignButton({ iframeRef, product }: QuoteDesignButtonProps
           border: "1px solid rgba(184,146,74,0.85)",
           fontFamily: "var(--font-cormorant), Georgia, serif",
           fontSize: "0.82rem",
-          fontWeight: 500,
+          fontWeight: 550,
           letterSpacing: "0.16em",
           textTransform: "uppercase",
           cursor: busy ? "wait" : "pointer",
@@ -120,7 +120,7 @@ function QuotePanel({ result }: { result: QuoteResult }) {
         style={{
           fontFamily: "var(--font-cormorant), Georgia, serif",
           fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-          fontWeight: 500,
+          fontWeight: 550,
           color: "#fcfbf7",
           lineHeight: 1.1,
           marginBottom: "1.25rem",

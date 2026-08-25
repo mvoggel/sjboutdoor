@@ -130,7 +130,7 @@ function MobileStepCard({
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "0.95rem",
-              fontWeight: 500,
+              fontWeight: 550,
               letterSpacing: "0.08em",
               color: "rgba(184,146,74,0.95)",
             }}
@@ -161,7 +161,7 @@ function MobileStepCard({
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "1.15rem",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "var(--ink-primary)",
               marginBottom: "0.3rem",
               letterSpacing: "0.005em",
@@ -451,7 +451,7 @@ function DesktopTimeline({ steps }: ProcessTimelineProps) {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "1.05rem",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       letterSpacing: "0.08em",
                       color: "var(--rich-warm)",
                     }}
@@ -569,7 +569,7 @@ function StepCard({
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "1.35rem",
-                fontWeight: 500,
+                fontWeight: 550,
                 color: "var(--ink-primary)",
                 letterSpacing: "0.005em",
                 marginBottom: "0.4rem",

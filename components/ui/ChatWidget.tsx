@@ -230,7 +230,7 @@ export function ChatWidget() {
                   style={{
                     fontFamily: "var(--font-cormorant, Georgia, serif)",
                     fontSize: "0.9rem",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "rgba(252,251,247,0.95)",
                     lineHeight: 1.2,
                     letterSpacing: "0.02em",

@@ -250,7 +250,7 @@ const extendBtn: React.CSSProperties = {
   borderRadius: 9,
   cursor: "pointer",
   fontSize: 13,
-  fontWeight: 600,
+  fontWeight: 650,
   backdropFilter: "blur(6px)",
   fontFamily: "ui-sans-serif, system-ui, sans-serif",
 };
@@ -290,7 +290,7 @@ const drawerHandle: React.CSSProperties = {
   padding: "9px 0 8px",
   cursor: "pointer",
   fontSize: 12,
-  fontWeight: 600,
+  fontWeight: 650,
   fontFamily: "ui-sans-serif, system-ui, sans-serif",
   zIndex: 2,
 };
@@ -320,7 +320,7 @@ const seg = {
     borderRadius: 6,
     cursor: "pointer",
     fontSize: 13,
-    fontWeight: 600,
+    fontWeight: 650,
     fontFamily: "ui-sans-serif, system-ui, sans-serif",
   } as React.CSSProperties,
   btnOn: { background: "#c9a35a", color: "#1b1206" } as React.CSSProperties,

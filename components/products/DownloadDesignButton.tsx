@@ -46,7 +46,7 @@ export function DownloadDesignButton({ iframeRef, product }: DownloadDesignButto
         border: "1px solid rgba(184,146,74,0.4)",
         fontFamily: "var(--font-cormorant), Georgia, serif",
         fontSize: "0.82rem",
-        fontWeight: 450,
+        fontWeight: 500,
         letterSpacing: "0.16em",
         textTransform: "uppercase",
         cursor: busy ? "wait" : "pointer",

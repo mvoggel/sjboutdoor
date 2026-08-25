@@ -144,7 +144,7 @@ const VENDOR_CTA: React.CSSProperties = {
   color: "var(--rich-warm)",
   fontFamily: "var(--font-cormorant), Georgia, serif",
   fontSize: "0.875rem",
-  fontWeight: 450,
+  fontWeight: 500,
   letterSpacing: "0.14em",
   textTransform: "uppercase",
   cursor: "pointer",
@@ -197,7 +197,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.35rem, 2.4vw, 2.1rem)",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "rgba(252,251,247,0.95)",
                     letterSpacing: "0.01em",
                     marginBottom: "0.6rem",
@@ -254,14 +254,6 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
         </section>
   ) : null;
 
-  const exploreHref = config.features
-    ? "#features"
-    : config.lineup
-    ? "#lineup"
-    : config.options
-    ? "#options"
-    : "#materials";
-
   return (
     <>
       <Header />
@@ -276,8 +268,6 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
           imageAlt={config.hero.imageAlt}
           caption={config.hero.caption}
           productSlug={config.consultSlug}
-          exploreHref={exploreHref}
-          exploreLabel="See the Details"
         />
 
         {/* ── 1b. PARTNER BAND (lead position) ────────────────────── */}
@@ -335,7 +325,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "var(--ink-primary)",
                     letterSpacing: "0.01em",
                     lineHeight: 1.1,
@@ -382,7 +372,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                             fontSize: "0.64rem",
                             letterSpacing: "0.2em",
                             textTransform: "uppercase",
-                            fontWeight: 500,
+                            fontWeight: 550,
                             color: "var(--rich-warm)",
                             marginBottom: "0.7rem",
                           }}
@@ -395,7 +385,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                         style={{
                           fontFamily: "var(--font-cormorant), Georgia, serif",
                           fontSize: "clamp(1.25rem, 1.9vw, 1.55rem)",
-                          fontWeight: 600,
+                          fontWeight: 650,
                           color: "var(--ink-primary)",
                           lineHeight: 1.2,
                           marginBottom: "0.7rem",
@@ -408,7 +398,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                         style={{
                           fontSize: "0.9rem",
                           lineHeight: 1.7,
-                          fontWeight: 500,
+                          fontWeight: 550,
                           color: "var(--ink-muted)",
                           marginBottom: "1.25rem",
                         }}
@@ -424,7 +414,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                             style={{
                               fontSize: "0.84rem",
                               lineHeight: 1.6,
-                              fontWeight: 500,
+                              fontWeight: 550,
                               color: "var(--ink-primary)",
                               paddingTop: "0.5rem",
                               borderTop: "1px solid rgba(184,146,74,0.18)",
@@ -453,7 +443,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                           style={{
                             fontFamily: "var(--font-cormorant), Georgia, serif",
                             fontSize: "0.8rem",
-                            fontWeight: 500,
+                            fontWeight: 550,
                             letterSpacing: "0.16em",
                             textTransform: "uppercase",
                             color: "var(--rich-warm)",
@@ -524,7 +514,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "var(--ink-primary)",
                     letterSpacing: "0.01em",
                     lineHeight: 1.1,
@@ -570,7 +560,7 @@ export function ProductDetail({ config }: { config: ProductDetailConfig }) {
                         style={{
                           fontFamily: "var(--font-cormorant), Georgia, serif",
                           fontSize: "clamp(1.2rem, 1.8vw, 1.5rem)",
-                          fontWeight: 500,
+                          fontWeight: 550,
                           color: "var(--ink-primary)",
                           lineHeight: 1.2,
                           letterSpacing: "0.01em",

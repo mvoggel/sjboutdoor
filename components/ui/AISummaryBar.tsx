@@ -103,7 +103,7 @@ export function AISummaryBar({
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: "rgba(184,146,74,0.85)",
-              fontWeight: 500,
+              fontWeight: 550,
             }}
           >
             Ask SJB AI
@@ -122,7 +122,7 @@ export function AISummaryBar({
           style={{
             fontFamily: "var(--font-cormorant, Georgia, serif)",
             fontSize: "1.05rem",
-            fontWeight: 500,
+            fontWeight: 550,
             color: "rgba(252,251,247,0.82)",
             flex: 1,
             minWidth: 0,
@@ -145,7 +145,7 @@ export function AISummaryBar({
             color: open ? "#D9B070" : "rgba(184,146,74,0.85)",
             padding: "0.55rem 1.2rem",
             fontSize: "0.92rem",
-            fontWeight: 500,
+            fontWeight: 550,
             letterSpacing: "0.05em",
             cursor: loading ? "default" : "pointer",
             fontFamily: "var(--font-cormorant, Georgia, serif)",
@@ -213,7 +213,7 @@ export function AISummaryBar({
                 style={{
                   fontFamily: "var(--font-cormorant, Georgia, serif)",
                   fontSize: "0.74rem",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   color: "rgba(184,146,74,0.8)",
@@ -255,7 +255,7 @@ export function AISummaryBar({
                       style={{
                         fontFamily: "var(--font-cormorant, Georgia, serif)",
                         fontSize: "1.05rem",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         lineHeight: 1.65,
                         color: "rgba(252,251,247,0.95)",
                       }}

@@ -143,7 +143,7 @@ export default function ExteriorShadesPage() {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.35rem, 2.4vw, 2.1rem)",
-                    fontWeight: 500, color: "rgba(252,251,247,0.95)",
+                    fontWeight: 550, color: "rgba(252,251,247,0.95)",
                     letterSpacing: "0.01em", marginBottom: "0.6rem",
                   }}
                 >
@@ -170,7 +170,7 @@ export default function ExteriorShadesPage() {
                   border: "1px solid rgba(184,146,74,0.45)",
                   background: "transparent", color: "var(--rich-warm)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
-                  fontSize: "0.875rem", fontWeight: 450,
+                  fontSize: "0.875rem", fontWeight: 500,
                   letterSpacing: "0.14em", textTransform: "uppercase",
                   cursor: "pointer", transition: "background 0.2s, color 0.2s",
                   whiteSpace: "nowrap",

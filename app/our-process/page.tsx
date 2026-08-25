@@ -174,7 +174,7 @@ export default function OurProcessPage() {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.7rem, 3vw, 2.8rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "var(--ink-primary)",
                   lineHeight: 1.15,
                   letterSpacing: "0.005em",
@@ -229,7 +229,7 @@ export default function OurProcessPage() {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.55rem, 2.6vw, 2.2rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "rgba(252,251,247,0.96)",
                   letterSpacing: "0.005em",
                   lineHeight: 1.2,
@@ -266,7 +266,7 @@ export default function OurProcessPage() {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "1.35rem",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       color: "rgba(252,251,247,0.96)",
                       marginBottom: "0.6rem",
                       letterSpacing: "0.01em",
@@ -314,7 +314,7 @@ export default function OurProcessPage() {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.8rem, 3.2vw, 2.9rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "var(--ink-primary)",
                   lineHeight: 1.15,
                   marginBottom: "1.5rem",
@@ -341,7 +341,7 @@ export default function OurProcessPage() {
                   border: "1px solid var(--ink-primary)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.85rem",
-                  fontWeight: 450,
+                  fontWeight: 500,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   cursor: "pointer",

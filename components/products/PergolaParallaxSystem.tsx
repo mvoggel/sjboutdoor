@@ -167,7 +167,7 @@ export function PergolaParallaxSystem({ system, index, total }: ParallaxSystemPr
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(2rem, 4vw, 3.1rem)",
-                fontWeight: 500,
+                fontWeight: 550,
                 letterSpacing: "0.005em",
                 lineHeight: 1.05,
                 color: isDark ? "rgba(252,251,247,0.96)" : "var(--ink-primary)",

@@ -340,7 +340,7 @@ const s: Record<string, React.CSSProperties> = {
     paddingTop: 4,
   },
   brand: { marginBottom: 18 },
-  brandTitle: { display: "block", fontSize: 17, fontWeight: 600, letterSpacing: 0.2 },
+  brandTitle: { display: "block", fontSize: 17, fontWeight: 650, letterSpacing: 0.2 },
   brandSub: { display: "block", fontSize: 11, color: "#9b968c", marginTop: 2 },
   section: {
     borderTop: "1px solid #ffffff14",
@@ -376,7 +376,7 @@ const s: Record<string, React.CSSProperties> = {
   miniBtnOn: {
     background: "#c9a35a",
     color: "#1b1206",
-    fontWeight: 600,
+    fontWeight: 650,
     border: "1px solid #c9a35a",
   },
   hintText: { marginTop: 8, fontSize: 11, color: "#9b968c" },
@@ -406,7 +406,7 @@ const s: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     fontSize: 12,
   },
-  segBtnOn: { background: "#c9a35a", color: "#1b1206", fontWeight: 600 },
+  segBtnOn: { background: "#c9a35a", color: "#1b1206", fontWeight: 650 },
   sidesGrid: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",

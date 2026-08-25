@@ -134,7 +134,7 @@ export default function AboutPage() {
                   style={{
                     fontFamily: "var(--font-cormorant), serif",
                     fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "var(--ink-primary)",
                     letterSpacing: "0.01em",
                     lineHeight: 1.15,
@@ -221,7 +221,7 @@ export default function AboutPage() {
                       style={{
                         fontFamily: "var(--font-cormorant), serif",
                         fontSize: "1.25rem",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         color: "var(--ink-primary)",
                         letterSpacing: "0.01em",
                         marginBottom: "0.5rem",
@@ -304,7 +304,7 @@ function YearMarquee() {
               style={{
                 fontFamily: "var(--font-cormorant), serif",
                 fontSize: "2.25rem",
-                fontWeight: 400,
+                fontWeight: 450,
                 color: "var(--rich-warm)",
                 letterSpacing: "0.02em",
                 lineHeight: 1,

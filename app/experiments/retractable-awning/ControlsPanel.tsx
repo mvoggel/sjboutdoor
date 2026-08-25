@@ -299,7 +299,7 @@ const s: Record<string, React.CSSProperties> = {
   },
   panelEmbedded: { width: "100%", height: "auto", overflowY: "visible", paddingTop: 4 },
   brand: { marginBottom: 18 },
-  brandTitle: { display: "block", fontSize: 17, fontWeight: 600, letterSpacing: 0.2 },
+  brandTitle: { display: "block", fontSize: 17, fontWeight: 650, letterSpacing: 0.2 },
   brandSub: { display: "block", fontSize: 11, color: "#9b968c", marginTop: 2 },
   section: { borderTop: "1px solid #ffffff14", paddingTop: 14, marginTop: 14 },
   sectionLabel: {
@@ -331,8 +331,8 @@ const s: Record<string, React.CSSProperties> = {
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
-  selName: { marginTop: 11, fontSize: 12.5, fontWeight: 600 },
-  selSku: { color: "#9b968c", fontWeight: 400 },
+  selName: { marginTop: 11, fontSize: 12.5, fontWeight: 650 },
+  selSku: { color: "#9b968c", fontWeight: 450 },
   finishRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
   finishBtn: {
     display: "flex",
@@ -369,7 +369,7 @@ const s: Record<string, React.CSSProperties> = {
   miniBtnOn: {
     background: "#c9a35a",
     color: "#1b1206",
-    fontWeight: 600,
+    fontWeight: 650,
     border: "1px solid #c9a35a",
   },
   segmented: { display: "flex", background: "#23262b", borderRadius: 8, padding: 3, gap: 3 },
@@ -383,7 +383,7 @@ const s: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     fontSize: 12,
   },
-  segBtnOn: { background: "#c9a35a", color: "#1b1206", fontWeight: 600 },
+  segBtnOn: { background: "#c9a35a", color: "#1b1206", fontWeight: 650 },
   toggleRow: {
     width: "100%",
     display: "flex",

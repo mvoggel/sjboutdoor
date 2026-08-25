@@ -151,7 +151,7 @@ function StatBand() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.9rem, 3.4vw, 2.8rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               lineHeight: 1,
               color: "var(--rich-warm)",
             }}
@@ -243,7 +243,7 @@ function ScreenCard({ screen, index }: { screen: Screen; index: number }) {
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(1.6rem, 2.6vw, 2.3rem)",
-                fontWeight: 500,
+                fontWeight: 550,
                 lineHeight: 1.05,
                 color: "var(--bg-pure)",
               }}
@@ -313,7 +313,7 @@ function ScreenCard({ screen, index }: { screen: Screen; index: number }) {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.92rem",
-                  fontWeight: 600,
+                  fontWeight: 650,
                   color: "var(--ink-primary)",
                   lineHeight: 1.2,
                   whiteSpace: "nowrap",
@@ -390,7 +390,7 @@ export function ScreenShowcase() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "var(--ink-primary)",
               lineHeight: 1.15,
               marginBottom: "1rem",

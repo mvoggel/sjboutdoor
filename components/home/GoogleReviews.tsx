@@ -138,7 +138,7 @@ function ReviewCard({ review }: { review: (typeof REVIEWS)[number] }) {
             fontStyle: "italic",
             fontSize: "1rem",
             color: "var(--ink-primary)",
-            fontWeight: 400,
+            fontWeight: 450,
           }}
         >
           {review.author}

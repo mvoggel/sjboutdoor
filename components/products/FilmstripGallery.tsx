@@ -132,7 +132,7 @@ export function FilmstripGallery({
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(1.6rem, 2.8vw, 2.5rem)",
-                fontWeight: 500,
+                fontWeight: 550,
                 color: "rgba(252,251,247,0.95)",
                 letterSpacing: "0.01em",
                 lineHeight: 1.1,

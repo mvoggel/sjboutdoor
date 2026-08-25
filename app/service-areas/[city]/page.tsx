@@ -204,7 +204,7 @@ export default async function CityServiceAreaPage({
                       style={{
                         fontFamily: "var(--font-cormorant), Georgia, serif",
                         fontSize: "clamp(1.4rem, 2.4vw, 2rem)",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         color: "var(--ink-primary)",
                         lineHeight: 1.15,
                       }}
@@ -260,7 +260,7 @@ export default async function CityServiceAreaPage({
                   className="mb-3"
                   style={{
                     fontSize: "0.8rem",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
                     color: "var(--rich-warm)",
@@ -321,7 +321,7 @@ export default async function CityServiceAreaPage({
                     border: "1px solid var(--rich-sand)",
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "0.85rem",
-                    fontWeight: 450,
+                    fontWeight: 500,
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                     textDecoration: "none",

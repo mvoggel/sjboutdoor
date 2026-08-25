@@ -108,7 +108,7 @@ export function AwningPremiumFeatures() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3vw, 2.6rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "rgba(252,251,247,0.96)",
               lineHeight: 1.15,
               letterSpacing: "0.005em",
@@ -189,7 +189,7 @@ export function AwningPremiumFeatures() {
                         display: "block",
                         fontFamily: "var(--font-cormorant), Georgia, serif",
                         fontSize: "clamp(1.15rem, 2vw, 1.45rem)",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         color: "rgba(252,251,247,0.96)",
                         lineHeight: 1.2,
                       }}
@@ -315,7 +315,7 @@ export function AwningPremiumFeatures() {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "1.4rem",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       color: "rgba(252,251,247,0.95)",
                     }}
                   >

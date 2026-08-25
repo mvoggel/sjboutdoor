@@ -117,7 +117,7 @@ export default function RetractableAwningsPage() {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "clamp(0.7rem, 2.6vw, 0.95rem)",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       letterSpacing: "0.04em",
                       lineHeight: 1.25,
                       color: "var(--ink-primary)",
@@ -165,7 +165,7 @@ export default function RetractableAwningsPage() {
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.55rem, 2.6vw, 2.2rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "rgba(252,251,247,0.96)",
                   letterSpacing: "0.005em",
                   marginBottom: "0.75rem",
@@ -301,7 +301,7 @@ export default function RetractableAwningsPage() {
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "clamp(1.35rem, 2.4vw, 2rem)",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "var(--ink-primary)",
                     letterSpacing: "0.01em",
                     marginBottom: "0.6rem",
@@ -331,7 +331,7 @@ export default function RetractableAwningsPage() {
                   color: "var(--ink-primary)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.875rem",
-                  fontWeight: 450,
+                  fontWeight: 500,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   cursor: "pointer",

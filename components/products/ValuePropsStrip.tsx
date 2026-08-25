@@ -55,7 +55,7 @@ export function ValuePropsStrip({ eyebrow, heading, items }: ValuePropsStripProp
                 style={{
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "clamp(1.5rem, 2.6vw, 2.3rem)",
-                  fontWeight: 500,
+                  fontWeight: 550,
                   color: "var(--ink-primary)",
                   letterSpacing: "0.01em",
                   lineHeight: 1.1,
@@ -107,7 +107,7 @@ export function ValuePropsStrip({ eyebrow, heading, items }: ValuePropsStripProp
                   style={{
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "1.15rem",
-                    fontWeight: 500,
+                    fontWeight: 550,
                     color: "var(--ink-primary)",
                     lineHeight: 1.2,
                     marginBottom: "0.5rem",

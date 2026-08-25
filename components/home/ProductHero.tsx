@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useConsultModal } from "@/components/ui/ConsultModalProvider";
+import { ProductBreadcrumbs } from "@/components/products/ProductBreadcrumbs";
 import { assetPath } from "@/lib/asset-path";
 import { mediaSrc } from "@/lib/media-src";
 
@@ -66,6 +67,8 @@ function LoadingDots() {
 }
 
 interface ProductHeroProps {
+  /** Slash-separated trail, e.g. "Exterior Shades / Hurricane Screens".
+   *  Rendered as linking breadcrumbs. */
   eyebrow: string;
   headline: string;
   descriptor: string;
@@ -75,11 +78,8 @@ interface ProductHeroProps {
   imageAlt?: string;
   /** Small caption shown in the bottom-right of the frame. */
   caption?: string;
-  /** Secondary CTA — anchor target + label (defaults to "Explore Products" → #products). */
-  exploreHref?: string;
-  exploreLabel?: string;
   productSlug?: string;
-  /** When provided, swaps "Explore Products" for the AI summary button */
+  /** When provided, renders the AI summary button beside the consult CTA */
   aiServiceLabel?: string;
   aiContextKey?: string;
 }
@@ -92,8 +92,6 @@ export function ProductHero({
   imageSrc,
   imageAlt = "",
   caption = "Custom Installation · Florida",
-  exploreHref = "#products",
-  exploreLabel = "Explore Products",
   productSlug,
   aiServiceLabel,
   aiContextKey,
@@ -165,18 +163,7 @@ export function ProductHero({
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-start-1 md:row-start-1 mb-5 md:mb-0"
           >
-            <p
-              style={{
-                fontSize: "0.7rem",
-                letterSpacing: "0.26em",
-                textTransform: "uppercase",
-                color: "var(--ink-primary)",
-                opacity: 0.55,
-                marginBottom: "1.25rem",
-              }}
-            >
-              {eyebrow}
-            </p>
+            <ProductBreadcrumbs path={eyebrow} />
 
             <h1
               style={{
@@ -186,7 +173,7 @@ export function ProductHero({
                 lineHeight: 1.1,
                 letterSpacing: "-0.01em",
                 color: "var(--ink-primary)",
-                maxWidth: "20ch",
+                maxWidth: "26ch",
               }}
             >
               {headline}
@@ -265,7 +252,7 @@ export function ProductHero({
                 fontSize: "1rem",
                 lineHeight: 1.7,
                 color: "var(--ink-muted)",
-                maxWidth: "44ch",
+                maxWidth: "62ch",
                 marginBottom: "2.25rem",
               }}
             >
@@ -283,7 +270,7 @@ export function ProductHero({
                   border: "1px solid var(--ink-primary)",
                   fontFamily: "var(--font-cormorant), Georgia, serif",
                   fontSize: "0.85rem",
-                  fontWeight: 450,
+                  fontWeight: 500,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                   cursor: "pointer",
@@ -304,7 +291,7 @@ export function ProductHero({
                 Schedule a Consultation
               </button>
 
-              {/* AI button (when aiContextKey provided) or Explore Products link */}
+              {/* AI summary button — only on pages that supply an aiContextKey */}
               {aiContextKey ? (
                 <button
                   ref={aiButtonRef}
@@ -317,7 +304,7 @@ export function ProductHero({
                     border: `1px solid ${aiOpen ? "rgba(184,146,74,0.55)" : "var(--rich-sand)"}`,
                     fontFamily: "var(--font-cormorant), Georgia, serif",
                     fontSize: "0.85rem",
-                    fontWeight: 450,
+                    fontWeight: 500,
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
                     cursor: aiLoading ? "default" : "pointer",
@@ -355,36 +342,7 @@ export function ProductHero({
                     </>
                   )}
                 </button>
-              ) : (
-                <a
-                  href={exploreHref}
-                  style={{
-                    padding: "0.875rem 1.75rem",
-                    background: "transparent",
-                    color: "var(--ink-primary)",
-                    border: "1px solid var(--rich-sand)",
-                    fontFamily: "var(--font-cormorant), Georgia, serif",
-                    fontSize: "0.85rem",
-                    fontWeight: 450,
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    transition: "border-color 0.2s",
-                    whiteSpace: "nowrap",
-                    display: "inline-flex",
-                    alignItems: "center",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--ink-primary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--rich-sand)";
-                  }}
-                >
-                  {exploreLabel}
-                </a>
-              )}
+              ) : null}
             </div>
 
             {/* ── Mobile AI dropdown ── */}
@@ -574,7 +532,7 @@ function AiSummaryContent({
         style={{
           fontFamily: "var(--font-cormorant, Georgia, serif)",
           fontSize: "0.74rem",
-          fontWeight: 500,
+          fontWeight: 550,
           letterSpacing: "0.18em",
           textTransform: "uppercase",
           color: "rgba(184,146,74,0.8)",
@@ -616,7 +574,7 @@ function AiSummaryContent({
               style={{
                 fontFamily: "var(--font-cormorant, Georgia, serif)",
                 fontSize: "1.0rem",
-                fontWeight: 500,
+                fontWeight: 550,
                 lineHeight: 1.65,
                 color: "rgba(252,251,247,0.92)",
               }}

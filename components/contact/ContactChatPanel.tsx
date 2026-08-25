@@ -52,7 +52,7 @@ export function ContactChatPanel({ onTalkToRep, onStartChat }: Props) {
               color: "var(--bg-pure)",
               fontSize: "0.85rem",
               letterSpacing: "0.08em",
-              fontWeight: 500,
+              fontWeight: 550,
             }}
             aria-hidden="true"
           >
@@ -78,7 +78,7 @@ export function ContactChatPanel({ onTalkToRep, onStartChat }: Props) {
           <p
             style={{
               fontFamily: "var(--font-cormorant), serif",
-              fontWeight: 500,
+              fontWeight: 550,
               fontSize: "1rem",
               color: "var(--bg-pure)",
               letterSpacing: "0.02em",
@@ -253,7 +253,7 @@ function ChoiceCard({
           style={{
             fontFamily: "var(--font-cormorant), serif",
             fontSize: "0.98rem",
-            fontWeight: 500,
+            fontWeight: 550,
             letterSpacing: "0.02em",
             lineHeight: 1.15,
           }}

@@ -187,7 +187,7 @@ function ProductRow({ product }: { product: (typeof PRODUCTS)[number] }) {
               style={{
                 fontFamily: "var(--font-cormorant), Georgia, serif",
                 fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
-                fontWeight: 500,
+                fontWeight: 550,
                 letterSpacing: "0.04em",
                 color: "var(--ink-primary)",
                 lineHeight: 1.15,
@@ -300,7 +300,7 @@ function ProductRow({ product }: { product: (typeof PRODUCTS)[number] }) {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "1rem",
-                      fontWeight: 450,
+                      fontWeight: 500,
                       letterSpacing: "0.14em",
                       color: "var(--rich-warm)",
                       textDecoration: "none",

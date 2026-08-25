@@ -80,7 +80,7 @@ const s: Record<string, React.CSSProperties> = {
     margin: "0 auto",
   },
   head: { marginBottom: 24 },
-  h1: { fontSize: 30, fontWeight: 600, margin: "0 0 8px" },
+  h1: { fontSize: 30, fontWeight: 650, margin: "0 0 8px" },
   sub: { fontSize: 15, color: "#5c5b57", margin: 0, maxWidth: 640, lineHeight: 1.5 },
   frameWrap: {
     borderRadius: 14,

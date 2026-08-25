@@ -133,7 +133,7 @@ export default function ContactPage() {
                     style={{
                       fontFamily: "var(--font-cormorant), serif",
                       fontSize: "3rem",
-                      fontWeight: 400,
+                      fontWeight: 450,
                       color: "var(--rich-warm)",
                       letterSpacing: "0.02em",
                       lineHeight: 1,
@@ -155,7 +155,7 @@ export default function ContactPage() {
                     style={{
                       fontFamily: "var(--font-cormorant), serif",
                       fontSize: "1.4rem",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       color: "var(--ink-primary)",
                       letterSpacing: "0.01em",
                       marginBottom: "0.5rem",
@@ -229,7 +229,7 @@ function ContactTile({
         style={{
           fontFamily: "var(--font-cormorant), serif",
           fontSize: "1.05rem",
-          fontWeight: 500,
+          fontWeight: 550,
           lineHeight: 1.35,
           ...(breakWord ? { wordBreak: "break-word" } : null),
         }}

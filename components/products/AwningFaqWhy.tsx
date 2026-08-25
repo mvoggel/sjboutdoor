@@ -67,7 +67,7 @@ export function AwningFaqWhy() {
                         flex: 1,
                         fontFamily: "var(--font-cormorant), Georgia, serif",
                         fontSize: "clamp(1.05rem, 1.7vw, 1.3rem)",
-                        fontWeight: 500,
+                        fontWeight: 550,
                         color: "rgba(252,251,247,0.94)",
                         lineHeight: 1.3,
                       }}

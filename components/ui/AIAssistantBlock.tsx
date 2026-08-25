@@ -134,14 +134,14 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
         <span style={{
           fontFamily: "var(--font-cormorant, Georgia, serif)",
           fontSize: "0.72rem", letterSpacing: "0.2em",
-          textTransform: "uppercase", color: "rgba(184,146,74,0.85)", fontWeight: 500,
+          textTransform: "uppercase", color: "rgba(184,146,74,0.85)", fontWeight: 550,
         }}>
           Ask SJB AI
         </span>
         <span style={{ color: "rgba(252,251,247,0.15)", fontSize: "0.8rem" }}>·</span>
         <span style={{
           fontFamily: "var(--font-cormorant, Georgia, serif)",
-          fontSize: "1.1rem", fontWeight: 500, color: "rgba(252,251,247,0.82)",
+          fontSize: "1.1rem", fontWeight: 550, color: "rgba(252,251,247,0.82)",
         }}>
           Get answers about {serviceLabel} immediately.
         </span>
@@ -161,7 +161,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
             border: `1px solid ${activeKey === "summarize" ? "rgba(184,146,74,0.55)" : "rgba(184,146,74,0.28)"}`,
             color: activeKey === "summarize" ? "#B8924A" : "rgba(184,146,74,0.75)",
             padding: "0.45rem 1.1rem",
-            fontSize: "1.1rem", fontWeight: 500, letterSpacing: "0.05em",
+            fontSize: "1.1rem", fontWeight: 550, letterSpacing: "0.05em",
             cursor: isLoading && activeKey !== "summarize" ? "default" : "pointer",
             fontFamily: "var(--font-cormorant, Georgia, serif)",
             transition: "all 0.18s",
@@ -202,7 +202,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
                 border: `1px solid ${isActive ? "rgba(184,146,74,0.5)" : "rgba(255,255,255,0.12)"}`,
                 color: isActive ? "#B8924A" : "rgba(252,251,247,0.85)",
                 padding: "0.45rem 1rem",
-                fontSize: "1.1rem", fontWeight: 500, letterSpacing: "0.03em",
+                fontSize: "1.1rem", fontWeight: 550, letterSpacing: "0.03em",
                 cursor: isLoading && !isActive ? "default" : "pointer",
                 fontFamily: "var(--font-cormorant, Georgia, serif)",
                 transition: "all 0.18s",
@@ -256,7 +256,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
           {!isLoading && chipResponse && (
             <p style={{
               fontFamily: "var(--font-cormorant, Georgia, serif)",
-              fontSize: "0.9rem", fontWeight: 500, lineHeight: 1.75,
+              fontSize: "0.9rem", fontWeight: 550, lineHeight: 1.75,
               color: "rgba(252,251,247,0.95)",
             }}>
               {chipResponse}
@@ -268,7 +268,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
             <div>
               <p style={{
                 fontFamily: "var(--font-cormorant, Georgia, serif)",
-                fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.18em",
+                fontSize: "0.78rem", fontWeight: 550, letterSpacing: "0.18em",
                 textTransform: "uppercase", color: "rgba(184,146,74,0.8)",
                 marginBottom: "0.75rem",
               }}>
@@ -283,7 +283,7 @@ export function AIAssistantBlock({ serviceLabel = "this service" }: { serviceLab
                     }} />
                     <span style={{
                       fontFamily: "var(--font-cormorant, Georgia, serif)",
-                      fontSize: "1.2rem", fontWeight: 500, lineHeight: 1.7,
+                      fontSize: "1.2rem", fontWeight: 550, lineHeight: 1.7,
                       color: "rgba(252,251,247,0.95)",
                     }}>
                       {bullet}

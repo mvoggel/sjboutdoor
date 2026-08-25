@@ -149,7 +149,7 @@ export default function FaqPage() {
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
                       fontSize: "clamp(1.15rem, 2.4vw, 1.5rem)",
-                      fontWeight: 500,
+                      fontWeight: 550,
                       color: "var(--ink-primary)",
                       lineHeight: 1.3,
                     }}
@@ -162,7 +162,7 @@ export default function FaqPage() {
                         fontSize: "1.6rem",
                         lineHeight: 1,
                         color: "var(--rich-warm)",
-                        fontWeight: 300,
+                        fontWeight: 350,
                       }}
                     >
                       +

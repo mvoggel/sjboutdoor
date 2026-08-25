@@ -147,7 +147,7 @@ export default function ProductsPage() {
                         style={{
                           fontFamily: "var(--font-cormorant), Georgia, serif",
                           fontSize: "1.5rem",
-                          fontWeight: 500,
+                          fontWeight: 550,
                           color: "var(--ink-primary)",
                           lineHeight: 1.2,
                           marginBottom: "0.6rem",

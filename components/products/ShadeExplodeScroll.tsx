@@ -251,7 +251,7 @@ export function ShadeExplodeScroll() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(1.7rem, 3.4vw, 3rem)",
-              fontWeight: 500,
+              fontWeight: 550,
               color: "rgba(252,251,247,0.96)",
               letterSpacing: "0.01em",
               lineHeight: 1.1,

@@ -219,7 +219,7 @@ const drawerHandle: React.CSSProperties = {
   padding: "9px 0 8px",
   cursor: "pointer",
   fontSize: 12,
-  fontWeight: 600,
+  fontWeight: 650,
   fontFamily: "ui-sans-serif, system-ui, sans-serif",
   zIndex: 2,
 };

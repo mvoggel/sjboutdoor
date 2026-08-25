@@ -30,7 +30,7 @@ export function IntroStatement() {
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "clamp(2.0rem, 4.5vw, 4.0rem)",
-              fontWeight: 300,
+              fontWeight: 350,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
               color: "var(--ink-primary)",
@@ -61,7 +61,7 @@ export function IntroStatement() {
             style={{
               fontFamily: "var(--font-cormorant)",
               fontSize: "clamp(1.15rem, 1.8vw, 1.65rem)",
-              fontWeight: 400,
+              fontWeight: 450,
               color: "var(--ink-muted)",
               letterSpacing: "-0.01em",
             }}
