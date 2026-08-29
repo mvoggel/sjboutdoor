@@ -10,6 +10,7 @@ import {
 } from "@/lib/validators";
 import { Button } from "./Button";
 import { GhlBookingFrame } from "./GhlBookingFrame";
+import type { RegionSlug } from "@/lib/calendars";
 import { EMAIL } from "@/lib/site";
 
 const PRODUCTS: { value: ProductSlug; label: string }[] = [
@@ -23,11 +24,15 @@ interface ConsultFormProps {
   onSuccess?: () => void;
   /** Slug of the product to preselect (driven by hero CTA / product-page nav). */
   preselectedProduct?: ProductSlug;
+  /** Which regional calendar set to hand off to. The caller runs the region
+   *  step (see RegionPicker) before rendering this form. */
+  region: RegionSlug;
 }
 
 export function ConsultForm({
   onSuccess: _onSuccess,
   preselectedProduct,
+  region,
 }: ConsultFormProps) {
   const [bookedData, setBookedData] = useState<ConsultFormData | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -120,6 +125,7 @@ export function ConsultForm({
           </p>
         </div>
         <GhlBookingFrame
+          region={region}
           product={bookedData.productInterest}
           prefill={{
             firstName: bookedData.firstName,

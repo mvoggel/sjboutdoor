@@ -1,48 +1,78 @@
 import type { ProductSlug } from "./validators";
 
 /**
- * GHL booking widget permanent links, one per product slug.
+ * We run two GHL calendar sets — one per sales region. Every "Schedule a
+ * Consult" CTA asks which city the visitor is closer to, then routes them to
+ * that region's calendar for the product they were looking at.
  *
- * These are the calendar-specific Permanent Links from GHL → Calendars →
- * Share. We use Permanent (not Scheduling) so slug renames inside GHL don't
- * break embeds.
+ * In GHL these live in the "Web" calendar group (FUvbZVZsxYR2JHZlX33s) and
+ * are named:
+ *   panama-city → "Panhandle - Consultation/Web <Product>"
+ *   gainesville → "SJB Outdoor - Consultation/Web <Product>"   (the original set)
  *
- * To get a new link: GHL → Calendars → <calendar> → Share icon → Permanent
- * link → Copy.
+ * The Gainesville set is the older, unprefixed one — it predates the split, so
+ * it never got a region prefix. If those calendars are ever renamed in GHL,
+ * nothing here breaks: we address them by ID, not name.
  */
-export const PRODUCT_CALENDARS: Record<ProductSlug, string> = {
-  "exterior-shades":
-    "https://api.leadconnectorhq.com/widget/booking/ycarn2W2UY5SZYSRT6SE",
-  "exterior-shutters":
-    "https://api.leadconnectorhq.com/widget/booking/XGFAsoHOmDIr36pllDwn",
-  "louvered-pergolas":
-    "https://api.leadconnectorhq.com/widget/booking/sysCuGprfMLYFQUOJFep",
-  "retractable-awnings":
-    "https://api.leadconnectorhq.com/widget/booking/xj7aD1o2WTUU3GeQiIEq",
+export const REGION_SLUGS = ["panama-city", "gainesville"] as const;
+
+export type RegionSlug = (typeof REGION_SLUGS)[number];
+
+export interface Region {
+  slug: RegionSlug;
+  /** Button label in the region picker. */
+  label: string;
+  /** Supporting line under the label — helps a visitor self-select. */
+  hint: string;
+}
+
+export const REGIONS: readonly Region[] = [
+  {
+    slug: "panama-city",
+    label: "Panama City, Florida",
+    hint: "The Panhandle — Pensacola to Tallahassee",
+  },
+  {
+    slug: "gainesville",
+    label: "Gainesville, Florida",
+    hint: "North & Central Florida — Ocala to Jacksonville",
+  },
+] as const;
+
+export function isRegionSlug(value: string | undefined): value is RegionSlug {
+  return !!value && (REGION_SLUGS as readonly string[]).includes(value);
+}
+
+/**
+ * GHL booking widget IDs, by region and product. These are the calendar IDs
+ * from GHL → Calendars → Share → Permanent link (we use Permanent, not
+ * Scheduling, so slug renames inside GHL don't break embeds).
+ *
+ * `web-contact` is the regional catch-all, used on non-product pages
+ * (Contact, About, Blog, service areas…) where the visitor hasn't picked a
+ * product.
+ */
+const CALENDAR_IDS: Record<
+  RegionSlug,
+  Record<ProductSlug | "web-contact", string>
+> = {
+  "panama-city": {
+    "exterior-shades": "S6OvowIPAzMXR1AhlSjm",
+    "exterior-shutters": "FjBsTWbNhS07dt4ckDBI",
+    "louvered-pergolas": "XFuN4vGY28089Yh5YMod",
+    "retractable-awnings": "VxRJhoB3bahZ1zV6jrB6",
+    "web-contact": "diasdoYD9Qu9rIC5IA3d",
+  },
+  gainesville: {
+    "exterior-shades": "ycarn2W2UY5SZYSRT6SE",
+    "exterior-shutters": "XGFAsoHOmDIr36pllDwn",
+    "louvered-pergolas": "sysCuGprfMLYFQUOJFep",
+    "retractable-awnings": "xj7aD1o2WTUU3GeQiIEq",
+    "web-contact": "LJFb67v3zZK2bpuxiGie",
+  },
 };
 
-/**
- * Fallback calendar for non-product pages (Contact, About, Blog, etc.) where
- * the visitor hasn't picked a product. Routes to "SJB Outdoor - Web Contact"
- * — a round-robin general-inquiry calendar in GHL.
- */
-export const WEB_CONTACT_CALENDAR =
-  "https://api.leadconnectorhq.com/widget/booking/LJFb67v3zZK2bpuxiGie";
-
-/**
- * Helper for the web-contact calendar URL with prefill, mirroring
- * `buildCalendarUrl` but without the product-slug constraint.
- */
-export function buildWebContactCalendarUrl(prefill?: CalendarPrefill): string {
-  if (!prefill) return WEB_CONTACT_CALENDAR;
-  const params = new URLSearchParams({
-    first_name: prefill.firstName,
-    last_name: prefill.lastName,
-    email: prefill.email,
-    phone: prefill.phone,
-  });
-  return `${WEB_CONTACT_CALENDAR}?${params.toString()}`;
-}
+const WIDGET_BASE = "https://api.leadconnectorhq.com/widget/booking";
 
 export interface CalendarPrefill {
   firstName: string;
@@ -52,32 +82,34 @@ export interface CalendarPrefill {
 }
 
 /**
- * Returns the calendar URL for a product with name/email/phone appended as
- * query params, so the GHL widget's in-iframe form arrives pre-filled.
+ * Returns the booking widget URL for a region + product, with name/email/phone
+ * appended as query params so the GHL widget's in-iframe form arrives
+ * pre-filled. Pass `null` for `product` to get the region's general-inquiry
+ * "Web Contact" calendar.
  *
  * GHL booking widgets read `first_name`, `last_name`, `email`, `phone` from
  * the query string and pre-populate the corresponding form fields.
+ *
+ * NOTE: Prefilling the GHL custom checkbox field "Product Interest(s)" via URL
+ * params (`?contact.product_interests=...` or `?product_interests=...`) does
+ * NOT work on this widget version — GHL's calendar widget reliably prefills
+ * only the built-in fields below. Product tagging is handled by a per-calendar
+ * GHL Workflow instead (Settings → Workflows → on calendar booking → "Add
+ * value to custom field" → Product Interest(s) = <slug>).
  */
 export function buildCalendarUrl(
-  product: ProductSlug,
+  region: RegionSlug,
+  product: ProductSlug | null,
   prefill?: CalendarPrefill
 ): string {
-  const base = PRODUCT_CALENDARS[product];
-  const params = new URLSearchParams();
+  const base = `${WIDGET_BASE}/${CALENDAR_IDS[region][product ?? "web-contact"]}`;
+  if (!prefill) return base;
 
-  // NOTE: Prefilling the GHL custom checkbox field "Product Interest(s)"
-  // via URL params (`?contact.product_interests=...` or `?product_interests=...`)
-  // does NOT work on this widget version — GHL's calendar widget reliably
-  // prefills only the built-in fields below. Product tagging is handled by
-  // a per-calendar GHL Workflow instead (Settings → Workflows → on calendar
-  // booking → "Add value to custom field" → Product Interest(s) = <slug>).
-  if (prefill) {
-    params.set("first_name", prefill.firstName);
-    params.set("last_name", prefill.lastName);
-    params.set("email", prefill.email);
-    params.set("phone", prefill.phone);
-  }
-
-  const qs = params.toString();
-  return qs ? `${base}?${qs}` : base;
+  const params = new URLSearchParams({
+    first_name: prefill.firstName,
+    last_name: prefill.lastName,
+    email: prefill.email,
+    phone: prefill.phone,
+  });
+  return `${base}?${params.toString()}`;
 }

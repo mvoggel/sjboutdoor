@@ -3,13 +3,15 @@
 import type { ProductSlug } from "@/lib/validators";
 import {
   buildCalendarUrl,
-  buildWebContactCalendarUrl,
   type CalendarPrefill,
+  type RegionSlug,
 } from "@/lib/calendars";
 
 interface GhlBookingFrameProps {
-  /** Product slug → routes to that product's calendar. `null` → routes to
-   *  the general-inquiry "Web Contact" calendar (for non-product pages). */
+  /** Which regional calendar set to book against. */
+  region: RegionSlug;
+  /** Product slug → routes to that region's calendar for the product. `null`
+   *  → routes to the region's general-inquiry "Web Contact" calendar. */
   product: ProductSlug | null;
   /** Optional. When omitted, the GHL widget collects name/email/phone in its
    *  own form step (current default since we removed our prefacing form). */
@@ -25,14 +27,13 @@ interface GhlBookingFrameProps {
  * Cross-origin (api.leadconnectorhq.com) — no CSS we write reaches inside.
  * Styling adjustments must be made in GHL → Calendar → Widget appearance.
  */
-export function GhlBookingFrame({ product, prefill }: GhlBookingFrameProps) {
-  const src = product
-    ? buildCalendarUrl(product, prefill)
-    : buildWebContactCalendarUrl(prefill);
-
+export function GhlBookingFrame({ region, product, prefill }: GhlBookingFrameProps) {
   return (
     <iframe
-      src={src}
+      // Re-key on region/product so switching regions remounts the widget
+      // instead of leaving a stale booking flow mid-step.
+      key={`${region}:${product ?? "web-contact"}`}
+      src={buildCalendarUrl(region, product, prefill)}
       title="Schedule your consultation"
       style={{
         width: "100%",
